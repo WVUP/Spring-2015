@@ -1,3 +1,18 @@
+
+var functionElement = document.getElementById('functions'),
+	debuggingElement = document.getElementById('debugging');
+function togglePage (page) {
+	
+	if(page == 'functions'){
+		functionElement.classList.remove('hide');
+		debuggingElement.classList.add('hide');
+	}else{
+		debuggingElement.classList.remove('hide');
+		functionElement.classList.add('hide');
+	}
+
+}
+
 var colors = [
 	{
 		color: "red",
@@ -88,8 +103,4 @@ function btnExample () {
 
 	// Display a generic text box to the user
 	alert(_text + _currentDate.toDateString());
-}
-
-function renderColors () {
-	// body...
 }
