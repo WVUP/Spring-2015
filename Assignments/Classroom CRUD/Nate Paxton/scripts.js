@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelector('#main').style.display = "none";
 
   //Populate the current students table
-  updateCurrent();
+  updateCurrentTable();
 
   logTimer("Document ready");
 });
@@ -19,20 +19,40 @@ var began = function(){
 	logTimer("Begin screen closed, main displayed");
 }
 
+//Collects form data, updates students, updates table
+var submitCreate = function(){
+	var form = document.querySelector('#createForm');
+	Students.push(new Student(
+			form.firstName.value,
+			form.lastName.value,
+			form.major.value,
+			form.year.value,
+			form.GPA.value,
+			form.advisor.value
+		));
+	updateCurrentTable();
+	form.reset();
+	logTimer("Create Form Reset");
+	return false;
+}
 
 //Updates the Students table
-var updateCurrent = function(){
+var updateCurrentTable = function(){
 for(var i=0; i<Students.length; i++){
-	var row = "<tr><td>" +
-	Students[i].firstName + " " + Students[i].lastName +
-	"</td><td>" + Students[i].year +
-	"</td><td>" + Students[i].major +
-	"</td></tr>";
-	document.querySelector('#currentStudents').innerHTML += row;
-	logTimer(Students[i].firstName + " " + Students[i].lastName +
-		" added to current students table");
+	if (Students[i].posted == false){
+		var row = "<tr><td>" +
+		Students[i].firstName + " " + Students[i].lastName +
+		"</td><td>" + Students[i].year +
+		"</td><td>" + Students[i].major +
+		"</td></tr>";
+		document.querySelector('#currentStudents').innerHTML += row;
+		logTimer(Students[i].firstName + " " + Students[i].lastName +
+			" added to current students table");
+		Students[i].posted = true;
+	}	
 }}
 
+//Logs messages and times to console
 var logTimer = function(message){
 	var today = new Date();
 	console.log(message + ": " + today.toDateString() + " @ " + today.toTimeString());
@@ -53,6 +73,7 @@ function Student(firstName, lastName, major, year, GPA, advisor){
 	this.year = year,
 	this.GPA = GPA,
 	this.advisor = advisor
+	this.posted = false;
 }
 
 var Students = new Array();
