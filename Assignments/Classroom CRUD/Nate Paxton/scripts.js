@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //Standalone functions
 var began = function(){
-	fadeOut(document.querySelector('#begin'));
 	document.querySelector('#begin').style.display = "none";
 	document.querySelector('#main').style.display = "block";
 
@@ -55,15 +54,11 @@ for(var i=0; i<Students.length; i++){
 //Logs messages and times to console
 var logTimer = function(message){
 	var today = new Date();
-	console.log(message + ": " + today.toDateString() + " @ " + today.toTimeString());
+	console.log(message + ": " + today.toISOString());
 }
 
-function fadeOut(element){
-	while (element.style.opacity > 0){
-		element.style.opacity -= .01;
-		console.log(element.style.opacity);
-	}
-}
+//Fades
+
 
 //Objects and initial data
 function Student(firstName, lastName, major, year, GPA, advisor){

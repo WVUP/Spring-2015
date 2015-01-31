@@ -19,7 +19,8 @@ body {
 
 #main {
 	height: 100vh;
-	background-color:rgba(34,34,34,0.9);
+	background-color:rgba(34,34,34,.6);
+	opacity: 1;
 }
 
 #formContainer {
@@ -43,6 +44,27 @@ body {
 }
 
 /*Element classes*/
+.beginButton {
+	font-family: 'Fontdiner Swanky', cursive;
+	color: #fff;
+	font-size: 54px;
+	width: 300px;
+   	height: 300px;
+   	position: absolute;
+   	left: 50%;
+   	top: 50%; 
+   	margin-left: -150px;
+   	margin-top: -150px;
+   	cursor: pointer;
+   	text-align: center;
+}
+
+.beginButton input {
+	position: absolute;
+	left: 50%;
+	right: 50%;
+}
+
 .formPanel {
 	margin-top: 50px;
 }
