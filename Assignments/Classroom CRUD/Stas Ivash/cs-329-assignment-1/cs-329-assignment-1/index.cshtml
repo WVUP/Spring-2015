@@ -6,31 +6,52 @@
     <title></title>
 </head>
 <body>
-    <div>
-        <form id="form">
-            <ul>
-                <li>
-                    <label for="Id">ID:</label>
-                    <input type="text" id="Id" />
-                </li>
-                <li>
-                    <label for="Name">Name:</label>
-                    <input type="text" id="Name" />
-                </li>
-                <li>
-                    <label for="Phone">Phone:</label>
-                    <input type="text" id="Phone" />
-                </li>
-                <li>
-                    <label for="Email">Email:</label>
-                    <input type="text" id="Email" />
-                </li>
-                <li>
-                    <input type="submit" value="Save" id="save" />
-                </li>
-            </ul>
-        </form>
+    <header class="p-head">
+        <p>This is a header</p>
+    </header>
+    <div class="container">
+        <div class="form-content">
+            <fieldset class="form">
+                <form id="form">
+                    <div class="form-row">
+                        <label for="Id"><span class="required">*</span>Id:</label>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input type="text" id="Id" />
+                            </span>
+                        </div>
 
+                    </div>
+                    <div class="form-row">
+                        <label for="Name"><span class="required">*</span>Name:</label>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input type="text" id="Name" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="Phone"><span class="required">*</span>Phone:</label>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input type="text" id="Phone" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="Email"><span class="required">*</span>Email:</label>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input type="text" id="Email" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <input type="submit" value="Save" id="save" />
+                    </div>
+                </form>
+            </fieldset>
+        </div>
 
         <div id="students">
 
@@ -38,6 +59,7 @@
 
 
         <script type="text/javascript" src="~/funcs.js"></script>
+        <link href="~/Site.css" rel="stylesheet" />
     </div>
 </body>
 </html>
