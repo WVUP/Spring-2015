@@ -12,6 +12,7 @@ body {
 	height: 100vh;
 	display: none;
 	z-index: 99;
+	opacity: 1;
 }
 
 #main {
@@ -19,7 +20,35 @@ body {
 	background-color:rgba(34,34,34,0.9);
 }
 
+#formContainer {
+	background-color: #fff;
+	margin-top: 50px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-radius: 5px;
+}
+
+#leftPane {
+	margin-top: 50px;
+	padding: 0px 20px;
+	border-radius: 5px;
+}
+
+#rightPane {
+	margin-top: 50px;
+	padding: 20px 20px 20px 20px;
+	border-radius: 5px;
+}
+
 .centered {
-	margin: 0 auto;
-	text-align: center;
+	 margin: 0 auto;
+	 text-align: center;
+}
+
+.panelDiv {
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;	
+	color: #fff;
+	background-color: #000;
 }

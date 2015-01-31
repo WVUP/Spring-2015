@@ -7,13 +7,44 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 var began = function(){
+	fadeOut(document.querySelector('#begin'));
 	document.querySelector('#begin').style.display = "none";
 	document.querySelector('#main').style.display = "block";
 
 	logTimer("Begin screen closed, main displayed");
 }
 
+//Helper methods
 var logTimer = function(message){
 	var today = new Date();
 	console.log(message + ": " + today.toDateString() + " @ " + today.toTimeString());
 }
+
+function fadeOut(element){
+	while (element.style.opacity > 0){
+		element.style.opacity -= .01;
+		console.log(element.style.opacity);
+	}
+}
+
+//Objects and initial data
+function Student(firstName, lastName, major, year, GPA, advisor){
+	this.firstName = firstName,
+	this.lastName = lastName,
+	this.major = major,
+	this.year = year,
+	this.GPA = GPA,
+	this.advisor = advisor
+}
+
+var Students = new Array();
+
+//Initial array of Students
+Students.push(new Student(
+	"Nate",
+	"Paxton",
+	"Software Engineering",
+	"Senior",
+	"9.9",
+	"Charles Almond"
+))
