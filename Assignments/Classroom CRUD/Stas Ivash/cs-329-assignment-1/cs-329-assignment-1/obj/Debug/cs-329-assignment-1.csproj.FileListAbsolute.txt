@@ -1,0 +1,6 @@
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll.config
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.pdb
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.dll
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.pdb
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.csprojResolveAssemblyReference.cache
