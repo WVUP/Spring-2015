@@ -1,3 +1,4 @@
+/*Classes by element type*/
 body {
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -8,18 +9,81 @@ body {
   	background-size: cover;
 }
 
+/*Classes - elements by ID*/
 #begin {
 	height: 100vh;
 	display: none;
 	z-index: 99;
+	opacity: 1;
 }
 
 #main {
 	height: 100vh;
-	background-color:rgba(34,34,34,0.9);
+	background-color:rgba(34,34,34,.6);
+	opacity: 1;
+}
+
+#formContainer {
+
+}
+
+#leftPane {
+	margin-top: 50px;
+	padding: 0px 20px;
+	border-radius: 5px;
+}
+
+#rightPane {
+	margin-top: 50px;
+	padding: 20px 20px 20px 20px;
+	border-radius: 5px;
+}
+
+#createButton {
+	margin: 0 auto;
+}
+
+/*Element classes*/
+.beginButton {
+	font-family: 'Fontdiner Swanky', cursive;
+	color: #fff;
+	font-size: 54px;
+	width: 300px;
+   	height: 300px;
+   	position: absolute;
+   	left: 50%;
+   	top: 50%; 
+   	margin-left: -150px;
+   	margin-top: -150px;
+   	cursor: pointer;
+   	text-align: center;
+}
+
+.beginButton input {
+	position: absolute;
+	left: 50%;
+	right: 50%;
+}
+
+.formPanel {
+	margin-top: 50px;
 }
 
 .centered {
-	margin: 0 auto;
-	text-align: center;
+	 margin: 0 auto;
+	 text-align: center;
+}
+
+.panelDiv {
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;	
+	color: #fff;
+	background-color: #000;
+}
+
+.panelBuffer {
+	padding: 20px 20px;
+	background-color: #fff;
+	border-radius: 5px;
 }
