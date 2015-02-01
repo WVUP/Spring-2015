@@ -3,30 +3,50 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <title>Student Registry</title>
+    <link href="~/icono.min.css" rel="stylesheet" />
+    <link href="~/Site.css" rel="stylesheet" />
 </head>
 <body>
     <header class="p-head">
-        <p>This is a header</p>
+        
     </header>
     <div class="container">
         <div class="form-content">
-            <fieldset class="form">
+            <div class="form">
                 <form id="form">
                     <div class="form-row">
-                        <label for="Id"><span class="required">*</span>Id:</label>
+                        <label for="Id"><span class="required">*</span>Student Id:</label>
                         <div class="form-field">
                             <span class="form-input">
-                                <input type="text" id="Id" />
+                                <input type="text" id="Id" class="inp-b" />
                             </span>
                         </div>
-
                     </div>
+
                     <div class="form-row">
-                        <label for="Name"><span class="required">*</span>Name:</label>
+                        <label for="Major"><span class="required">*</span>Major:</label>
                         <div class="form-field">
                             <span class="form-input">
-                                <input type="text" id="Name" />
+                                <input type="text" id="major" class="inp-b" />
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="fName"><span class="required">*</span>First Name:</label>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input type="text" id="fName" class="inp-b" />
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="lName"><span class="required">*</span>Last Name:</label>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input type="text" id="lName" class="inp-b" />
                             </span>
                         </div>
                     </div>
@@ -34,7 +54,7 @@
                         <label for="Phone"><span class="required">*</span>Phone:</label>
                         <div class="form-field">
                             <span class="form-input">
-                                <input type="text" id="Phone" />
+                                <input type="text" id="Phone" class="inp-b" />
                             </span>
                         </div>
                     </div>
@@ -42,24 +62,35 @@
                         <label for="Email"><span class="required">*</span>Email:</label>
                         <div class="form-field">
                             <span class="form-input">
-                                <input type="text" id="Email" />
+                                <input type="text" id="Email" class="inp-b" />
                             </span>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <input type="submit" value="Save" id="save" />
+                    <div class="cntr-row">
+                        <p id="save" class=" btn-mnu">
+                            <span class="icono-cross"></span>
+                        </p>
                     </div>
                 </form>
-            </fieldset>
+            </div>
+            @*<div class="console-log">
+                <label>Logs</label>
+                <div class="console-ta" id="log">
+                    
+                </div>
+               
+            </div>*@
         </div>
 
-        <div id="students">
-
-        </div>
-
-
-        <script type="text/javascript" src="~/funcs.js"></script>
-        <link href="~/Site.css" rel="stylesheet" />
     </div>
+
+    <div class="image-divider"></div>
+    <div class="container">
+        <div id="students" class="std">
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/funcs.js"></script>
 </body>
 </html>

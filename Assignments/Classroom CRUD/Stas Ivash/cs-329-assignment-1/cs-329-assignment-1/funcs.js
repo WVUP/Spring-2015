@@ -4,46 +4,48 @@
     function AddStudent() {
         var student = JSON.stringify({ // turn an object into a json text and store as a string
             Id: document.getElementById('Id').value,
-            Name: document.getElementById('Name').value,
+            Major: document.getElementById('major').value,
+            FirstName: document.getElementById('fName').value,
+            LastName: document.getElementById('lName').value,
             Phone: document.getElementById('Phone').value,
             Email: document.getElementById('Email').value
         });
         students.push(student);
         sessionStorage.setItem("students", JSON.stringify(students)); //saving
-        console.log('Student added');
+        console.log("Student info added");
     }
 
     function DeleteStudent(id) {
         students.splice(id, 1);
-        sessionStorage.setItem('students', JSON.stringify(students))
-        console.log("in delete");
+        sessionStorage.setItem('students', JSON.stringify(students));
     }
+
 
     function Generate() {
         studentsNode.textContent = "";
         for (var i in students) {
             var stuNode = document.createElement('ul');
             stuNode.id = i;
-            var remove = document.createElement('p');
-            remove.textContent = 'Remove';
-            var edit = document.createElement('p');
-            edit.textContent = 'Edit';
+            var remove = document.createElement('span');
+            remove.setAttribute('dt', 'remove');
+            remove.className = "icono-trash";
+            var edit = document.createElement('span');
+            edit.setAttribute('dt', 'edit');
+            edit.className = 'icono-asterisk';
 
             SetAttributes(remove, i);
             SetAttributes(edit, i);
 
             var s = JSON.parse(students[i]);
-            stuNode.textContent = s.Id + " " + s.Name + " " + s.Phone + " " + s.Email;
+            stuNode.textContent = s.Id + " " + s.Major + " " + s.FirstName + " " + s.LastName + " " + s.Phone + " " + s.Email;
 
             studentsNode.appendChild(stuNode);
-            stuNode.appendChild(remove);
             stuNode.appendChild(edit);
+            stuNode.appendChild(remove);
 
-            AssignDeleteListener(remove.textContent, i);
-            AssignEditListener(edit.textContent, i);
+            AssignDeleteListener(remove.getAttribute('dt'), i);
+            AssignEditListener(edit.getAttribute('dt'), i);
         }
-        console.log('in display')
-        console.log(students.length)
     }
 
 
@@ -51,8 +53,6 @@
         //assigning a listener for the dynamic edit element
         document.getElementById(text + count).addEventListener('click', function handler(e) {
             var currentId = document.getElementById(e.target.id);
-            console.log(currentId);
-            console.log(e.target.id);
             EditStudent(e.target.getAttribute('data')); //passing custom attr val
         }, false);
     }
@@ -67,13 +67,14 @@
                 theNodeINeed = allDivsInsideStudentsNode[i]
             }
         }
-        var saveButton = document.createElement('input');
-        saveButton.onchange
+        var saveButton = document.createElement('span');
         saveButton.type = 'submit';
-        saveButton.value = 'Save';
+        saveButton.className = 'icono-sync';
         saveButton.id = 'saveEdit' + id;
         theNodeINeed.innerHTML = "<input value=" + s.Id + " id=mod" + id + ">"
-        + "<input value=" + s.Name + " id=name" + id + ">"
+        + "<input value=" + s.Major + " id=maj" + id + ">"
+        + "<input value=" + s.FirstName + " id=fn" + id + ">"
+        + "<input value=" + s.LastName + " id=ln" + id + ">"
         + "<input value=" + s.Phone + " id=phone" + id + ">"
         + "<input value=" + s.Email + " id=email" + id + ">";
 
@@ -84,19 +85,23 @@
 
             students[id] = JSON.stringify({
                 Id: document.getElementById("mod" + id).value,
-                Name: document.getElementById("name" + id).value,
+                Major: document.getElementById("maj" + id).value,
+                FirstName: document.getElementById("fn" + id).value,
+                LastName: document.getElementById("ln" + id).value,
                 Phone: document.getElementById("phone" + id).value,
-                Email: document.getElementById("email" + id).value,
+                Email: document.getElementById("email" + id).value
             })
             sessionStorage.setItem("students", JSON.stringify(students));
             //display modified items
             Generate();
+
+            console.log('Student info saved');
         }, false);
     }
 
 
     function SetAttributes(node, count) {
-        node.id = node.textContent + count;
+        node.id = node.getAttribute('dt') + count;
         node.style.cursor = 'pointer';
         node.setAttribute('data', count); //custom attr
     }
@@ -105,17 +110,16 @@
         //assigning a listener for the dynamic remove element
         document.getElementById(text + count).addEventListener('click', function (e) {
             var currentId = document.getElementById(e.target.id);
-            console.log(currentId);
-            console.log(e.target.id);
             DeleteStudent(e.target.getAttribute('data')); //passing custom attr val
             Generate();
             currentId.parentNode.remove();
+            console.log("Student info  removed");
         }, false);
     }
 
-
     //may also use localstorage if needed
-    var editSave = false;
+    //var log;
+    //var logs = document.getElementById('log');
     var students = sessionStorage.getItem("students");
     var studentsNode = document.getElementById('students');
     students = JSON.parse(students);
@@ -125,7 +129,8 @@
     Generate();
     document.getElementById('save').addEventListener('click', function () {
         AddStudent();
-        console.log(students);
+        Generate();
+        document.getElementById('form').reset();
     }, false);
 
 }
