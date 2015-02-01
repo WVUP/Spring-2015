@@ -64,6 +64,17 @@ var began = function(){
 	logTimer("Begin screen closed, main displayed");
 }
 
+//Expands the element passed in
+var expand = function(element){
+	document.querySelector(element).style.className = "";
+	alert(document.querySelector(element).style.className);
+	document.querySelector(element).style.className = "col-lg-10";
+	alert(document.querySelector(element).style.className);
+
+	document.querySelector('#newButton').style.display = "none";
+	document.querySelector('#createButton').style.display = "block";
+}
+
 //Collects form data, updates students, updates table
 var submitCreate = function(){
 	var form = document.querySelector('#createForm');
@@ -110,5 +121,29 @@ function gpUpdate(val){
 }
 
 //Fades
+function fade(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 50);
+}
 
+function unfade(element) {
+    var op = 0.1;  // initial opacity
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
+}
 
