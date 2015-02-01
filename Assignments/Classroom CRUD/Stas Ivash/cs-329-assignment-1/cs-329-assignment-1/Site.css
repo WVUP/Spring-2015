@@ -2,32 +2,65 @@
     list-style-type:none;
 }
 
+span[class^='icono'],span[class*=' icono']{
+    transform: scale(0.7,0.7);
+    cursor:pointer;
+}
+
 body{
     font: 13px/20px Arial,sans-serif;
     color: #333;
-    margin:0 auto;
-    width:900px;
+    height: /*100vh;*/ 1500px;
+    padding:0;
+    margin:0;
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 22%, rgba(237,237,237,1) 56%, rgba(237,237,237,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(22%, rgba(255,255,255,1)), color-stop(56%, rgba(237,237,237,1)), color-stop(100%, rgba(237,237,237,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 22%, rgba(237,237,237,1) 56%, rgba(237,237,237,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 22%, rgba(237,237,237,1) 56%, rgba(237,237,237,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 22%, rgba(237,237,237,1) 56%, rgba(237,237,237,1) 100%);
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 22%, rgba(237,237,237,1) 56%, rgba(237,237,237,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+        
+}
+
+button{
+    background:none;
 }
 fieldset {
     padding: 0px;
     margin: 0px;
     border: 0px none;
 }
-.form{
-    margin-bottom: 20px;
+textarea{
+    resize:none;
+    height: 150px;
+    width: 350px;
+}
+.console-ta{
+    background:none;
+    border: 1px groove #FFF;
+    width: 400px;
+    height: 200px;
+    max-height:200px;
+    overflow-y:auto;
+}
+.console-log{
+    padding: 10px;
 }
 .container{
     position: relative;
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
+    margin:0 auto;
+    width:900px;
 }
 .content{
     position: relative;
     padding: 15px 0px 30px 15px;
 }
-.form-content:before{
-    content: " ";
+.form-content{
     background: linear-gradient(to right, #E3E3E3 0px, #E3E3E3 80%, rgba(227, 227, 227, 0) 100%) repeat scroll 0% 0% transparent;
     position: absolute;
     width: 100%;
@@ -36,11 +69,48 @@ fieldset {
     top: 0px;
     left: 0px;
 }
+
+input{
+    background:none;
+}
+.btn-mnu{
+    position:absolute;
+    left: 42%;
+    border-radius:15px;
+    border-color: #ADADAD;
+    width: 110px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid #ADADAD;
+    -moz-user-select: none;
+}
+.btn-right{
+    float: right;
+}
+
+.btn-mnu:hover{
+    color: #333;
+    border: 1px solid transparent;
+    cursor:pointer;
+}
 .form-row{
     margin-bottom: 20px;
-    width: 21px;
     height: 21px;
     padding:10px;
+    display:inline-block;
+}
+.form-row > label{
+    float:left;
+}
+#form{
+    text-align:center;
 }
 .form-field{
     padding-right: 27px;
@@ -50,6 +120,9 @@ fieldset {
     display: inline-block;
     padding: 1px;
     background: linear-gradient(to right, #C0C0CC 0px, #EFEFF2 38%, #EFEFF2 59%, #C0C0CD 100%) repeat scroll 0% 0% transparent;
+}
+.console-log{
+    float: right;
 }
 
 .required{
@@ -68,4 +141,33 @@ fieldset {
 .p-head{
     height: 100px;
     padding-bottom:10px;
+}
+.std{
+    position:relative;
+    float:left;
+}
+.std > ul > li{
+    display:inline-block;
+    padding: 10px;
+}
+#form > span{
+    text-align:center;
+}
+
+.cntr-row{
+    text-align:center;
+    padding-top: 5%;
+}
+.inp-b:focus {
+  box-shadow: 1px 1px 2px rgba(108, 199, 246, 0.4), -1px 1px 2px rgba(108, 199, 246, 0.4), -1px -1px 2px rgba(108, 199, 246, 0.4), 1px -1px 2px rgba(108, 199, 246, 0.4);
+  outline:0;
+}
+.image-divider{
+    opacity:.6;
+    margin-top:25%;
+    background-image: url('retro.jpg'); 
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 200px;
 }
