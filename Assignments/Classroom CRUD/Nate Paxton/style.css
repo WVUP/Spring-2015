@@ -2,7 +2,7 @@
 body {
 	margin-top: 0px;
 	margin-bottom: 0px;
-	background-image: url("images/photo.jpg"); 
+	background-image: url("images/fight.jpg"); 
   	-webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
@@ -24,7 +24,7 @@ body {
 }
 
 #formContainer {
-
+	margin-top: 50px;
 }
 
 #leftPane {

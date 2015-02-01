@@ -33,56 +33,61 @@
 				</div>
 
 				<!--The main form for student create/update-->
-				<div class="col-lg-5 formPanel" id="formContainer">
-					<div class="panelBuffer">
-						<form role="form" id="createForm" onSubmit="return submitCreate()">
-							<div class="form-group col-lg-6">
-								<label for="firstName">First Name</label>
-								<input type="text" class="form-control" id="firstName" placeholder="Enter Name" required="true">
-							</div>
-							<div class="form-group col-lg-6">
-								<label for="lastName">Last Name</label>
-								<input type="text" class="form-control" id="lastName" placeholder="Enter Name" required="true">
-							</div>
-							<div class="form-group col-lg-6">
-								<label for="major">Major</label>
-								<select class="form-control" id="major">
-									<option value="Undeclared">Undeclared</option>
-									<option value="Information Security">Information Security</option>
-									<option value="Management">Management</option>
-									<option value="Software Engineering">Software Engineering</option>
-									<option value="BusinessInformation Technology">Business Information Technology</option>
-									<option value=""></option>
-									<option value=""></option>
-									<option value=""></option>
-									<option value=""></option>
-									<option value=""></option>
-									<option value=""></option>
-									<option value=""></option>
-									<option value=""></option>
-								</select>
-							</div>
-							<div class="form-group col-lg-6">
-								<label for="year">Year</label>
-								<select class="form-control" id="year">
-									<option value="Freshman">Freshman</option>
-									<option value="Sophomore">Sophomore</option>
-									<option value="Junior">Junior</option>
-									<option value="Senior">Senior</option>
-								</select>
-							</div>
-							<div class="form-group col-lg-6">
-								<label for="GPA">GPA</label>
-								<input type="text" class="form-control" id="GPA" placeholder="Enter GPA" required="true">
-							</div>
-							<div class="form-group col-lg-6">
-								<label for="advisor">Advisor</label>
-								<input type="text" class="form-control" id="advisor" placeholder="Enter Name" required="true">
-							</div>
-							<div class="col-lg-offset-9">
-								<button id="createButton" type="submit" class="btn btn-primary btn-lg">Create</button>
-							</div>
-						</form>
+				<div class="col-lg-5" id="formContainer">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Create Student</h3>
+						</div>
+						<div class="panel-body">
+							<form role="form" id="createForm" onSubmit="return submitCreate()">
+								<div class="form-group col-lg-6">
+									<label for="firstName">First Name</label>
+									<input type="text" class="form-control" id="firstName" placeholder="Enter Name" required="true">
+								</div>
+								<div class="form-group col-lg-6">
+									<label for="lastName">Last Name</label>
+									<input type="text" class="form-control" id="lastName" placeholder="Enter Name" required="true">
+								</div>
+								<div class="form-group col-lg-6">
+									<label for="major">Major</label>
+									<select class="form-control" id="major">
+										<option value="Undeclared">Undeclared</option>
+										<option value="Information Security">Information Security</option>
+										<option value="Management">Management</option>
+										<option value="Software Engineering">Software Engineering</option>
+										<option value="BusinessInformation Technology">Business Information Technology</option>
+										<option value=""></option>
+										<option value=""></option>
+										<option value=""></option>
+										<option value=""></option>
+										<option value=""></option>
+										<option value=""></option>
+										<option value=""></option>
+										<option value=""></option>
+									</select>
+								</div>
+								<div class="form-group col-lg-6">
+									<label for="year">Year</label>
+									<select class="form-control" id="year">
+										<option value="Freshman">Freshman</option>
+										<option value="Sophomore">Sophomore</option>
+										<option value="Junior">Junior</option>
+										<option value="Senior">Senior</option>
+									</select>
+								</div>
+								<div class="form-group col-lg-6">
+									<label for="GPA">GPA</label>
+									<input type="text" class="form-control" id="GPA" placeholder="Enter GPA" required="true">
+								</div>
+								<div class="form-group col-lg-6">
+									<label for="advisor">Advisor</label>
+									<input type="text" class="form-control" id="advisor" placeholder="Enter Name" required="true">
+								</div>
+								<div class="col-lg-offset-9">
+									<button id="createButton" type="submit" class="btn btn-primary btn-lg">Create</button>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 
@@ -103,10 +108,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /.container -->
-	</div>
 
-</body>
+	</body>
 </html>
