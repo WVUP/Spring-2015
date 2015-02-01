@@ -26,89 +26,110 @@
 			<div class="row">
 
 				<!--Left side nav-->
-				<div class="col-md-2" id="leftPane">
+				<div class="col-md-2" id="crudPane">
 					<div class="panelDiv">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus sapiente voluptatibus nemo accusamus earum corporis aspernatur, ab quas. Veritatis, officia.</p>
+						<ul>
+							<li><b>C</b>reate</li>
+							<li><b>R</b>ead</li>
+							<li><b>U</b>pdate</li>
+							<li><b>D</b>elete</li>
+						</ul>
 					</div>
 				</div>
 
 				<!--The main form for student create/update-->
-				<div class="col-lg-5" id="formContainer">
+				<div class="col-lg-10" id="formContainer">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<h3 class="panel-title">Create Student</h3>
 						</div>
 						<div class="panel-body">
 							<form role="form" id="createForm" onSubmit="return submitCreate()">
-								<div class="form-group col-lg-6">
-									<label for="firstName">First Name</label>
-									<input type="text" class="form-control" id="firstName" placeholder="Enter Name" required="true">
+								<div class="row">
+									<div class="col-lg-4">
+										<img class="img-responsive" src="images/user77.svg" alt="placeholder"/>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group col-lg-12">
+											<label for="firstName">First Name</label>
+											<input type="text" class="form-control" id="firstName" placeholder="Enter Name" required="true">
+										</div>
+										<div class="form-group col-lg-12">
+											<label for="lastName">Last Name</label>
+											<input type="text" class="form-control" id="lastName" placeholder="Enter Name" required="true">
+										</div>
+										<div class="form-group col-lg-12">
+											<label for="major">Major</label>
+											<select class="form-control" id="major">
+												<option value="Undeclared">Undeclared</option>
+												<option value="Information Security">Information Security</option>
+												<option value="Management">Management</option>
+												<option value="Software Engineering">Software Engineering</option>
+												<option value="BusinessInformation Technology">Business Information Technology</option>
+												<option value="Financial Management">Financial Management</option>
+												<option value="Management/Marketing">Mangement/Marketing</option>
+												<option value="Public Relations">Public Relations</option>
+												<option value="Child Development">Child Development</option>
+												<option value="Criminal Justice">Criminal Justice</option>
+												<option value="Legal Studies">Legal Studies</option>
+												<option value="Elementary Education">Elementary Education</option>
+												<option value="Multi-Disciplinary Studies">Multi-Disciplinary Studies</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group col-lg-12">
+											<label for="year">Year</label>
+											<select class="form-control" id="year">
+												<option value="Freshman">Freshman</option>
+												<option value="Sophomore">Sophomore</option>
+												<option value="Junior">Junior</option>
+												<option value="Senior">Senior</option>
+											</select>
+										</div>
+										<div class="form-group col-lg-10">
+											<label for="GPA">GPA</label>
+											<input type="range" id="GPA" required="true" max="4.0" step=".01" onchange="gpUpdate(value)"/>
+										</div>
+										<div class="col-lg-1 form-group">
+											<label for="gpOutput">&nbsp;</label>
+											<b><output for="GPA" id="gpOutput">2.0</output></b>
+										</div>
+										<div class="form-group col-lg-12">
+											<label for="advisor">Advisor</label>
+											<input type="text" class="form-control" id="advisor" placeholder="Enter Name" required="true">
+										</div>
+									</div>								
 								</div>
-								<div class="form-group col-lg-6">
-									<label for="lastName">Last Name</label>
-									<input type="text" class="form-control" id="lastName" placeholder="Enter Name" required="true">
+								<div class="row">
+									<div class="col-lg-offset-1">
+										<button id="createButton" type="submit" class="btn btn-primary btn-lg">Create</button>
+									</div>
 								</div>
-								<div class="form-group col-lg-6">
-									<label for="major">Major</label>
-									<select class="form-control" id="major">
-										<option value="Undeclared">Undeclared</option>
-										<option value="Information Security">Information Security</option>
-										<option value="Management">Management</option>
-										<option value="Software Engineering">Software Engineering</option>
-										<option value="BusinessInformation Technology">Business Information Technology</option>
-										<option value=""></option>
-										<option value=""></option>
-										<option value=""></option>
-										<option value=""></option>
-										<option value=""></option>
-										<option value=""></option>
-										<option value=""></option>
-										<option value=""></option>
-									</select>
-								</div>
-								<div class="form-group col-lg-6">
-									<label for="year">Year</label>
-									<select class="form-control" id="year">
-										<option value="Freshman">Freshman</option>
-										<option value="Sophomore">Sophomore</option>
-										<option value="Junior">Junior</option>
-										<option value="Senior">Senior</option>
-									</select>
-								</div>
-								<div class="form-group col-lg-6">
-									<label for="GPA">GPA</label>
-									<input type="text" class="form-control" id="GPA" placeholder="Enter GPA" required="true">
-								</div>
-								<div class="form-group col-lg-6">
-									<label for="advisor">Advisor</label>
-									<input type="text" class="form-control" id="advisor" placeholder="Enter Name" required="true">
-								</div>
-								<div class="col-lg-offset-9">
-									<button id="createButton" type="submit" class="btn btn-primary btn-lg">Create</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<!--Right side info panel-->
-				<div class="col-lg-5 formPanel">
-					<div class="panelBuffer">
-						<table class="table table-striped">
-							<caption><b>Current Students</b></caption>
-							<thead>
-								<th>Name</th>
-								<th>Year</th>
-								<th>Major</th>
-							</thead>
-							<tbody id="currentStudents">
-								<!--Table body updated by updateCurrent function-->
-							</tbody>
-						</table>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
-		</div>
 
-	</body>
+			<!--Right side info panel-->
+			<div class="col-lg-10 col-lg-offset-2 formPanel">
+				<div class="panelBuffer">
+					<table class="table table-striped">
+						<caption><b>Current Students</b></caption>
+						<thead>
+							<th>Name</th>
+							<th>Year</th>
+							<th>Major</th>
+						</thead>
+						<tbody id="currentStudents">
+							<!--Table body updated by updateCurrent function-->
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
 </html>

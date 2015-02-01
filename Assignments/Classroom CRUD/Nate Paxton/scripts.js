@@ -10,6 +10,52 @@ document.addEventListener("DOMContentLoaded", function() {
   logTimer("Document ready");
 });
 
+//Objects and initial data
+var Students = new Array();
+
+//Initial array of Students
+Students.push(new Student(
+	"Nate",
+	"Paxton",
+	"Software Engineering",
+	"Senior",
+	"9.9",
+	"Charles Almond"
+))
+
+Students.push(new Student(
+	"Raylan",
+	"Givens",
+	"Criminal Justice",
+	"Junior",
+	"5.4",
+	"Rhett Wharton"
+))
+
+Students.push(new Student(
+	"Mitchell",
+	"Adams",
+	"Software Engineering",
+	"Senior",
+	"9.9",
+	"Charles Almond"
+))
+
+//An array of placeholder user images
+var userImages = ["user1.jpg", "user2.jpg", "user3.jpg", "user4.jpg"]
+
+function Student(firstName, lastName, major, year, GPA, advisor){
+	var userImages = ["user1.jpg", "user2.jpg", "user3.jpg", "user4.jpg"]
+	this.firstName = firstName,
+	this.lastName = lastName,
+	this.major = major,
+	this.year = year,
+	this.GPA = GPA,
+	this.advisor = advisor,
+	this.image = userImages[Math.floor(Math.random()*userImages.length)];
+	this.posted = false;
+}
+
 //Standalone functions
 var began = function(){
 	document.querySelector('#begin').style.display = "none";
@@ -54,49 +100,15 @@ for(var i=0; i<Students.length; i++){
 //Logs messages and times to console
 var logTimer = function(message){
 	var today = new Date();
+	today.setHours(today.getHours() - 5);
 	console.log(message + ": " + today.toISOString());
+}
+
+//Update GPA display
+function gpUpdate(val){
+	document.querySelector('#gpOutput').value = val;
 }
 
 //Fades
 
 
-//Objects and initial data
-function Student(firstName, lastName, major, year, GPA, advisor){
-	this.firstName = firstName,
-	this.lastName = lastName,
-	this.major = major,
-	this.year = year,
-	this.GPA = GPA,
-	this.advisor = advisor
-	this.posted = false;
-}
-
-var Students = new Array();
-
-//Initial array of Students
-Students.push(new Student(
-	"Nate",
-	"Paxton",
-	"Software Engineering",
-	"Senior",
-	"9.9",
-	"Charles Almond"
-))
-
-Students.push(new Student(
-	"Raylan",
-	"Givens",
-	"Criminal Justice",
-	"Junior",
-	"5.4",
-	"Rhett Wharton"
-))
-
-Students.push(new Student(
-	"Mitchell",
-	"Adams",
-	"Software Engineering",
-	"Senior",
-	"9.9",
-	"Charles Almond"
-))

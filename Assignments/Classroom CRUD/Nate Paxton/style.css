@@ -27,10 +27,18 @@ body {
 	margin-top: 50px;
 }
 
-#leftPane {
+#crudPane {
 	margin-top: 50px;
 	padding: 0px 20px;
 	border-radius: 5px;
+}
+
+#crudPane ul {
+	list-style-type: none;
+}
+
+#crudPane li {
+	width: 100%;
 }
 
 #rightPane {
