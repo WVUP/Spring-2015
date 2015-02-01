@@ -5,7 +5,13 @@
 span[class^='icono'],span[class*=' icono']{
     transform: scale(0.7,0.7);
     cursor:pointer;
+    color:red;
 }
+
+::-webkit-input-placeholder { font-size:12px; padding:2px;}
+::-moz-placeholder { font-size:10px; padding:2px;} /* firefox 19+ */
+:-ms-input-placeholder { font-size:10px; padding:2px;} /* ie */
+input:-moz-placeholder { font-size:10px; padding:2px;}
 
 body{
     font: 13px/20px Arial,sans-serif;
@@ -21,7 +27,6 @@ body{
     background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 22%, rgba(237,237,237,1) 56%, rgba(237,237,237,1) 100%);
     background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 22%, rgba(237,237,237,1) 56%, rgba(237,237,237,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
-        
 }
 
 button{
@@ -142,10 +147,6 @@ input{
     height: 100px;
     padding-bottom:10px;
 }
-.std{
-    position:relative;
-    float:left;
-}
 .std > ul > li{
     display:inline-block;
     padding: 10px;
@@ -163,11 +164,49 @@ input{
   outline:0;
 }
 .image-divider{
-    opacity:.6;
-    margin-top:25%;
-    background-image: url('retro.jpg'); 
+    margin-top:415px;
+    background-image: url('retro.png'); 
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
-    height: 200px;
+    back
+    height: 300px;
+}
+.std{
+    top:10px;
+    border-top:thin solid #333;
+    border-bottom:thin solid #333;
+    width:80%;
+    height:250px;
+    z-index:99999;
+    border-collapse:collapse;
+    margin: 0 auto;
+}
+.std ul input{
+    border:thin solid #C0C0CD;
+    padding: 7px;
+    width: 110px;
+    margin:5px;
+}
+
+.std ul li{
+    width: 105px;
+    padding:7px;
+    margin: 5px;
+}
+.vl-fail{
+    color:lime;
+}
+.vl-msg{
+    visibility:visible;
+    text-align:left;
+}
+#validation-msg{
+    width:100%;
+}
+#validation-msg p{
+    text-align:center;
+    display:inline-block;
+    padding: 10px;
+    color: red;
 }

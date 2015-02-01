@@ -11,15 +11,19 @@
     <header class="p-head">
         
     </header>
+    
     <div class="container">
         <div class="form-content">
             <div class="form">
+
                 <form id="form">
+                    <h4>Student Registration</h4>
+                    <div id="validation-msg"></div>
                     <div class="form-row">
                         <label for="Id"><span class="required">*</span>Student Id:</label>
                         <div class="form-field">
                             <span class="form-input">
-                                <input type="text" id="Id" class="inp-b" />
+                                <input placeholder="123456789" type="text" id="Id" class="inp-b" />
                             </span>
                         </div>
                     </div>
@@ -28,7 +32,7 @@
                         <label for="Major"><span class="required">*</span>Major:</label>
                         <div class="form-field">
                             <span class="form-input">
-                                <input type="text" id="major" class="inp-b" />
+                                <input placeholder="Software Engineering" type="text" id="major" class="inp-b" />
                             </span>
                         </div>
                     </div>
@@ -37,7 +41,7 @@
                         <label for="fName"><span class="required">*</span>First Name:</label>
                         <div class="form-field">
                             <span class="form-input">
-                                <input type="text" id="fName" class="inp-b" />
+                                <input placeholder="Sylvester" type="text" id="fName" class="inp-b" />
                             </span>
                         </div>
                     </div>
@@ -46,7 +50,7 @@
                         <label for="lName"><span class="required">*</span>Last Name:</label>
                         <div class="form-field">
                             <span class="form-input">
-                                <input type="text" id="lName" class="inp-b" />
+                                <input placeholder="Stallone" type="text" id="lName" class="inp-b" />
                             </span>
                         </div>
                     </div>
@@ -54,7 +58,7 @@
                         <label for="Phone"><span class="required">*</span>Phone:</label>
                         <div class="form-field">
                             <span class="form-input">
-                                <input type="text" id="Phone" class="inp-b" />
+                                <input placeholder="(123)123-1234" type="text" id="Phone" class="inp-b" />
                             </span>
                         </div>
                     </div>
@@ -62,7 +66,7 @@
                         <label for="Email"><span class="required">*</span>Email:</label>
                         <div class="form-field">
                             <span class="form-input">
-                                <input type="text" id="Email" class="inp-b" />
+                                <input placeholder="stallone@example.com" type="text" id="Email" class="inp-b" />
                             </span>
                         </div>
                     </div>
@@ -71,26 +75,19 @@
                             <span class="icono-cross"></span>
                         </p>
                     </div>
-                </form>
+                </form> 
             </div>
-            @*<div class="console-log">
-                <label>Logs</label>
-                <div class="console-ta" id="log">
-                    
-                </div>
-               
-            </div>*@
         </div>
-
+        
     </div>
 
-    <div class="image-divider"></div>
-    <div class="container">
-        <div id="students" class="std">
 
+        
+        <div class="image-divider">
+            <div id="students" class="std"> </div>
         </div>
-    </div>
 
+    
     <script type="text/javascript" src="~/funcs.js"></script>
 </body>
 </html>
