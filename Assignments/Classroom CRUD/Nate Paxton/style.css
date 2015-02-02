@@ -47,7 +47,7 @@ body {
 /*Form Rows - Read by default*/
 #readFormRow {
 	margin-top: 50px;
-	display: block;
+	display: none;
 }
 
 #createFormRow {
@@ -112,9 +112,18 @@ body {
 	z-index: 999;
 }
 
+#createStudent {
+	height: 281px;
+}
+
+#createPanelBody {
+	height: 201px;
+}
+
 /*Element classes*/
 .studentDisplay {
 	padding: 10px;
+	font-size: 10px;
 }
 
 .studentDisplay img {

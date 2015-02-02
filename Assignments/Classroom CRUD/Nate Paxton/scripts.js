@@ -30,12 +30,12 @@ Students.push(new Student(
 ))
 
 Students.push(new Student(
-	"Mitchell",
-	"Adams",
-	"Software Engineering",
+	"Nellie",
+	"Bertram",
+	"Management",
 	"Senior",
-	"9.9",
-	"Charles Almond"
+	"0.9",
+	"Jo Bennett"
 ))
 
 //An array of placeholder user images
@@ -57,11 +57,31 @@ function Student(firstName, lastName, major, year, GPA, advisor){
 var began = function(){
 	document.querySelector('#begin').style.display = "none";
 	document.querySelector('#main').style.display = "block";
+	document.querySelector('#readFormRow').style.display = "block";
 
     //Populate the current students table
     displayRead();
 
 	logTimer("Begin screen closed, main displayed");
+}
+
+//Closes forms, 'refreshes' read view
+var refresh = function(){
+	document.querySelector('#createFormRow').style.display = "none";
+	document.querySelector('#updateFormRow').style.display = "none";
+	document.querySelector('#deleteFormRow').style.display = "none";
+	document.querySelector('#readFormRow').style.display = "block";
+}
+
+//Form openers
+var openCreateForm = function(){
+	document.querySelector('#readFormRow').style.display = "none";
+	document.querySelector('#createFormRow').style.display = "block";
+	logTimer("Create Student form opened");
+}
+
+var openUpdateForm = function(arrayPos){
+	var student = Students[arrayPos];
 }
 
 //Expands the element passed in
@@ -82,33 +102,18 @@ var submitCreate = function(){
 			form.GPA.value,
 			form.advisor.value
 		));
-	updateCurrentTable();
+	displayRead();
 	form.reset();
-	logTimer("Create Form Reset");
+	refresh();
+	logTimer("Create Form Exited");
 	return false;
 }
-
-//Updates the Students table
-var updateCurrentTable = function(){
-for(var i=0; i<Students.length; i++){
-	if (Students[i].posted == false){
-		var row = "<tr><td>" +
-		Students[i].firstName + " " + Students[i].lastName +
-		"</td><td>" + Students[i].year +
-		"</td><td>" + Students[i].major +
-		"</td></tr>";
-		document.querySelector('#currentStudents').innerHTML += row;
-		logTimer(Students[i].firstName + " " + Students[i].lastName +
-			" added to current students table");
-		Students[i].posted = true;
-	}	
-}}
 
 //Creates student elements for Read display
 var displayRead = function(){
 	for(var i=0; i<Students.length; i++){
 		if (Students[i].posted == false){
-			var data = "<div class='studentDisplay col-lg-4'><div class='panel panel-primary'><div class='panel-heading'><h3 class='panel-title'>" + Students[i].firstName + " " +  Students[i].lastName + "</div><div class='panel-body'><img class='img-responsive' src='images/" + Students[i].image + "' title='" + Students[i].firstName + " " +  Students[i].lastName + "'>" + "<div class='col-lg-6 centered'><b>" + Students[i].year + "</b></div><div class='col-lg-6 centered'><b>" + Students[i].major + "</b></div><hr><button id='updateButton' class='btn btn-success' type='button' onclick='openUpdateForm()'>Update</button><button id='updateButton' class='btn btn-danger' type='button' onclick='openDeleteForm()'>Delete</button></div></div></div>"
+			var data = "<div class='studentDisplay col-lg-3'><div class='panel panel-primary'><div class='panel-heading'><h3 class='panel-title'>" + Students[i].firstName + " " +  Students[i].lastName + "</h3></div><div class='panel-body'><div class='row'><div class='col-lg-4'><img class='img-responsive' src='images/" + Students[i].image + "' title='" + Students[i].firstName + " " +  Students[i].lastName + "'></div>" + "<div class='col-lg-8 centered'><p><b>" + Students[i].year + "</b></p><p><b>" + Students[i].major + "</b></p><p><b>" + Students[i].GPA + "</b></p><p><b>" + Students[i].advisor + "</b></p></div></div><hr><div class='col-lg-12 centered'><button id='updateButton' class='btn btn-success' type='button' onclick='openUpdateForm(" + i + ")'>Update</button><button id='deleteButton' class='btn btn-danger' type='button' onclick='openDeleteForm(" + i + ")'>Delete</button></div></div></div></div>";
 			document.querySelector('#readDisplay').innerHTML += data;
 			logTimer(Students[i].firstName + " " + Students[i].lastName +
 			" added to current students table");

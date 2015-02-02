@@ -21,24 +21,13 @@
 		</div>
 	</div>
 
-	<a href="#openModal">Open Modal</a>
-
-	<div id="openModal" class="modalDialog">
-		<div>
-			<a href="#close" title="Close" class="close">X</a>
-			<h2>Modal Box</h2>
-			<p>This is a sample modal box that can be created using the powers of CSS3.</p>
-			<p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
-		</div>
-	</div>
-
 	<!-- Page Content -->
 	<div id="main">
-		<div class="container">
-
+		<div id="mainContent" class="container">
+			
 			<!--Begin "Create" form row-->
 			<div class="row"  id="createFormRow">
-				<div class="col-lg-8">
+				<div class="col-lg-8 col-lg-offset-2">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<h3 class="panel-title">New Student</h3>
@@ -119,44 +108,50 @@
 			<!--Begin "Update" form row-->
 			<div class="row"  id="updateFormRow">
 				<div class="col-lg-8">
-					
+
 				</div>
 			</div>
+			<!--End "Update" form row-->
 
 			<!--Read form, displayed by default, reverted to from other forms-->
 			<div class="row" id="readFormRow">
 				<div class="col-lg-12">
-
-					<div id="readDisplay">
-						
+					<div class="col-lg-3 studentDisplay" id="createStudent">
+						<div class='panel panel-primary'>
+							<div class='panel-heading'>
+								<h3 class='panel-title'>Create Student</h3>
+							</div>
+							<div class='panel-body' id="createPanelBody">
+								<div class='row'>
+									<div class='col-lg-12'><img class='img-responsive' src='images/user77.svg' title="New Student">
+									</div>								
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-lg-12 centered">
+										<button id='openCreateFormButton' class='btn btn-primary' type='button' onclick='openCreateForm()'>Create</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-
-
-					<!-- <div>
-						<table class="table table-striped">
-							<caption><b>Current Students</b></caption>
-							<thead>
-								<th>Name</th>
-								<th>Year</th>
-								<th>Major</th>
-							</thead>
-							<tbody id="currentStudents">
-								Table body updated by updateCurrent function
-							</tbody>
-						</table>
-					</div> -->
+					<div id="readDisplay">
+						<!--This div populated by displayRead function-->
+					</div>
 				</div>
 			</div>
+			<!--End "Read" form row-->
+
+			<!--Begin "Delete" form row-->
+			<div class="row" id="deleteFormRow">
+				<div class="col-lg-12">
+
+				</div>
+			</div>
+			<!--End "Delete" form row-->
+
 		</div>
 	</div>
-
-
-	<!--Modal for Create/Update forms-->
-	<div id="aLaModal">
-		<div id="modalContent" class="col-lg-8 col-lg-offset-2 formModal">
-		</div>
-	</div>
-	<!--End Modal-->
 
 </body>
 </html>
