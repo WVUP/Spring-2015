@@ -9,6 +9,39 @@ body {
   	background-size: cover;
 }
 
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+}
+
 /*Classes - elements by ID*/
 
 /*Form Rows - Read by default*/
@@ -80,6 +113,14 @@ body {
 }
 
 /*Element classes*/
+.studentDisplay {
+	padding: 10px;
+}
+
+.studentDisplay img {
+	max-height: 100px;
+}
+
 .formModal {
 	position: fixed;
 	top: 0;
@@ -130,10 +171,4 @@ body {
 	border-radius: 5px;	
 	color: #fff;
 	background-color: rgba(255, 255, 255, 0);
-}
-
-.panelBuffer {
-	padding: 20px 20px;
-	background-color: #fff;
-	border-radius: 5px;
 }

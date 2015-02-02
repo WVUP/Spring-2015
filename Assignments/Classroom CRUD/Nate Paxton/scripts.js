@@ -4,9 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelector('#begin').style.display = "block";
   document.querySelector('#main').style.display = "none";
 
-  //Populate the current students table
-  updateCurrentTable();
-
   logTimer("Document ready");
 });
 
@@ -61,6 +58,9 @@ var began = function(){
 	document.querySelector('#begin').style.display = "none";
 	document.querySelector('#main').style.display = "block";
 
+    //Populate the current students table
+    displayRead();
+
 	logTimer("Begin screen closed, main displayed");
 }
 
@@ -103,6 +103,19 @@ for(var i=0; i<Students.length; i++){
 		Students[i].posted = true;
 	}	
 }}
+
+//Creates student elements for Read display
+var displayRead = function(){
+	for(var i=0; i<Students.length; i++){
+		if (Students[i].posted == false){
+			var data = "<div class='studentDisplay col-lg-4'><div class='panel panel-primary'><div class='panel-heading'><h3 class='panel-title'>" + Students[i].firstName + " " +  Students[i].lastName + "</div><div class='panel-body'><img class='img-responsive' src='images/" + Students[i].image + "' title='" + Students[i].firstName + " " +  Students[i].lastName + "'>" + "<div class='col-lg-6 centered'><b>" + Students[i].year + "</b></div><div class='col-lg-6 centered'><b>" + Students[i].major + "</b></div><hr><button id='updateButton' class='btn btn-success' type='button' onclick='openUpdateForm()'>Update</button><button id='updateButton' class='btn btn-danger' type='button' onclick='openDeleteForm()'>Delete</button></div></div></div>"
+			document.querySelector('#readDisplay').innerHTML += data;
+			logTimer(Students[i].firstName + " " + Students[i].lastName +
+			" added to current students table");
+			Students[i].posted = true;
+		}
+	}
+}
 
 //Logs messages and times to console
 var logTimer = function(message){

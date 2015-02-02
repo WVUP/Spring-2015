@@ -20,6 +20,18 @@
 			<p>CRUD</p>
 		</div>
 	</div>
+
+	<a href="#openModal">Open Modal</a>
+
+	<div id="openModal" class="modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">X</a>
+			<h2>Modal Box</h2>
+			<p>This is a sample modal box that can be created using the powers of CSS3.</p>
+			<p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+		</div>
+	</div>
+
 	<!-- Page Content -->
 	<div id="main">
 		<div class="container">
@@ -112,19 +124,27 @@
 			</div>
 
 			<!--Read form, displayed by default, reverted to from other forms-->
-			<div class="col-lg-10 col-lg-offset-2 formPanel">
-				<div class="panelBuffer">
-					<table class="table table-striped">
-						<caption><b>Current Students</b></caption>
-						<thead>
-							<th>Name</th>
-							<th>Year</th>
-							<th>Major</th>
-						</thead>
-						<tbody id="currentStudents">
-							<!--Table body updated by updateCurrent function-->
-						</tbody>
-					</table>
+			<div class="row" id="readFormRow">
+				<div class="col-lg-12">
+
+					<div id="readDisplay">
+						
+					</div>
+
+
+					<!-- <div>
+						<table class="table table-striped">
+							<caption><b>Current Students</b></caption>
+							<thead>
+								<th>Name</th>
+								<th>Year</th>
+								<th>Major</th>
+							</thead>
+							<tbody id="currentStudents">
+								Table body updated by updateCurrent function
+							</tbody>
+						</table>
+					</div> -->
 				</div>
 			</div>
 		</div>
