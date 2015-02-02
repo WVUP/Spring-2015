@@ -10,6 +10,28 @@ body {
 }
 
 /*Classes - elements by ID*/
+
+/*Form Rows - Read by default*/
+#readFormRow {
+	margin-top: 50px;
+	display: block;
+}
+
+#createFormRow {
+	margin-top: 50px;
+	display: none;
+}
+
+#updateFormRow {
+	margin-top: 50px;
+	display: none;
+}
+
+#deleteFormRow {
+	margin-top: 50px;
+	display: none;
+}
+
 #begin {
 	height: 100vh;
 	display: none;
@@ -20,10 +42,6 @@ body {
 #main {
 	height: 100vh;
 	background-color:rgba(34,34,34,.6);
-}
-
-#createFormRow {
-	margin-top: 50px;
 }
 
 #crudPane {
@@ -52,14 +70,30 @@ body {
 
 #createButton {
 	margin: 0 auto;
-	display: none;
 }
 
-#newButton {
-	margin: 0 auto;
+#aLaModal {
+	height: 100vh;
+	display: none;
+	background: rgba(0,0,0,0.6);
+	z-index: 999;
 }
 
 /*Element classes*/
+.formModal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+
 .beginButton {
 	font-family: 'Fontdiner Swanky', cursive;
 	color: #fff;
@@ -83,6 +117,7 @@ body {
 
 .formPanel {
 	margin-top: 50px;
+	display: none;
 }
 
 .centered {

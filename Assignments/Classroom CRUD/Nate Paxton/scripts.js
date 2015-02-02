@@ -66,10 +66,6 @@ var began = function(){
 
 //Expands the element passed in
 var expand = function(element){
-	document.querySelector(element).style.className = "";
-	alert(document.querySelector(element).style.className);
-	document.querySelector(element).style.className = "col-lg-10";
-	alert(document.querySelector(element).style.className);
 
 	document.querySelector('#newButton').style.display = "none";
 	document.querySelector('#createButton').style.display = "block";
