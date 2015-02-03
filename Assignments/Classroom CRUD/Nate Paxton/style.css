@@ -1,0 +1,183 @@
+/*Classes by element type*/
+body {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	background-image: url("images/fight.jpg"); 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+}
+
+/*Classes - elements by ID*/
+
+/*Form Rows - Read by default*/
+#readFormRow {
+	margin-top: 50px;
+	display: block;
+}
+
+#createFormRow {
+	margin-top: 50px;
+	display: none;
+}
+
+#updateFormRow {
+	margin-top: 50px;
+	display: none;
+}
+
+#deleteFormRow {
+	margin-top: 50px;
+	display: none;
+}
+
+#begin {
+	height: 100vh;
+	display: none;
+	z-index: 99;
+	opacity: 1;
+}
+
+#main {
+	height: 100vh;
+	background-color:rgba(34,34,34,.6);
+}
+
+#crudPane {
+	margin-top: 50px;
+	padding: 0px 20px;
+	border-radius: 5px;
+}
+
+#crudPane ul {
+	list-style-type: none;
+}
+
+#crudPane li {
+	width: 100%;
+}
+
+#gpSlider {
+	height: 59px;
+}
+
+#rightPane {
+	margin-top: 50px;
+	padding: 20px 20px 20px 20px;
+	border-radius: 5px;
+}
+
+#createButton {
+	margin: 0 auto;
+}
+
+#aLaModal {
+	height: 100vh;
+	display: none;
+	background: rgba(0,0,0,0.6);
+	z-index: 999;
+}
+
+#createStudent {
+	height: 281px;
+}
+
+#createPanelBody {
+	height: 201px;
+}
+
+/*Element classes*/
+.studentDisplay {
+	padding: 10px;
+	font-size: 10px;
+}
+
+.studentDisplay img {
+	max-height: 100px;
+}
+
+.formModal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+
+.beginButton {
+	font-family: 'Fontdiner Swanky', cursive;
+	color: #fff;
+	font-size: 54px;
+	width: 300px;
+   	height: 300px;
+   	position: absolute;
+   	left: 50%;
+   	top: 50%; 
+   	margin-left: -150px;
+   	margin-top: -150px;
+   	cursor: pointer;
+   	text-align: center;
+}
+
+.beginButton input {
+	position: absolute;
+	left: 50%;
+	right: 50%;
+}
+
+.formPanel {
+	margin-top: 50px;
+	display: none;
+}
+
+.centered {
+	 margin: 0 auto;
+	 text-align: center;
+}
+
+.panelDiv {
+	padding: 20px;
+	border-radius: 5px;	
+	color: #fff;
+	background-color: rgba(255, 255, 255, 0);
+}

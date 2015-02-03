@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dat Crud</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="style.css">
+	<link href='http://fonts.googleapis.com/css?family=Fontdiner+Swanky' rel='stylesheet' type='text/css'>
+	<script src="scripts.js" type="text/javascript"></script>
+</head>
+<body>
+	
+	<div id="begin">
+		<div class="beginButton" onclick="began()">
+			<p>Experience</p>
+			<p>The</p>
+			<p>CRUD</p>
+		</div>
+	</div>
+
+	<!-- Page Content -->
+	<div id="main">
+		<div id="mainContent" class="container">
+			
+			<!--Begin "Create" form row-->
+			<div class="row"  id="createFormRow">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">New Student</h3>
+						</div>
+						<div class="panel-body">
+							<form role="form" id="createForm" onSubmit="return submitCreate()">
+								<div class="row">
+									<div class="col-lg-4">
+										<div class="col-lg-8 col-lg-offset-2">
+											<img class="img-responsive" src="images/user77.svg" alt="placeholder" title="New Student Image"/>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group col-lg-12">
+											<label for="firstName">First Name</label>
+											<input type="text" class="form-control" id="firstName" placeholder="Enter Name" required="true">
+										</div>
+										<div class="form-group col-lg-12">
+											<label for="lastName">Last Name</label>
+											<input type="text" class="form-control" id="lastName" placeholder="Enter Name" required="true">
+										</div>
+										<div class="form-group col-lg-12">
+											<label for="major">Major</label>
+											<select class="form-control" id="major">
+												<option value="Undeclared">Undeclared</option>
+												<option value="Information Security">Information Security</option>
+												<option value="Management">Management</option>
+												<option value="Software Engineering">Software Engineering</option>
+												<option value="BusinessInformation Technology">Business Information Technology</option>
+												<option value="Financial Management">Financial Management</option>
+												<option value="Management/Marketing">Mangement/Marketing</option>
+												<option value="Public Relations">Public Relations</option>
+												<option value="Child Development">Child Development</option>
+												<option value="Criminal Justice">Criminal Justice</option>
+												<option value="Legal Studies">Legal Studies</option>
+												<option value="Elementary Education">Elementary Education</option>
+												<option value="Multi-Disciplinary Studies">Multi-Disciplinary Studies</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group col-lg-12">
+											<label for="year">Year</label>
+											<select class="form-control" id="year">
+												<option value="Freshman">Freshman</option>
+												<option value="Sophomore">Sophomore</option>
+												<option value="Junior">Junior</option>
+												<option value="Senior">Senior</option>
+											</select>
+										</div>
+										<div class="form-group col-lg-10" id="gpSlider">
+											<label for="GPA">GPA</label>
+											<input type="range" id="GPA" required="true" max="4.0" step=".01" onchange="gpUpdate(value)"/>
+										</div>
+										<div class="col-lg-1 form-group">
+											<label for="gpOutput">&nbsp;</label>
+											<b><output for="GPA" id="gpOutput">2.0</output></b>
+										</div>
+										<div class="form-group col-lg-12">
+											<label for="advisor">Advisor</label>
+											<input type="text" class="form-control" id="advisor" placeholder="Enter Name" required="true">
+										</div>
+									</div>								
+								</div>
+								<div class="row centered">
+									<div>
+										<hr>
+										<button id="createButton" type="submit" class="btn btn-primary btn-lg">Create</button>
+										<button id="cancel" type="button" class="btn btn-danger btn-lg" onclick="refresh()">Cancel</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!--End "Create" form row-->
+
+			<!--Begin "Update" form row-->
+			<div class="row"  id="updateFormRow">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Update Student</h3>
+						</div>
+						<div class="panel-body">
+							<form role="form" id="updateForm">
+								<div class="row">
+									<div class="col-lg-4">
+										<div class="col-lg-8 col-lg-offset-2">
+											<img id="updateImage" class="img-responsive" src="images/user77.svg" alt="placeholder" title="New Student Image"/>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group col-lg-12">
+											<label for="updateFName">First Name</label>
+											<input id="updateFName" type="text" class="form-control" placeholder="Enter Name" required="true">
+										</div>
+										<div class="form-group col-lg-12">
+											<label for="updateLName">Last Name</label>
+											<input id="updateLName" type="text" class="form-control"placeholder="Enter Name" required="true">
+										</div>
+										<div class="form-group col-lg-12">
+											<label for="updateMajor">Major</label>
+											<select class="form-control" id="updateMajor">
+												<option value="Undeclared">Undeclared</option>
+												<option value="Information Security">Information Security</option>
+												<option value="Management">Management</option>
+												<option value="Software Engineering">Software Engineering</option>
+												<option value="BusinessInformation Technology">Business Information Technology</option>
+												<option value="Financial Management">Financial Management</option>
+												<option value="Management/Marketing">Mangement/Marketing</option>
+												<option value="Public Relations">Public Relations</option>
+												<option value="Child Development">Child Development</option>
+												<option value="Criminal Justice">Criminal Justice</option>
+												<option value="Legal Studies">Legal Studies</option>
+												<option value="Elementary Education">Elementary Education</option>
+												<option value="Multi-Disciplinary Studies">Multi-Disciplinary Studies</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group col-lg-12">
+											<label for="updateYear">Year</label>
+											<select class="form-control" id="updateYear">
+												<option value="Freshman">Freshman</option>
+												<option value="Sophomore">Sophomore</option>
+												<option value="Junior">Junior</option>
+												<option value="Senior">Senior</option>
+											</select>
+										</div>
+										<div class="form-group col-lg-10" id="gpSlider">
+											<label for="updateGPA">GPA</label>
+											<input id="updateGPA" type="range" required="true" max="4.0" step=".01" onchange="updateGPUpdate(value)"/>
+										</div>
+										<div class="col-lg-1 form-group">
+											<label for="updateGPOutput">&nbsp;</label>
+											<b><output for="updateGPA" id="updateGPOutput"></output></b>
+										</div>
+										<div class="form-group col-lg-12">
+											<label for="advisor">Advisor</label>
+											<input id="updateAdvisor" type="text" class="form-control" id="advisor" placeholder="Enter Name" required="true">
+										</div>
+									</div>								
+								</div>
+								<div class="row centered">
+									<div>
+										<hr>
+										<button id="updateButton" type="submit" class="btn btn-success btn-lg">Update</button>
+										<button id="cancel" type="button" class="btn btn-danger btn-lg" onclick="refresh()">Cancel</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!--End "Update" form row-->
+
+			<!--Read form, displayed by default, reverted to from other forms-->
+			<div class="row" id="readFormRow">
+				<div class="col-lg-12">
+					<div class="col-lg-3 studentDisplay" id="createStudent">
+						<div class='panel panel-primary'>
+							<div class='panel-heading'>
+								<h3 class='panel-title'>Create Student</h3>
+							</div>
+							<div class='panel-body' id="createPanelBody">
+								<div class='row'>
+									<div class='col-lg-12'><img class='img-responsive' src='images/user77.svg' title="New Student">
+									</div>								
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-lg-12 centered">
+										<button id='openCreateFormButton' class='btn btn-primary' type='button' onclick='openCreateForm()'>Create</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="readDisplay">
+						<!--This div populated by displayRead function-->
+					</div>
+				</div>
+			</div>
+			<!--End "Read" form row-->
+
+			<!--Begin "Delete" form row-->
+			<div class="row"  id="deleteFormRow">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Delete Student</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="col-lg-8 col-lg-offset-2">
+										<img class="img-responsive" id="deleteImage"/>
+									</div>
+								</div>
+								<div class="col-lg-8">
+									<table>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>First Name</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteFName"></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>Last Name</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteLName"></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>Year</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteYear"></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>Major</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteMajor"></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>GPA</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteGPA"></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>Advisor</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteAdvisor"></div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="row centered">
+								<div>
+									<hr>
+									<form id="deleteForm">
+										<button id="deleteButton" type="submit" class="btn btn-primary btn-lg">Delete</button>
+										<button id="cancel" type="button" class="btn btn-danger btn-lg" onclick="refresh()">Cancel</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--End "Delete" form row-->
+
+		</div>
+	</div>
+
+</body>
+</html>

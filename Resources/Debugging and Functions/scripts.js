@@ -1,3 +1,53 @@
+// Straight forward manner
+function test(){
+	console.log('test');
+}
+
+function pen (argument) {
+	console.log('pen');
+}
+
+// As a method
+var person = {
+	firstName: 'Aaron',
+	lastName: 'Freeland',
+	entireName: null, // used to merge fname and lname
+	fullName: function () {
+		var temp = this.firstName + ' ' + this.lastName;
+		this.entireName = temp;
+	},
+	example: pen
+};
+
+
+function Person(fName, lName, color){
+	this.firstName = fName;
+	this.lastName = lName;
+	this.favoriteColor = color || 'blue';
+}
+
+Person.prototype = {
+
+	execute: function (cb) {
+		for (var i = 0; i < 20; i++) {
+			cb(i);
+		}
+
+	},
+
+	fullName: function () {
+		console.log(this.firstName + ' ' + this.lastName);
+	}
+};
+
+// Person.prototype.fullName = function () {
+// 	console.log(this.firstName + ' ' + this.lastName);
+// };
+
+
+
+
+
 
 var functionElement = document.getElementById('functions'),
 	debuggingElement = document.getElementById('debugging');
