@@ -133,7 +133,7 @@ var openDeleteForm = function(arrayPos){
 	document.querySelector('#deleteMajor').innerText = student.major;
 	document.querySelector('#deleteGPA').innerText = student.GPA;
 	document.querySelector('#deleteAdvisor').innerText = student.advisor;
-	document.querySelector('#deleteButton').setAttribute("onclick", "submitDelete(" + arrayPos + ")");
+	document.querySelector('#deleteForm').setAttribute("onsubmit", "submitDelete(" + arrayPos + ")");
 
 	logTimer("Delete Student form opened");
 }
