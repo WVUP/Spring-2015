@@ -51,6 +51,9 @@ function Student(firstName, lastName, major, year, GPA, advisor){
 	this.advisor = advisor,
 	this.image = userImages[Math.floor(Math.random()*userImages.length)];
 	this.posted = false;
+	this.fullName = function(){
+		return (this.firstName + " " + this.lastName);
+	}
 }
 
 //Standalone functions
@@ -71,6 +74,7 @@ var refresh = function(){
 	document.querySelector('#updateFormRow').style.display = "none";
 	document.querySelector('#deleteFormRow').style.display = "none";
 	document.querySelector('#readFormRow').style.display = "block";
+	logTimer("Read view refreshed");
 }
 
 //Form openers
@@ -82,13 +86,36 @@ var openCreateForm = function(){
 
 var openUpdateForm = function(arrayPos){
 	var student = Students[arrayPos];
-}
+	document.querySelector('#readFormRow').style.display = "none";
+	document.querySelector('#updateFormRow').style.display = "block";
+	document.querySelector('#updateForm').setAttribute("onsubmit", "submitUpdate(" + arrayPos + ")");
 
-//Expands the element passed in
-var expand = function(element){
+	//Populate the form with current data
+	document.querySelector('#updateImage').setAttribute("src", "images/" + student.image);
+	document.querySelector('#updateFName').setAttribute("value", student.firstName);
+	document.querySelector('#updateLName').setAttribute("value", student.lastName);
+	
+	//Loop to get values of 'select'
+	var upMajor = document.querySelector('#updateMajor');
+	for (var i = 0; i<upMajor.length; i++){
+		if (upMajor.options[i].value == student.major){
+			upMajor.options[i].setAttribute("selected", "selected");
+		}
+	}
 
-	document.querySelector('#newButton').style.display = "none";
-	document.querySelector('#createButton').style.display = "block";
+	var upYear = document.querySelector('#updateYear');
+	for (var i = 0; i<upYear.length; i++){
+		if (upYear.options[i].value == student.year){
+			upYear.options[i].setAttribute("selected", "selected");
+		}
+	}
+	
+	document.querySelector('#updateGPOutput').innerText = student.GPA;
+	document.querySelector('#updateAdvisor').setAttribute("value", student.advisor);
+
+	var options = document.getElementBy
+
+	logTimer("Update Student form opened for " + student.firstName + " " + student.lastName);
 }
 
 //Collects form data, updates students, updates table
@@ -109,13 +136,22 @@ var submitCreate = function(){
 	return false;
 }
 
+//Collects form data for student update
+var submitUpdate = function(arrayPos){
+	var form = document.querySelector('#updateForm');
+	var student = Students[arrayPos];
+
+	//See if properties have changed
+	
+}
+
 //Creates student elements for Read display
 var displayRead = function(){
 	for(var i=0; i<Students.length; i++){
 		if (Students[i].posted == false){
-			var data = "<div class='studentDisplay col-lg-3'><div class='panel panel-primary'><div class='panel-heading'><h3 class='panel-title'>" + Students[i].firstName + " " +  Students[i].lastName + "</h3></div><div class='panel-body'><div class='row'><div class='col-lg-4'><img class='img-responsive' src='images/" + Students[i].image + "' title='" + Students[i].firstName + " " +  Students[i].lastName + "'></div>" + "<div class='col-lg-8 centered'><p><b>" + Students[i].year + "</b></p><p><b>" + Students[i].major + "</b></p><p><b>" + Students[i].GPA + "</b></p><p><b>" + Students[i].advisor + "</b></p></div></div><hr><div class='col-lg-12 centered'><button id='updateButton' class='btn btn-success' type='button' onclick='openUpdateForm(" + i + ")'>Update</button><button id='deleteButton' class='btn btn-danger' type='button' onclick='openDeleteForm(" + i + ")'>Delete</button></div></div></div></div>";
+			var data = "<div class='studentDisplay col-lg-3'><div class='panel panel-primary'><div class='panel-heading'><h3 class='panel-title'>" + Students[i].fullName() + "</h3></div><div class='panel-body'><div class='row'><div class='col-lg-4'><img class='img-responsive' src='images/" + Students[i].image + "' title='" + Students[i].fullName + "'></div>" + "<div class='col-lg-8 centered'><p><b>" + Students[i].year + "</b></p><p><b>" + Students[i].major + "</b></p><p><b>" + Students[i].GPA + "</b></p><p><b>" + Students[i].advisor + "</b></p></div></div><hr><div class='col-lg-12 centered'><button id='updateButton' class='btn btn-success' type='button' onclick='openUpdateForm(" + i + ")'>Update</button><button id='deleteButton' class='btn btn-danger' type='button' onclick='openDeleteForm(" + i + ")'>Delete</button></div></div></div></div>";
 			document.querySelector('#readDisplay').innerHTML += data;
-			logTimer(Students[i].firstName + " " + Students[i].lastName +
+			logTimer(Students[i].fullName +
 			" added to current students table");
 			Students[i].posted = true;
 		}
@@ -132,6 +168,9 @@ var logTimer = function(message){
 //Update GPA display
 function gpUpdate(val){
 	document.querySelector('#gpOutput').value = val;
+}
+function updateGPUpdate(val){
+	document.querySelector('#updateGPOutput').value = val;
 }
 
 //Fades
