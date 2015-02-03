@@ -103,6 +103,7 @@ body {
 
 #createButton {
 	margin: 0 auto;
+	margin-bottom: 4px;
 }
 
 #aLaModal {
@@ -112,12 +113,8 @@ body {
 	z-index: 999;
 }
 
-#createStudent {
-	height: 281px;
-}
-
 #createPanelBody {
-	height: 201px;
+	height: 204px;
 }
 
 /*Element classes*/
