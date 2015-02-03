@@ -88,7 +88,7 @@ var openUpdateForm = function(arrayPos){
 	var student = Students[arrayPos];
 	document.querySelector('#readFormRow').style.display = "none";
 	document.querySelector('#updateFormRow').style.display = "block";
-	document.querySelector('#updateForm').setAttribute("onsubmit", "submitUpdate(" + arrayPos + ")");
+	document.querySelector('#updateForm').setAttribute("onsubmit", "return submitUpdate(" + arrayPos + ")");
 
 	//Populate the form with current data
 	document.querySelector('#updateImage').setAttribute("src", "images/" + student.image);
@@ -133,7 +133,7 @@ var openDeleteForm = function(arrayPos){
 	document.querySelector('#deleteMajor').innerText = student.major;
 	document.querySelector('#deleteGPA').innerText = student.GPA;
 	document.querySelector('#deleteAdvisor').innerText = student.advisor;
-	document.querySelector('#deleteForm').setAttribute("onsubmit", "submitDelete(" + arrayPos + ")");
+	document.querySelector('#deleteForm').setAttribute("onsubmit", "return submitDelete(" + arrayPos + ")");
 
 	logTimer("Delete Student form opened");
 }
