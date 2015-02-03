@@ -53,7 +53,6 @@
         }
     }
 
-
     function AssignEditListener(text, count) {
         //assigning a listener for the dynamic edit element
         document.getElementById(text + count).addEventListener('click', function handler(e) {
@@ -104,7 +103,6 @@
         }, false);
     }
 
-
     function SetAttributes(node, count) {
         node.id = node.getAttribute('dt') + count;
         node.style.cursor = 'pointer';
@@ -129,85 +127,40 @@
                 return true;
             }
         }
-
         return false;
     }
 
     function RegExp() {
-        var resultRegExp = true;
+        var resultRegExp = [];
+
+        var idRegexp = /^\d{9}$/;
+        var generalRegexp = /([a-zA-Z]{3,30}\s*)+/;
+        var emailRegexp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var phoneRegexp = /\(?\d{3}\)?-? *\d{3}-? *-?\d{4}/;
 
         //clear
         while (phead.firstChild) {
             phead.removeChild(phead.firstChild);
         }
 
-        if (!(/^\d{9}$/.test(sId.value))) {
-            if (!containsObject(sId, errors)) {
-                errors.push(sId);
-            }
-            var kk = document.createElement('p');
-            kk.textContent = 'Not valid Id (9-digits required)';
-            phead.appendChild(kk);
-            resultRegExp = false;
-        }
-        if (!(/([a-zA-Z]{2,30}\s*)+/.test(sMaj.value))) {
-            if (!containsObject(sMaj, errors)) {
-                errors.push(sMaj);
-            }
-            var kk = document.createElement('p');
-            kk.textContent = 'Please Enter your Major';
-            phead.appendChild(kk);
-            resultRegExp = false;
-        }
-        if (!(/([a-zA-Z]{3,30}\s*)+/.test(sfNam.value))) {
-            if (!containsObject(sfNam, errors)) {
-                errors.push(sfNam);
-            }
-            var kk = document.createElement('p');
-            kk.textContent = 'Not valid First Name';
-            phead.appendChild(kk);
-            resultRegExp = false;
-        }
-        if (!(/([a-zA-Z]{3,30}\s*)+/.test(slNam.value))) {
-            if (!containsObject(slNam, errors)) {
-                errors.push(slNam);
-            }
-            var kk = document.createElement('p');
-            kk.textContent = 'Not valid Last Name';
-            phead.appendChild(kk);
-            resultRegExp = false;
-        }
-        if (!(/^\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/.test(sPho.value))) {
-            if (!containsObject(sPho, errors)) {
-                errors.push(sPho);
-            }
-            var kk = document.createElement('p');
-            kk.textContent = 'Not valid Phone number (xxx)xxx-xxxx';
-            phead.appendChild(kk);
-            resultRegExp = false;
-        }
-        return resultRegExp;
+        Validator(sId, idRegexp, 'Not valid Id (9-digits)', resultRegExp);
+        Validator(sMaj, generalRegexp, 'Please Enter your Major', resultRegExp);
+        Validator(sfNam, generalRegexp, 'Not valid First Name', resultRegExp);
+        Validator(slNam, generalRegexp, 'Not valid Last Name', resultRegExp);
+        Validator(sPho, phoneRegexp, 'Not valid Phone number (10 digits)', resultRegExp);
+        Validator(sEma, emailRegexp, 'Not valid Email', resultRegExp);
+
+        if (resultRegExp.length == 0)
+            return true
+        return false;
     }
 
-    //regexp
-    function ValidateInput() {
-        for (var i = 0; i < errors.length; i++) {
-            errors[i].className = 'inp-b';
-        }
-        var reg = RegExp(); //validation logic
-
-        if (reg) {
-            errors.length = 0; // not emptying the array
-            console.log('the result is true')
-        }
-
-        if (errors.length == 0) {
-            return true
-        } else {
-            for (var i = 0; i < errors.length; i++) {
-                errors[i].className = 'vl-fail';
-            }
-            return false
+    function Validator(obj, regexp, msg, resultRegExp) {
+        if (!(regexp.test(obj.value))) {
+            var kk = document.createElement('p');
+            kk.textContent = msg;
+            phead.appendChild(kk);
+            resultRegExp.push(obj);
         }
     }
 
@@ -225,21 +178,18 @@
     var allInputs = document.getElementsByClassName('inp-b');
     var phead = document.getElementById('validation-msg');
 
-    var errors = [];
-
     students = JSON.parse(students);
     if (students == null) {
         students = [];
     }
-    Generate();
-    document.getElementById('save').addEventListener('click', function () {
 
-        if (ValidateInput()) {
+    Generate();
+
+    document.getElementById('save').addEventListener('click', function () {
+        if (RegExp()) {
             AddStudent();
             Generate();
             document.getElementById('form').reset();
         }
-
     }, false);
-
 }
