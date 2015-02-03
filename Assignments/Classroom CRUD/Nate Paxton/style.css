@@ -47,7 +47,7 @@ body {
 /*Form Rows - Read by default*/
 #readFormRow {
 	margin-top: 50px;
-	display: none;
+	display: block;
 }
 
 #createFormRow {

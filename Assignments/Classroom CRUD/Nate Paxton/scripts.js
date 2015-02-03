@@ -138,20 +138,44 @@ var submitCreate = function(){
 
 //Collects form data for student update
 var submitUpdate = function(arrayPos){
-	var form = document.querySelector('#updateForm');
-	var student = Students[arrayPos];
+	var updateForm = document.querySelector('#updateForm');
+	//var student = Students[arrayPos];
 
 	//See if properties have changed
-	
+	if (updateForm.updateFName.value != Students[arrayPos].firstName){
+		Students[arrayPos].firstName = updateForm.updateFName.value;
+	}
+	if (updateForm.updateLName.value != Students[arrayPos].lastName){
+		Students[arrayPos].lastName = updateForm.updateLName.value;
+	}
+	if (updateForm.updateMajor.value != Students[arrayPos].major){
+		Students[arrayPos].major = updateForm.updateMajor.value;
+	}
+	if (updateForm.updateYear.value != Students[arrayPos].year){
+		Students[arrayPos].year = updateForm.updateYear.value;
+	}
+	if (updateForm.updateGPOutput.value != Students[arrayPos].GPA){
+		Students[arrayPos].GPA = updateForm.updateGPOutput.value;
+	}
+	if (updateForm.updateAdvisor.value != Students[arrayPos].advisor){
+		Students[arrayPos].advisor = updateForm.updateAdvisor.value;
+	}
+
+	Students[arrayPos].posted = false;
+	logTimer("Student " + Students[arrayPos].firstName + " " + Students[arrayPos].lastName + " updated")
+	displayRead();
+	updateForm.reset();
+	refresh();
+	return false;
 }
 
 //Creates student elements for Read display
 var displayRead = function(){
 	for(var i=0; i<Students.length; i++){
 		if (Students[i].posted == false){
-			var data = "<div class='studentDisplay col-lg-3'><div class='panel panel-primary'><div class='panel-heading'><h3 class='panel-title'>" + Students[i].fullName() + "</h3></div><div class='panel-body'><div class='row'><div class='col-lg-4'><img class='img-responsive' src='images/" + Students[i].image + "' title='" + Students[i].fullName + "'></div>" + "<div class='col-lg-8 centered'><p><b>" + Students[i].year + "</b></p><p><b>" + Students[i].major + "</b></p><p><b>" + Students[i].GPA + "</b></p><p><b>" + Students[i].advisor + "</b></p></div></div><hr><div class='col-lg-12 centered'><button id='updateButton' class='btn btn-success' type='button' onclick='openUpdateForm(" + i + ")'>Update</button><button id='deleteButton' class='btn btn-danger' type='button' onclick='openDeleteForm(" + i + ")'>Delete</button></div></div></div></div>";
+			var data = "<div class='studentDisplay col-lg-3'><div class='panel panel-primary'><div class='panel-heading'><h3 class='panel-title'>" + Students[i].firstName + " " + Students[i].lastName + "</h3></div><div class='panel-body'><div class='row'><div class='col-lg-4'><img class='img-responsive' src='images/" + Students[i].image + "' title='" + Students[i].fullName + "'></div>" + "<div class='col-lg-8 centered'><p><b>" + Students[i].year + "</b></p><p><b>" + Students[i].major + "</b></p><p><b>" + Students[i].GPA + "</b></p><p><b>" + Students[i].advisor + "</b></p></div></div><hr><div class='col-lg-12 centered'><button id='updateButton' class='btn btn-success' type='button' onclick='openUpdateForm(" + i + ")'>Update</button><button id='deleteButton' class='btn btn-danger' type='button' onclick='openDeleteForm(" + i + ")'>Delete</button></div></div></div></div>";
 			document.querySelector('#readDisplay').innerHTML += data;
-			logTimer(Students[i].fullName +
+			logTimer(Students[i].firstName + " " + Students[i].lastName +
 			" added to current students table");
 			Students[i].posted = true;
 		}
