@@ -217,9 +217,81 @@
 			<!--End "Read" form row-->
 
 			<!--Begin "Delete" form row-->
-			<div class="row" id="deleteFormRow">
-				<div class="col-lg-12">
-
+			<div class="row"  id="deleteFormRow">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Delete Student</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="col-lg-8 col-lg-offset-2">
+										<img class="img-responsive" id="deleteImage"/>
+									</div>
+								</div>
+								<div class="col-lg-8">
+									<table>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>First Name</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteFName"></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>Last Name</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteLName"></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>Year</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteYear"></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>Major</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteMajor"></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>GPA</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteGPA"></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="col-lg-6">
+												<div><b>Advisor</b></div>
+											</td>
+											<td class="col-lg-6">
+												<div id="deleteAdvisor"></div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="row centered">
+								<div>
+									<hr>
+									<button id="deleteButton" type="button" class="btn btn-primary btn-lg">Delete</button>
+									<button id="cancel" type="button" class="btn btn-danger btn-lg" onclick="refresh()">Cancel</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!--End "Delete" form row-->

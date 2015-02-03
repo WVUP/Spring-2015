@@ -118,6 +118,26 @@ var openUpdateForm = function(arrayPos){
 	logTimer("Update Student form opened for " + student.firstName + " " + student.lastName);
 }
 
+var openDeleteForm = function(arrayPos){
+	document.querySelector('#readFormRow').style.display = "none";
+	document.querySelector('#deleteFormRow').style.display = "block";
+
+	var student = Students[arrayPos];
+
+	//Populate delete form with current values
+	document.querySelector('#deleteImage').setAttribute("src", "images/" + student.image);
+	document.querySelector('#deleteImage').setAttribute("title", student.fullName);
+	document.querySelector('#deleteFName').innerText = student.firstName;
+	document.querySelector('#deleteLName').innerText = student.lastName;
+	document.querySelector('#deleteYear').innerText = student.year;
+	document.querySelector('#deleteMajor').innerText = student.major;
+	document.querySelector('#deleteGPA').innerText = student.GPA;
+	document.querySelector('#deleteAdvisor').innerText = student.advisor;
+	document.querySelector('#deleteButton').setAttribute("onclick", "submitDelete(" + arrayPos + ")");
+
+	logTimer("Delete Student form opened");
+}
+
 //Collects form data, updates students, updates table
 var submitCreate = function(){
 	var form = document.querySelector('#createForm');
@@ -139,7 +159,7 @@ var submitCreate = function(){
 //Collects form data for student update
 var submitUpdate = function(arrayPos){
 	var updateForm = document.querySelector('#updateForm');
-	//var student = Students[arrayPos];
+	document.querySelector('#readDisplay').removeChild(document.querySelector('#student-display-' + arrayPos));
 
 	//See if properties have changed
 	if (updateForm.updateFName.value != Students[arrayPos].firstName){
@@ -162,9 +182,18 @@ var submitUpdate = function(arrayPos){
 	}
 
 	Students[arrayPos].posted = false;
-	logTimer("Student " + Students[arrayPos].firstName + " " + Students[arrayPos].lastName + " updated")
+	logTimer(Students[arrayPos].firstName + " " + Students[arrayPos].lastName + " updated")
 	displayRead();
 	updateForm.reset();
+	refresh();
+	return false;
+}
+
+var submitDelete = function(arrayPos){
+	document.querySelector('#readDisplay').removeChild(document.querySelector('#student-display-' + arrayPos));
+	logTimer(Students[arrayPos].firstName + " " + Students[arrayPos].lastName + " deleted")
+	Students.pop(arrayPos);
+	displayRead();
 	refresh();
 	return false;
 }
@@ -173,7 +202,7 @@ var submitUpdate = function(arrayPos){
 var displayRead = function(){
 	for(var i=0; i<Students.length; i++){
 		if (Students[i].posted == false){
-			var data = "<div class='studentDisplay col-lg-3'><div class='panel panel-primary'><div class='panel-heading'><h3 class='panel-title'>" + Students[i].firstName + " " + Students[i].lastName + "</h3></div><div class='panel-body'><div class='row'><div class='col-lg-4'><img class='img-responsive' src='images/" + Students[i].image + "' title='" + Students[i].fullName + "'></div>" + "<div class='col-lg-8 centered'><p><b>" + Students[i].year + "</b></p><p><b>" + Students[i].major + "</b></p><p><b>" + Students[i].GPA + "</b></p><p><b>" + Students[i].advisor + "</b></p></div></div><hr><div class='col-lg-12 centered'><button id='updateButton' class='btn btn-success' type='button' onclick='openUpdateForm(" + i + ")'>Update</button><button id='deleteButton' class='btn btn-danger' type='button' onclick='openDeleteForm(" + i + ")'>Delete</button></div></div></div></div>";
+			var data = "<div id='student-display-" + i + "' class='studentDisplay col-lg-3'><div class='panel panel-primary'><div class='panel-heading'><h3 class='panel-title'>" + Students[i].firstName + " " + Students[i].lastName + "</h3></div><div class='panel-body'><div class='row'><div class='col-lg-4'><img class='img-responsive' src='images/" + Students[i].image + "' title='" + Students[i].fullName + "'></div>" + "<div class='col-lg-8 centered'><p><b>" + Students[i].year + "</b></p><p><b>" + Students[i].major + "</b></p><p><b>" + Students[i].GPA + "</b></p><p><b>" + Students[i].advisor + "</b></p></div></div><hr><div class='col-lg-12 centered'><button id='updateButton' class='btn btn-success' type='button' onclick='openUpdateForm(" + i + ")'>Update</button><button id='deleteButton' class='btn btn-danger' type='button' onclick='openDeleteForm(" + i + ")'>Delete</button></div></div></div></div>";
 			document.querySelector('#readDisplay').innerHTML += data;
 			logTimer(Students[i].firstName + " " + Students[i].lastName +
 			" added to current students table");
