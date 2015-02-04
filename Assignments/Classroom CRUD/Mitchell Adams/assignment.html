@@ -22,6 +22,16 @@ var students = [];
 <div id="demo">?</div>
 
 <script>
+function ReadStudents(){
+var text = "";
+    var i;
+    for (i = 0; i < students.length; i++) 
+    { 
+      text += " "+students[i].firstname+"    &nbsp;   &nbsp;  &nbsp; &nbsp;&nbsp;   "+students[i].lastname+"     &nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  "+students[i].age+"           &nbsp;      &nbsp; &nbsp;&nbsp; "+students[i].gender+"  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        &nbsp;  "+students[i].major+" &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;   "+students[i].gpa+"&nbsp;&nbsp;&nbsp;&nbsp; "+students[i].advisor+"&nbsp;&nbsp;&nbsp;<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"EditStudent("+i+")>Edit Student</button><br>";
+  }
+    document.getElementById("demo").innerHTML = text;
+}
+
 function AddStudent() {
     var student = new Object();
     student.firstname =  document.getElementById("fname").value;
@@ -32,24 +42,12 @@ function AddStudent() {
     student.gpa =  document.getElementById("gpa").value;
     student.advisor =  document.getElementById("advisor").value;
     students.push(student)
-    var text = "";
-    var i;
-    for (i = 0; i < students.length; i++) 
-    { 
-      text += " "+students[i].firstname+"    &nbsp;   &nbsp;  &nbsp; &nbsp;&nbsp;   "+students[i].lastname+"     &nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  "+students[i].age+"           &nbsp;      &nbsp; &nbsp;&nbsp; "+students[i].gender+"  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        &nbsp;  "+students[i].major+" &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;   "+students[i].gpa+"&nbsp;&nbsp;&nbsp;&nbsp; "+students[i].advisor+"&nbsp;&nbsp;&nbsp;<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"EditStudent("+i+")>Edit Student</button><br>";
-  }
-    document.getElementById("demo").innerHTML = text;
+    ReadStudents();
 }
 
 function DeleteStudent(x) {
   students.splice(x, 1 );
-  var text = "";
-    var i;
-    for (i = 0; i < students.length; i++) 
-    { 
-      text += " "+students[i].firstname+"    &nbsp;   &nbsp;  &nbsp; &nbsp;&nbsp;   "+students[i].lastname+"     &nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  "+students[i].age+"           &nbsp;      &nbsp; &nbsp;&nbsp; "+students[i].gender+"  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        &nbsp;  "+students[i].major+" &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;   "+students[i].gpa+"&nbsp;&nbsp;&nbsp;&nbsp; "+students[i].advisor+"&nbsp;&nbsp;&nbsp;<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"EditStudent("+i+")>Edit Student</button><br>";
-  }
-    document.getElementById("demo").innerHTML = text;
+  ReadStudents();
 }
 
 function EditStudent(x) {
@@ -80,13 +78,7 @@ function Update(x) {
   updateStudent.advisor =  document.getElementById("updateadvisor").value;
 
   students[x] = updateStudent;
-  var text = "";
-    var i;
-    for (i = 0; i < students.length; i++) 
-    { 
-      text += " "+students[i].firstname+"    &nbsp;   &nbsp;  &nbsp; &nbsp;&nbsp;   "+students[i].lastname+"     &nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  "+students[i].age+"           &nbsp;      &nbsp; &nbsp;&nbsp; "+students[i].gender+"  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        &nbsp;  "+students[i].major+" &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;   "+students[i].gpa+"&nbsp;&nbsp;&nbsp;&nbsp; "+students[i].advisor+"&nbsp;&nbsp;&nbsp;<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"EditStudent("+i+")>Edit Student</button><br>";
-  }
-    document.getElementById("demo").innerHTML = text;
+  ReadStudents();
 
 
 }
