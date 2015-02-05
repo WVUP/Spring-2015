@@ -88,10 +88,9 @@
                 theNodeINeed = allDivsInsideStudentsNode[i]
             }
         }
-        var saveButton = document.createElement('button');
+        var saveButton = document.createElement('span');
         saveButton.type = 'submit';
         saveButton.className = 'icono-sync';
-        saveButton.classList.add('mod-btn');
         saveButton.id = 'saveEdit' + id;
         var form = document.createElement('form');
         theNodeINeed.innerHTML = "<input required class='inp-b' value=" + s.Id + "  id=mod" + id + ">"
@@ -101,9 +100,7 @@
         + "<input required class='inp-b' value=" + s.Phone + " id=phone" + id + ">"
         + "<input required class='inp-b' value=" + s.Email + " id=email" + id + ">";
 
-        theNodeINeed.appendChild(saveButton);
-        form.appendChild(theNodeINeed);
-        studentsNode.children[id].appendChild(form);
+        studentsNode.children[id].appendChild(saveButton);
         
         saveButton.addEventListener('click', function (e) {
                 var currentId = document.getElementById(e.target.id);
@@ -117,6 +114,7 @@
                     Email: document.getElementById("email" + id).value
                 })
                 sessionStorage.setItem("students", JSON.stringify(students));
+                Generate();
                 console.log('Student info saved');
         }, false);
     }
