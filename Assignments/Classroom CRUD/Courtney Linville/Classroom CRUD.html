@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Classroom CRUD</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body><center>
+  <table class="main">
+<tr><td>First Name: </td><td><input type="text" id="firstname"></td></tr>
+<tr><td>Last Name: </td><td><input type="text" id="lastname"></td></tr>
+<tr><td>email: </td><td><input type="text" id="email"></td></tr>
+<tr><td>Major: </td><td><input type="text" id="major"></td></tr>
+<tr><td>GPA: </td><td><input type="text" id="gpa"></td></tr>
+<tr><td>Advisor: </td><td><input type="text" id="advisor"></td></tr>
+
+<tr><td><button onclick="AddStudent()">Add Student</button></td></tr>
+</table>
+<br>
+<div id="list"></div></center>
+
+<script>
+var students = [];
+function AddStudent() {
+    var student = new Object();
+    student.firstname =  document.getElementById("firstname").value;
+    student.lastname =  document.getElementById("lastname").value;
+    student.email =  document.getElementById("email").value;
+    student.major =  document.getElementById("major").value;
+    student.gpa =  document.getElementById("gpa").value;
+    student.advisor =  document.getElementById("advisor").value;
+    students.push(student)
+    var text = "";
+    var i;
+    for (i = 0; i < students.length; i++) 
+    { 
+      text += " "+students[i].firstname+" "+students[i].lastname+" "+students[i].email+" "+students[i].major+" "+students[i].gpa+" "+students[i].advisor+"<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"UpdateStudent("+i+")>Update Student</button><br>";
+  }
+    document.getElementById("list").innerHTML = text;
+}
+
+function UpdateStudent(x) {
+  var text = "";
+  var i;
+  for (i = 0; i < students.length; i++) 
+  { 
+   if (i == x){
+    text += "<input type="+"text"+" id="+"updatefirstname"+" value="+students[x].firstname+"><input type="+"text"+" id="+"updatelastname"+" value="+students[x].lastname+"><input type="+"text"+" id="+"updateemail"+" value="+students[x].email+"><input type="+"text"+" id="+"updatemajor"+" value="+students[x].major+"><input type="+"text"+" id="+"updategpa"+" value="+students[x].gpa+"><input type="+"text"+" id="+"updateadvisor"+" value="+students[x].advisor+"><button onclick="+"DeleteStudent("+x+")>Delete Student</button><button onclick="+"Update("+x+")>Update</button><br>";
+   }
+
+   else{
+    text += " "+students[i].firstname+" "+students[i].lastname+" "+students[i].email+" "+students[i].major+" "+students[i].gpa+" "+students[i].advisor+"<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"UpdateStudent("+i+")>Update Student</button><br>";
+
+   }
+  }
+    document.getElementById("list").innerHTML = text;
+}
+
+function Update(x) {
+  var updateStudent = new Object();
+  updateStudent.firstname =  document.getElementById("updatefirstname").value;
+  updateStudent.lastname =  document.getElementById("updatelastname").value;
+  updateStudent.email =  document.getElementById("updateemail").value;
+  updateStudent.major =  document.getElementById("updatemajor").value;
+  updateStudent.gpa =  document.getElementById("updategpa").value;
+  updateStudent.advisor =  document.getElementById("updateadvisor").value;
+
+  students[x] = updateStudent;
+  var text = "";
+    var i;
+    for (i = 0; i < students.length; i++) 
+    { 
+      text += " "+students[i].firstname+" "+students[i].lastname+" "+students[i].email+" "+students[i].major+" "+students[i].gpa+" "+students[i].advisor+"<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"UpdateStudent("+i+")>Update Student</button><br>";
+  }
+    document.getElementById("list").innerHTML = text;
+
+}
+
+function DeleteStudent(x) {
+  students.splice(x, 1 );
+  var text = "";
+    var i;
+    for (i = 0; i < students.length; i++) 
+    { 
+      text += " "+students[i].firstname+" "+students[i].lastname+" "+students[i].major+" "+students[i].gpa+" "+students[i].advisor+"<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"UpdateStudent("+i+")>Update Student</button><br>";
+  }
+    document.getElementById("list").innerHTML = text;
+}
+
+</script>
+</body>
+</html>
