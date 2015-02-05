@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="scripts.js"></script>
+<style type="text/css">
+	body {
+		text-align: center
+	}
+</style>
+<script> 
+var listOfStudents = []; 
+</script>
 </head>
 <body>
 
@@ -16,10 +23,27 @@
 
 
 <button onclick="submitInfo()">Submit Your Information</button>
-<div id="studentInfo">First Name: Last Name: Age: Email: Major:</div>
+<div id="rosterArea">Why can't I get this to work for me?</div>
+<!--I cannot figure out why this will not even create a signle student object-->
+<script> 
+function submitInfo(){
+	var newStudent = new Object(); 
+	newStudent.FName = document.getElementById("firstName").value;
+	newStudent.LName = document.getElementById("lastName").value;
+	newStudent.Age = document.getElementById("age").value;
+	newStudent.Email = document.getElementById("email").value;
+	newStudent.Major = document.getElementById("major").value;
+	listOfStudents.push(newStudent);
+	var roster = "";
+    var i;
+    for (i = 0; i < listOfStudents.length; i++) 
+    { 
+        roster = " "+listOfStudents[i].FName+"  &nbsp; "+listOfStudents[i].LName+"     &nbsp;  "+listOfStudents[i].Age+"   &nbsp; "+listOfStudents[i].Email+"  &nbsp; "+listOfStudents[i].Major;
+	}
+	 document.getElementById("rosterArea").innerHTML = roster;
+}
 
-
-
+</script>
 </body>
 </html>
 
