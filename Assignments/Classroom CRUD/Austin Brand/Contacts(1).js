@@ -4,7 +4,7 @@ var contacts = [
 		firstName: 'Austin',
 		lastName: 'Brand',
 		email: 'abrand@wvup.edu',
-		age: 19
+		major: 'Software Engineering',
 	}
 ];
 
