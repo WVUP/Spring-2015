@@ -5,6 +5,11 @@ var contacts = [
 		lastName: 'Brand',
 		email: 'abrand@wvup.edu',
 		major: 'Software Engineering',
+
+		firstName: 'Steve',
+		lastName: 'Rogers',
+		email: 'capAmerica@avengers.com',
+		major: 'Saving lives',
 	}
 ];
 
