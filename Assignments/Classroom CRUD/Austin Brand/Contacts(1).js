@@ -5,6 +5,8 @@ var contacts = [
 		lastName: 'Brand',
 		email: 'abrand@wvup.edu',
 		major: 'Software Engineering',
+	},
+	{ 
 
 		firstName: 'Steve',
 		lastName: 'Rogers',
@@ -30,6 +32,7 @@ function init () {
 
 	_body.innerHTML = html;
 }
+
 
 function add () {
 	var _input = document.getElementById('myInput');
