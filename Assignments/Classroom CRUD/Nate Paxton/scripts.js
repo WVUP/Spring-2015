@@ -208,9 +208,8 @@ var displayRead = function(){
 			" added to current students table");
 			Students[i].posted = true;
 		}
-		document.querySelector('#createPanelBody').style.height =
-		document.querySelector('#student-display-0').getElementByClassName("panel-body").style.height || "205px";
 	}
+	document.querySelector('#createPanelBody').style.height = '213px';
 }
 
 //Logs messages and times to console
