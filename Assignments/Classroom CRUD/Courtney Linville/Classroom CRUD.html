@@ -82,7 +82,7 @@ function DeleteStudent(x) {
     var i;
     for (i = 0; i < students.length; i++) 
     { 
-      text += " "+students[i].firstname+" "+students[i].lastname+" "+students[i].major+" "+students[i].gpa+" "+students[i].advisor+"<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"UpdateStudent("+i+")>Update Student</button><br>";
+      text += " "+students[i].firstname+" "+students[i].lastname+" "+students[i].email+" "+students[i].major+" "+students[i].gpa+" "+students[i].advisor+"<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"UpdateStudent("+i+")>Update Student</button><br>";
   }
     document.getElementById("list").innerHTML = text;
 }
