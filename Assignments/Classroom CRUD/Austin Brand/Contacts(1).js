@@ -1,4 +1,4 @@
-var contacts = [
+var students = [
 
 	{
 		firstName: 'Austin',
