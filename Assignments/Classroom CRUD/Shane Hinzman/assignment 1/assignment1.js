@@ -7,4 +7,5 @@ function add(){
 	student.email = document.getElementById("email").value;
 	students.push(student);
 	console.log(students);
+	alert("First name: " + student.fName + "    Last name: " + student.lName +"    Email: " + student.email);
 }
