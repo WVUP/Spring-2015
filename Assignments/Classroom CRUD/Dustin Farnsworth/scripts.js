@@ -1,9 +1,7 @@
-var stu = [];
-
 function addStudent(){
 	stu = [];
 
-	stu.push(document.getElementById("full").value);
+	stu.push(document.getElementById("first").value);
 	stu.push(document.getElementById("email").value);
 	stu.push(document.getElementById("major").value);
 	stu.push(document.getElementById("advisor").value);
@@ -16,7 +14,7 @@ function addStudent(){
 
 	document.getElementById("enrollment").appendChild(newElement);
 
-	document.getElementById("full").value = '';
+	document.getElementById("first").value = '';
 	document.getElementById("email").value = '';
 	document.getElementById("major").value = '';
 	document.getElementById("advisor").value = '';
