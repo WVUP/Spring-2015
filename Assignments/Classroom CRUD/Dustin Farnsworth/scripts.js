@@ -1,19 +1,27 @@
 // for updates create prepopulated input elements or repopulate originals?
 
+// ??????????? figure out a way to itterate through dom to get any number of input values for attributes ?????????
+
+// Declares input attributes as an object
+var sourceObject = ["first", "email", "major", "advisor"];
+
+// Builds object of type student
 function buildObject(type) {
+	
 	type = [];
-	// add atributes
-	// ??????????? figure out a way to itterate through dom to get any number of input values for attributes ?????????
-	type.push(document.getElementById("first").value);
-	type.push(document.getElementById("email").value);
-	type.push(document.getElementById("major").value);
-	type.push(document.getElementById("advisor").value);
+	
+	// Adds atributes to student object
+	for(i = 0; i < sourceObject.length; i++) {
+		type.push(document.getElementById(sourceObject[i]).value);
+	}
+
 	displayObject(type);
 }
 
+// displayObject(object, source)
 function displayObject(object) {
 
-	for(i = 0; i < (object.length); i++) {
+	for(i = 0; i < object.length; i++) {
 
 		var newElement = document.createElement("div");
 
@@ -22,14 +30,20 @@ function displayObject(object) {
 		newElement.appendChild(document.createTextNode(object[i]));
 
 		document.getElementById("enrollment").appendChild(newElement);
+	}
 
-		// ??????????? figure out a way to itterate through dom to get any number of input values for attributes ?????????
-		document.getElementById("first").value = '';
-		document.getElementById("email").value = '';
-		document.getElementById("major").value = '';
-		document.getElementById("advisor").value = '';
+	clearInput();
+
+}
+
+function clearInput(element) {
+
+	for(i = 0; i < sourceObject.length; i++) {
+
+		document.getElementById(sourceObject[i]).value = '';
 
 	}
+
 }
 
 
