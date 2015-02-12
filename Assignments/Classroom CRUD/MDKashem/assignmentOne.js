@@ -1,7 +1,7 @@
 
 var array = [student("Md", "Kashem", "kashem@yahoo.com", "305-362-6693")];
 console.log(array);
-document.getElementById("demo").innerHTML = fruits;
+//document.getElementById("demo").innerHTML = fruits;
 
 function student (a, b, c, d) {
     this.Fname = a;
@@ -24,12 +24,11 @@ function Insert() {
   var phone = document.getElementById("ph").value;
 
     array.push(student(fname, lname, email, phone));
-  
-validateForm();
+//validateForm();
 }
 Insert();
 // display array
-function displayArray(){
+function displayArray(){     
 var text = "";
     var i;
     for (i = 0; i < array.length; i++) 
@@ -88,29 +87,32 @@ function Update()
   // validation
   function validateForm() {
 
-    
-    var x = document.forms["form1"]["firstname"].value;
+    Insert();
+   /* var x = document.forms["form1"]["firstname"].value;
 
     var y = document.forms["form1"]["lastname"].value;
     var phone = document.forms["form1"]["ph"].value;
     if (x==null || x=="") {
         alert(" First Name must be filled out");
-       return false;
-    }  if(y==null || y==""){
+      // return false;
+    }  
+
+    if(y==null || y==""){
       alert("Last Name must be filled out");
-          return false;
+         // return false;
     }
 
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form1.email.value))  
   {  
     
-    return true;
+    //return true;
+    
     
   }  else {
      alert("You have entered an invalid email address!")  
-     return (false)}
+    // return (false)}
 
-
+*/
 
 
 };
