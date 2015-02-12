@@ -4,6 +4,16 @@
 	<link rel="stylesheet" type="text/css" href="site(20).css">
 	<script src="Contacts(1).js"></script>
 	
+	<head lang="en">
+<meta charset="UTF-8">
+<script language="JavaScript">
+function showInput() {
+    var message_entered =  document.getElementById("user_input").value;
+
+    document.getElementById('display').innerHTML = message_entered;
+}
+
+  </script>
 
 <script type="text/javascript">
 function add(){
@@ -35,7 +45,7 @@ function add(){
    					Class Year: <input type="text" name="classYear" /><br />
    		
 
-   <input type="submit" value="Submit" onClick="add()" placeholder="Add Contact" />
+   <input type="submit" onClick="myFunctionS" value="Submit" />
    <input type="submit" value="Update" onClick="add()" />
    <input type="submit" value="Delete" onclick="add()" />
    <input type="button" onClick="myFunction()" value="Reset">
@@ -110,6 +120,24 @@ function myFunction() {
 </div>
 
 
+<meta charset="UTF-8">
+<script language="JavaScript">
+function showInput() {
+    var message_entered =  document.getElementById("user_input").value;
+
+    document.getElementById('display').innerHTML = message_entered;
+}
+
+  </script>
+
+<form>
+<label><b>Enter a Message</b></label>
+<input type="text" name="message" id="user_input">
+</form>
+
+<input type="submit" onclick="showInput();"><br />
+<label> Your input: </label>
+<p><span id='display'></span> </p>
 	
 	
 

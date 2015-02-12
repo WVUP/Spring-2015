@@ -79,3 +79,8 @@ function myFunction()
 {
 	document.getElementById("form1").reset();
 }
+
+function myFunctionS()
+{
+	document.getElementById("form1").submit();
+}
