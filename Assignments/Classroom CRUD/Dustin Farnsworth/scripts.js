@@ -22,12 +22,11 @@ function displayObject() {
 
 	for(var i = 0; i < enrolled.length; i++) {
 		newElement +=
-			'<div class=\'student\';>' +
+			'<div class=\'student\' id = \'enrolled[i].fname\'>' +
 				'<button style=\'button;\' id = "update" onclick = "updateObject()">' + "Update" + '</button>' +
 				'<button style=\'button; margin-right: 9px;\' id = "delete" onclick = "deleteObject()">' + "Delete" + '</button>' +
 				enrolled[i].fname + ' ' + enrolled[i].lname + ', ' + enrolled[i].email + ', ' + enrolled[i].major + ', ' + enrolled[i].advisor +
 			'</div>';
-
 	}
 
 	var source = document.getElementById('enrollment');
@@ -36,16 +35,17 @@ function displayObject() {
 }
 
 function clearInput() {
-
 	for(i = 0; i < idArray.length; i++) {
-
 		document.getElementById(idArray[i]).value = '';
 	}
 }
 
 function updateObject() {
-
-	console.log("running updateObject()");
+	document.getElementById(idArray[0]).value = 'Dustin';
+	document.getElementById(idArray[1]).value = 'Farnsworth';
+	document.getElementById(idArray[2]).value = 'dfarnswo@wvup.edu';
+	document.getElementById(idArray[3]).value = 'CS';
+	document.getElementById(idArray[4]).value = 'Almond';
 }
 
 function deleteObject(elementValue) {
