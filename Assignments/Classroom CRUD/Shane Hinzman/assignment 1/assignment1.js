@@ -10,10 +10,10 @@ function add(){
 	alert("First name: " + student.fName + "    Last name: " + student.lName +"    Email: " + student.email);
 }
 function deleteStudent(){
-	var dStudent = document.getElementById("delete").value;
 	for (var i = 0; i < students.length; i++) {
-		if (dstudent == students[i].email){
-			students.remove(i);
+		if (document.getElementById("delete").value == students[i].email){
+			students.splice(i, 1);
 		}
-	}
+	};
+	console.log(students);
 }
