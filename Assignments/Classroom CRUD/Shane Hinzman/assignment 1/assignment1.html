@@ -21,22 +21,12 @@
 			    <label for="email">Email:</label>
 			    <input class="form-control" id="email" placeholder="Enter Email">
 			  </div>
-			  <button class="btn btn-default" onclick="addRow(); return false;">add</button>
-
-			  <div class="form-group" style="border-top: solid grey 1px; margin-top:10px; margin-bottom: 10px;">
+			  <button class="btn btn-default" onclick="add();return false;">add</button>
+			  <div class="form-group">
 			    <label for="delete">Delete:</label>
 			    <input class="form-control" id="delete" placeholder="Enter Student Email">
 			  </div>
-			  <button class="btn btn-default" onclick="deleteStudent(); return false;" >delete</button>
-
-			  <table id="myTableData" cellpadding="2" class="table table-bordered" style="margin-top: 10px;">
-				    <tr>
-				        <td>&nbsp;</td>
-				        <td><b>First Name</b></td>
-				        <td><b>Last Name</b></td>
-				        <td><b>Age</b></td>
-				    </tr>
-				</table>
+			  <button class="btn btn-default" onclick="deleteStudent();return false;">delete</button>
 			</form>
 		</div>
 		<div class="col-md-2"></div>
