@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="scripts.js"></script>
 <style type="text/css">
 	body {
 		text-align: center
 	}
 </style>
-<script> 
-var listOfStudents = []; 
-</script>
 </head>
 <body>
 
 <h2>CRUD Assignment - Anthony Cobranchi</h2>
 
-<p>Please enter your information below.</p>
+<form>
+First Name:<br>
+<input type="text" id="firstName" required><br>
+Last Name:<br>
+<input type="text" id="lastName" required><br>
+Age: <br>
+<input type="number" id="age" required><br>
+Email: <br>
+<input type="email" id="email" required><br>
+Major: <br>
+<input type="text" id="major" required><br>
+<input type="button" onclick="createStudent()" value="Submit Your Information">  
+
+<!--<p>Please enter your information below.</p>
 <p>First Name<input type="text" id="firstName" value=""></p>
-<p>Last Name<input type="text" id="lastNane" value=""></p>
+<p>Last Name<input type="text" id="lastName" value=""></p>
 <p>Age<input type="text" id="age" value=""></p>
 <p>Email<input type="text" id="email" value=""></p>
-<p>Major<input type="text" id="major" value=""></p>
+<p>Major<input type="text" id="major" value=""></p> -->
 
 
-<button onclick="submitInfo()">Submit Your Information</button>
-<div id="rosterArea">Why can't I get this to work for me?</div>
-<!--I cannot figure out why this will not even create a signle student object-->
-<script> 
-function submitInfo(){
-	var newStudent = new Object(); 
-	newStudent.FName = document.getElementById("firstName").value;
-	newStudent.LName = document.getElementById("lastName").value;
-	newStudent.Age = document.getElementById("age").value;
-	newStudent.Email = document.getElementById("email").value;
-	newStudent.Major = document.getElementById("major").value;
-	listOfStudents.push(newStudent);
-	var roster = "";
-    var i;
-    for (i = 0; i < listOfStudents.length; i++) 
-    { 
-        roster = " "+listOfStudents[i].FName+"  &nbsp; "+listOfStudents[i].LName+"     &nbsp;  "+listOfStudents[i].Age+"   &nbsp; "+listOfStudents[i].Email+"  &nbsp; "+listOfStudents[i].Major;
-	}
-	 document.getElementById("rosterArea").innerHTML = roster;
-}
+<!--<button onclick="createStudent()">Submit Your Information</button> -->
+<div id="rosterArea"></div>
+
 
 </script>
 </body>
