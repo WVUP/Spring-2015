@@ -21,7 +21,7 @@
 			    <label for="email">Email:</label>
 			    <input class="form-control" id="email" placeholder="Enter Email">
 			  </div>
-			  <button class="btn btn-default" onclick="addRow(); return false;">add</button>
+			  <button class="btn btn-default" onclick="addStudent(); return false;">add</button>
 
 			  <div class="form-group" style="border-top: solid grey 1px; margin-top:10px; margin-bottom: 10px;">
 			    <label for="delete">Delete:</label>
@@ -30,12 +30,17 @@
 			  <button class="btn btn-default" onclick="deleteStudent(); return false;" >delete</button>
 
 			  <table id="myTableData" cellpadding="2" class="table table-bordered" style="margin-top: 10px;">
-				    <tr>
+			  	<thead>
+			  		<tr>
 				        <td>&nbsp;</td>
 				        <td><b>First Name</b></td>
 				        <td><b>Last Name</b></td>
-				        <td><b>Age</b></td>
+				        <td><b>Email</b></td>
 				    </tr>
+			  	</thead>
+			  	<tbody id='cool'>
+			  	</tbody>
+				    
 				</table>
 			</form>
 		</div>
