@@ -45,7 +45,7 @@ function add(){
    					Class Year: <input type="text" name="classYear" /><br />
    		
 
-   <input type="submit" onClick="myFunctionS" value="Submit" />
+   <input type="button" onClick="myFunctionS" value="Submit" />
    <input type="submit" value="Update" onClick="add()" />
    <input type="submit" value="Delete" onclick="add()" />
    <input type="button" onClick="myFunction()" value="Reset">
@@ -58,22 +58,22 @@ function add(){
 <div class="33" style="margin-left: 550px">
 	
 	<table>
-		<thead>
+	
 			<tr>
-				<td> First Name: </td>
-				<td> Last Name: </td>
-				<td> Email: </td>
-				<td> Major: </td>
-				<td> G.P.A: </td>
-				<td> Class Year: </td>
+				<tr> <td> First Name: <input type="text" id="firstname"> </td></tr>
+				<tr> <td> Last Name: <input type="text" id="firstname"> </td></tr>
+				<tr> <td> Email: <input type="text" id="firstname"></td></tr>
+				<tr> <td> Major: <input type="text" id="firstname"></td></tr>
+				<tr> <td> G.P.A: <input type="text" id="firstname"></td></tr>
+				<tr> <td> Class Year: <input type="text" id="firstname"></td></tr>
 
-				
+				<tr><td><button onClick="addStudents()">Add Student</button></td></tr>
 			</tr>
-		</thead>
+	
 		
-		<tbody id="InjectHere">
+		
 			
-		</tbody>
+		
 	</table>
 
 	<script type="text/javascript"> 
@@ -94,30 +94,20 @@ function add(){
    				 var i;
     			for (i = 0; i < students.length; i++) 
     { 
-      			text += " "+students[i].firstname+" "+students[i].lastname+" "+students[i].email+" "+students[i].major+" "+students[i].gpa+" "+students[i].advisor+"<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"UpdateStudent("+i+")>Update Student</button><br>";
+      			text += " "+students[i].firstname+" "+students[i].lastname+" "+students[i].email+" "+students[i].major+" "+students[i].gpa+" "+students[i].classYear+"<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"UpdateStudent("+i+")>Update Student</button><br>";
   }
     document.getElementById("list").innerHTML = text;
 }
+
+
+
 
 
 			
 
 
 	</script>
-	<div> 
 
-	<form id="frm1" action="">
-First name: <input type="text" name="fname"><br>
-Last name: <input type="text" name="lname"><br><br>
-<input type="button" onclick="myFunction()" value="Submit">
-</form>
-
-<script>
-function myFunction() {
-    document.getElementById("frm1").submit();
-}
-</script>
-</div>
 
 
 <meta charset="UTF-8">
@@ -131,13 +121,16 @@ function showInput() {
   </script>
 
 <form>
-<label><b>Enter a Message</b></label>
+<label> <b>Enter first name of student: </b> </label>
+<input type="text" name="message" id="user_input"> <br>
+
+<label> <b> Enter last name of student: </b> </label>
 <input type="text" name="message" id="user_input">
 </form>
 
-<input type="submit" onclick="showInput();"><br />
+<input type="submit" onclick="showInput();"><br/>
 <label> Your input: </label>
-<p><span id='display'></span> </p>
+<p><span style=" font-size: 15pt" id='display'></span> </p>
 	
 	
 
