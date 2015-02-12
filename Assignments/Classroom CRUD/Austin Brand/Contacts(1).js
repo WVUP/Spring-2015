@@ -5,6 +5,8 @@ var contacts = [
 		lastName: 'Brand',
 		email: 'abrand@wvup.edu',
 		major: 'Software Engineering',
+		GPA: '3.5',
+		classYear: 'Sophomore',
 	},
 	{ 
 
@@ -12,6 +14,8 @@ var contacts = [
 		lastName: 'Rogers',
 		email: 'capAmerica@avengers.com',
 		major: 'Saving lives',
+		GPA: '4.0',
+		classYear: 'Graduated',
 	}
 ];
 
@@ -26,6 +30,9 @@ function init () {
 		html += '<td>' + contacts[i].firstName + '</td>';
 		html += '<td>' + contacts[i].lastName + '</td>';
 		html += '<td>' + contacts[i].email + '</td>';
+		html += '<td>' + contacts[i].major + '</td>';
+		html += '<td>' + contacts[i].GPA + '</td>';
+		html += '<td>' + contacts[i].classYear + '</td>';
 
 		html += '</tr>';
 	}
@@ -66,4 +73,9 @@ function add () {
 
 	init();
 	console.log('re ran init');
+}
+
+function myFunction()
+{
+	document.getElementById("form1").reset();
 }

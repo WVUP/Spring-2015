@@ -25,15 +25,20 @@ function add(){
 
 </head>
 <body onload="init()">
-		<div class="33"> 	
-			<form name="myForm" onsubmit="validateForm()">
-   					First Name: <input type="text" name="firstName" /><br />
-   					Last Name: <input type="text" name="lastName" /><br />
-   					Email: <input type="text" name="email" /><br />
-   					Major: <input type="text" name="major" /><br />
-   <input type="submit" value="Submit" onClick="add()" />
+		<div id="list" class="33"> 	
+			<form id="form1" name="myForm" onsubmit="validateForm()">
+   					First Name: <input type="text" id="firstName" name="firstName" /><br />
+   					Last Name: 	<input type="text" name="lastName" /><br />
+   					Email: 		<input type="text" name="email" /><br />
+   					Major: 		<input type="text" name="major" /><br />
+   					G.P.A.: 	<input type="text" name="GPA" /><br />
+   					Class Year: <input type="text" name="classYear" /><br />
+   		
+
+   <input type="submit" value="Submit" onClick="add()" placeholder="Add Contact" />
    <input type="submit" value="Update" onClick="add()" />
    <input type="submit" value="Delete" onclick="add()" />
+   <input type="button" onClick="myFunction()" value="Reset">
  			</form>
 
 
@@ -45,9 +50,12 @@ function add(){
 	<table>
 		<thead>
 			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Email</th>
+				<td> First Name: </td>
+				<td> Last Name: </td>
+				<td> Email: </td>
+				<td> Major: </td>
+				<td> G.P.A: </td>
+				<td> Class Year: </td>
 
 				
 			</tr>
@@ -57,6 +65,49 @@ function add(){
 			
 		</tbody>
 	</table>
+
+	<script type="text/javascript"> 
+			var students = [];
+			function addStudents() 
+			{
+				var student = new Object();
+				student.firstName = document.getElementById("firstName").value;
+				student.lastName = document.getElementById("lastName").value;
+				student.email = document.getElementById("email").value;
+				student.major = document.getElementById("major").value;
+				student.GPA = document.getElementById("GPA").value;
+				student.classYear = document.getElementById("classYear").value;
+
+				students.push(student);
+
+				var text = "";
+   				 var i;
+    			for (i = 0; i < students.length; i++) 
+    { 
+      			text += " "+students[i].firstname+" "+students[i].lastname+" "+students[i].email+" "+students[i].major+" "+students[i].gpa+" "+students[i].advisor+"<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"UpdateStudent("+i+")>Update Student</button><br>";
+  }
+    document.getElementById("list").innerHTML = text;
+}
+
+
+			
+
+
+	</script>
+	<div> 
+
+	<form id="frm1" action="">
+First name: <input type="text" name="fname"><br>
+Last name: <input type="text" name="lname"><br><br>
+<input type="button" onclick="myFunction()" value="Submit">
+</form>
+
+<script>
+function myFunction() {
+    document.getElementById("frm1").submit();
+}
+</script>
+</div>
 
 
 	
