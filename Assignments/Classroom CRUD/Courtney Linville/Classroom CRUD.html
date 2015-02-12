@@ -7,12 +7,12 @@
 <body><center>
 	<p><b>Please enter the student's first name, last name, email, major, grade point average, and advisor.</b></p><br>
   <table>
-<tr><td>First Name: </td><td><input type="text" id="firstname"></td></tr>
-<tr><td>Last Name: </td><td><input type="text" id="lastname"></td></tr>
-<tr><td>Email: </td><td><input type="text" id="email"></td></tr>
-<tr><td>Major: </td><td><input type="text" id="major"></td></tr>
-<tr><td>GPA: </td><td><input type="text" id="gpa"></td></tr>
-<tr><td>Advisor: </td><td><input type="text" id="advisor"></td></tr>
+<tr><td>First Name: </td><td><input type="text" id="firstname" value placeholder= "First Name" required></td></tr>
+<tr><td>Last Name: </td><td><input type="text" id="lastname" value placeholder= "Last Name" required></td></tr>
+<tr><td>Email: </td><td><input type="text" id="email" value placeholder= "Email" required></td></tr>
+<tr><td>Major: </td><td><input type="text" id="major" value placeholder= "Major" required></td></tr>
+<tr><td>GPA: </td><td><input type="text" id="gpa" value placeholder= "GPA" required></td></tr>
+<tr><td>Advisor: </td><td><input type="text" id="advisor" value placeholder= "Advisor" required></td></tr>
 
 <tr><td><button onclick="AddStudent()">Add Student</button></td></tr>
 </table>
@@ -30,6 +30,7 @@ function AddStudent() {
     student.gpa =  document.getElementById("gpa").value;
     student.advisor =  document.getElementById("advisor").value;
     students.push(student)
+    console.log(students)
     var text = "";
     var i;
     for (i = 0; i < students.length; i++) 
@@ -86,6 +87,7 @@ function DeleteStudent(x) {
   }
     document.getElementById("list").innerHTML = text;
 }
+
 
 </script>
 </body>
