@@ -22,9 +22,8 @@ function addRow() {
 	    row.insertCell(3).innerHTML= students[i].email
 	};
 	console.log(students);
-         
- 
 }
+
 function deleteStudent(){
 	for (var i = 0; i < students.length; i++) {
 		if (document.getElementById("delete").value == students[i].email){
