@@ -9,7 +9,7 @@ function createStudent(){
 	newStudent.Email = document.getElementById("email").value;
 	newStudent.Major = document.getElementById("major").value;
 	listOfStudents.push(newStudent);
-	console.log(createStudent)
+	
 	var roster = "";
     var i;
     for (i = 0; i < listOfStudents.length; i++) 
@@ -18,12 +18,13 @@ function createStudent(){
         "<button onclick="+"update("+i+")"+">Update Student</button><button onclick="+"deleteStudent("+i+")>Delete Student</button><br>";
 	}
 	 document.getElementById("rosterArea").innerHTML = roster;
+	 console.log(createStudent)
 
 }
 
 
-function deleteStudent(x){
-	listOfStudents.splice(x, 1);
+function deleteStudent(placeholder){
+	listOfStudents.splice(placeholder, 1);
 	var roster = "";
 	var i;
 	for (i = 0; i < listOfStudents.length; i++)
@@ -32,4 +33,7 @@ function deleteStudent(x){
         "<button onclick="+"update("+i+")"+">Update Student</button><button onclick="+"deleteStudent("+i+")>Delete Student</button><br>";
 	}
 	 document.getElementById("rosterArea").innerHTML = roster;
+	 console.log(deleteStudent);
+
 }
+

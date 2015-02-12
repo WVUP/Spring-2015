@@ -12,7 +12,7 @@
 
 <h2>CRUD Assignment - Anthony Cobranchi</h2>
 
-<form>
+<form name="myForm" onsubmit="return validateForm()">
 First Name:<br>
 <input type="text" id="firstName" required><br>
 Last Name:<br>
@@ -23,21 +23,24 @@ Email: <br>
 <input type="email" id="email" required><br>
 Major: <br>
 <input type="text" id="major" required><br>
-<input type="button" onclick="createStudent()" value="Submit Your Information">  
+<input type="submit" value="Submit">
+</form>
 
-<!--<p>Please enter your information below.</p>
+<div id="rosterArea"></div>
+
+<!-- Old code, keeping so that I can see how I changed things-->
+
+<!--<input type="button" onclick="createStudent()" value="Submit Your Information">
+<p>Please enter your information below.</p>
 <p>First Name<input type="text" id="firstName" value=""></p>
 <p>Last Name<input type="text" id="lastName" value=""></p>
 <p>Age<input type="text" id="age" value=""></p>
 <p>Email<input type="text" id="email" value=""></p>
-<p>Major<input type="text" id="major" value=""></p> -->
+<p>Major<input type="text" id="major" value=""></p>
+<button onclick="createStudent()">Submit Your Information</button> -->
 
 
-<!--<button onclick="createStudent()">Submit Your Information</button> -->
-<div id="rosterArea"></div>
 
-
-</script>
 </body>
 </html>
 
