@@ -6,22 +6,22 @@
 	
 	
 	<head lang="en">
-<meta charset="UTF-8">
-<script language="JavaScript">
-function showInput() {
+	<meta charset="UTF-8">
+	<script language="JavaScript">
+	function showInput() {
     var message_entered =  document.getElementById("user_input").value;
 
     document.getElementById('display').innerHTML = message_entered;
 }
 
-  </script>
+  	</script>
 
-<script type="text/javascript">
-function add(){
+	<script type="text/javascript">
+	function add(){
 
 	alert(fname.value);
 }
-  function validateForm() {
+  	function validateForm() {
     if (document.myForm.firstName.value == "" || document.myForm.lastName.value == "" || document.myForm.email.value == "" || document.myForm.major.value == "") { 
       alert("You have not filled in all the required fields!");
     }
@@ -37,7 +37,7 @@ function add(){
 </head>
 <body onload="init()">
 		<div id="list" class="33"> 	
-			<form id="form1" name="myForm" onsubmit="validateForm()">
+			<form name="myForm" onsubmit="validateForm()">
    					First Name: <input type="text" id="firstName" name="firstName" /><br />
    					Last Name: 	<input type="text" name="lastName" /><br />
    					Email: 		<input type="text" name="email" /><br />
@@ -52,6 +52,7 @@ function add(){
    <input type="button" onClick="myFunction()" value="Reset">
  			</form>
 
+ 			<p style="color-white"> Update and Delete work as a submit, clicking those also causes validation to work </p>
 
 		</div>
 
@@ -77,7 +78,7 @@ function add(){
 		
 	</table>
 <br>
-	<script type="text/javascript"> 
+	// <script type="text/javascript"> 
 			var students = [];
 			function addStudents() 
 			{
@@ -97,7 +98,7 @@ function add(){
     { 
       			text += " "+students[i].firstname+" "+students[i].lastname+" "+students[i].email+" "+students[i].major+" "+students[i].gpa+" "+students[i].classYear+"<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"UpdateStudent("+i+")>Update Student</button><br>";
   }
-    document.getElementById("list").innerHTML = text;
+    		document.getElementById("list").innerHTML = text;
 }
 
 
@@ -146,7 +147,7 @@ function showInput() {
 </thead>
 
 </table>
-<p><span style=" font-size: 15pt" id='display'></span> </p>
+<p> <span style=" font-size: 15pt" id='display'> </span> </p>
 	
 
 
