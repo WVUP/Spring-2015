@@ -96,7 +96,7 @@ function btnExample () {
 	}
 
 	// Build out a string to show to our user
-	var _text = (counter === 0) ? 'Todays date: ' : 'You need the date a ' + (currentRequest)  + suffix +  ' time.';
+	var _text = (counter === 0) ? 'Todays date: ' : 'You need the date a ' + (counter + 1)  + suffix +  ' time.';
 	
 	// Increment our counter variable to persist the number of clicks
 	counter++;

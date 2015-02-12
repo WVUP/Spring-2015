@@ -1,14 +1,9 @@
 .student{
-	float: left;
 	background-color: black;
 	color: white;
-	height: relative;
 	font-size: 12px;
 	padding: 12px;
-	padding-left: 34px;
 	padding-right: 34px;
-	margin-right: 9px;
-	margin-left: 9px;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 

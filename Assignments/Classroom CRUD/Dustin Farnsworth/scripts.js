@@ -1,107 +1,51 @@
-// for updates create prepopulated input elements or repopulate originals?
+var enrolled = [];
 
-// ??????????? figure out a way to itterate through dom to get any number of input values for attributes ?????????
+var idArray = ["first", "last", "email", "major", "advisor"];
 
-// Declares input attributes as an object
-var sourceObject = ["first", "email", "major", "advisor"];
+function buildObject() {
+	var studentObject = {
+		fname: document.getElementById("first").value,
+		lname: document.getElementById("last").value,
+		email: document.getElementById("email").value,
+		major: document.getElementById("major").value,
+		advisor: document.getElementById("advisor").value
+	};
 
-// Builds object of type student
-function buildObject(type) {
-	
-	type = [];
-	
-	// Adds atributes to student object
-	for(i = 0; i < sourceObject.length; i++) {
-		type.push(document.getElementById(sourceObject[i]).value);
-	}
-
-	displayObject(type);
+	enrolled.push(studentObject);
+	console.log("student:", studentObject);
+	console.log("enrolled", enrolled);
+	displayObject(enrolled);
 }
 
-// displayObject(object, source)
-function displayObject(object) {
+function displayObject() {
+	var newElement = '';
 
-	for(i = 0; i < object.length; i++) {
+	for(var i = 0; i < enrolled.length; i++) {
+		newElement +=
+			'<div class=\'student\';>' +
+				'<button style=\'button\';>' + "Update" + '</button>' +
+				'<button style=\'button; margin-right: 9px\'>' + "Delete" + '</button>' +
+				enrolled[i].fname + ' ' + enrolled[i].lname + ', ' + enrolled[i].email + ', ' + enrolled[i].major + ', ' + enrolled[i].advisor +
+			'</div>';
 
-		var newElement = document.createElement("div");
-
-		newElement.className = "student";
-
-		newElement.appendChild(document.createTextNode(object[i]));
-
-		document.getElementById("enrollment").appendChild(newElement);
 	}
 
+	var source = document.getElementById('enrollment');
+	source.innerHTML = newElement;
 	clearInput();
-
 }
 
-function clearInput(element) {
+function clearInput() {
 
-	for(i = 0; i < sourceObject.length; i++) {
+	for(i = 0; i < idArray.length; i++) {
 
-		document.getElementById(sourceObject[i]).value = '';
-
-	}
-
-}
-
-
-/*
-function addStudent() {
-
-	buildStudent( "first" );
-
-	buildStudent( "email" );
-
-	buildStudent( "major" );
-
-	buildStudent( "advisor" );
-}
-
-
-
-
-function addStudent(){
-	stu = [];
-
-	stu.push(document.getElementById("first").value);
-	stu.push(document.getElementById("email").value);
-	stu.push(document.getElementById("major").value);
-	stu.push(document.getElementById("advisor").value);
-
-	var newElement = document.createElement("div");
-
-	newElement.className = "student";
-
-	newElement.appendChild(document.createTextNode(stu));
-
-	document.getElementById("enrollment").appendChild(newElement);
-
-	document.getElementById("first").value = '';
-	document.getElementById("email").value = '';
-	document.getElementById("major").value = '';
-	document.getElementById("advisor").value = '';
-}
-
-
-
-var students = [];
-
-function listStudents(){
-	var html = '';
-
-	for(var i = 0; i < students.length; i++){
-		studentElement +=
-		'<div>' + 
+		document.getElementById(idArray[i]).value = '';
 	}
 }
 
-function addStudent(){
-	var newStudent = document.getElementById("studen").value;
-	var newElement = document.createElement("div");
-	newElement.className = "student";
-	newElement.appendChild(document.createTextNode(students));
-	document.getElementById("enrollment").appendChild(newElement);
+function deleteObject() {
+	enrolled = enrolled.filter(function (element) {
+			return element.fname !== "";
+		}
+	);
 }
-*/
