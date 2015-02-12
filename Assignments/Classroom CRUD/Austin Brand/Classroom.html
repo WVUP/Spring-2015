@@ -73,10 +73,10 @@ function add(){
 	
 		
 		
-			
+				
 		
 	</table>
-
+<br>
 	<script type="text/javascript"> 
 			var students = [];
 			function addStudents() 
@@ -103,7 +103,6 @@ function add(){
 
 
 
-
 			
 
 
@@ -119,9 +118,11 @@ function showInput() {
     document.getElementById('display').innerHTML = message_entered;
 }
 
+
+
   </script>
 
-<form>
+<form id="form1">
 <label> <b>Enter first name of student: </b> </label>
 <input type="text" name="message" id="user_input"> <br>
 
@@ -129,7 +130,9 @@ function showInput() {
 <input type="text" name="message" id="user_input">
 </form>
 
+
 <input type="submit" onclick="showInput();"><br/>
+<input type="button" onClick="myFunction()" value="Reset"> <br>
 <label> Your input: </label> <br>
 <table>
 <thead>
@@ -145,7 +148,7 @@ function showInput() {
 </table>
 <p><span style=" font-size: 15pt" id='display'></span> </p>
 	
-	
+
 
 
 
