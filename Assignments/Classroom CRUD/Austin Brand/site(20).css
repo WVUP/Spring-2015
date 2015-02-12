@@ -23,8 +23,15 @@ table
 	width:100%;
 }
 
+div
+{
+	position: absolute;
+}
 
-
+form
+{
+	color: white;
+}
 
 span 
 {
