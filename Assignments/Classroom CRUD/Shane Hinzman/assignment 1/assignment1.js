@@ -10,13 +10,13 @@ function addStudent(){
 }
 
 function addRow() {
- var table = document.getElementById("cool");
+ var table = document.getElementById("insertTable");
  table.innerHTML = '';
 	for (var i = 0; i < students.length; i++) {
 	    var rowCount = table.rows.length;
 	    var row = table.insertRow(rowCount);
 	 	
-	    row.insertCell(0).innerHTML= '';
+	    row.insertCell(0).innerHTML= '<input type="button" value="Update" onClick="Javacsript:updateRow(this)">';
 	    row.insertCell(1).innerHTML= students[i].fName
 	    row.insertCell(2).innerHTML= students[i].lName
 	    row.insertCell(3).innerHTML= students[i].email
@@ -29,9 +29,13 @@ function deleteStudent(){
 		if (document.getElementById("delete").value == students[i].email){
 			students.splice(i, 1);
 			    var index = students[i];
-			    var table = document.getElementById("cool");
+			    var table = document.getElementById("insertTable");
 			    table.deleteRow(index);
 		}
 	};
 	console.log(students);
+}
+
+function updateStudent(student){
+
 }
