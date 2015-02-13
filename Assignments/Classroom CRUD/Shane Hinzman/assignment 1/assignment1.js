@@ -37,5 +37,5 @@ function deleteStudent(){
 }
 
 function updateStudent(student){
-
+	alert("ain't no body got time fo dat");
 }
