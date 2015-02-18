@@ -14,28 +14,34 @@ angular.module('app.controllers', [])
     }])
 
     .controller('StudentsHandlerCtrl', ['$scope', '$location', '$window', function ($scope, $location, $window) {
-        $scope.students = GetStorage();
-
-        $scope.saveStudent = function (s) {
-            $scope.students.push(s);
-            $scope.student = '';
-            $window.sessionStorage.setItem($scope.students, JSON.stringify(s))
-            console.log($scope.students)
+        var students = sessionStorage.getItem("students");
+        $scope.students = JSON.parse(students);
+        if ($scope.students == null) {
+            $scope.students = [];
+        }
+            
+        $scope.saveStudent = function (s, studentForm) {
+            if (studentForm.$valid) {
+                $scope.students.push(s);
+                SetStorage();
+                $scope.student = '';
+            } else {
+                $('#validation-msg').css("display", "block");
+            };
         }
 
         $scope.deleteStudent = function (s) {
             var index = $scope.students.indexOf(s)
             $scope.students.splice(index, 1)
-            $window.sessionStorage.removeItem(s)
-            console.log($scope.students)
+            SetStorage();
         }
 
-        function GetStorage() {
-            var json = [];
-            $.each($window.sessionStorage, function (x, y) {
-                json.push(angular.fromJson(y));
-            });
-            return json;
+        $scope.editStudent = function (s) {
+            SetStorage();
+        }
+
+        function SetStorage() {
+            $window.sessionStorage.setItem('students', JSON.stringify($scope.students));
         }
     }])
 

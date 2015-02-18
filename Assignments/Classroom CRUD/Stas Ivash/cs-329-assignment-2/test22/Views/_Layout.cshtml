@@ -7,6 +7,9 @@
     <meta name="description" content="@PageData["description"]">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     @Styles.Render("~/content/css/app")
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+    @Scripts.Render("~/js/app")
 </head>
 <body>
     <!--[if lt IE 9]>
@@ -36,9 +39,6 @@
     <footer>
         <div class="ft-logo"></div>
     </footer>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
-    @Scripts.Render("~/js/app")
     @*
         Google Analytics
         ----------------

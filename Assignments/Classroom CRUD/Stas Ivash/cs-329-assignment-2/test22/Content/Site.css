@@ -161,7 +161,7 @@ border-top:thin solid #333;
 border-bottom:thin solid #333;
 height:250px;
 z-index:99999;
-width:105%;
+width:100%;
 position:absolute;
 overflow-y:auto;
 }
@@ -173,6 +173,7 @@ width: 120px;
 .std ul li{
 overflow:hidden;
 width:120px;
+line-height:3em;
 }
 .vl-fail{
 color:lime;
@@ -228,7 +229,7 @@ display:block;
 text-align:center;
 }
 .cta{
-width:1000px;
+width:1200px;
 height:600px;
 position:relative;
 margin:0 auto;
@@ -285,4 +286,20 @@ font-weight:bold;
 .angular-two-way-labels{
     float: left;
     padding-left: 10px;
+}
+.form-input > .ng-invalid-pattern{
+    background-color: pink;
+}
+.form-row > label >.ng-invalid-required{
+    color: red;
+}
+.maroon{
+    color:maroon
+}
+.requiredCustom{
+    padding-left:10px;
+}
+.validmsg{
+    display:none;
+    color: maroon;
 }
