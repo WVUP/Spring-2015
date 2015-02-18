@@ -1,0 +1,90 @@
+﻿<div ng-controller="StudentsHandlerCtrl">
+    <div class="container">
+        <div class="form-content">
+            <div class="form">
+                <form id="form">
+                    <div class="form-row">
+                        <label for="Id"><span class="required">*</span>Student Id:</label>
+                        <div class="angular-two-way-labels">{{student.id}}</div>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input ng-model="student.id" placeholder="123456789" type="text" id="Id" class="inp-b" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="Major"><span class="required">*</span>Major:</label>
+                        <div class="angular-two-way-labels">{{student.major}}</div>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input ng-model="student.major" placeholder="Software Engineering" type="text" id="major" class="inp-b" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="fName"><span class="required">*</span>First Name:</label>
+                        <div class="angular-two-way-labels">{{student.fName}}</div>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input ng-model="student.fName" placeholder="Sylvester" type="text" id="fName" class="inp-b" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="lName"><span class="required">*</span>Last Name:</label>
+                        <div class="angular-two-way-labels">{{student.lName}}</div>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input ng-model="student.lName" placeholder="Stallone" type="text" id="lName" class="inp-b" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="Phone"><span class="required">*</span>Phone:</label>
+                        <div class="angular-two-way-labels">{{student.phone}}</div>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input ng-model="student.phone" placeholder="123123-1234" type="text" id="Phone" class="inp-b" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="Email"><span class="required">*</span>Email:</label>
+                        <div class="angular-two-way-labels">{{student.email}}</div>
+                        <div class="form-field">
+                            <span class="form-input">
+                                <input ng-model="student.email" placeholder="stallone@example.com" type="text" id="Email" class="inp-b" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="cntr-row">
+                        <p ng-click="saveStudent(student)" id=" save" class=" btn-mnu">
+                            <span class="icono-cross"></span>
+                        </p>
+                    </div>
+                    <div id="validation-msg"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="image-divider">
+        <div class="cta">
+            <div id="students" class="std">
+                <ul ng-repeat="s in students track by $index">
+                    <li>{{s.id}}</li>
+                    <li>{{s.major}}</li>
+                    <li>{{s.fName}}</li>
+                    <li>{{s.lName}}</li>
+                    <li>{{s.phone}}</li>
+                    <li>{{s.email}}</li>
+                    <li ng-click="deleteStudent(s)"><span class="icono-trash"></span></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="empty-for-now">
+        <div class="circles" id="c-co">
+        </div>
+    </div>
+</div>
