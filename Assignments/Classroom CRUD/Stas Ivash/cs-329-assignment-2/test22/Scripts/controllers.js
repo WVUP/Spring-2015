@@ -87,12 +87,11 @@ angular.module('app.controllers', [])
             }];
             SetStorage();
         }
+
+        //getting error
+        //https://github.com/angular/angular.js/issues/6154
         $scope.getStyle = function () {
-            var style = {
-                'top': GenerateTopMargin(),
-                'left': GenerateLeftMargin()
-            };
-            return style;
+            return { top: GenerateTopMargin(), left: GenerateLeftMargin() }
         }
             
         $scope.saveStudent = function (s, studentForm) {
