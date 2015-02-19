@@ -62,9 +62,9 @@
                             <span class="icono-cross" ng-click="editStudent(s)"></span>
                         </p>
                     </div>
-                    
+
                     <div ng-if='studentForm.$invalid' ng-messages='studentForm.$error' id="validation-msg" class="validmsg">
-                        <div ng-message='required'>Invalid form. Please check that all required fields are present and filled in correcltly!</div>
+                        <div ng-message='required'>Invalid form. Please check that all required fields are present and filled in correctly!</div>
                     </div>
                 </form>
             </div>
@@ -79,7 +79,7 @@
                             {{s.id}}
                         </div>
                         <input ng-show="editorEnabled" ng-model="s.id" />
-                     </li>
+                    </li>
                     <li>
                         <div ng-hide="editorEnabled">
                             {{s.major}}
@@ -102,13 +102,13 @@
                         <div ng-hide="editorEnabled">
                             {{s.phone}}
                         </div>
-                        <input ng-show="editorEnabled" ng-model="s.phone" /> 
+                        <input ng-show="editorEnabled" ng-model="s.phone" />
                     </li>
                     <li>
                         <div ng-hide="editorEnabled">
                             {{s.email}}
                         </div>
-                       <input ng-show="editorEnabled" ng-model="s.email" />
+                        <input ng-show="editorEnabled" ng-model="s.email" />
                     </li>
                     <li style="float:right">
                         <span class="icono-trash" ng-click="deleteStudent(s)"></span>
@@ -121,6 +121,9 @@
     </div>
     <div class="empty-for-now">
         <div class="circles" id="c-co">
+            <div ng-repeat="s in students track by $index" class="circle" ng-style="getStyle()">
+                <span>{{s.fName.charAt(0).toUpperCase() + s.lName.charAt(0).toUpperCase()}}</span>
+            </div>
         </div>
     </div>
 </div>

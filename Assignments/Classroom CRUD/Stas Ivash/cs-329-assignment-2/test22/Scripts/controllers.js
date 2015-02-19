@@ -17,7 +17,82 @@ angular.module('app.controllers', [])
         var students = sessionStorage.getItem("students");
         $scope.students = JSON.parse(students);
         if ($scope.students == null) {
-            $scope.students = [];
+            //initial data to test
+            $scope.students = [{
+                id: 345632145,
+                major: 'software',
+                fName: 'Santi',
+                lName: 'Cazorla',
+                phone: '3034567854',
+                email: 'scazorla@example.com',
+            },
+            {
+                id: 123456789,
+                major: 'test',
+                fName: 'Vladimir',
+                lName: 'Putin',
+                phone: '3044827421',
+                email: 'vputin@example.com',
+            },
+            
+            {
+                id: 345632145,
+                major: 'software',
+                fName: 'Santi',
+                lName: 'Cazorla',
+                phone: '3034567854',
+                email: 'scazorla@example.com',
+            },
+            {
+                id: 123456789,
+                major: 'test',
+                fName: 'Vladimir',
+                lName: 'Putin',
+                phone: '3044827421',
+                email: 'vputin@example.com',
+            },
+            {
+                id: 345632145,
+                major: 'software',
+                fName: 'Santi',
+                lName: 'Cazorla',
+                phone: '3034567854',
+                email: 'scazorla@example.com',
+                circle: "SC"
+            },
+            {
+                id: 123456789,
+                major: 'test',
+                fName: 'Vladimir',
+                lName: 'Putin',
+                phone: '3044827421',
+                email: 'vputin@example.com',
+            },
+
+            {
+                id: 345632145,
+                major: 'software',
+                fName: 'Santi',
+                lName: 'Cazorla',
+                phone: '3034567854',
+                email: 'scazorla@example.com',
+            },
+            {
+                id: 123456789,
+                major: 'test',
+                fName: 'Vladimir',
+                lName: 'Putin',
+                phone: '3044827421',
+                email: 'vputin@example.com',
+            }];
+            SetStorage();
+        }
+        $scope.getStyle = function () {
+            var style = {
+                'top': GenerateTopMargin(),
+                'left': GenerateLeftMargin()
+            };
+            return style;
         }
             
         $scope.saveStudent = function (s, studentForm) {
@@ -25,6 +100,7 @@ angular.module('app.controllers', [])
                 $scope.students.push(s);
                 SetStorage();
                 $scope.student = '';
+                ScrollDown('#students')
             } else {
                 $('#validation-msg').css("display", "block");
             };
@@ -40,9 +116,22 @@ angular.module('app.controllers', [])
             SetStorage();
         }
 
+        function ScrollDown(folks) {
+            $(folks).animate({ scrollTop: $(folks).prop('scrollHeight') }, 1500);
+        }
+
+        function GenerateTopMargin() {
+            return Math.floor(Math.random() * (1400 - 890 + 1) + 890) + 'px';
+        }
+
+        function GenerateLeftMargin() {
+            return Math.floor(Math.random() * (600 - 0 + 200) + 200) + 'px';
+        }
+
         function SetStorage() {
             $window.sessionStorage.setItem('students', JSON.stringify($scope.students));
         }
+
     }])
 
     // Path: /error/404
