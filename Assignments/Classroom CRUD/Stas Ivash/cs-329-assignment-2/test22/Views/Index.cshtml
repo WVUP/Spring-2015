@@ -121,7 +121,7 @@
     </div>
     <div class="empty-for-now">
         <div class="circles" id="c-co">
-            <div ng-repeat="s in students track by $index" class="circle" ng-style="getStyle()">
+            <div ng-repeat="s in students track by $index" class="circle" >
                 <span>{{s.fName.charAt(0).toUpperCase() + s.lName.charAt(0).toUpperCase()}}</span>
             </div>
         </div>
