@@ -2,6 +2,14 @@ var enrolled = [];
 
 var idArray = ["first", "last", "email", "major", "advisor"];
 
+var stu = {};
+
+stu.pu = "first";
+
+stu.put = "second";
+
+console.log("stu", stu);
+
 function buildObject() {
 	var studentObject = {
 		fname: document.getElementById("first").value,
@@ -21,6 +29,7 @@ function displayObject() {
 	var newElement = '';
 
 	for(var i = 0; i < enrolled.length; i++) {
+		stu.one = enrolled[i].fname;
 		newElement +=
 			'<div class=\'student\' id = \'enrolled[i].fname\'>' +
 				'<button style=\'button;\' id = "update" onclick = "updateObject()">' + "Update" + '</button>' +
@@ -56,12 +65,22 @@ function deleteObject(elementValue) {
 	displayObject();
 }
 
-
 /*
-	enrolled = enrolled.filter(function (element) {
-			return element.fname !== "elementValue";
-		}
-	);
+function displayObject() {
+	var newElement = '';
+
+	for(var i = 0; i < enrolled.length; i++) {
+		stu.enrolled[i] = enrolled[i].fname;
+		newElement +=
+			'<div class=\'student\' id = \'enrolled[i].fname\'>' +
+				'<button style=\'button;\' id = "update" onclick = "updateObject()">' + "Update" + '</button>' +
+				'<button style=\'button; margin-right: 9px;\' id = "delete" onclick = "deleteObject()">' + "Delete" + '</button>' +
+				enrolled[i].fname + ' ' + enrolled[i].lname + ', ' + enrolled[i].email + ', ' + enrolled[i].major + ', ' + enrolled[i].advisor +
+			'</div>';
+	}
+
+	var source = document.getElementById('enrollment');
+	source.innerHTML = newElement;
+	clearInput();
+}
 */
-
-
