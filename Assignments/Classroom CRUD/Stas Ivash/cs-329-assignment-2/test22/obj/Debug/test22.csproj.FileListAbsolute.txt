@@ -37,3 +37,41 @@ c:\users\stas\documents\visual studio 2013\Projects\test22\test22\bin\System.Web
 c:\users\stas\documents\visual studio 2013\Projects\test22\test22\obj\Debug\test22.csprojResolveAssemblyReference.cache
 c:\users\stas\documents\visual studio 2013\Projects\test22\test22\obj\Debug\App.test22.dll
 c:\users\stas\documents\visual studio 2013\Projects\test22\test22\obj\Debug\App.test22.pdb
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\App.test22.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\App.test22.pdb
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Antlr3.Runtime.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.Owin.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.Owin.Security.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Newtonsoft.Json.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Owin.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.Helpers.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.Optimization.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.Razor.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.WebPages.Deployment.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.WebPages.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.WebPages.Razor.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\WebGrease.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Antlr3.Runtime.pdb
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.Owin.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.Owin.Security.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\Newtonsoft.Json.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.Helpers.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.Optimization.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.Razor.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.WebPages.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.WebPages.Deployment.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\bin\System.Web.WebPages.Razor.xml
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\obj\Debug\test22.csprojResolveAssemblyReference.cache
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\obj\Debug\App.test22.dll
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-2\test22\obj\Debug\App.test22.pdb
