@@ -167,28 +167,24 @@ input{
     height: 250px;
 }
 .std{
-    top:10px;
     border-top:thin solid #333;
     border-bottom:thin solid #333;
-    width:80%;
     height:250px;
     z-index:99999;
-    border-collapse:collapse;
-    margin: 0 auto;
+    width:105%;
+    position:absolute;
     overflow-y:auto;
 }
 .std ul input{
     border:thin solid #C0C0CD;
-    padding: 7px;
-    width: 110px;
-    margin:5px;
+    margin-right: 39px;
+    width: 120px;
 }
 
 .std ul li{
     overflow:hidden;
-    width: 110px;
-    margin: 5px;
     vertical-align:top;
+    width:130px;
 }
 .vl-fail{
     color:lime;
@@ -243,9 +239,15 @@ footer{
     display:block;
     text-align:center;
 }
-.empty-for-now{
-    width:100%;
+.cta{
+    width:1000px;
     height:600px;
+    position:relative;
+    margin:0 auto;
+}
+.empty-for-now{
+    height:600px;
+    width: 100%;
 }
 .main-container{
     background: rgba(255,255,255,1);
@@ -271,4 +273,26 @@ footer{
 }
 .ft-logo:hover{
     transform: rotate(7deg)
+}
+.mod-btn{
+    transform: scale(0.7, 0.7);
+    cursor: pointer;
+    color: #F00;
+}
+.circles{
+    width: 50%;
+    margin: 0 auto;
+}
+.circle {
+    color:white;
+    text-align:center;
+    width: 50px;
+    height:50px;
+    position:absolute;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background:  #DCDCDC;
+    line-height:45px;
+    font-weight:bold;
 }
