@@ -1,0 +1,64 @@
+<HTML ng-app="" ng-controller="API_Call">
+<HEAD>
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script  src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
+
+  <body>
+
+  <style type="text/css">
+
+body { font: 10px sans-serif;}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;  stroke-width: 1.5px;
+}
+</style>
+  
+  <div id = "graph"></div>
+
+  {{apidata}}
+
+</div>
+
+<script>
+function API_Call($scope, $http) {
+	var baseUrl = 'http://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.csv';
+	
+  
+d3.csv("dataset.csv", function(data) {
+  dataset = data.map(function(d) { return [ +d["Date"], +d["Value"] ]; });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+</script>
+
+
+
+
+</body>
+</HTML>
