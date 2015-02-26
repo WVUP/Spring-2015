@@ -1,32 +1,24 @@
+
+
+
+
 <HTML ng-app="" ng-controller="API_Call">
 <HEAD>
-    <script src="http://d3js.org/d3.v3.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script  src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
     <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
-
-  <body>
-
-  <style type="text/css">
-
-body { font: 10px sans-serif;}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.line {
-  fill: none;  stroke-width: 1.5px;
-}
-</style>
   
-  <div id = "graph"></div>
+  <BODY>
 
-  {{apidata}}
+	<ul>
+  <li ng-repeat="x in result | orderBy:'Date'">
+    {{ x.Date + ', ' + x.Value }}
+  </li>
+</ul>
+
+ 
+		
 
 </div>
 
@@ -34,31 +26,32 @@ body { font: 10px sans-serif;}
 function API_Call($scope, $http) {
 	var baseUrl = 'http://www.quandl.com/api/v1/datasets/BUNDESBANK/BBK01_WT5511.csv';
 	
-  
-d3.csv("dataset.csv", function(data) {
-  dataset = data.map(function(d) { return [ +d["Date"], +d["Value"] ]; });
-});
+    $http.get(baseUrl).
+        success(function(data) {
+            var data = data;
+
+            var lines=data.split("\n");
+ 	$scope.result = [];
+ 	var headers=lines[0].split(",");
+ 	for(var i=1;i<lines.length;i++){
+ 		var obj = {};
+	  	var currentline=lines[i].split(",");
+	  	for(var j=0;j<headers.length;j++){
+	  		obj[headers[j]] = currentline[j];
+	  	}
+	  	$scope.result.push(obj);
+	}
+	$scope.jsoncvs = JSON.stringify(result);
 
 
+        });
 
-
-
-
-
-
-
-
-
-
-
-
-
+    
 }
 
 </script>
 
 
 
-
-</body>
+</BODY>
 </HTML>
