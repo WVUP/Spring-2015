@@ -28,3 +28,4 @@ C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\MDKas
 C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\MDKashem\angularJSProject\angularJSProject\obj\Debug\angularJSProject.csprojResolveAssemblyReference.cache
 C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\MDKashem\angularJSProject\angularJSProject\obj\Debug\angularJSProject.dll
 C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\MDKashem\angularJSProject\angularJSProject\obj\Debug\angularJSProject.pdb
+C:\Users\md kashem\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\MDKashem\angularJSProject\angularJSProject\bin\CSharpCanvas.dll

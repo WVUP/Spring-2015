@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSharpCanvas">
+      <HintPath>..\packages\CSharpCanvas.0.1.0.4\lib\net40\CSharpCanvas.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -185,6 +188,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="demo\angularForm.aspx" />
     <Content Include="demo\angularWithBootstrips.html" />
+    <Content Include="demo\chart.html" />
     <Content Include="demo\controlsDemo.aspx" />
     <Content Include="demo\firstAngularPage.html" />
     <Content Include="Images\accent.png" />
