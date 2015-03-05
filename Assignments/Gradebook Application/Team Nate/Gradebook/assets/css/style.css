@@ -9,6 +9,15 @@ Premium: http://www.gridgum.com
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
 
+/*Visibility controllers for main content*/
+#dashboardView {
+    display: block;
+}
+
+#semesterView {
+    display: none;
+}
+
 /* BASIC THEME CONFIGURATION */
 body {
     color: #797979;
@@ -1102,6 +1111,35 @@ PANELS CONFIGURATIONS
 	color: #68dff0;
 	padding-right: 4px;
 	font-size: 14px;
+}
+
+/*White Panel alternative basic text color changes - JD*/
+.white-panelAlt {
+    text-align: center;
+    background: #ffffff;
+    color: #000000;
+}
+
+.white-panelAlt p {
+    margin-top: 5px;
+    font-weight: 700;
+    margin-left: 15px;
+}
+.white-panelAlt .white-header {
+    background: #f4f4f4;
+    padding: 3px;
+    margin-bottom: 15px;
+    color: #5F5F5F;
+}
+.white-panelAlt .small {
+    font-size: 10px;
+    color: #ccd1d9;
+}
+
+.white-panelAlt i {
+    color: #68dff0;
+    padding-right: 4px;
+    font-size: 14px;
 }
 
 /*STOCK CARD Panel*/
@@ -2240,4 +2278,6 @@ label {
     min-height: 900px;
 }
 
-
+.pointer{
+    cursor: pointer;
+}
