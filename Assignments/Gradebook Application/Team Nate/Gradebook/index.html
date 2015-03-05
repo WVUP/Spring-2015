@@ -20,8 +20,6 @@
   <!-- Custom styles for this template -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/style-responsive.css" rel="stylesheet">
-
-  <script src="assets/js/chart-master/Chart.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js" type="text/javascript"></script>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -140,7 +138,9 @@
               <!--Welcome overview-->
               <div class="row">
                 <div class="col-lg-10 col-lg-offset-1">
-
+                  <div class="col-lg-4">
+                    <canvas  id="currentBreakdown" width="150" height="150"></canvas>
+                  </div>
                 </div>
               </div>
 
@@ -163,49 +163,49 @@
                           <option>Spring 2014</option>
                           <option>Fall 2014</option>
                         </select>
-                        <div class="accordion" id="courseEntryAccordian">
-                          <div class="accordion-group">
-                            <div class="accordion-heading">
-                              <a class="accordion-toggle" data-toggle="collapse" data-parent="courseEntryAccordion" href="#courseCollapse">
-                                Details
-                              </a>
-                            </div>
-                            <div id="courseCollapse" class="accordion-body collapse in">
-                              <div class="accordion-inner">
-                                <div class="form-group">
-                                  <label for="courseNumber">Course Number</label>
-                                  <input type="text" class="form-control" name="courseNumber" placeholder="Enter course number" required>
-                                </div>
-                                <div class="form-group">
-                                  <label for="courseCreditSelect">Credit Hours</label>
-                                  <select class="form-control" name="courseCreditSelect">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                  </select>
-                                </div>
-                                <div class="form-group" id="courseStartDatePicker">
-                                  <label for="courseStartDate">Start Date</label>
-                                  <input type="text" class="form-control" name="courseStartDate" placeholder="Enter start date" required>
-                                </div>
-                                <div class="form-group" id="courseEndDatePicker">
-                                  <label for="courseEndDate">End Date</label>
-                                  <input type="text" class="form-control" name="courseEndDate" placeholder="Enter end date">
-                                </div>
-                                <div class="form-group" id="courseTimeInput">
-                                  <label for="courseTime">Course Time</label>
-                                  <input type="text" class="form-control" name="courseTime" placeholder="Enter course time">
-                                </div>
-                                <div class="form-group" id="roomNumberInput">
-                                  <label for="courseRoom">Room Number</label>
-                                  <input type="text" class="form-control" name="courseRoom" placeholder="Enter room number">
-                                </div>
-                                <div class="form-group" id="courseCommentInput">
-                                  <label for="courseComment">Comments</label>
-                                  <input type="text" class="form-control" name="courseComment" placeholder="Enter comments">
-                                </div>
+                      </div>
+                      <div class="accordion" id="courseEntryAccordion">
+                        <div class="accordion-group">
+                          <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="courseEntryAccordion" href="#courseCollapse">
+                              Details
+                            </a>
+                          </div>
+                          <div id="courseCollapse" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                              <div class="form-group">
+                                <label for="courseNumber">Course Number</label>
+                                <input type="text" class="form-control" name="courseNumber" placeholder="Enter course number" required>
+                              </div>
+                              <div class="form-group">
+                                <label for="courseCreditSelect">Credit Hours</label>
+                                <select class="form-control" name="courseCreditSelect">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                              </div>
+                              <div class="form-group" id="courseStartDatePicker">
+                                <label for="courseStartDate">Start Date</label>
+                                <input type="text" class="form-control" name="courseStartDate" placeholder="Enter start date" required>
+                              </div>
+                              <div class="form-group" id="courseEndDatePicker">
+                                <label for="courseEndDate">End Date</label>
+                                <input type="text" class="form-control" name="courseEndDate" placeholder="Enter end date">
+                              </div>
+                              <div class="form-group" id="courseTimeInput">
+                                <label for="courseTime">Course Time</label>
+                                <input type="text" class="form-control" name="courseTime" placeholder="Enter course time">
+                              </div>
+                              <div class="form-group" id="roomNumberInput">
+                                <label for="courseRoom">Room Number</label>
+                                <input type="text" class="form-control" name="courseRoom" placeholder="Enter room number">
+                              </div>
+                              <div class="form-group" id="courseCommentInput">
+                                <label for="courseComment">Comments</label>
+                                <input type="text" class="form-control" name="courseComment" placeholder="Enter comments">
                               </div>
                             </div>
                           </div>
@@ -235,7 +235,7 @@
                               Details
                             </a>
                           </div>
-                          <div id="studentCollapse" class="accordion-body collapse in">
+                          <div id="studentCollapse" class="accordion-body collapse">
                             <div class="accordion-inner">
                               <div class="form-group">
                                 <label for="studentCourseSelect">Course</label>
@@ -292,7 +292,7 @@
                               Details
                             </a>
                           </div>
-                          <div id="assignmentCollapse" class="accordion-body collapse in">
+                          <div id="assignmentCollapse" class="accordion-body collapse">
                             <div class="accordion-inner">
                               <div class="form-group" id="assignmentOpenDatePicker">
                                 <label for="assignmentOpenDate">Open Date</label>
