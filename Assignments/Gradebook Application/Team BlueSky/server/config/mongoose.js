@@ -12,15 +12,15 @@ module.exports = function (config) {
 var userSchema = mongoose.Schema({
 	fName: String,
 	lName: String,
-	uName: String,
+	username: String
 });
 
 var User = mongoose.model('User', userSchema);
 
 User.find({}).exec(function (err, collection) {
 	if (collection.length === 0) {
-		User.create({fName: 'Stas', lName: 'Ivash', uName: 'xstiv07'});
-		User.create({fName: 'Sam', lName: 'Ivash', uName: 'sammy'});
-		User.create({fName: 'Billy', lName: 'Jones', uName: 'bjones'});
+		User.create({fName: 'Stas', lName: 'Ivash', username: 'xstiv07'});
+		User.create({fName: 'Sam', lName: 'Ivash', username: 'sammy'});
+		User.create({fName: 'Billy', lName: 'Jones', username: 'bjones'});
 	};
 })

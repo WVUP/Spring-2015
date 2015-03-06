@@ -13,11 +13,11 @@ module.exports = function (app, config, bodyParser) {
 	app.set('views', config.rootPath + '/server/views');
 	app.set('view engine', 'jade');
 	app.use(cookieParser());
-	app.use(bodyParser.urlencoded({ extended: true }));
+	app.use(bodyParser.json());
 	app.use(session({
-		secret: 'ambiguous statement',
-		resave: true,
-		saveUninitialized: true
+		secret: 'keyboard cat',
+		resave: false,
+		saveUninitialized: false
 	}));
 	app.use(passport.initialize());
 	app.use(passport.session());
