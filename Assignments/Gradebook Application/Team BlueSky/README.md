@@ -2,5 +2,5 @@ The application is deployed to heroku, and is available at https://cryptic-eyrie
 
 Stas
 
-06/03 - authentication based on the harcorded to mongodb objects works.
+03/06 - authentication based on the harcorded to mongodb objects works.
 	Use username bjones or xstiv07 and any password to check.
