@@ -1,12 +1,13 @@
 DOCTYPE
-html
+html(ng-app='app')
 	head
-	title Gradebook
-	base(href="/")
-	link(rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css")
-	link(rel="stylesheet", href="/vendor/toastr/toastr.css")
-	link(rel="stylesheet" href="/css/site.css")
-	body(ng-app='app')
-	div
+		title Gradebook
+		base(href="/")
+		link(rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css")
+		link(rel="stylesheet", href="/vendor/toastr/toastr.css")
+		link(rel="stylesheet" href="/css/site.css")
+	body
+	include currentUser
+	div(ng-controller="MainCtrl")
 		block main-content
 	include scripts

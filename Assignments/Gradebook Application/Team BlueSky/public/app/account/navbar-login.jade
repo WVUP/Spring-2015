@@ -4,8 +4,9 @@ div(ng-controller="LoginCtrl")
 			img(src="/images/wvup.png")
 		form
 			div
-				input.text(type="text", placeholder="USERNAME", ng-model="username")
+				input.text(type="text", placeholder="USERNAME", ng-model="mainView.user.username")
 			.pwd
-				input.text(type="password", placeholder="PASSWORD", ng-model="password")
-			span.btn.btn-default.right(ng-click="signin(username, password)") SIGN IN
+				input.text(type="password", placeholder="PASSWORD", ng-model="mainView.user.password")
+			span.btn.btn-default.right(ng-click="signin(mainView.user.username, mainView.user.password)") SIGN IN
 			span.btn.btn-default.left REGISTER
+	
