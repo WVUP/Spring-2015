@@ -1,8 +1,0 @@
-div(ng-controller="LoginCtrl")
-	ul(ng-show="identity.isAuthenticated()")
-		li 
-			p Hello {{identity.currentUser.fName}}!
-		li(ng-show="identity.currentUser.isAdmin()")
-			a(href="/admin/manage") Manage Users
-		li
-			a(href="", ng-click="signout()") Sign Out
