@@ -1,0 +1,17 @@
+{
+  "name": "Virtual Learning System",
+  "version": "0.0.0",
+  "authors": [
+    "DustinFarnsworth <dustinwfarnsworth@gmail.com>"
+  ],
+  "description": "\"A virtual grade book and more for teachers and students\"",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "toastr": "~2.1.0",
+    "angular": "~1.3.14",
+    "angular-resource": "~1.3.14",
+    "angular-route": "~1.3.14"
+  }
+}
