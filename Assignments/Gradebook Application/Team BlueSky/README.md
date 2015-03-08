@@ -1,4 +1,5 @@
 The application is deployed to heroku, and is available at https://cryptic-eyrie-1424.herokuapp.com/
+Ho to set everything up for the project - video available at https://drive.google.com/file/d/0BwPj3C3bVMpgR2MtX2RuN1ZKVWc/view?usp=sharing
 
 
 
