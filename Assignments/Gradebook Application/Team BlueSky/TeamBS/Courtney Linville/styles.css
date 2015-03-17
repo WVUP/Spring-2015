@@ -5,9 +5,15 @@
 	text-align: center;
 	font-size: 20pt;
 }
+
+a:link {color:white;}
+a:visited {color:white;}
+a:active {color:white;}
+a:hover {color:white;}
+
 .white
 {
-	height: 150px;
+	height: 100px;
 }
 
 .login
@@ -36,4 +42,23 @@ input{
 
 .submit{
 	width: 80px;
+}
+
+.registration
+{
+	background-color: #0066FF;
+	margin-right: 30%;
+	margin-left: 30%;
+	position: center;
+	width: 40%;
+	height: 500px;
+	color: white;
+	text-align: center;
+	border-radius: 20px;
+	font-size: 20pt
+}
+
+.subreg{
+	width: 120px;
+	height: 30px;
 }
