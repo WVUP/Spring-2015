@@ -27,38 +27,29 @@ $('#assignmentCloseDatePicker input').datepicker({
 
 })(jQuery)
 
-var currentSemesterStudentData = [
-	{
-		value: 12,
-		color: '#68dff0',
-		highlight: '#fff',
-		label: "CS 329"
-	},
-	{
-		value: 23,
-		color: '#ffd777',
-		highlight: '#fff',
-		label: "CS 330"
-	},
-	{
-		value: 11,
-		color: '#ff865c',
-		highlight: '#fff',
-		label: "CS 331"
-	},
-	{
-		value: 9,
-		color: '#43b1a9',
-		highlight: '#fff',
-		label: "CS 332"
-	},
-	{
-		value: 4,
-		color: '#797979',
-		highlight: '#fff',
-		label: "CS 333"
-	}
-]
+Morris.Donut({
+	element: 'currentBreakdown',
+	data: [
+		{label: "CS 329", value: 12},
+		{label: "CS 330", value: 23},
+		{label: "CS 331", value: 11},
+		{label: "CS 332", value: 9},
+		{label: "CS 333", value: 4}
+	],
+	colors: [
+		'#ff865c',
+		'#ffd777',
+		'#43b1a9',
+		'#68dff0',
+		'#797979'
+	],
+	resize: true
+});
 
-var ctx = document.getElementById("currentBreakdown").getContext("2d");
-var currentChart = new Chart(ctx).Doughnut(currentSemesterStudentData, { animationEasing : "easeOutBounce", percentageInnerCutout : 65, segmentShowStroke : false });
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://natepaxton:Wvup2013@ds053139.mongolab.com:53139/gradebook');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function(callback){
+	alert("db open");
+});
