@@ -1,0 +1,30 @@
+.center
+{
+	text-align: center;
+}
+
+.left
+{
+	margin-left: 750px;
+  	margin-top: 200px;
+
+}
+
+.right
+{
+	
+}
+
+.cool
+{
+	border-radius: 0px 200px 0px 177px;
+	-moz-border-radius: 0px 200px 0px 177px;
+	-webkit-border-radius: 0px 200px 0px 177px;
+	border: 69px solid #3399ff;
+	background: #999999;
+}
+
+html
+{
+	background: lightgrey;
+}
