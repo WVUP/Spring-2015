@@ -4,22 +4,50 @@
 <head>
 
 	<link rel="stylesheet" type="text/css" href="site(1).css">
+	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="styles/css/font-awesome.min.css">
+
 	<title> Login webpage </title>
 
 </head>
 
-<body>
+<body style="background-color: lightgrey; ">
 
-	<div class="cool">
+	<div class="container cool">
 
-		<H2 class="center"> Welcome to the Gradebook! Use your credentials to sign in to the gradebook. </H2>
+		<div>
 
+				<H2 class="center"> Welcome to the Gradebook! Use your credentials to sign in to the gradebook. </H2>
 
-		<div class="left"> Email: </div>
+		</div>
+		<div class="row left" style="float:left; padding: 50px;">
+			<div class="col-md-6">
 
+		 		<form>
 
-		<div class="right"> Password: </div>
+		 			Email:
 
+		 			<input class="input" type="text" login="email" value placeholder="email" required> 
+
+		 		</form>
+		
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6" style="float: right; padding: 50px;" > 
+
+				<form>
+
+					Password: 
+				
+					<input class="input" type="password" login="password" value placeholder="password" required>
+			
+				</form>
+
+			</div>
+
+		</div>
 	</div>
 
 
