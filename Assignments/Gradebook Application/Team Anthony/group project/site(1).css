@@ -1,26 +1,17 @@
 .center
 {
 	text-align: center;
-	
 }
 
 .left
 {
-	float: left;
-	padding: 50px;
-	height: 126px;
-	width: 416;
-  	
-  	
+	margin-left: 750px;
+  	margin-top: 200px;
 
 }
 
 .right
 {
-	float: right;
-	padding: 50px;
-	height: 126px;
-	width: 416;
 	
 }
 
@@ -31,7 +22,6 @@
 	-webkit-border-radius: 0px 200px 0px 177px;
 	border: 69px solid #3399ff;
 	background: #999999;
-	height: 100%;
 }
 
 html
