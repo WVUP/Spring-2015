@@ -27,7 +27,7 @@ $('#assignmentCloseDatePicker input').datepicker({
 
 })(jQuery)
 
-Morris.Donut({
+var donut = Morris.Donut({
 	element: 'currentBreakdown',
 	data: [
 		{label: "CS 329", value: 12},
@@ -46,10 +46,22 @@ Morris.Donut({
 	resize: true
 });
 
+var lineGraph = Morris.Line(
+	element: 'lineGraph',
+	data: [
+		{ y: 'CS 329', a: 12, b: 89 },
+		{ y: 'CS 330', a: 6, b: 77 },
+		{ y: 'CS 331', a: 21, b: 91 },
+		{ y: 'CS 332', a: 19, b: 67 }
+	],
+	xkey: "y",
+	ykeys: [ "a", "b"],
+	labels: ["Number of students", "Average grade"],
+	lineColors: ["#ff865c", "#68dff0"],
+	resize: true
+);
+
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://natepaxton:Wvup2013@ds053139.mongolab.com:53139/gradebook');
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function(callback){
-	alert("db open");
 });

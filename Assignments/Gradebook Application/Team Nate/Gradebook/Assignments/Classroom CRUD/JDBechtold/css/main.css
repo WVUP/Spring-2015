@@ -1,0 +1,91 @@
+body {
+	padding-top: 70px;
+	background-color: #232323;
+	font-color: #00b2ee;
+	background-image: url(../images/books.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+
+	transition:all .5s ease-in-out; 
+	-o-transition:all .5s ease-in-out; 
+	-moz-transition:all .5s ease-in-out; 
+	-webkit-transition:all .5s ease-in-out;
+
+}
+
+.img-center {
+	margin: 0 auto;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.glyphicon-user{
+	font-size: 175px;
+	color: #6d6d6d;
+}
+
+.navbar-inverse .navbar-brand {
+	color: rgb(204, 204, 204);
+}
+
+.studentsContainer{
+	background-color: rgba(0, 3, 0, 0.7);
+	background: rgba(0, 3, 0, 0.7);
+	padding: 20px;
+	color: #fff;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+.students div{
+	padding-top: 15px;
+}
+
+input{
+	color: #262626;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+}
+
+.infoWindow{
+	color: #262626; 
+	background-color: #e8e8e8;
+	float:none;
+
+	padding: 20px;
+	text-align: center;
+
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+}
+
+.modifyWindow{
+	color: #262626; 
+	background-color: #e8e8e8;
+	float:none;
+
+	padding: 20px;
+	text-align: center;
+
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+}
+
+
+
+
+
+input{
+	color: #262626;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+}

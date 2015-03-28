@@ -1,0 +1,30 @@
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll.config
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.pdb
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.dll
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.pdb
+c:\users\stas\documents\visual studio 2013\Projects\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.csprojResolveAssemblyReference.cache
+C:\Users\Stas\Desktop\newst\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll.config
+C:\Users\Stas\Desktop\newst\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll
+C:\Users\Stas\Desktop\newst\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.pdb
+C:\Users\Stas\Desktop\newst\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.csprojResolveAssemblyReference.cache
+C:\Users\Stas\Desktop\newst\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.dll
+C:\Users\Stas\Desktop\newst\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.pdb
+C:\Users\Stas\Desktop\nnmdfgsdfg\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll.config
+C:\Users\Stas\Desktop\nnmdfgsdfg\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll
+C:\Users\Stas\Desktop\nnmdfgsdfg\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.pdb
+C:\Users\Stas\Desktop\nnmdfgsdfg\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.csprojResolveAssemblyReference.cache
+C:\Users\Stas\Desktop\nnmdfgsdfg\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.dll
+C:\Users\Stas\Desktop\nnmdfgsdfg\Spring-2015-master\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.pdb
+C:\Users\Stas\Desktop\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll.config
+C:\Users\Stas\Desktop\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll
+C:\Users\Stas\Desktop\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.pdb
+C:\Users\Stas\Desktop\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.csprojResolveAssemblyReference.cache
+C:\Users\Stas\Desktop\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.dll
+C:\Users\Stas\Desktop\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.pdb
+C:\Users\Aaron\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll.config
+C:\Users\Aaron\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.dll
+C:\Users\Aaron\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\bin\cs-329-assignment-1.pdb
+C:\Users\Aaron\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.csprojResolveAssemblyReference.cache
+C:\Users\Aaron\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.dll
+C:\Users\Aaron\Documents\GitHub\Spring-2015\Assignments\Classroom CRUD\Stas Ivash\cs-329-assignment-1\cs-329-assignment-1\obj\Debug\cs-329-assignment-1.pdb

@@ -1,0 +1,78 @@
+<html>
+<head>
+  <title>This is first assignment.</title>
+  <link rel="stylesheet" type="text/css" href="C:\Users\md kashem\Desktop\web 2\Assignment\form.css">
+  
+  <script type="text/javascript" src="C:\Users\md kashem\Desktop\web 2\Assignment\assignmentOne.js"></script>
+</head>
+<body background="C:\Users\md kashem\Desktop\web 2\Assignment\bgr.png">
+  <div id="menu">
+    <ul><a href="#"></a>Home</ul>
+
+
+  </div>
+  <form id= "form1">
+    <div id="div1">
+
+      <P>
+    <LABEL for="firstname">First name: </LABEL>
+              <INPUT type="text" id="firstname" required><BR>
+    <LABEL for="lastname">Last name: </LABEL>
+              <INPUT type="text" id="lastname" ><BR>
+    <LABEL for="email">email: </LABEL>
+              <INPUT type="email" id="email" ><BR>
+    <LABEL for="email">Phone: </LABEL>
+              <INPUT type="text" id="ph" ><BR>
+    
+     <INPUT type="reset">
+    </P> 
+
+       </div> 
+    </form>
+<div id="div2">
+  
+
+         <button class="btn" onclick="validateForm()">Insert</button> <button class="btn" onclick="deleteFunction()">Delete</button> <button  class="btn" onclick="display()">Display in Table</button> <button  class="btn" onclick="displayArray()">Display Array</button>
+         
+
+          <p>Student</p>
+          <p id= "student1"> </p>
+          <div id= "div3">  </div>
+
+</div>
+<div id= "update">
+  <head >Update</head>
+  <P>
+    <LABEL for="firstname">First name: </LABEL>
+              <INPUT type="text" id="upfirstname" ><BR>
+    <LABEL for="lastname">Last name: </LABEL>
+              <INPUT type="text" id="uplastname" ><BR>
+    <LABEL for="email">email: </LABEL>
+              <INPUT type="text" id="upemail" ><BR>
+   <LABEL for="phone">phone: </LABEL>
+              <INPUT type="text" id="upphone" ><BR>
+    
+     <INPUT type="reset">
+    </P> 
+    <head>Insert new information to update!</head>
+    <P>
+    <LABEL for="firstname">First name: </LABEL>
+              <INPUT type="text" id="Newfirstname" ><BR>
+    <LABEL for="lastname">Last name: </LABEL>
+              <INPUT type="text" id="Newlastname" ><BR>
+    <LABEL for="email">email: </LABEL>
+              <INPUT type="text" id="Newemail" ><BR>
+    <LABEL for="phone">phone: </LABEL>
+              <INPUT type="text" id="Newphone" ><BR>
+    
+     <INPUT type="reset">
+    </P> 
+
+  <button class="btn" onclick="Update()">Update</button>
+
+
+</div>
+
+
+</body>
+</html>
