@@ -136,10 +136,10 @@
               <hr/>
 
               <!--Welcome overview-->
-              <div class="row">
-                <div class="col-lg-4">
-                  <h2>Current Students</h2>
-                   <div id="currentBreakdown"></div>
+              <div class="row">                
+                <div class="col-lg-12">
+                  <h2>Current Courses</h2>
+                  <div id="lineGraph"></div>
                 </div>
               </div>
 
@@ -160,7 +160,7 @@
                           <option>Fall 2014</option>
                           <option>Summer 2014</option>
                           <option>Spring 2014</option>
-                          <option>Fall 2014</option>
+                          <option>Fall 2013</option>
                         </select>
                       </div>
                       <div class="accordion" id="courseEntryAccordion">
@@ -179,6 +179,7 @@
                               <div class="form-group">
                                 <label for="courseCreditSelect">Credit Hours</label>
                                 <select class="form-control" name="courseCreditSelect">
+                                  <option></option>
                                   <option>1</option>
                                   <option>2</option>
                                   <option>3</option>
@@ -205,6 +206,9 @@
                               <div class="form-group" id="courseCommentInput">
                                 <label for="courseComment">Comments</label>
                                 <input type="text" class="form-control" name="courseComment" placeholder="Enter comments">
+                              </div>
+                              <div class="form-group row" id="courseSubmit">
+                                <button type="submit" class="btn btn-theme col-lg-4 col-lg-offset-4" name="courseButton" placeholder="Create">Create</button>
                               </div>
                             </div>
                           </div>
@@ -256,6 +260,9 @@
                                 <div class="form-group" id="studentCommentInput">
                                   <label for="studentComment">Comments</label>
                                   <input type="text" class="form-control" name="studentComment" placeholder="Enter comments">
+                                </div>
+                                <div class="form-group row" id="studentSubmit">
+                                  <button type="submit" class="btn btn-theme col-lg-4 col-lg-offset-4" name="courseButton" placeholder="Create">Create</button>
                                 </div>
                               </div>
                             </div>
@@ -319,6 +326,9 @@
                               <div class="form-group" id="assignmentCommentInput">
                                 <label for="assignmentComment">Comments</label>
                                 <input type="text" class="form-control" name="assignmentComment" placeholder="Enter comments">
+                              </div>
+                              <div class="form-group row" id="assignmentSubmit">
+                                <button type="submit" class="btn btn-theme col-lg-4 col-lg-offset-4" name="courseButton" placeholder="Create">Create</button>
                               </div>
                             </div>
                           </div>
