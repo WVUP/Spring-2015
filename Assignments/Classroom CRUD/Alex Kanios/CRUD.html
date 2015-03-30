@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Classroom CRUD. Yay</title>
+	<link rel="stylesheet" type="text/css" href="site.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<script src="CRUD.js"></script>
+</head>
+<body>
+
+	<h3>Ultimate Class list of Doom!</h3>
+
+	<ul>
+		<li>First Name<input type="text" id="firstName" placeholder="Enter First Name"></li>
+		<br>
+		<li>Last Name<input type="text" id="lastName" placeholder="Enter Last Name"></li>
+		<br>
+		<li>E-mail<input type="text" id="email" placeholder="Enter Email"></li>
+		<br>
+	</ul>
+
+	<button type="button" onclick="addStudent()">Add Info</button>
+
+    <div class="container">
+        <div class="panel panel-default">
+            <table class="table">
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Email</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td id="goHere">?</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+	
+
+</body>
+</html>

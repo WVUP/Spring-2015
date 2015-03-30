@@ -14,6 +14,7 @@ a:hover {color:white;}
 .white
 {
 	height: 100px;
+    background-color: mediumvioletred;
 }
 
 .login
@@ -27,7 +28,7 @@ a:hover {color:white;}
 	color: white;
 	text-align: center;
 	border-radius: 20px;
-	font-size: 25pt
+	font-size: 25pt;
 }
 
 input{
