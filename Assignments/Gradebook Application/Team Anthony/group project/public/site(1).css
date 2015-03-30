@@ -1,3 +1,19 @@
+.header
+{
+	
+    	width: 200px;
+    	height: 120px;
+    	background: #3399ff;
+    	-webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+    	transition: width 2s;
+	
+}
+
+.header:hover 
+{
+    width: 800px;
+}
+
 .center
 {
 	text-align: center;
