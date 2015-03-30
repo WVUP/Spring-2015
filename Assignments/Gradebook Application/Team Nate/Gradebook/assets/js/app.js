@@ -15,16 +15,21 @@ gradebookApp.factory('dataFactory', function ($http) {
 }); 
 
 gradebookApp.config(function($stateProvider, $urlRouterProvider) {
-	$urlRouterProvider.otherwise("/courses");
+	$urlRouterProvider.otherwise("");
 
 	$stateProvider
+		.state('homeState', {
+			url: "",
+			templateUrl: "././partials/home.html"
+		})
+
 		.state('courseState', {
 			url: "/courses",
-			templateUrl: "partials/courses.html"
+			templateUrl: "././partials/courses.html"
 		})
 		.state('courseState.list', {
 			url: "courses/list",
-			templateUrl: "partials/courses.list.html",
+			templateUrl: "././partials/courses.list.html",
 			controller: function($scope) {
 				$scope.courses = gradebookApp.factory;
 			}
