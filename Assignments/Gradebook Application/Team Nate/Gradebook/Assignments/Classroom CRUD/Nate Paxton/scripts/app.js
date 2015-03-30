@@ -1,1 +1,0 @@
-var crudApp = angular.module('crud', ['ngRoute', 'ngAnimate']);
