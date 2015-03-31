@@ -1,0 +1,9 @@
+// this content is plugged into the 'block main-content' placeholder of the layout.jade file
+// section class content and nested div with angular app data
+// h2; mongodb data
+extends ../includes/layout
+
+block main-content
+	section.content
+		div(ng-view)
+	h2(style='height:800px')= mongoMessage
