@@ -1,5 +1,9 @@
 var gradebookApp = angular.module('gradebook', ['ui.router']);
 
+gradebookApp.controller('HomeController', ['$scope', function ($scope) { 
+	$scope.viewType = "Semester";
+}]);
+
 gradebookApp.controller('CourseController', ['$scope', function ($scope) {
 	$scope.viewType = "Courses";
 }]);
@@ -20,13 +24,15 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state('homeState', {
 			url: "",
-			templateUrl: "././partials/home.html"
+			templateUrl: "././partials/home.html",
+			controller: 'HomeController'
 		})
 
 		.state('courseState', {
 			url: "/courses",
 			templateUrl: "././partials/courses.html"
 		})
+
 		.state('courseState.list', {
 			url: "courses/list",
 			templateUrl: "././partials/courses.list.html",
