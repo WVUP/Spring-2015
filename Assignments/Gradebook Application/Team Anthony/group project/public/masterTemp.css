@@ -29,3 +29,15 @@ html
 	height: 5%;
 	background-color: #999999;
 }
+.left
+{
+	float: left;
+}
+.studentName
+{
+	background-color: lightgrey;
+}
+.noBorderRadius
+{
+border-radius: 0px; 
+}
