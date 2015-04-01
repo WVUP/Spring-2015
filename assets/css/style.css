@@ -18,6 +18,10 @@ Premium: http://www.gridgum.com
     display: none;
 }
 
+#createCourse {
+    display: none;
+}
+
 /* BASIC THEME CONFIGURATION */
 body {
     color: #797979;

@@ -1,0 +1,5 @@
+How can I include regex for validating email in mongoose model (should it just be done on the form submit)?
+
+Morris not rendering chart now that ui routing has been added.  Tried switching the order in which the javascript files are loaded, did not resolve
+
+Need help with routing - server messages may provide insight, discuss with AF
