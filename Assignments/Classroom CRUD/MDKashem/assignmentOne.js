@@ -1,7 +1,7 @@
-
-var array = [student("Md", "Kashem", "kashem@yahoo.com", "305-362-6693")];
+var array = [student("Md", "Kashem", "kashem@yahoo.com", "305-362-6693"), student("Md", "Kamal", "kashem@yahoo.com", "305-362-6693"),
+student("Mr.", "Kashem", "kashem@yahoo.com", "305-362-6693")];
 console.log(array);
-//document.getElementById("demo").innerHTML = fruits;
+document.getElementById("demo").innerHTML = fruits;
 
 function student (a, b, c, d) {
     this.Fname = a;
@@ -22,19 +22,23 @@ function Insert() {
   var lname = document.getElementById("lastname").value;
   var email = document.getElementById("email").value;
   var phone = document.getElementById("ph").value;
-
+  
+   // fruits.push(nam);
+    
+   // document.getElementById("student1").innerHTML = student(fname, lname, Phone);
     array.push(student(fname, lname, email, phone));
-//validateForm();
+   
+displayArray();
 }
 Insert();
 // display array
-function displayArray(){     
+function displayArray(){
 var text = "";
     var i;
     for (i = 0; i < array.length; i++) 
     { 
       text += (i+1)+"    &nbsp;   &nbsp;  &nbsp; &nbsp;&nbsp;   " + " "+array[i]+"    &nbsp;   &nbsp;  &nbsp; &nbsp;&nbsp;   " +
-      "&nbsp;&nbsp;&nbsp;<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"EditStudent("+i+")>Edit Student</button><br>"+ "<br>";
+      "&nbsp;&nbsp;&nbsp;"+ "<br>";
   }
     
 
@@ -72,55 +76,38 @@ function Update()
   var ufname = document.getElementById("upfirstname").value;
   var ulname = document.getElementById("uplastname").value;
   var uemail = document.getElementById("upemail").value;
-  var uphone = document.getElementById("upphone").value;
+  var uph = document.getElementById("upphone").value;
   //new value
   var Newfname = document.getElementById("Newfirstname").value;
   var Newlname = document.getElementById("Newlastname").value;
   var Nemail = document.getElementById("Newemail").value;
-  var Nphone = document.getElementById("Newphone").value;
+  var Nph = document.getElementById("Newphone").value;
   
-    var st =student(ufname, ulname, uemail, uphone); 
-     array[array.indexOf(st)] = student(Newfname, Newlname, Nemail, Nphone);
+    var st =student(ufname, ulname, uemail, uph); 
+     array[array.indexOf(st)] = student(Newfname, Newlname, Nemail,Nph);
     displayArray();
     
   };
   // validation
   function validateForm() {
-
-    Insert();
-   /* var x = document.forms["form1"]["firstname"].value;
+    var x = document.forms["form1"]["firstname"].value;
 
     var y = document.forms["form1"]["lastname"].value;
-    var phone = document.forms["form1"]["ph"].value;
     if (x==null || x=="") {
         alert(" First Name must be filled out");
-      // return false;
-    }  
-
-    if(y==null || y==""){
+       return false;
+    }  if(y==null || y==""){
       alert("Last Name must be filled out");
-         // return false;
+          return false;
     }
 
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form1.email.value))  
   {  
-    
-    //return true;
-    
-    
-  }  else {
-     alert("You have entered an invalid email address!")  
-    // return (false)}
-
-*/
-
-
+    return (true)
+  }  
+    alert("You have entered an invalid email address!")  
+    return (false)
 };
-
-//phone number validation
-
-
-
 
 
 //start select student
@@ -140,30 +127,3 @@ function EditStudent(x) {
   }
     document.getElementById("demo").innerHTML = text;
 }
-
-function Update(x) {
-  var updateStudent = new Object();
-  updateStudent.firstname =  document.getElementById("updatefname").value;
-  updateStudent.lastname =  document.getElementById("updatelname").value;
-  updateStudent.age =  document.getElementById("updateage").value;
-  updateStudent.gender =  document.getElementById("updategender").value;
-  updateStudent.major =  document.getElementById("updatemajor").value;
-  updateStudent.gpa =  document.getElementById("updategpa").value;
-  updateStudent.advisor =  document.getElementById("updateadvisor").value;
-
-  students[x] = updateStudent;
-  var text = "";
-    var i;
-    for (i = 0; i < students.length; i++) 
-    { 
-      text += " "+students[i].firstname+"    &nbsp;   &nbsp;  &nbsp; &nbsp;&nbsp;   "+students[i].lastname+"     &nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  "+students[i].age+"           &nbsp;      &nbsp; &nbsp;&nbsp; "+students[i].gender+"  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        &nbsp;  "+students[i].major+" &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;   "+students[i].gpa+"&nbsp;&nbsp;&nbsp;&nbsp; "+students[i].advisor+"&nbsp;&nbsp;&nbsp;<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"EditStudent("+i+")>Edit Student</button><br>";
-  }
-    document.getElementById("demo").innerHTML = text;
-
-
-}
-
-
-//end select student
-
-
