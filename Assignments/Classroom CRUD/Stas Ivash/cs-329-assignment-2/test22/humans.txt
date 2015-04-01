@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # humanstxt.org/
 # The humans responsible & technology colophon
 
@@ -13,3 +14,20 @@
 
     HTML5, CSS3
     AngularJS, jQuery, Bootstrap
+=======
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    <name> -- <role> -- <twitter>
+
+# THANKS
+
+    <name>
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    AngularJS, jQuery, Bootstrap
+>>>>>>> ce7c8ef5a7f2594ba4f515d10169d52b964d377f
