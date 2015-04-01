@@ -7,7 +7,7 @@ gradebookApp.controller('HomeController', ['$scope', '$http', function ($scope, 
 		console.log('Data not retrieved');
 	})
 	.success (function(data){
-		$scope.homeData = data;
+		$scope.data = data;
 		console.log(data);
 		console.log("Data retrieved");
 	});
