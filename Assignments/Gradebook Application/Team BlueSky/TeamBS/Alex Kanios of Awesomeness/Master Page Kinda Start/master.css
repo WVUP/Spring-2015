@@ -1,0 +1,15 @@
+.logopic
+{
+	height: 50px !important;
+	width: 50px !important;
+	position: absolute;
+	bottom: 1px;
+}
+
+.searchInput
+{
+	position: absolute;
+	left: 1000px;
+	bottom: 10px;
+}
+

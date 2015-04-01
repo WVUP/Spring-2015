@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="site(20).css">
+	<script src="Contacts(1).js"></script>
+	
+	
+	<head lang="en">
+	<meta charset="UTF-8">
+	<script language="JavaScript">
+	function showInput() {
+    var message_entered =  document.getElementById("user_input").value;
+
+    document.getElementById('display').innerHTML = message_entered;
+}
+
+  	</script>
+
+	<script type="text/javascript">
+	function add(){
+
+	alert(fname.value);
+}
+  	function validateForm() {
+    if (document.myForm.firstName.value == "" || document.myForm.lastName.value == "" || document.myForm.email.value == "" || document.myForm.major.value == "") { 
+      alert("You have not filled in all the required fields!");
+    }
+  }
+</script>
+
+
+
+
+	<title> ClassroomCRUD </title>
+
+
+</head>
+<body onload="init()">
+		<div id="list" class="33"> 	
+			<form name="myForm" onsubmit="validateForm()">
+   					First Name: <input type="text" id="firstName" name="firstName" /><br />
+   					Last Name: 	<input type="text" name="lastName" /><br />
+   					Email: 		<input type="text" name="email" /><br />
+   					Major: 		<input type="text" name="major" /><br />
+   					G.P.A.: 	<input type="text" name="GPA" /><br />
+   					Class Year: <input type="text" name="classYear" /><br />
+   		
+
+   <input type="button" onClick="myFunctionS" value="Submit" />
+   <input type="submit" value="Update" onClick="add()" />
+   <input type="submit" value="Delete" onclick="add()" />
+   <input type="button" onClick="myFunction()" value="Reset">
+ 			</form>
+
+ 			<p style="color-white"> Update and Delete work as a submit, clicking those also causes validation to work </p>
+
+		</div>
+
+
+<div class="33" style="margin-left: 550px">
+	
+	<table style="background-color: black; color: white">
+	
+			<tr>
+				<tr> <td> First Name: <input type="text" id="firstname"> </td> </tr>
+				<tr> <td> Last Name: <input type="text" id="firstname"> </td> </tr>
+				<tr> <td> Email: <input type="text" id="firstname"> </td> </tr>
+				<tr> <td> Major: <input type="text" id="firstname"> </td> </tr>
+				<tr> <td> G.P.A: <input type="text" id="firstname"> </td> </tr>
+				<tr> <td> Class Year: <input type="text" id="firstname"> </td> </tr>
+
+				<tr> <td> <button onClick="addStudents()"> Add Student </button> </td> </tr>
+			</tr>
+	
+		
+		
+				
+		
+	</table>
+<br>
+	 <script type="text/javascript"> 
+			var students = [];
+			function addStudents() 
+			{
+				var student = new Object();
+				student.firstName = document.getElementById("firstName").value;
+				student.lastName = document.getElementById("lastName").value;
+				student.email = document.getElementById("email").value;
+				student.major = document.getElementById("major").value;
+				student.GPA = document.getElementById("GPA").value;
+				student.classYear = document.getElementById("classYear").value;
+
+				students.push(student);
+
+				var text = "";
+   				 var i;
+    			for (i = 0; i < students.length; i++) 
+    { 
+      			text += " "+students[i].firstname+" "+students[i].lastname+" "+students[i].email+" "+students[i].major+" "+students[i].gpa+" "+students[i].classYear+"<button onclick="+"DeleteStudent("+i+")"+">Delete Student</button><button onclick="+"UpdateStudent("+i+")>Update Student</button><br>";
+  }
+    		document.getElementById("list").innerHTML = text;
+}
+
+
+
+
+			
+
+
+	</script>
+
+
+
+<meta charset="UTF-8">
+<script language="JavaScript">
+function showInput() {
+    var message_entered =  document.getElementById("user_input").value;
+
+    document.getElementById('display').innerHTML = message_entered;
+}
+
+
+
+  </script>
+
+<form style="background-color: black" id="form1">
+<label> <b>Enter first name of student: </b> </label>
+<input type="text" name="message" id="user_input"> <br>
+
+<label> <b> Enter last name of student: </b> </label>
+<input type="text" name="message" id="user_input">
+</form>
+
+
+<input type="submit" onclick="showInput();"><br/>
+<input type="button" onClick="myFunction()" value="Reset"> <br>
+<label> Your input: </label> <br>
+<table>
+<thead style="color: white">
+	<p> Enter in order of: </p>
+	<th> First Name: </th>
+	<th> Last Name: </th>
+	<th> Email: </th>
+	<th> Major: </th>
+	<th> G.P.A.: </th>
+	<th> Class Year: </th>
+</thead>
+
+</table>
+<p> <span style=" font-size: 15pt" id='display'> </span> </p>
+	
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

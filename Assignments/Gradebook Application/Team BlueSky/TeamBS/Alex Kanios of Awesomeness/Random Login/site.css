@@ -1,0 +1,132 @@
+html
+{
+    background-color: #66ccff;
+}
+
+.header
+{
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    border: solid;
+    border-color: #003B6F;
+    -webkit-box-shadow: 3px 6px 25px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 6px 25px -3px rgba(0,0,0,0.75);
+    box-shadow: 3px 6px 25px -3px rgba(0,0,0,0.75);
+}
+
+.shield1
+{
+    height: 80px;
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+}
+
+.shield2
+{
+    position: absolute;
+    height: 80px;
+    left: 1275px;
+    bottom: 10px;
+}
+
+.p1
+{
+    position: relative;
+    font-family: Avengers;
+}
+
+.loginBody
+{
+    height: 400px;
+    width: 400px;
+    position: absolute;
+    border: solid;
+    border-color: #003B6F;
+    left: 500px;
+    bottom: 150px;
+    background-color: white;
+    -webkit-box-shadow: 10px 10px 22px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 22px -5px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 22px -5px rgba(0,0,0,0.75);
+}
+
+.wvupLogo
+{
+    position: absolute;
+    right: 80px;
+}
+
+.inputForm
+{
+    position: absolute;
+    right: 90px;
+    bottom: 150px;
+}
+
+.username
+{
+    height: 60px;
+    width: 200px;
+}
+
+.password
+{
+    height: 60px;
+    width: 200px;
+}
+
+::-webkit-input-placeholder
+{
+    text-align: center;
+    font-family: Avengers;
+}
+
+.button {
+    border-top: 1px solid #0003b6;
+    background: #0003b6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0003b6), to(#0003b6));
+    background: -webkit-linear-gradient(top, #0003b6, #0003b6);
+    background: -moz-linear-gradient(top, #0003b6, #0003b6);
+    background: -ms-linear-gradient(top, #0003b6, #0003b6);
+    background: -o-linear-gradient(top, #0003b6, #0003b6);
+    padding: 5px 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    position: absolute;
+    right: 160px;
+    bottom: 100px;
+    font-size: 14px;
+    font-family: Avengers;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.button:hover {
+    border-top-color: #202429;
+    background: #202429;
+    color: #ccc;
+}
+.button:active {
+    border-top-color: #1b435e;
+    background: #1b435e;
+}
+
+#Register
+{
+    position: absolute;
+    bottom: 50px;
+    right: 145px;
+}
+
+@font-face {
+    font-family: Avengers;
+    src: url('BankGothicBold.ttf');
+}

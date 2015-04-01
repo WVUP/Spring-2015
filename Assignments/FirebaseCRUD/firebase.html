@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script> <!-- Firebase src -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script> <!-- jquery src -->
+    <script>
+		var myDataRef = new Firebase('https://firecrudwvup.firebaseio.com');
+	</script>
+  </head>
+  <body>
+
+           <input id="read" type="button" value="Read Students" onclick="get_students();" />
+    <div id='demo'><!--This divs ID is the target for the out put of the script below. Line XX does an appendTo this div--></div>
+	<div id='demo1'><!--This divs ID is the target for the out put of the script below. Line XX does an appendTo this div--></div>
+	<div id='demo2'><!--This divs ID is the target for the out put of the script below. Line XX does an appendTo this div--></div>
+
+    <!--the .val of these text boses are captured by the script -->
+    <input type='text' value = 'mitchell' id='fname' placeholder='firstname'>
+    <input type='text' value = 'adams' id='lname' placeholder='lastname'>
+    <input type='text'  value = '29' id='age' placeholder='age'>
+    <input type='text' value = 'CIT'  id='major' placeholder='major'>
+    <input type='text'  value = '3.0' id='gpa' placeholder='gpa'>
+    <input type='text' value = 'calmond'  id='advisor' placeholder='advisor'>
+    <input id="add" type="button" value="Add" onclick="push_student();" />
+
+    <script>
+
+     
+    function push_student(){
+		
+		var state = document.getElementById("demo").innerHTML; //create a variable called state and save the current markup up the demo div in it. This will keep the page from refreshing every-single-time we make a change
+		
+		/*set up a container on firebase and get its unique ID for us to an object to*/
+		var pushid = myDataRef.push();		//we make a blank space on the backend
+		var id = pushid.key();				// we get that blank spaces ID, this will let us target specific children later
+
+		/*get the values to send to firebase*/
+		var fname = $('#fname').val();		//gets .val from the name textbox
+		var lname = $('#lname').val();		//gets .val from the msg textbox
+		var age = $('#age').val();			//gets .val from the name textbox
+		var major = $('#major').val();		//gets .val from the msg textbox
+		var gpa = $('#gpa').val();			//gets .val from the name textbox
+		var advisor = $('#advisor').val();	//gets .val from the msg textbox
+		
+		
+		var NewEntry = new Firebase('https://firecrudwvup.firebaseio.com/'+id); //This sets a new firebase for the id/path we just created. URLs like this will make it easier to target child nodes later
+		
+		NewEntry.set({id: id, fname: fname, lname: lname, age: age, major: major, gpa: gpa, advisor: advisor}); //we use the .set since we are targeting a specific child-node (the one we just created)
+		
+		document.getElementById("demo").innerHTML = state; //set the demo div back to its previous state
+		
+		/*set the text boxes back to empty*/
+		$('#fname').val('');
+		$('#lname').val('');
+		$('#age').val('');
+		$('#major').val('');
+		$('#gpa').val('');
+		$('#advisor').val('');	
+    }
+	
+	
+	/* this function is not currently needed but will return a count for each child node in the firebase*/
+	function count(){
+			var count = 0;
+			myDataRef.on('value', function(snapshot){
+				var data = snapshot.forEach(function(child) {
+					count++;
+				}); 
+			});
+			return count;
+		}
+	
+    function get_students(){
+		document.getElementById("demo").innerHTML = "";
+		myDataRef.on('value', function(snapshot){
+			var data = snapshot.forEach(function(child) {
+				console.log(child.val());
+				var message = child.val();
+				$('#demo').append("<li><input type= text id= updatefname"+message.id+" value="+message.fname+"><input type= text id= updatelname"+message.id+" value="+message.lname+"><input type= text id=updateage"+message.id+" value="+message.age+"><input type= text id= updatemajor"+message.id+" value="+message.major+"><input type= text id= updategpa"+message.id+" value="+message.gpa+"><input type= text id= updateadvisor"+message.id+" value="+message.advisor+"><button onclick="+"update_student('"+message.id+"');"+">Update</button><button onclick="+"delete_student('"+message.id+"');>Delete</button></li>");
+			}); 
+		});
+	}	
+		
+	function update_student(id) {
+		
+		var state = document.getElementById("demo").innerHTML;
+		var UpdateRef = new Firebase('https://firecrudwvup.firebaseio.com/'+id);
+		var id = id;
+		var fname = $("#updatefname"+id).val();		//gets .val from the name textbox
+		var lname = $("#updatelname"+id).val();		//gets .val from the msg textbox
+		var age = $("#updateage"+id).val();			//gets .val from the name textbox
+		var major = $("#updatemajor"+id).val();		//gets .val from the msg textbox
+		var gpa = $("#updategpa"+id).val();			//gets .val from the name textbox
+		var advisor = $("#updateadvisor"+id).val();	//gets .val from the msg textbox
+
+		
+		UpdateRef.update({id: id, fname: fname, lname: lname, age: age, major: major, gpa: gpa, advisor: advisor});
+		
+		document.getElementById("demo").innerHTML = state;
+
+	}
+	
+	function delete_student(id) {
+		var state = document.getElementById("demo").innerHTML;
+		var RemoveRef = new Firebase('https://firecrudwvup.firebaseio.com/'+id);
+		RemoveRef.remove();
+		document.getElementById("demo").innerHTML = state;
+	}
+        
+    
+
+
+    </script>
+  </body>
+</html>

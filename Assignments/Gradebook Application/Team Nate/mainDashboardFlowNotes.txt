@@ -1,0 +1,58 @@
+First View - signup / email logon
+
+
+Next view-
+
+***Dashboard - homepage ***	(TEACHERS VIEW)
+
+note*use expand view for all dashboard forms
+
+course entry -
+	course name
+	course description / prereq's requested
+	required materials / books Etc ...
+	course CRN / #
+	credit hours #
+	start - end date / (spring summer fall) & year
+	scheduled time of meeting - online, days, timepicker Etc ...
+	room # (not required)
+	notes field
+	
+student entry -
+	first name
+	last name
+	id (object only)
+	courses (based on current teachers courses)
+	contact number
+	email
+	notes
+		
+assigment entry -
+	dropdown / choose course
+	start date/viewable - due date/end date (calendar date chooser)
+	max points or percentage based
+	name of asgn
+	description of asgn
+	type (quiz, test, homework, etc)
+	notes
+
+announcements-
+	annoucement 'box'
+	choose course(s)
+	
+notifications-	
+	last 5 activitys of teacher  - crud ops Etc.
+	notifaction of anouncements - teacher
+	items due / upcoming etc...
+	
+links to views -
+	semesters
+	current courses
+	students
+	dashboard or back to home
+	charts
+	user settings /  edit profile
+	
+
+
+

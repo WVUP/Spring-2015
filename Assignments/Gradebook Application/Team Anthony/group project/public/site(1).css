@@ -1,0 +1,56 @@
+.header
+{
+	
+    	width: 200px;
+    	height: 120px;
+    	background: #3399ff;
+    	-webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+    	transition: width 6s;
+	
+}
+
+.header:hover 
+{
+    width: 100%;
+}
+
+.center
+{
+	text-align: center;
+	
+}
+
+.left
+{
+	float: left;
+	padding: 50px;
+	height: 126px;
+	width: 416;
+  	
+  	
+
+}
+
+.right
+{
+	float: left;
+	padding: 50px;
+	height: 126px;
+	width: 416;
+	
+}
+
+.cool
+{
+	border-radius: 0px 200px 0px 177px;
+	-moz-border-radius: 0px 200px 0px 177px;
+	-webkit-border-radius: 0px 200px 0px 177px;
+	border: 69px solid #3399ff;
+	background: #999999;
+	height: 100%;
+}
+
+html
+{
+	background: dimgrey;
+}

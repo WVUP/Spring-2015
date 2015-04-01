@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="site(20).css">
+	
+
+<script type="text/javascript">
+  function validateForm() {
+    if (document.myForm.firstName.value == "" || document.myForm.lastName.value == "" || document.myForm.email.value == "") { 
+      alert("You have not filled in all the required fields!");
+    }
+  }
+</script>
+
+
+
+
+	<title> ClassroomCRUD </title>
+
+
+</head>
+<body>
+		<div style="vertical-align: right"> 	
+			<form name="myForm" onsubmit="validateForm()">
+   					First Name: <input type="text" name="firstName" /><br />
+   					Last Name: <input type="text" name="lastName" /><br />
+   					Email: <input type="text" name="email" /><br />
+   <input type="submit" value="Submit" />
+			</form>
+
+		</div>
+
+<div style=" text-align: right">
+	
+
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
