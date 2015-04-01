@@ -1,8 +1,17 @@
 var gradebookApp = angular.module('gradebook', ['ui.router']);
 
-gradebookApp.controller('HomeController', ['$scope', function ($scope) { 
+gradebookApp.controller('HomeController', ['$scope', '$http', function ($scope, $http) { 
 	$scope.viewType = "Semester";
 
+	$http.get("././data.json").error (function(){
+		console.log('Data not retrieved');
+	})
+	.success (function(data){
+		$scope.homeData = data;
+		console.log(data);
+		console.log("Data retrieved");
+	});
+	
 	var donut = Morris.Donut({
 		element: 'currentBreakdown',
 		data: [
@@ -23,19 +32,12 @@ gradebookApp.controller('HomeController', ['$scope', function ($scope) {
 	});
 }]);
 
-gradebookApp.controller('CourseController', ['$scope', function ($scope) {
+gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope, $http) {
 	$scope.viewType = "Courses";
-}]);
-
-gradebookApp.factory('dataFactory', function ($http) {
-	var courseData = {content:null};
-
-	$http.get('././courses.json').success(function(data) {
-		courseData.content = data;
+	$http.get("././courses.json").success (function(data){
+		$scope.courseData = data;
 	});
-
-	return courseData;
-}); 
+}]);
 
 gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise("");
@@ -60,4 +62,4 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 				$scope.courses = gradebookApp.factory;
 			}
 		});
-})
+});

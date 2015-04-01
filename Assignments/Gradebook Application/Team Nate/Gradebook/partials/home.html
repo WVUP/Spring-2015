@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="HomeController">
 	<div class="row">
 
 		<!--Welcome dashboard view-->
@@ -35,6 +35,13 @@
 				<div class="col-lg-6">
 					<h2>Current {{viewType}}</h2>
 					<div id="currentBreakdown"></div>
+				</div>
+				<div class="col-lg-6" ng-repeat="datum in homeData.data">
+					<ul>
+						<li>{{data.name}}</li>
+						<li>{{data.field}}</li>
+						<li>{{data.id}}</li>
+					</ul>
 				</div>
 			</div>
 
