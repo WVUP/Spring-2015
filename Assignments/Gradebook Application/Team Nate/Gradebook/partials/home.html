@@ -3,7 +3,31 @@
 
 		<!--Welcome dashboard view-->
 		<div class="col-lg-9" id="dashboardView">
-			<h1 id="currentSemesterHeading">Welcome to Spring 2015</h1>
+			<div class="row">
+				<div class="col-lg-8"><h1 id="currentSemesterHeading">Welcome to Spring 2015</h1></div>
+				<div class="col-lg-4">
+					<div class="dropdown">
+					   <button type="button" class="btn dropdown-toggle" id="semesterMenu" 
+					      data-toggle="dropdown">Change<span class="caret"></span>
+					   </button>
+					   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+					      <li role="presentation">
+					         <a role="menuitem" tabindex="-1" href="#">Spring 2015</a>
+					      </li>
+					      <li role="presentation">
+					         <a role="menuitem" tabindex="-1" href="#">Fall 2014</a>
+					      </li>
+					      <li role="presentation">
+					         <a role="menuitem" tabindex="-1" href="#">Summer 2014</a>
+					      </li>
+					      <li role="presentation" class="divider"></li>
+					      <li role="presentation">
+					         <a role="menuitem" tabindex="-1" href="#">Create New</a>
+					      </li>
+					   </ul>
+					</div>
+				</div>
+			</div>
 			<hr/>
 
 			<!--Welcome overview-->
