@@ -138,7 +138,9 @@ Message.findOne().exec(function (err, messageDoc) {
     mongoMessage = messageDoc.message;
 });
 
-
+/**
+ * renders partials
+ */
 app.get('/partials/:partialPath', function (req, res) {
     //       ^          ^
     // request for file in partials folder; request placeholder for any file requested
