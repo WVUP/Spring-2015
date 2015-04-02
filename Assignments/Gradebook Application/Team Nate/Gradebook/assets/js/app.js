@@ -47,6 +47,11 @@ gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope
 	$scope.viewType = "Courses";
 	$http.get("././courses.json").success (function(data){
 		$scope.courseData = data;
+		console.log(data);
+		console.log("Courses retrieved");
+	})
+	.error (function(){
+		console.log("Courses not retrieved");
 	});
 }]);
 
