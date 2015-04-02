@@ -110,28 +110,6 @@ module.exports = function (app, express) {
 
 	//create a user on post and get all users on get
 	apiRouter.route('/users')
-		.post(function (req, res) {
-			
-			//create a new instance of the User Model
-			var user = new User();
-
-			//set the users information (comes from the request)
-			user.name = req.body.name;
-			user.username = req.body.username;
-			user.password = req.body.password;
-
-			//save the user a nd check for errors
-			user.save(function(err){
-				if (err){
-					//duplicate entry
-					if(err.code == 11000)
-						return res.json({success: false, message: "Username already exists"});
-					else
-						return res.send(err);
-				}
-				res.json({message: "User created"})
-			})
-		})
 		.get(function (req, res) {
 			User.find(function (err, users) {
 				if(err)
@@ -173,7 +151,10 @@ module.exports = function (app, express) {
 						res.send(err);
 
 					//return a message
-					res.json({message: 'User updated'});
+					res.json({
+						success: true,
+						message: 'User updated'
+					});
 				})
 			})
 		})
@@ -184,7 +165,17 @@ module.exports = function (app, express) {
 			}, function (err, user) {
 				if(err)
 					return res.send(err);
-				res.json({message: 'Successfully deleted'})
+
+				User.find(function (err, users) {
+					if(err)
+						res.send(err);
+
+					//return the users
+					res.json({
+						users: users,
+						message: 'Successfully deleted'
+					})
+				});
 			});
 		});
 
