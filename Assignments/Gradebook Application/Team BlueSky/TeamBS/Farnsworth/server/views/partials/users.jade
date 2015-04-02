@@ -1,0 +1,11 @@
+//
+   Created by Dustin on 4/2/2015.
+//
+   Created by Dustin on 4/1/2015.
+.panel.panel-primary
+    .panel-heading.text-center Users
+    .panel-body
+        .row(ng-repeat="user in users | orderBy:'lname' | limitTo:5")
+            .col-md-2 {{user.course}}
+            .col-md-2 {{user.fname}}
+            .col-md-8 {{user.lname}}

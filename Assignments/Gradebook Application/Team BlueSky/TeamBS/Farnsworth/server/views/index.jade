@@ -1,9 +1,21 @@
-// this content is plugged into the 'block main-content' placeholder of the layout.jade file
+// content for layout.jade file placeholder
 // section class content and nested div with angular app data
 // h2; mongodb data
 extends ../includes/layout
 
 block main-content
-	section.content
-		div(ng-view)
-	h2(style='height:800px')= mongoMessage
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                a.navbar-brand(href="/") VLS
+                    h6 -Virtual Learning System
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href="/") Home
+
+    section.content
+        div(ng-view)
+
+    footer.container.text-center
+        p &copy: 2015 Virtual Learning System

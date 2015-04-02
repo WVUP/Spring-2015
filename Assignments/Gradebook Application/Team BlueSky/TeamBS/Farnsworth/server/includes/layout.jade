@@ -1,3 +1,4 @@
+// placeholder for content of other files
 // layout file to deliver images, css, and js
 // basic wrapper for application
 // other files inherit from this file and define their view specific content
@@ -6,12 +7,13 @@
 // 'block main-content' is a place holder whos content can be filled in by another file
 doctype
 html
-	head
-		link(href="/grades.png", rel="shortcut icon", type="image/x=icon")
-		link(rel="stylesheet", href="/css/bootstrap.css")
-		link(rel="stylesheet", href="/vendor/toastr/toastr.css")
-		link(rel="stylesheet", href="/css/site.css")
-		base(href="/")
-	body(ng-app='app')
-		block main-content
-		include scripts
+    head
+        title Virtual Learning Studio
+        link(href="/grades.png", rel="shortcut icon", type="image/x=icon")
+        link(rel="stylesheet", href="/css/bootstrap.css")
+        link(rel="stylesheet", href="/vendor/toastr/toastr.css")
+        link(rel="stylesheet", href="/css/site.css")
+        base(href="/")
+    body(ng-app='app')
+        block main-content
+        include scripts
