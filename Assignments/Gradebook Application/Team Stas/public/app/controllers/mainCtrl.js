@@ -16,20 +16,45 @@ angular.module('mainCtrl', [])
 			});
 	});	
 
-	vm.doLogin = function () {
+	vm.doRegister = function (isValid) {
+
+		// clear the error
+		vm.error = '';
+
+		if(isValid){
+			Auth.register(vm.registerData).success(function (data) {
+				if (data.success)			
+					$location.path('/users');
+				else 
+					vm.error = data.message;
+
+			})
+		}else{
+			vm.processing = false;
+			vm.error = 'Fill out all the required info.';
+		}	
+	};
+
+	vm.doLogin = function (isValid) {
 		vm.processing = true;
 
 		// clear the error
 		vm.error = '';
 
-		Auth.login(vm.loginData.username, vm.loginData.password).success(function (data) {
+		if(isValid){
+
+			Auth.login(vm.loginData).success(function (data) {
+				vm.processing = false;
+				// if a user successfully logs in, redirect to users page
+					if (data.success)			
+						$location.path('/users');
+					else 
+						vm.error = data.message;
+			});
+		}else{
 			vm.processing = false;
-			// if a user successfully logs in, redirect to users page
-				if (data.success)			
-					$location.path('/users');
-				else 
-					vm.error = data.message;
-		});
+			vm.error = 'Fill out all the required info.';
+		}
 	};
 
 	vm.doLogout = function () {

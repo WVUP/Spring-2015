@@ -5,7 +5,7 @@
     	height: 120px;
     	background: #3399ff;
     	-webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
-    	transition: width 6s;
+    	transition: width 4s;
 	
 }
 
@@ -18,6 +18,7 @@
 {
 	text-align: center;
 	
+	
 }
 
 .left
@@ -28,6 +29,13 @@
 	width: 416;
   	
   	
+}
+
+
+.leftannoyance
+{
+	right: 10px;
+	position: relative;
 
 }
 

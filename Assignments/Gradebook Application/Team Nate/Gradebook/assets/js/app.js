@@ -1,8 +1,17 @@
 var gradebookApp = angular.module('gradebook', ['ui.router']);
 
-gradebookApp.controller('HomeController', ['$scope', function ($scope) { 
+gradebookApp.controller('HomeController', ['$scope', '$http', function ($scope, $http) { 
 	$scope.viewType = "Semester";
 
+	$http.get("././data.json").error (function(){
+		console.log('Data not retrieved');
+	})
+	.success (function(data){
+		$scope.data = data;
+		console.log(data);
+		console.log("Data retrieved");
+	});
+	
 	var donut = Morris.Donut({
 		element: 'currentBreakdown',
 		data: [
@@ -23,19 +32,23 @@ gradebookApp.controller('HomeController', ['$scope', function ($scope) {
 	});
 }]);
 
-gradebookApp.controller('CourseController', ['$scope', function ($scope) {
-	$scope.viewType = "Courses";
+gradebookApp.controller('NotifyController', ['$scope', '$http', function ($scope, $http) {
+	$http.get("././notifications.json").success (function(data){
+		$scope.notifications = data;
+		console.log(data);
+		console.log("Notifications retrieved");
+	})
+	.error (function(){
+		console.log("Notifications not retrieved");
+	});
 }]);
 
-gradebookApp.factory('dataFactory', function ($http) {
-	var courseData = {content:null};
-
-	$http.get('././courses.json').success(function(data) {
-		courseData.content = data;
+gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope, $http) {
+	$scope.viewType = "Courses";
+	$http.get("././courses.json").success (function(data){
+		$scope.courseData = data;
 	});
-
-	return courseData;
-}); 
+}]);
 
 gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise("");
@@ -60,4 +73,4 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 				$scope.courses = gradebookApp.factory;
 			}
 		});
-})
+});

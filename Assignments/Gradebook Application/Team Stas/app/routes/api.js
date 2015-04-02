@@ -1,5 +1,6 @@
 var User = require('../models/user'),
 	jwt = require('jsonwebtoken'),
+	validator = require('validator'),
 	config = require('../../config');
 
 var supersecret = config.secret;
@@ -30,8 +31,41 @@ module.exports = function (app, express) {
 						message: 'Authentication failed. Password does not match'
 					})
 				}else{
-					//if user is found and password is right
-					var token = jwt.sign({
+					sendToken('Successfully passed a token', user, res);
+				}
+			}
+		})
+	});
+
+	apiRouter.route('/register')
+		.post(function (req, res) {
+			if(!validator.isNull(req.body.name) && !validator.isNull(req.body.username) && !validator.isNull(req.body.password)){
+				var user = new User();
+
+				user.name = req.body.name;
+				user.username =  req.body.username;
+				user.password = req.body.password;
+
+				user.save(function(err){
+					if (err){
+						//duplicate entry
+						if(err.code == 11000)
+							return res.json({success: false, message: "Username already exists"});
+						else
+							return res.send(err);
+					}
+					sendToken('Registration successful', user, res);
+				})
+			}else{
+				res.json({
+					success: false,
+					message: 'Please fill all the required fields'
+				})
+			}
+		})
+
+	function sendToken (msg, user, res) {
+		var token = jwt.sign({
 						name: user.name,
 						username: user.username
 					}, supersecret, {
@@ -40,14 +74,10 @@ module.exports = function (app, express) {
 
 					res.json({
 						success: true,
-						message: 'Successfully passed a token',
+						message: msg,
 						token: token
 					});
-
-				}
-			}
-		})
-	})
+	}
 
 	//middleware that is responsible for protecting all routes that will follow it using tokens based authentication
 	apiRouter.use(function (req, res, next) {
@@ -80,28 +110,6 @@ module.exports = function (app, express) {
 
 	//create a user on post and get all users on get
 	apiRouter.route('/users')
-		.post(function (req, res) {
-			
-			//create a new instance of the User Model
-			var user = new User();
-
-			//set the users information (comes from the request)
-			user.name = req.body.name;
-			user.username = req.body.username;
-			user.password = req.body.password;
-
-			//save the user a nd check for errors
-			user.save(function(err){
-				if (err){
-					//duplicate entry
-					if(err.code == 11000)
-						return res.json({success: false, message: "Username already exists"});
-					else
-						return res.send(err);
-				}
-				res.json({message: "User created"})
-			})
-		})
 		.get(function (req, res) {
 			User.find(function (err, users) {
 				if(err)
@@ -143,7 +151,10 @@ module.exports = function (app, express) {
 						res.send(err);
 
 					//return a message
-					res.json({message: 'User updated'});
+					res.json({
+						success: true,
+						message: 'User updated'
+					});
 				})
 			})
 		})
@@ -154,7 +165,17 @@ module.exports = function (app, express) {
 			}, function (err, user) {
 				if(err)
 					return res.send(err);
-				res.json({message: 'Successfully deleted'})
+
+				User.find(function (err, users) {
+					if(err)
+						res.send(err);
+
+					//return the users
+					res.json({
+						users: users,
+						message: 'Successfully deleted'
+					})
+				});
 			});
 		});
 

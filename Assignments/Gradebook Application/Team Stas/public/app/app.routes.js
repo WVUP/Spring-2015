@@ -9,7 +9,22 @@ angular.module('app.routes', ['ngRoute'])
 			templateUrl: 'app/views/pages/login.html',
 			controller: 'mainController',
 			controllerAs: 'login'
-		});
+		})
+		.when('/register',{
+			templateUrl: 'app/views/pages/register.html',
+			controller: 'mainController',
+			controllerAs: 'register'
+		})
+		.when('/users',{
+			templateUrl: 'app/views/pages/users/all.html',
+			controller: 'userController',
+			controllerAs: 'user'
+		})
+		.when('/users/:user_id',{
+			templateUrl: 'app/views/pages/users/edit.html',
+			controller: 'userEditController',
+			controllerAs: 'user'
+		})
 
 	$locationProvider.html5Mode(true);
 });
