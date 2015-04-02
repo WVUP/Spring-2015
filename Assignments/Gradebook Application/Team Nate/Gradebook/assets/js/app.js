@@ -32,6 +32,17 @@ gradebookApp.controller('HomeController', ['$scope', '$http', function ($scope, 
 	});
 }]);
 
+gradebookApp.controller('NotifyController', ['$scope', '$http', function ($scope, $http) {
+	$http.get("././notifications.json").success (function(data){
+		$scope.notifications = data;
+		console.log(data);
+		console.log("Notifications retrieved");
+	})
+	.error (function(){
+		console.log("Notifications not retrieved");
+	});
+}]);
+
 gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope, $http) {
 	$scope.viewType = "Courses";
 	$http.get("././courses.json").success (function(data){
