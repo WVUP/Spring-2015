@@ -56,7 +56,6 @@ gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope
 }]);
 
 gradebookApp.config(function($stateProvider, $urlRouterProvider) {
-	$urlRouterProvider.otherwise("");
 
 	$stateProvider
 		.state('homeState', {
