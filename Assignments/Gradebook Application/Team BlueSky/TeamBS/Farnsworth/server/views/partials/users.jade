@@ -5,7 +5,7 @@
 .panel.panel-primary
     .panel-heading.text-center Users
     .panel-body
-        .row(ng-repeat="user in users | orderBy:'lname' | limitTo:5")
+        .row(ng-repeat="user in users | orderBy:'lname' | filter:{admin:!true} | limitTo:5")
             .col-md-2 {{user.course}}
             .col-md-2 {{user.fname}}
             .col-md-8 {{user.lname}}
