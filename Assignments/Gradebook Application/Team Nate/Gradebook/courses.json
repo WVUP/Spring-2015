@@ -1,11 +1,9 @@
-[
+{"courses": [
 	{
 		"name": "CS 329",
 		"semester": "Spring 2015",
-		"CRN": 2929,
-		"hrs": 3,
-		"startDate": new Date(),
-		"endDate": new Date(),
+		"CRN": "2929",
+		"hrs": "3",
 		"time": "R 16:30",
 		"room": "CAPC 119",
 		"comments": [
@@ -14,14 +12,11 @@
 			"Watch me angular this piece on up"
 		]
 	},
-
 	{
 		"name": "CS 330",
 		"semester": "Spring 2015",
-		"CRN": 2930,
-		"hrs": 3,
-		"startDate": new Date(),
-		"endDate": new Date(),
+		"CRN": "2930",
+		"hrs": "3",
 		"time": "TR 17:00",
 		"room": "CAPC 119",
 		"comments": [
@@ -29,4 +24,4 @@
 			"Fiction can be fun, but I find the reference section more enlightening"
 		]
 	}
-]
+]}

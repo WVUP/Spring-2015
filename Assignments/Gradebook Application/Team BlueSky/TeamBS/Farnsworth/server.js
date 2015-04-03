@@ -123,22 +123,8 @@ db.once('open', function callback() {
 
 
 /**
- * mongoose schema
+ * renders partials
  */
-var messageSchema = mongoose.Schema({message: String});
-
-
-/**
- *
- * @type {*|Model}
- */
-var Message = mongoose.model('Message', messageSchema);
-var mongoMessage;
-Message.findOne().exec(function (err, messageDoc) {
-    mongoMessage = messageDoc.message;
-});
-
-
 app.get('/partials/:partialPath', function (req, res) {
     //       ^          ^
     // request for file in partials folder; request placeholder for any file requested
@@ -150,13 +136,11 @@ app.get('/partials/:partialPath', function (req, res) {
 
 /**
  * route that delivers the index page - * can cause infinite digests error
- * any request that gets to this point is handled by client side
+ * any request that gets to this point is handled by client side.
  * server side doesn't handle routes or handing out 404 error notices
  */
 app.get('*', function (req, res) {
-    res.render('index', {
-        mongoMessage: mongoMessage
-    });
+    res.render('index');
 });
 
 

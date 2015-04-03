@@ -1,9 +1,11 @@
-div(style='height:200px;')
-    image(style='position:fixed;', src='Gradebook.png')
-div(style='height:400px;')
-    h1 Virtual Learning System
-    h5 You can serve html instead of jade views by going to our server.js file, uncommenting the code for html at line 73, and commenting out the code for jade at lines 54 and 61.
-div(style='height:400px;')
-    h2 This text is displayed from our node server/views/partials/main.jade file.
-div(style='height:400px;')
-    h2 {{ myVar }}
+.container
+    .jumbotron
+        h1 Virtual Learning System
+        img(src="Gradebook.png")
+        p Welcome to VLS!
+
+    .row
+        .col-md-6
+            div(ng-include="'/partials/admin'")
+        .col-md-6
+            div(ng-include="'/partials/users'")
