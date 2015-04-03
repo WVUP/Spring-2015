@@ -6,6 +6,7 @@
 	<link rel="SHORTCUT ICON" href="http://tigertrax.georgetowncollege.edu/images/Apps/gradekeeper.png">
 	<link rel="stylesheet" type="text/css" href="site(1).css">
 	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	
 
 	<title> Login webpage </title>
 
@@ -29,7 +30,7 @@
 
 		<div class="rightannoyance">
 
-				<H2> Welcome to the Gradebook 4.0 (like the GPA we aim for)! Aren't you tired of struggling to find a way to post grades or even keep track of them for your students in your classes?! Well look no further for we, Team Awesome, have created a gradebook for you! Just use your credentials to sign in to the gradebook and let the fun of ruining your students lives begin! </H2>
+				<H2 class="center"> Welcome to the Gradebook 4.0 (like the GPA we aim for)! </H2>
 
 		</div>
 
@@ -38,7 +39,7 @@
 			<div class="col-md-6">
 
 		 		
-
+					
 		 			Email:
 
 		 			<input class="input" type="text" login="email" value placeholder="teststudent@example.com" required> 
@@ -56,6 +57,7 @@
 					Password: 
 				
 					<input class="input" type="password" login="password" value placeholder="********" required>
+					
 			
 				
 
@@ -81,7 +83,8 @@
 
 			<div class="col-md-6">
 		
-				<button type="submit" class="btn btn-default" style="border: 10px solid transparent; border-radius: 40px;"> Login </button>
+				<input type="submit" class="btn btn-default" style="border: 2px solid transparent; border-radius: 40px;" value="Login" id="submit" onclick="validate()"></button>
+				
 
 			</div>
 		
