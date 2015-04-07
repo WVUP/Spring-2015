@@ -8,10 +8,10 @@ module.exports = function (apiRouter) {
 			Class.find(function (err, classes) {
 				if (err)
 					res.send(err);
-
-				//return classes
-				res.json(classes);
-
+				else{
+					//return classes
+					res.json(classes);
+				}
 			})
 		})
 
@@ -26,16 +26,30 @@ module.exports = function (apiRouter) {
 			gClass.save(function (err) {
 				if (err)
 					res.send(err);
-				//return back all classes
-				Class.find(function (err, classes) {
-					if (err)
-						res.send(err);
-
-					res.json(classes);
-				})
+				else
+					res.json({success: true});
 			})
-		})
+		});
 
+	apiRouter.route('/classes/:class_id')
+		.delete(function (req, res) {
+			Class.remove({
+				_id: req.params.class_id
+			}, function (err) {
+				if(err)
+					res.send(err);
+
+				Class.find(function (err, classes) {
+					res.json({
+						classes: classes,
+						message: 'Successfully deleted'
+					});
+				})
+			});
+		});
+
+
+		//change tomorrow.
 	apiRouter.route('/classes/addStudents/:class_id')
 		.post(function (req, res) {
 
@@ -60,11 +74,21 @@ module.exports = function (apiRouter) {
 						})
 				};
 				if (err)
-					res.json(err);
-				res.json({
-					success: true
+					res.send(err);
+				else{
+					res.json({
+					success: true,
+					message: "Successfully added."
 				});	
+				}
 				
+			})
+		})
+		.delete(function (req, res) {
+			Class.findById(req.params.class_id, function (err, gClass) {
+				if (err)
+					res.send(err);
+
 			})
 		})
 
@@ -73,9 +97,14 @@ module.exports = function (apiRouter) {
 			Class.findOne({_id: req.params.class_id})
 			.populate('users')
 			.exec(function (err, gClass) {
-				if (err)
+				if (err){
 					res.send(err);
-				res.json(gClass.users)
+				}
+				else{
+					res.json({
+						students: gClass.users
+					})
+				}
 			})
 		})
 }
