@@ -1,0 +1,27 @@
+{
+  "name": "Gradebook",
+  "version": "0.0.1",
+  "description": "Implements CRUD operations for grades, assignments, and courses",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "\"\""
+  },
+  "keywords": [
+    "gradebook",
+    "courses",
+    "assignments",
+    "students"
+  ],
+  "author": "Mitchell Adams, MD Kashem, JD Bechtold, Nate Paxton",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.12.2",
+    "express": "^4.12.3",
+    "express-jwt": "^2.1.0",
+    "assume": "^0.0.18"
+  },
+  "devDependencies": {}
+}
