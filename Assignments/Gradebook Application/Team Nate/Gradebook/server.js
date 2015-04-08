@@ -18,7 +18,8 @@ app.get('/',function(req,res){
   //__dirname : It will resolve to your project folder.
 });
 
-app.use(express.static(__dirname + '/public'));                 
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/app/views'))                 
 app.use(morgan('dev'));                                         
 app.use(bodyParser.urlencoded({'extended':'true'}));            
 app.use(bodyParser.json());                                     

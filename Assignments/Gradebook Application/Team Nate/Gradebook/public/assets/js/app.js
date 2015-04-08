@@ -60,13 +60,13 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state('homeState', {
 			url: "",
-			templateUrl: "./app/views/home.html",
+			templateUrl: "././app/views/home.html",
 			controller: 'HomeController'
 		})
 
 		.state('courseState', {
 			url: "/courses",
-			templateUrl: "././partials/courses.html",
+			templateUrl: "././app/views/courses/index.html",
 			controller: 'CourseController'
 		})
 

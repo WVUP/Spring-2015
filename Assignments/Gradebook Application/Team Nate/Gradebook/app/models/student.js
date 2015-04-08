@@ -8,9 +8,9 @@ var studentSchema = new Schema({
 	firstName: String,
 	lastName: String,
 	phone: Number,
-	courseIDs: [ObjectId],
-	assigmentIDs: [ObjectId],
-	semesterIDs: [ObjectId],
+	courseIDs: [String],
+	assigmentIDs: [String],
+	semesterIDs: [String],
 	comments: [String]
 });
 
