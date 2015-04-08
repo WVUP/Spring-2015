@@ -11,4 +11,4 @@ module.exports = mongoose.model('Course', {
 	studentIDs: [ObjectId],
 	assignmentIDs: [ObjectId],
 	comments: [String]
-})
+});

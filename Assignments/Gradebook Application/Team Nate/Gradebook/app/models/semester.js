@@ -1,9 +1,10 @@
 //Class variables
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.Types.ObjectId;
+var Schema = mongoose.Schema;
 
 //Semester schema
-module.exports = mongoose.model('Semester', {
+var semesterSchema = new Schema({ 
 	year: Number,
 	term: String,
 	startDate: Date,
@@ -11,4 +12,8 @@ module.exports = mongoose.model('Semester', {
 	courseIDs: [ObjectId],
 	studentIDs: [ObjectId],
 	comments: [String]
-})
+});
+
+//Export the model
+var Semester = mongoose.model('Semester', semesterSchema);
+module.exports = Semester;

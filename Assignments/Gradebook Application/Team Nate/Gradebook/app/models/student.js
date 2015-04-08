@@ -1,9 +1,10 @@
 //Class variables
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.Types.ObjectId;
+var Schema = mongoose.Schema;
 
 //Student schema
-module.exports = mongoose.model('Student', {
+var studentSchema = new Schema({
 	firstName: String,
 	lastName: String,
 	phone: Number,
@@ -11,4 +12,8 @@ module.exports = mongoose.model('Student', {
 	assigmentIDs: [ObjectId],
 	semesterIDs: [ObjectId],
 	comments: [String]
-})
+});
+
+//Export the model
+var Student = mongoose.model('Student', studentSchema);
+module.exports = Student;
