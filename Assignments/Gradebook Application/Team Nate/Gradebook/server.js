@@ -8,9 +8,15 @@ var database = require('./config/database');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var path = require('path');
 
 //Configuration
 mongoose.connect(database.url);
+
+app.get('/',function(req,res){
+  res.sendFile(__dirname+'/index.html');
+  //__dirname : It will resolve to your project folder.
+});
 
 app.use(express.static(__dirname + '/public'));                 
 app.use(morgan('dev'));                                         

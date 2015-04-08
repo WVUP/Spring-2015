@@ -60,7 +60,7 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state('homeState', {
 			url: "",
-			templateUrl: "././partials/home.html",
+			templateUrl: "./app/views/home.html",
 			controller: 'HomeController'
 		})
 

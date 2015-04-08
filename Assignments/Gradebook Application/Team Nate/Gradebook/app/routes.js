@@ -2,14 +2,14 @@ var Student = require('./models/student');
 var Course = require('./models/course');
 var Assignment = require('./models/assignment');
 var Semester = require('./models/semester');
+var path = require('path');
 
 module.exports = function(app) {
 	//Api methods 
-
 	//Get students
-	app.get('/api/students', function(req, res) {
+	 app.get('/api/students', function(req, res) {
 
-	});
+	 });
 
 	//Create and post, kick back index view
 	app.post('/api/students', function(req, res) {
@@ -22,9 +22,9 @@ module.exports = function(app) {
 	});
 
 	//Index
-	app.get('*', function(req, res) {
-		res.sendFile('./public/students.html');
-	});
+	// app.get('/', function(req, res) {
+	// 	res.sendFile('./index.html');
+	// });
 
 	// //Get semesters
 	// app.get('/api/semesters', function(req, res) {
