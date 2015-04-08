@@ -1,9 +1,12 @@
 <div>
-	<ul>
-		<li>One</li>
-		<li>Two</li>
-		<li>Three</li>
-		<li>Four</li>
-		<li>Five</li>
-	</ul>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Course Number</th>
+		</tr>
+		<tr ng-repeat="course in CourseController.courses">
+			<td>{{course.name}}</td>
+			<td>{{course.courseNum}}</td>
+		</tr>
+	</table>
 </div>

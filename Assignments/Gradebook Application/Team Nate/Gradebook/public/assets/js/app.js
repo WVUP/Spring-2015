@@ -2,15 +2,6 @@ var gradebookApp = angular.module('gradebook', ['ui.router']);
 
 gradebookApp.controller('HomeController', ['$scope', '$http', function ($scope, $http) { 
 	$scope.viewType = "Semester";
-
-	$http.get("././data.json").error (function(){
-		console.log('Data not retrieved');
-	})
-	.success (function(data){
-		$scope.data = data;
-		console.log(data);
-		console.log("Data retrieved");
-	});
 	
 	var donut = Morris.Donut({
 		element: 'currentBreakdown',
@@ -67,7 +58,7 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 		.state('courseState', {
 			url: "/courses",
 			templateUrl: "././app/views/courses/index.html",
-			controller: 'CourseController'
+			controller: 'CourseController as courses'
 		})
 
 		.state('courseState.list', {
