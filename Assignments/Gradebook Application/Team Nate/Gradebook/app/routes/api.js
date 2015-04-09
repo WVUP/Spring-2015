@@ -1,6 +1,5 @@
-module.exports = function(app) {
+module.exports = function(app, express) {
 	//Use express router
-	var express = require('express');
 	var apiRouter = express.Router();
 
 	//Course routes

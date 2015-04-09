@@ -28,7 +28,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 
 //Routing
-var apiRoutes = require('./app/routes/api')(app, express);
+var apiRoutes = require('/app/routes/api')(app, express);
 app.use('/api', apiRoutes);
 
 //Start application with node

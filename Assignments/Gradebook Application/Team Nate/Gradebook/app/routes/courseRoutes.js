@@ -35,6 +35,6 @@ module.exports = function(apiRouter) {
 					res.send(err);
 				else
 					res.json({ message: "Course " + newCourse.name + " successfully created" });
-			})
+			});
 		});
 }
