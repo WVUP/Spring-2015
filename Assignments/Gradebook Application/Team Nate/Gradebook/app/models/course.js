@@ -8,7 +8,8 @@ var courseSchema = new Schema({
 	name: String,
 	courseNum: String,
 	isInCurrentSemester: Boolean,
-	dateCreated
+	dateCreated: Date,
+	dateModified: Date,
 	semesterIds: [String],
 	studentIds: [String],
 	assignmentIDs: [ObjectId],

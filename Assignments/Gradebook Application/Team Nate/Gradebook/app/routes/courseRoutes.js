@@ -17,7 +17,7 @@ module.exports = function(apiRouter) {
 
 		//Create a new course
 		.post(function(req, res) {
-			var newCourse - new Course();
+			var newCourse = new Course();
 
 			newCourse.name = req.body.name;
 			newCourse.courseNum = req.body.courseNum;
