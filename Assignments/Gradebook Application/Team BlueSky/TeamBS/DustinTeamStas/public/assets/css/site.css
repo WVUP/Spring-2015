@@ -1,0 +1,20 @@
+body, div {
+  background-color: dodgerblue !important;
+  color: white;
+}
+
+div {
+  -webkit-box-shadow: initial;
+  -moz-box-shadow: initial;
+  box-shadow: initial;
+}
+
+div :hover {
+  background-color: white !important;
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+h1 {
+  cursor: pointer;
+}
