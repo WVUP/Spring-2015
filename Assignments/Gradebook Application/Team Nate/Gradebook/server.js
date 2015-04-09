@@ -8,7 +8,13 @@ var database = require('./config/database');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var path = require('path');
+var router = express.Router();
+
+//Router configuration
+router.use(function(req, res, next) {
+	console.log("Router in use");
+	next();
+})
 
 //Configuration
 mongoose.connect(database.url);
@@ -18,6 +24,7 @@ app.get('/',function(req,res){
   //__dirname : It will resolve to your project folder.
 });
 
+app.use('/api', router);
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/app/views'))                 
 app.use(morgan('dev'));                                         

@@ -9,8 +9,8 @@ var semesterSchema = new Schema({
 	term: String,
 	startDate: Date,
 	endDate: Date,
-	courseIDs: [ObjectId],
-	studentIDs: [ObjectId],
+	courseIDs: [String],
+	studentIDs: [String],
 	comments: [String]
 });
 

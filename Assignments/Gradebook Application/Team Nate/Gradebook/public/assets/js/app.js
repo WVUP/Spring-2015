@@ -36,7 +36,7 @@ gradebookApp.controller('NotifyController', ['$scope', '$http', function ($scope
 
 gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope, $http) {
 	$scope.viewType = "Courses";
-	$http.get("././courses.json").success (function(data){
+	$http.get("").success (function(data){
 		$scope.courseData = data;
 		console.log(data);
 		console.log("Courses retrieved");
