@@ -8,8 +8,10 @@ var assignmentSchema = new Schema({
 	name: String,
 	courseNum: String,
 	isInCurrentSemester: Boolean,
-	courseID: String,
-	studentIDs: [String],
+	dateCreated: Date,
+	dateModified: Date,
+	courseId: String,
+	studentIds: [String],
 	comments: [String]
 });
 
