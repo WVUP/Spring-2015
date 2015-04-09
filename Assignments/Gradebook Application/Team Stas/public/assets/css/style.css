@@ -131,3 +131,7 @@ input.ng-invalid.ng-dirty{
   -moz-animation:fadeIn .8s both linear;
   animation:fadeIn .8s both linear;
 }
+
+p{
+  font-family: Avengers;
+}
