@@ -25,6 +25,54 @@ angular.module('app.routes', ['ngRoute'])
 			controller: 'userEditController',
 			controllerAs: 'user'
 		})
+		.when('/classes',{
+			templateUrl: 'app/views/pages/classes/all.html',
+			controller: 'classController',
+			controllerAs: 'class'
+		})
+		.when('/classes/create',{
+			templateUrl: 'app/views/pages/classes/create.html',
+			controller: 'classController',
+			controllerAs: 'class'
+		})
+		.when('/classes/addStudents/:class_id', {
+			templateUrl: 'app/views/pages/classes/addStudents.html',
+			controller: 'addStudentsController',
+			controllerAs: 'addStudents'
+		})
+		.when('/classes/enrolledStudents/:class_id',{
+			templateUrl: 'app/views/pages/classes/enrolledStudents.html',
+			controller: 'enrolledStudentsController',
+			controllerAs: 'enrolledStudents'
+		})
+		.when('/assignments',{
+			templateUrl: 'app/views/pages/assignments/all.html',
+			controller: 'assignmentController',
+			controllerAs: 'assignment'
+		})
+		.when('/assignments/create/:class_id',{
+			templateUrl: 'app/views/pages/assignments/create.html',
+			controller: 'assignmentController',
+			controllerAs: 'assignment'
+		})
+		.when('/assignments/view/:class_id',{
+			templateUrl: 'app/views/pages/assignments/classAssignments.html',
+			controller: 'assignmentClassController',
+			controllerAs: 'assignment'
+		})
+		.when('/assignments/addAssignment/:class_id',{
+			templateUrl: 'app/views/pages/assignments/addExistingAssignment.html',
+			controller: 'assignmentController',
+			controllerAs: 'assignment'
+		})
+		.when('/assignments/submit/:assignment_id',{
+			templateUrl: 'app/views/pages/assignments/submit.html',
+			controller: 'submissionController',
+			controllerAs: 'submission'
+		})
+		.otherwise({
+            redirectTo: '/'
+        });
 
 	$locationProvider.html5Mode(true);
 });

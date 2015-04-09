@@ -5,14 +5,14 @@ var express = require('express'),
 	morgan = require('morgan'),
 	mongoose = require('mongoose'),
 	path = require('path'),
+	multer = require('multer'),
 	config = require('./config');
 
 //use body parser so we can grab information from POST requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//configure our app to handle Cross Origin Resource Sharing requests
-//we are setting out configuration to allow requests from other domains to prevent CORS errors. This allows any domain to access our API
+//handle Cross Origin Resource Sharing requests
 app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
@@ -22,6 +22,20 @@ app.use(function (req, res, next) {
 
 //log all requests to the console
 app.use(morgan('dev'));
+
+app.use(multer({
+	dest: './app/uploads/',
+	rename: function (fieldname, filename) {
+		return filename + Date.now();
+	},
+	onFileUploadStart: function (file) {
+		console.log(file.originalname + 'is starting ...')
+	},
+	onFileUploadComplete: function (file) {
+		console.log(file.fieldname + ' uploaded to ' + file.path);
+		done = true;
+	}
+}))
 
 //connect to a database
 mongoose.connect(config.database);

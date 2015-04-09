@@ -1,11 +1,15 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
-	bcrypt = require('bcrypt-nodejs');
+	bcrypt = require('bcrypt-nodejs'),
+	Class = require('./class');
 
 //user schema
 
 var UserSchema = new Schema({
-	name: String,
+	name: {
+		type: String,
+		required: true
+	},
 	username: {
 		type: String,
 		required: true,
@@ -17,7 +21,11 @@ var UserSchema = new Schema({
 		type: String,
 		required: true,
 		select: false
-	}
+	},
+	classes: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Class'
+	}]
 });
 
 //hash the password before the user is saved
@@ -37,6 +45,18 @@ UserSchema.pre('save', function (next) {
 		user.password = hash;
 		next();
 	});
+});
+
+//will remove user from classes on user delete
+UserSchema.pre('remove', function (next) {
+	var user = this;
+
+	user.model('Class').update(
+		{_id: {$in: user.classes}},
+		{$pull: {users: user._id}},
+		{multi: true},
+		next
+	);
 });
 
 //method to compare a given password with the database hash

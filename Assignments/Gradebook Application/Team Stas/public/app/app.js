@@ -1,9 +1,20 @@
-//name our angular app
-angular.module('gradebookApp', ['ngAnimate', 'app.routes', 'authService', 'mainCtrl', 'userCtrl', 'userService'])
+angular.module('gradebookApp', 
+	['ngAnimate',
+	'app.routes',
+	'authService',
+	'mainCtrl',
+	'userCtrl',
+	'userService',
+	'classCtrl',
+	'classService',
+	'assignmentCtrl',
+	'assignmentService',
+	'submissionCtrl']
+	)
 
 .config(function($httpProvider) {
 
-	// attach our auth interceptor to the http requests
+	// attach auth interceptor to http requests
 	$httpProvider.interceptors.push('AuthInterceptor');
 
 });

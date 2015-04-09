@@ -1,0 +1,26 @@
+<h1>Enrolled Students</h1>
+<div class="jumbotron text-center" ng-show="enrolledStudents.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading Students...</p>
+</div>
+
+<table class="table table-bordered table-striped" ng-show="enrolledStudents.users">
+	<thead>
+		<tr>
+			<th>_id</th>
+			<th>Name</th>
+			<th>Username</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="person in enrolledStudents.users">
+			<td>{{ person._id }}</td>
+			<td>{{ person.name }}</td>
+			<td>{{ person.username }}</td>
+			<td>
+				<a href="#" ng-click="enrolledStudents.unenroll(person._id)" class="btn btn-default">Delete from class</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
