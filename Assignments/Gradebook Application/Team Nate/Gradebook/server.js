@@ -8,9 +8,13 @@ var database = require('./config/database');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var router = express.Router();
 
 //Router configuration
-
+app.get('/',function(req,res){
+  res.sendFile(__dirname+'/index.html');
+  //__dirname : It will resolve to your project folder.
+});
 
 //Configuration
 mongoose.connect(database.url);
@@ -26,11 +30,6 @@ app.use(methodOverride());
 //Routing
 var apiRoutes = require('./app/routes/api')(app, express);
 app.use('/api', apiRoutes);
-
-app.get('/',function(req,res){
-  res.sendFile(__dirname+'/index.html');
-  //__dirname : It will resolve to your project folder.
-});
 
 //Start application with node
 app.listen(port);
