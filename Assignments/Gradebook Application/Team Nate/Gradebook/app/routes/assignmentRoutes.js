@@ -6,8 +6,8 @@ module.exports = function(apiRouter) {
 	apiRouter.route('/assignments')
 
 		//Get a collection of assignments
-		.get(function(req, res) {
-			Assignment.find(function(err, assignments) {
+		.get(function (req, res) {
+			Assignment.find(function (err, assignments) {
 				if (err)
 					res.send(err);
 				else{
@@ -16,7 +16,7 @@ module.exports = function(apiRouter) {
 			});
 		})
 
-		//Create a new course
+		//Create a new assignment
 		.post(function(req, res) {
 			var newAssignment = new Assignment();
 
@@ -34,7 +34,23 @@ module.exports = function(apiRouter) {
 				if (err)
 					res.send(err);
 				else
-					res.json({ message: "Course " + newAssignment.name + " successfully created" });
+					res.json({ message: "Course successfully created" });
 			});
 		});
+
+	//Operations on existing assignments
+	apiRouter.route('/assignments/:assignment_id')
+
+		//Delete an existing assignment
+		.delete(function (req, res) {
+			Course.findByIdAndRemove(req.params.assignment_id, function (err, delCourse) {
+				if (err)
+					res.send(err);
+				delCourse.remove();
+			}).then(function() {
+				Course.find(function (err, courses) {
+					res.json({ message: 'Assignment deleted' });
+				});
+			});
+		})
 }
