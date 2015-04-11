@@ -8,6 +8,9 @@ module.exports = function(app, express) {
 	//Assignment routes
 	require('./assignmentRoutes')(apiRouter);
 
+	//Student routes
+	require('./studentRoutes')(apiRouter);
+
 	//Kick it out
 	return apiRouter;
 };

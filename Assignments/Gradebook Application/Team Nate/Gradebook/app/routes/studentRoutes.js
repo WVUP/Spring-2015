@@ -1,64 +1,60 @@
-var Course = require('../models/course');
+var Student = require('../models/student');
 var User = require('../models/user');
 
 module.exports = function(apiRouter) {
-	apiRouter.route('/courses')
+	apiRouter.route('/students')
 
-		//Get a collection of courses
+		//Get a collection of students
 		.get(function(req, res) {
-			Course.find(function (err, courses) {
+			Student.find(function (err, students) {
 				if (err)
 					res.send(err);
 				else{
-					res.json(courses);
+					res.json(students);
 				}
 			});
 		})
 
-		//Create a new course
+		//Create a new student
 		.post(function(req, res) {
-			var newCourse = new Course();
+			var newStudent = new Student();
 
-			newCourse.name = req.body.name;
-			newCourse.courseNum = req.body.courseNum;
-			newCourse.dateCreated = Date.now();
-			newCourse.dateModified = Date.now();
-			newCourse.semesters = [];
-			newCourse.students = [];
-			newCourse.assignments = [];
-			newCourse.comments = [];
+			newStudent.firstName = req.body.firstName;
+			newStudent.lastName = req.body.lastName;
+			newStudent.phoneNumber = req.body.phoneNumber;
+			newStudent.dateCreated = Date.now();
+			newStudent.dateModified = Date.now();
+			newStudent.semesters = [];
+			newStudent.courses = [];
+			newStudent.assignments = [];
+			newStudent.comments = [];
 
 			//Save to DB
-			newCourse.save(function(err) {
+			newStudent.save(function(err) {
 				if (err)
 					res.send(err);
 				else
-					res.json({ message: "Course successfully created" });
+					res.json({ message: "Student successfully created" });
 			});
 		});
 
-	//Operations for existing courses
-	apiRouter.route('/courses/:course_id')
+	//Operations for existing students
+	apiRouter.route('/student/:student_id')
 
-		//Delete an existing course
+		//Delete an existing student
 		.delete(function (req, res) {
-			Course.findByIdAndRemove(req.params.course_id, function (err, delCourse) {
-				console.log(delCourse);
+			Student.findByIdAndRemove(req.params.course_id, function (err, delStudent) {
+				console.log(delStudent);
 				if (err)
 					res.send(err);
-				delCourse.remove();
+				delStudent.remove();
 			}).then(function() {
-				Course.find(function (err, courses) {
-					res.json({ message: 'Course deleted' });
+				Student.find(function (err, students) {
+					res.json({ message: 'Student deleted' });
 				});
 			});
 		});
 
 	//Calls for populating fields
-	apiRouter.route('/courses/students/:course_id')
-		.get(function (req, res) {
-			Course.findOne({_id: req.params.course_id})
-			.populate('students')
-		})
 
 }
