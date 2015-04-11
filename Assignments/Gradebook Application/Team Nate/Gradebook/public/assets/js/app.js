@@ -48,6 +48,13 @@ gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope
 
 gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', function ($scope, $http) {
 	$scope.viewName = "Create Course";
+	$scope.courseInfo = {};
+	$scope.courseInfo.name = "";
+	$scope.courseInfo.courseNum = "";
+	$scope.courseInfo.comments = "";
+	$scope.postData = function () {
+		console.log($scope.courseInfo);
+	};
 }]);
 
 
