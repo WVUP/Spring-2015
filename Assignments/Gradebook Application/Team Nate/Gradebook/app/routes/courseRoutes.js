@@ -73,14 +73,25 @@ module.exports = function(apiRouter) {
 		})
 		//Post student to course
 		.post(function (req, res) {
-			console.log("Top of post");
-
-			Course.findById({_id: req.params.course_id}).exec(function (err, sCourse) {
+			var query = {"_id": req.params.course_id};
+			var update = {students: req.body.studentId};
+			Course.findOneAndUpdate(query, update, {"upsert":"true"}, function (err, sCourse) {
 				if (err)
 					res.send(err);
-				else{
-					res.json({ course: sCourse });
-				};
+				else
+					sCourse.populate('students').exec(function (err) {
+						if (err)
+							res.send(err);
+						else
+							console.log(sCourse);
+					});
+					console.log(sCourse);
+					sCourse.save(function (err) {
+					if (err)
+						console.log(err);
+					else
+						res.json({ course: sCourse });
+				});
 			});
 		});
 
