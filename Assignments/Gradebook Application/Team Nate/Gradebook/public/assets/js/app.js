@@ -45,12 +45,13 @@ gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope
 	});
 }]);
 
-gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', function ($scope, $http) {
+gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
 	$scope.viewName = "Create Course";
 	$scope.courseInfo = {};
 	$scope.courseInfo.name = "";
 	$scope.courseInfo.courseNum = "";
 	$scope.courseInfo.comments = "";
+	$scope.cancel = function () { $state.go('courseState'); };
 	$scope.postData = function () {
 		$scope.nameRequired = "";
 		$scope.numRequired = "";
@@ -67,6 +68,7 @@ gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', function ($scope
 			console.log($scope.courseInfo);
 			$http.post('/api/courses', $scope.courseInfo).success(function (data) {
 				console.log("Course successfully posted");
+				$state.go('courseState');
 			})
 			.error(function (data) {
 				$scope.failed = "Course creation failed";
