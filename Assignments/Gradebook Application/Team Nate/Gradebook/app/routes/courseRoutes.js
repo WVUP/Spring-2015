@@ -73,10 +73,15 @@ module.exports = function(apiRouter) {
 		})
 		//Post student to course
 		.post(function (req, res) {
-			console.log(req.body.studentId);
+			var sIds = [];
+			for (var i=0; i < req.body.studentIds.length; i++) {
+				sIds.push(req.body.studentIds[i]);
+			}
+			console.log("Student Ids: " + sIds);
+
 			Course.update(
 				{"_id": req.params.course_id},
-				{$push: {"students": req.body.studentId}},
+				{$push: {"students": sIds}},
 				{"upsert":"true"},
 
 				 function (err, sCourse) {
@@ -132,4 +137,4 @@ module.exports = function(apiRouter) {
 }
 
 //course: 5528607a2a4527a00628adca
-//students: "552873a491feb61c21e1c44a", "552873ad91feb61c21e1c44b", "552873b391feb61c21e1c44c"
+//"552873a491feb61c21e1c44a", "552873ad91feb61c21e1c44b", "552873b391feb61c21e1c44c"
