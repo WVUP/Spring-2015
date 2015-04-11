@@ -36,7 +36,7 @@ gradebookApp.controller('NotifyController', ['$scope', '$http', function ($scope
 
 gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope, $http) {
 	$scope.viewType = "Courses";
-	$http.get("").success (function(data){
+	$http.get("/api/courses").success (function(data){
 		$scope.courseData = data;
 		console.log(data);
 		console.log("Courses retrieved");
@@ -46,26 +46,29 @@ gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope
 	});
 }]);
 
+gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', function ($scope, $http) {
+	$scope.viewName = "Create Course";
+}]);
+
+
 gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider
 		.state('homeState', {
 			url: "",
-			templateUrl: "././app/views/home.html",
+			templateUrl: "../../app/views/home.html",
 			controller: 'HomeController'
 		})
 
 		.state('courseState', {
 			url: "/courses",
-			templateUrl: "././app/views/courses/index.html",
-			controller: 'CourseController as courses'
+			templateUrl: "../../app/views/courses/index.html",
+			controller: 'CourseController'
 		})
 
-		.state('courseState.list', {
-			url: "courses/list",
-			templateUrl: "././partials/courses.list.html",
-			controller: function($scope) {
-				$scope.courses = gradebookApp.factory;
-			}
-		});
+		.state('courseCreate', {
+			url: "courses/create",
+			templateUrl: "../../app/views/courses/create.html",
+			controller: 'CourseCreateCtrl'
+		})
 });

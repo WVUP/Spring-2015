@@ -1,12 +1,33 @@
-<div>
-	<table>
-		<tr>
-			<th>Name</th>
-			<th>Course Number</th>
-		</tr>
-		<tr ng-repeat="course in CourseController.courses">
-			<td>{{course.name}}</td>
-			<td>{{course.courseNum}}</td>
-		</tr>
+<div class="col-lg-offset-1 col-lg-10">
+
+	<!--Header for view type-->
+	<div class="row">                
+		<div class="col-lg-6">
+			<h2>Current {{viewType}}</h2>
+			<hr/>
+		</div>
+	</div>
+	<!--End header-->
+
+	<!--Display courses-->
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Course Name</th>
+				<th>Course Number</th>
+				<th>Students</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="course in courseData">
+				<td>{{course.name}}</td>
+				<td>{{course.courseNum}}</td>
+				<td>{{course.students.length}}</td>
+			</tr>
+		</tbody>
 	</table>
+	<!--End course display-->
+	<div class="col-lg-offset-2">
+		<a ui-sref="courseCreate"><button type="button" class="btn btn-default">Create New</button></a>
+	</div>
 </div>
