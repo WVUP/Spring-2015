@@ -12,7 +12,7 @@ var userSchema = new Schema({
 		type: String,
 		required: true
 	},
-	courseNum: {
+	email: {
 		type: String,
 		required: true
 	},
