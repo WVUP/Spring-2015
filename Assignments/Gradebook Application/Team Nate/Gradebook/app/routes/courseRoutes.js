@@ -21,12 +21,11 @@ module.exports = function(apiRouter) {
 
 			newCourse.name = req.body.name;
 			newCourse.courseNum = req.body.courseNum;
-			newCourse.isInCurrentSemester = true;
 			newCourse.dateCreated = Date.now();
 			newCourse.dateModified = Date.now();
-			newCourse.semesterIds = [];
-			newCourse.studentIds = [];
-			newCourse.assignmentIds = [];
+			newCourse.semesters = [];
+			newCourse.students = [];
+			newCourse.assignments = [];
 			newCourse.comments = [];
 
 			//Save to DB
@@ -42,7 +41,7 @@ module.exports = function(apiRouter) {
 	apiRouter.route('/courses/:course_id')
 
 		//Delete an existing course
-		.delete(function(req, res) {
+		.delete(function (req, res) {
 			Course.findByIdAndRemove(req.params.course_id, function (err, delCourse) {
 				console.log(delCourse);
 				if (err)
@@ -53,6 +52,13 @@ module.exports = function(apiRouter) {
 					res.json({ message: 'Course deleted' });
 				});
 			});
+		});
+
+	//Calls for populating fields
+	apiRouter.route('/courses/students/:course_id')
+		.get(function (req, res) {
+			Course.findOne({_id: req.params.course_id})
+			.populate('students')
 		})
 
 }

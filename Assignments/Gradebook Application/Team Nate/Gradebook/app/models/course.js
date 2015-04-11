@@ -18,11 +18,11 @@ var courseSchema = new Schema({
 	},
 	dateCreated: {
 		type: Date,
-		required: true
+		required: true,
+		default: Date.now()
 	},
 	dateModified: {
-		type: Date,
-		required: true
+		type: Date
 	},
 	semesters: [{
 		type: ObjectId,
@@ -41,14 +41,19 @@ var courseSchema = new Schema({
 	}]
 });
 
-//Middleware
+//Change the DateModified on update
+courseSchema.pre('save', function (next) {
+	var coursed = this;
+	coursed.dateModified = Date.now();
+	next();
+});
+
+//Delete assignments associated with course
 courseSchema.pre('remove', function (next) {
 	var delCourse = this;
-
-	//Remove assignments that were part of course
 	Assignment.remove({_id: {$in: delCourse.assignments}}).exec();
 	next();
-})
+});
 
 //Export the model
 var Course = mongoose.model('Course', courseSchema);
