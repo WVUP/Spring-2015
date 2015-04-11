@@ -73,24 +73,26 @@ module.exports = function(apiRouter) {
 		})
 		//Post student to course
 		.post(function (req, res) {
-			var sIds = [];
-			for (var i=0; i < req.body.studentIds.length; i++) {
-				sIds.push(req.body.studentIds[i]);
-			}
-			console.log("Student Ids: " + sIds);
+			if (req.body == '{}')
+				console.log("No student ids were found in request body");
+			else
 
-			Course.update(
-				{"_id": req.params.course_id},
-				{$push: {"students": sIds}},
-				{"upsert":"true"},
+				for (var i in req.body.studs) {
+					console.log(req.body.studs[i]);
+					Course.update(
+						{"_id": req.params.course_id},
+						{$push: {"students": req.body.studs[i]}},
+						{"upsert":"true"},
+						function (err, numAffected) {
+							if (err)
+								res.send(err);
+							else
+								console.log("message: " + numAffected);
+						});
+				};
+		});
 
-				 function (err, sCourse) {
-				if (err)
-					res.send(err);
-				else
-					res.json(sCourse);
-				});
-			});
+			
 
 
 			// Course.findById({_id: req.params.course_id}), function (err, sCourse) {

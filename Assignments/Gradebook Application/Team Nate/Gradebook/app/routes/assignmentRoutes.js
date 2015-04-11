@@ -1,6 +1,5 @@
 var Course = require('../models/course');
 var User = require('../models/user');
-var Assignment = require('../models/assignment');
 
 module.exports = function(apiRouter) {
 	apiRouter.route('/assignments')
@@ -34,7 +33,7 @@ module.exports = function(apiRouter) {
 				if (err)
 					res.send(err);
 				else
-					res.json({ message: "Course successfully created" });
+					res.json({ message: "Assignment successfully created" });
 			});
 		});
 
@@ -43,12 +42,12 @@ module.exports = function(apiRouter) {
 
 		//Delete an existing assignment
 		.delete(function (req, res) {
-			Course.findByIdAndRemove(req.params.assignment_id, function (err, delCourse) {
+			Assignment.findByIdAndRemove(req.params.assignment_id, function (err, delAssignment) {
 				if (err)
 					res.send(err);
-				delCourse.remove();
+				delAssignment.remove();
 			}).then(function() {
-				Course.find(function (err, courses) {
+				Assignment.find(function (err, assignments) {
 					res.json({ message: 'Assignment deleted' });
 				});
 			});

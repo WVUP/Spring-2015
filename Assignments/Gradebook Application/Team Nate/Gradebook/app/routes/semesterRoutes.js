@@ -1,64 +1,59 @@
 var Course = require('../models/course');
+var Semester = require('../models/semester');
 var User = require('../models/user');
 
 module.exports = function(apiRouter) {
-	apiRouter.route('/courses')
+	apiRouter.route('/semesters')
 
 		//Get a collection of courses
 		.get(function(req, res) {
-			Course.find(function (err, courses) {
+			Semester.find(function (err, semesters) {
 				if (err)
 					res.send(err);
 				else{
-					res.json(courses);
+					res.json(semesters);
 				}
 			});
 		})
 
 		//Create a new course
 		.post(function(req, res) {
-			var newCourse = new Course();
+			var newSemester = new Semester();
 
-			newCourse.name = req.body.name;
-			newCourse.courseNum = req.body.courseNum;
-			newCourse.dateCreated = Date.now();
-			newCourse.dateModified = Date.now();
-			newCourse.semesters = [];
-			newCourse.students = [];
-			newCourse.assignments = [];
-			newCourse.comments = [];
+			newSemester.name = req.body.name;
+			newSemester.courseNum = req.body.courseNum;
+			newSemester.dateCreated = Date.now();
+			newSemester.dateModified = Date.now();
+			newSemester.semesters = [];
+			newSemester.students = [];
+			newSemester.assignments = [];
+			newSemester.comments = [];
 
 			//Save to DB
-			newCourse.save(function(err) {
+			newSemester.save(function(err) {
 				if (err)
 					res.send(err);
 				else
-					res.json({ message: "Course successfully created" });
+					res.json({ message: "Semester successfully created" });
 			});
 		});
 
 	//Operations for existing courses
-	apiRouter.route('/courses/:course_id')
+	apiRouter.route('/semesters/:semester_id')
 
 		//Delete an existing course
 		.delete(function (req, res) {
-			Course.findByIdAndRemove(req.params.course_id, function (err, delCourse) {
-				console.log(delCourse);
+			Course.findByIdAndRemove(req.params.course_id, function (err, delSemester) {
+				console.log(delSemester);
 				if (err)
 					res.send(err);
-				delCourse.remove();
+				delSemester.remove();
 			}).then(function() {
-				Course.find(function (err, courses) {
-					res.json({ message: 'Course deleted' });
+				Semester.find(function (err, semesters) {
+					res.json({ message: 'Semester deleted' });
 				});
 			});
 		});
 
 	//Calls for populating fields
-	apiRouter.route('/courses/students/:course_id')
-		.get(function (req, res) {
-			Course.findOne({_id: req.params.course_id})
-			.populate('students')
-		})
-
 }
