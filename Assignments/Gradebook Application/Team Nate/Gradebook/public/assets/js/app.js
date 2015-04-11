@@ -38,7 +38,6 @@ gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope
 	$scope.viewType = "Courses";
 	$http.get("/api/courses").success (function(data){
 		$scope.courseData = data;
-		console.log(data);
 		console.log("Courses retrieved");
 	})
 	.error (function(){
@@ -53,7 +52,26 @@ gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', function ($scope
 	$scope.courseInfo.courseNum = "";
 	$scope.courseInfo.comments = "";
 	$scope.postData = function () {
-		console.log($scope.courseInfo);
+		$scope.nameRequired = "";
+		$scope.numRequired = "";
+
+		if (!$scope.courseInfo.name) {
+			$scope.nameRequired = "Course Name Required";
+		}
+
+		if (!$scope.courseInfo.courseNum) {
+			$scope.numRequired = "Course Number Required";
+		}
+
+		if ($scope.courseInfo.name && $scope.courseInfo.courseNum) {
+			console.log($scope.courseInfo);
+			$http.post('/api/courses', $scope.courseInfo).success(function (data) {
+				console.log("Course successfully posted");
+			})
+			.error(function (data) {
+				$scope.failed = "Course creation failed";
+			});
+		}
 	};
 }]);
 

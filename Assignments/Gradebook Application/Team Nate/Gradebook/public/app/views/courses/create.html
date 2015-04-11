@@ -41,6 +41,15 @@
 	<br/>
 	<br/>
 	<!--Validation alerts-->
+	<span ng-show="nameRequired">
+		<div class="alert alert-danger">{{nameRequired}}</div>
+	</span>
+	<span ng-show="numRequired">
+		<div class="alert alert-danger">{{numRequired}}</div>
+	</span>
+	<span ng-show="failed">
+		<div class="alert alert-danger">{{failed}}</div>
+	</span>
 	
 	<!--Testing Angular bindings
 	<table class="table table-striped">
