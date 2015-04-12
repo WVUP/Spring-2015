@@ -28,7 +28,7 @@ module.exports = function(apiRouter) {
 			newStudent.semesters = [];
 			newStudent.courses = [];
 			newStudent.assignments = [];
-			newCourse.comments.push(req.body.comments || []);
+			newStudent.comments.push(req.body.comments || []);
 
 			//Save to DB
 			newStudent.save(function(err) {
