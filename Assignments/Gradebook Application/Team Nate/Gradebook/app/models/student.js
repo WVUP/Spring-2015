@@ -18,6 +18,10 @@ var studentSchema = new Schema({
 	phoneNumber: {
 		type: String
 	},
+	email: {
+		type: String,
+		default: 'toomanycats@myhouse.com'
+	},
 	dateCreated: {
 		type: Date,
 		required: true,

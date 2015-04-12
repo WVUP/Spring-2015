@@ -22,6 +22,7 @@ module.exports = function(apiRouter) {
 			newStudent.firstName = req.body.firstName;
 			newStudent.lastName = req.body.lastName;
 			newStudent.phoneNumber = req.body.phoneNumber;
+			newStudent.email = req.body.email;
 			newStudent.dateCreated = Date.now();
 			newStudent.dateModified = Date.now();
 			newStudent.semesters = [];

@@ -23,9 +23,10 @@ gradebookApp.controller('HomeController', ['$scope', '$http', function ($scope, 
 	});
 }]);
 
+//Course controllers
 gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope, $http) {
 	$scope.viewType = "Courses";
-	$http.get("/api/courses").success (function(data){
+	$http.get("/api/courses").success (function (data){
 		$scope.courseData = data;
 		console.log("Courses retrieved");
 	})
@@ -74,6 +75,19 @@ gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', functi
 	};
 }]);
 
+//Student controllers
+gradebookApp.controller('StudentCtrl', ['$scope', '$http', function ($scope, $http) {
+	$scope.viewType = "Students";
+	$http.get("/api/students").success (function (data) {
+		$scope.studentData = data;
+		console.log("Students retrieved");
+	})
+	.error (function () {
+		console.log("Students not retrieved");
+	});
+}]);
+
+//UI Routes
 gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider
@@ -90,8 +104,20 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 		})
 
 		.state('courseCreate', {
-			url: "courses/create",
+			url: "/courses/create",
 			templateUrl: "../../app/views/courses/create.html",
 			controller: 'CourseCreateCtrl'
+		})
+
+		.state('studentState', {
+			url: "/students",
+			templateUrl: "../../app/views/students/index.html",
+			controller: "StudentCtrl"
+		})
+
+		.state('studentCreate', {
+			url: "/students/create",
+			templateUrl: "../../app/views/students/create.html",
+			controller: "StudentCreate"
 		})
 });
