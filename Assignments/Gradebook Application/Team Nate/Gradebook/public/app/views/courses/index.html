@@ -16,6 +16,8 @@
 				<th>Course Name</th>
 				<th>Course Number</th>
 				<th>Students</th>
+				<th>Comments</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,11 +25,19 @@
 				<td>{{course.name}}</td>
 				<td>{{course.courseNum}}</td>
 				<td>{{course.students.length}}</td>
+				<td>
+					<ul ng-repeat="comment in course.comments">
+						<li>{{comment}}</li>
+					</ul>
+				</td>
+				<td>
+					<button type="button" class="btn btn-danger" ng-click="remove(course._id)">Delete</button>
+				</td>
 			</tr>
 		</tbody>
 	</table>
 	<!--End course display-->
-	<div class="col-lg-offset-2">
+	<div>
 		<a ui-sref="courseCreate"><button type="button" class="btn btn-default">Create New</button></a>
 	</div>
 </div>
