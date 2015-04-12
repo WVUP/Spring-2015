@@ -132,6 +132,12 @@ input.ng-invalid.ng-dirty{
   animation:fadeIn .8s both linear;
 }
 
-p{
-  font-family: Avengers;
+.button-upload {
+    -moz-appearance: button;
+    /* Firefox */
+    -webkit-appearance: button;
+    /* Safari and Chrome */
+    padding: 10px;
+    margin: 10px;
+    width: 100px;
 }
