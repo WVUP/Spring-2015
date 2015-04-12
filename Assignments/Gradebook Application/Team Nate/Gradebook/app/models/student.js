@@ -20,7 +20,7 @@ var studentSchema = new Schema({
 	},
 	email: {
 		type: String,
-		default: 'toomanycats@myhouse.com'
+		required: true
 	},
 	dateCreated: {
 		type: Date,

@@ -87,6 +87,48 @@ gradebookApp.controller('StudentCtrl', ['$scope', '$http', function ($scope, $ht
 	});
 }]);
 
+gradebookApp.controller('StudentCreateCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+	$scope.viewName = "Create Student";
+	$scope.studentInfo = {};
+	$scope.studentInfo.firstName = "";
+	$scope.studentInfo.lastName = "";
+	$scope.studentInfo.phoneNumber = "";
+	$scope.studentInfo.email = "";
+	$scope.studentInfo.comments = "";
+
+	//Scope methods
+	$scope.cancel = function () { $state.go('studentState'); };
+
+	$scope.remove = function (studentId) {
+		$http.delete("/api/students/" + studentId);
+		$state.go('studentState');
+	};
+
+	$scope.postData = function () {
+		$scope.nameRequired = "";
+		$scope.emailRequired = "";
+
+		if (!$scope.studentInfo.firstName || !$scope.studentInfo.lastName) {
+			$scope.nameRequired = "Student First and Last Name Required";
+		}
+
+		if (!$scope.studentInfo.email) {
+			$scope.emailRequired = "Email Required";
+		}
+
+		if ($scope.studentInfo.firstName && $scope.studentInfo.lastName && $scope.studentInfo.email) {
+			console.log($scope.studentInfo);
+			$http.post('/api/students', $scope.studentInfo).success(function (data) {
+				console.log("Student successfully posted");
+				$state.go('studentState');
+			})
+			.error(function (data) {
+				$scope.failed = "Student creation failed";
+			});
+		}
+	};
+}]);
+
 //UI Routes
 gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 
@@ -118,6 +160,6 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 		.state('studentCreate', {
 			url: "/students/create",
 			templateUrl: "../../app/views/students/create.html",
-			controller: "StudentCreate"
+			controller: "StudentCreateCtrl"
 		})
 });
