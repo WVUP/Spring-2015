@@ -40,11 +40,11 @@ module.exports = function(apiRouter) {
 		});
 
 	//Operations for existing students
-	apiRouter.route('/student/:student_id')
+	apiRouter.route('/students/:student_id')
 
 		//Delete an existing student
 		.delete(function (req, res) {
-			Student.findByIdAndRemove(req.params.course_id, function (err, delStudent) {
+			Student.findByIdAndRemove(req.params.student_id, function (err, delStudent) {
 				console.log(delStudent);
 				if (err)
 					res.send(err);

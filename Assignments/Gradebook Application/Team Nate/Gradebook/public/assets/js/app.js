@@ -24,7 +24,7 @@ gradebookApp.controller('HomeController', ['$scope', '$http', function ($scope, 
 }]);
 
 //Course controllers
-gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope, $http) {
+gradebookApp.controller('CourseController', ['$scope', '$http', '$state', function ($scope, $http, $state) {
 	$scope.viewType = "Courses";
 	$http.get("/api/courses").success (function (data){
 		$scope.courseData = data;
@@ -33,6 +33,11 @@ gradebookApp.controller('CourseController', ['$scope', '$http', function ($scope
 	.error (function(){
 		console.log("Courses not retrieved");
 	});
+
+	$scope.remove = function (courseId) {
+		$http.delete("/api/courses/" + courseId);
+		$state.go($state.current, {}, {reload: true});
+	};
 }]);
 
 gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
@@ -44,11 +49,6 @@ gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', functi
 
 	//Scope methods
 	$scope.cancel = function () { $state.go('courseState'); };
-
-	$scope.remove = function (courseId) {
-		$http.delete("/api/courses/" + courseId);
-		$state.go('courseState');
-	};
 
 	$scope.postData = function () {
 		$scope.nameRequired = "";
@@ -76,7 +76,7 @@ gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', functi
 }]);
 
 //Student controllers
-gradebookApp.controller('StudentCtrl', ['$scope', '$http', function ($scope, $http) {
+gradebookApp.controller('StudentCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
 	$scope.viewType = "Students";
 	$http.get("/api/students").success (function (data) {
 		$scope.studentData = data;
@@ -85,6 +85,11 @@ gradebookApp.controller('StudentCtrl', ['$scope', '$http', function ($scope, $ht
 	.error (function () {
 		console.log("Students not retrieved");
 	});
+
+	$scope.remove = function (studentId) {
+		$http.delete("/api/students/" + studentId);
+		$state.go($state.current, {}, {reload: true});
+	};
 }]);
 
 gradebookApp.controller('StudentCreateCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
@@ -98,11 +103,6 @@ gradebookApp.controller('StudentCreateCtrl', ['$scope', '$http', '$state', funct
 
 	//Scope methods
 	$scope.cancel = function () { $state.go('studentState'); };
-
-	$scope.remove = function (studentId) {
-		$http.delete("/api/students/" + studentId);
-		$state.go('studentState');
-	};
 
 	$scope.postData = function () {
 		$scope.nameRequired = "";
