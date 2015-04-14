@@ -25,6 +25,9 @@ var assignmentSchema = new Schema({
 		required: true,
 		default: 100
 	},
+	description: {
+		type: String
+	},
 	course: {
 		type: ObjectId,
 		ref: 'Course'

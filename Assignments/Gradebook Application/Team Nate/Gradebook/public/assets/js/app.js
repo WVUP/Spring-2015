@@ -129,6 +129,54 @@ gradebookApp.controller('StudentCreateCtrl', ['$scope', '$http', '$state', funct
 	};
 }]);
 
+//Assignment controllers
+gradebookApp.controller('AssignmentCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+	$scope.viewType = "Assignments";
+	$http.get("/api/assignments").success (function (data) {
+		$scope.assignmentData = data;
+		console.log("Assignments retrieved");
+	})
+	.error (function () {
+		console.log("Assignments not retrieved");
+	});
+
+	$scope.remove = function (assignmentId) {
+		$http.delete("/api/assignments/" + assignmentId);
+		$state.go($state.current, {}, {reload: true});
+	};
+}]);
+
+gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+	$scope.viewName = "Create Assignment";
+	$scope.assignmentInfo = {};
+	$scope.assignmentInfo.name = "";
+	$scope.assignmentInfo.description = "";
+	$scope.assignmentInfo.maxPoints = "";
+	$scope.assignmentInfo.comments = "";
+
+	//Scope methods
+	$scope.cancel = function () { $state.go('assignmentState'); };
+
+	$scope.postData = function () {
+		$scope.nameRequired = "";
+
+		if (!$scope.assignmentInfo.name) {
+			$scope.nameRequired = "Assignment Name Required";
+		}
+
+		if ($scope.assignmentInfo.name) {
+			console.log($scope.assignmentInfo);
+			$http.post('/api/assignments', $scope.assignmentInfo).success(function (data) {
+				console.log("Assignment successfully posted");
+				$state.go('assignmentState');
+			})
+			.error(function (data) {
+				$scope.failed = "Assignment creation failed";
+			});
+		}
+	};
+}]);
+
 //UI Routes
 gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 
@@ -161,5 +209,17 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 			url: "/students/create",
 			templateUrl: "../../app/views/students/create.html",
 			controller: "StudentCreateCtrl"
+		})
+
+		.state('assignmentState', {
+			url: "/assignments",
+			templateUrl: "../../app/views/assignments/index.html",
+			controller: "AssignmentCtrl"
+		})
+
+		.state('assignmentCreate', {
+			url: "/assignments/create",
+			templateUrl: "../../app/views/assignments/create.html",
+			controller: "AssignmentCreateCtrl"
 		})
 });
