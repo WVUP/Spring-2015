@@ -26,11 +26,9 @@
 									</thead>
 									<tbody>
 										<tr ng-repeat="course in courseData">
-											<a ui-sref="/courses/{{course._id}}">
-												<td>{{course.name}}</td>
-												<td>{{course.students.length}}</td>
-												<td>{{course.assignments.length}}</td>
-											</a>
+											<td><a ui-sref="/courses/{{course._id}}">{{course.name}}</a></td>
+											<td>{{course.students.length}}</td>
+											<td>{{course.assignments.length}}</td>
 										</tr>
 									</a>
 								</tbody>
