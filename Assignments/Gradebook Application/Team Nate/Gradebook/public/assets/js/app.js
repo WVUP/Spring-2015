@@ -153,6 +153,16 @@ gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', fu
 	$scope.assignmentInfo.description = "";
 	$scope.assignmentInfo.maxPoints = "";
 	$scope.assignmentInfo.comments = "";
+	$scope.assignmentInfo.course = "";
+
+	//Get course names for dropdown
+	$http.get('/api/courses').success (function (data) {
+		$scope.courses = data;
+		console.log("Courses retrieved for dropdown");
+	})
+	.error (function () {
+		console.log("Courses not retrieved");
+	})
 
 	//Scope methods
 	$scope.cancel = function () { $state.go('assignmentState'); };

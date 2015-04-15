@@ -1,3 +1,4 @@
+var Assignment = require('../models/assignment');
 var Course = require('../models/course');
 var User = require('../models/user');
 
@@ -20,13 +21,10 @@ module.exports = function(apiRouter) {
 			var newAssignment = new Assignment();
 
 			newAssignment.name = req.body.name;
-			newAssignment.courseNum = req.body.courseNum;
-			newAssignment.isInCurrentSemester = true;
 			newAssignment.dateCreated = Date.now();
 			newAssignment.dateModified = Date.now();
-			newAssignment.courseId = [];
-			newAssignment.studentIds = [];
-			newAssignment.comments = [];
+			newAssignment.comments.push(req.body.comments || []);
+			newAssignment.course = req.body.course;
 
 			//Save to DB
 			newAssignment.save(function(err) {
@@ -51,5 +49,5 @@ module.exports = function(apiRouter) {
 					res.json({ message: 'Assignment deleted' });
 				});
 			});
-		})
+		});
 }

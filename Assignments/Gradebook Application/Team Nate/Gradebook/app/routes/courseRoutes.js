@@ -91,8 +91,7 @@ module.exports = function(apiRouter) {
 						});
 				};
 		});
-
-			
+				
 
 
 			// Course.findById({_id: req.params.course_id}), function (err, sCourse) {
