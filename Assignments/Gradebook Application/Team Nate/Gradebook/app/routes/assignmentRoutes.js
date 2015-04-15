@@ -7,7 +7,9 @@ module.exports = function(apiRouter) {
 
 		//Get a collection of assignments
 		.get(function (req, res) {
-			Assignment.find(function (err, assignments) {
+			Assignment.find()
+			.populate('course').
+			exec(function (err, assignments) {
 				if (err)
 					res.send(err);
 				else{
@@ -23,6 +25,8 @@ module.exports = function(apiRouter) {
 			newAssignment.name = req.body.name;
 			newAssignment.dateCreated = Date.now();
 			newAssignment.dateModified = Date.now();
+			newAssignment.description = req.body.description;
+			newAssignment.maxPoints = req.body.maxPoints;
 			newAssignment.comments.push(req.body.comments || []);
 			newAssignment.course = req.body.course;
 

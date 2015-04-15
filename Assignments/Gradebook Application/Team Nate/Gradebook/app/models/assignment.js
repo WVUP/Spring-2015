@@ -47,6 +47,7 @@ var assignmentSchema = new Schema({
 assignmentSchema.pre('save', function (next) {
 	var assigned = this;
 	assigned.dateModified = Date.now();
+
 	next();
 });
 
