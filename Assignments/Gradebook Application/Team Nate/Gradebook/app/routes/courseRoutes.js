@@ -9,11 +9,11 @@ module.exports = function(apiRouter) {
 		.get(function(req, res) {
 			Course.find().
 			populate('assignments').
-			exec(function (err, courses) {
+			exec(function (err, assignments) {
 				if (err)
 					res.send(err);
 				else{
-					res.json(courses);
+					res.json(assignments);
 				}
 			});
 		})

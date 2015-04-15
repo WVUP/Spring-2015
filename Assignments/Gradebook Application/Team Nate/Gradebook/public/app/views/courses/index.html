@@ -16,6 +16,7 @@
 				<th>Course Name</th>
 				<th>Course Number</th>
 				<th>Students</th>
+				<th>Assignments</th>
 				<th>Comments</th>
 				<th></th>
 			</tr>
@@ -25,6 +26,43 @@
 				<td>{{course.name}}</td>
 				<td>{{course.courseNum}}</td>
 				<td>{{course.students.length}}</td>
+				<td>
+					<div class="accordion" id="courseEntryAccordion">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="courseEntryAccordion" href="#courseCollapse">
+									Assignments
+								</a>
+							</div>
+							<div id="courseCollapse" class="accordion-body collapse">
+								<div class="accordion-inner">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Name</th>
+												<th>Description</th>
+												<th>Points</th>
+												<th>Comments</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="assignment in courseData.assignments">
+												<td>{{assignment.name}}</td>
+												<td>{{assignment.description}}</td>
+												<td>{{assignment.maxPoints}}</td>
+												<td>
+													<ul ng-repeat="comment in assignment.comments">
+														<li>{{comment}}</li>
+													</ul>
+												</td>								
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
 				<td>
 					<ul ng-repeat="comment in course.comments">
 						<li>{{comment}}</li>
@@ -38,42 +76,7 @@
 	</table>
 	<!--End course display-->
 
-	<div class="accordion" id="courseEntryAccordion">
-		<div class="accordion-group">
-			<div class="accordion-heading">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="courseEntryAccordion" href="#courseCollapse">
-					Assignments
-				</a>
-			</div>
-			<div id="courseCollapse" class="accordion-body collapse">
-				<div class="accordion-inner">
-					<table class="table table-striped">
-						<caption>Assignments</caption>
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Description</th>
-								<th>Points</th>
-								<th>Comments</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="assignment in courseData.assignments">
-								<td>{{assignment.name}}</td>
-								<td>{{assignment.description}}</td>
-								<td>{{assignment.maxPoints}}</td>
-								<td>
-									<ul ng-repeat="comment in assignment.comments">
-										<li>{{comment}}</li>
-									</ul>
-								</td>								
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 
 	<div>
 		<a ui-sref="courseCreate"><button type="button" class="btn btn-default">Create New</button></a>
