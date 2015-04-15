@@ -16,6 +16,7 @@
 				<th>Name</th>
 				<th>Description</th>
 				<th>Points</th>
+				<th>Course</th>
 				<th>Comments</th>
 				<th></th>
 			</tr>
@@ -24,7 +25,8 @@
 			<tr ng-repeat="assignment in assignmentData">
 				<td>{{assignment.name}}</td>
 				<td>{{assignment.description}}</td>
-				<td>{{assignment.points}}</td>
+				<td>{{assignment.maxPoints}}</td>
+				<td>{{assignment.course.name}}
 				<td>
 					<ul ng-repeat="comment in assignment.comments">
 						<li>{{comment}}</li>

@@ -31,11 +31,12 @@ module.exports = function(apiRouter) {
 			newAssignment.course = req.body.course;
 
 			//Save to DB
-			newAssignment.save(function(err) {
+			newAssignment.save(function (err) {
 				if (err)
 					res.send(err);
-				else
+				else{
 					res.json({ message: "Assignment successfully created" });
+				}
 			});
 		});
 

@@ -7,7 +7,9 @@ module.exports = function(apiRouter) {
 
 		//Get a collection of courses
 		.get(function(req, res) {
-			Course.find(function (err, courses) {
+			Course.find().
+			populate('assignments').
+			exec(function (err, courses) {
 				if (err)
 					res.send(err);
 				else{
@@ -91,6 +93,8 @@ module.exports = function(apiRouter) {
 						});
 				};
 		});
+
+	
 				
 
 
