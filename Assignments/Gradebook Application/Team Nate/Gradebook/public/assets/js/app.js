@@ -1,17 +1,26 @@
 var gradebookApp = angular.module('gradebook', ['ui.router']);
 
-gradebookApp.controller('HomeController', ['$scope', '$http', function ($scope, $http) { 
+gradebookApp.controller('HomeController', ['$scope', '$http', '$state', function ($scope, $http, $state) { 
 	$scope.viewType = "Semester";
+	var graphData = [];
+
+	$http.get("/api/courses").success (function (data){
+		$scope.courseData = data;
+		console.log("Courses retrieved");
+		$scope.courseCount = data.length;
+
+		for (var i=0; i<data.length; i++) {
+			graphData.push({"label": data[i].name, "value": data[i].students.length || 1});
+		}
+		donut.setData(graphData);
+	})
+	.error (function(){
+		console.log("Courses not retrieved");
+	});
 	
 	var donut = Morris.Donut({
-		element: 'currentBreakdown',
-		data: [
-			{label: "CS 329", value: 12},
-			{label: "CS 330", value: 23},
-			{label: "CS 331", value: 11},
-			{label: "CS 332", value: 9},
-			{label: "CS 333", value: 4}
-		],
+		element: 'studentChart',
+		data: [{"label": "", "value": ""}],
 		colors: [
 			'#ff865c',
 			'#ffd777',
@@ -22,6 +31,8 @@ gradebookApp.controller('HomeController', ['$scope', '$http', function ($scope, 
 		resize: true
 	});
 }]);
+
+
 
 //Course controllers
 gradebookApp.controller('CourseController', ['$scope', '$http', '$state', function ($scope, $http, $state) {

@@ -22,6 +22,10 @@ Premium: http://www.gridgum.com
     display: none;
 }
 
+#studentChart {
+    max-height: 199px;
+}
+
 /* BASIC THEME CONFIGURATION */
 body {
     color: #797979;
