@@ -44,6 +44,19 @@ module.exports = function(apiRouter) {
 	//Operations for existing courses
 	apiRouter.route('/courses/:course_id')
 
+		//Get a course by Id
+		.get(function (req, res) {
+			Course.findById({_id: req.params.course_id})
+			.populate('students assignments')
+			.exec(function (err, course) {
+				if (err)
+					res.send(err);
+				else{
+					res.json({ course: course.name });
+				}
+			})
+		})
+
 		//Delete an existing course
 		.delete(function (req, res) {
 			Course.findByIdAndRemove(req.params.course_id, function (err, delCourse) {

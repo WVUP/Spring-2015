@@ -3,6 +3,7 @@ var gradebookApp = angular.module('gradebook', ['ui.router']);
 gradebookApp.controller('HomeController', ['$scope', '$http', '$state', function ($scope, $http, $state) { 
 	$scope.viewType = "Semester";
 	var graphData = [];
+	var assignGraphData = [];
 
 	$http.get("/api/courses").success (function (data){
 		$scope.courseData = data;
@@ -10,12 +11,37 @@ gradebookApp.controller('HomeController', ['$scope', '$http', '$state', function
 		$scope.courseCount = data.length;
 
 		for (var i=0; i<data.length; i++) {
-			graphData.push({"label": data[i].name, "value": data[i].students.length || 1});
+			graphData.push({"label": data[i].name, "value": data[i].students.length || .01});
 		}
 		donut.setData(graphData);
 	})
 	.error (function(){
 		console.log("Courses not retrieved");
+	});
+
+	//Get the assignments
+	$http.get('/api/assignments').success (function (data) {
+		$scope.assignData = data;
+		console.log("Assignments retrieved");
+		$scope.assignCount = data.length;
+
+		for (var i=0; i<data.length; i++) {
+			assignGraphData.push({"label": data[i].name, "value": data[i].maxPoints});
+		}
+		assignDonut.setData(assignGraphData);
+	})
+
+	var assignDonut = Morris.Donut({
+		element: 'assignmentChart',
+		data: [{"label": "", "value": ""}],
+		colors: [
+			'#ff865c',
+			'#ffd777',
+			'#43b1a9',
+			'#68dff0',
+			'#797979'
+		],
+		resize: true
 	});
 	
 	var donut = Morris.Donut({
@@ -243,4 +269,19 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: "../../app/views/assignments/create.html",
 			controller: "AssignmentCreateCtrl"
 		})
+
+		.state('courses.detail', {
+			url: "courses/:course_id",
+			templateUrl: "../../app/views/courses/detail.html",
+			controller: function($stateParams) {
+				var courseId = $stateParams.course_id;
+				$http.get("/api/courses/" + courseId).success(function (data) {
+					$scope.course = data;
+
+				})
+				.error(function (data) {
+					$scope.failed = "Couldn't get course details";
+				});
+			}
+		});
 });
