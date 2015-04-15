@@ -25,16 +25,44 @@
 			<tr ng-repeat="course in courseData">
 				<td>{{course.name}}</td>
 				<td>{{course.courseNum}}</td>
-				<td>{{course.students.length}}</td>
 				<td>
-					<div class="accordion" id="courseEntryAccordion">
+					<div class="accordion" id="courseStudentAccordion{{course._id}}">
 						<div class="accordion-group">
 							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" data-parent="courseEntryAccordion" href="#courseCollapse">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="courseStudentAccordion{{course._id}}" href="#courseStudentCollapse{{course._id}}">
+									Students
+								</a>
+							</div>
+							<div id="courseStudentCollapse{{course._id}}" class="accordion-body collapse">
+								<div class="accordion-inner">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Name</th>
+												<th>Email</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="student in course.students">
+												<td>{{student.firstName + " " + student.lastName}}</td>
+												<td>{{student.email}}</td>								
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="accordion" id="courseEntryAccordion{{course._id}}">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="courseEntryAccordion{{course._id}}" href="#courseCollapse{{course._id}}">
 									Assignments
 								</a>
 							</div>
-							<div id="courseCollapse" class="accordion-body collapse">
+							<div id="courseCollapse{{course._id}}" class="accordion-body collapse">
 								<div class="accordion-inner">
 									<table class="table table-striped">
 										<thead>
@@ -46,7 +74,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat="assignment in courseData.assignments">
+											<tr ng-repeat="assignment in course.assignments">
 												<td>{{assignment.name}}</td>
 												<td>{{assignment.description}}</td>
 												<td>{{assignment.maxPoints}}</td>
