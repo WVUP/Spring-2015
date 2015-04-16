@@ -58,8 +58,6 @@ gradebookApp.controller('HomeController', ['$scope', '$http', '$state', function
 	});
 }]);
 
-
-
 //Course controllers
 gradebookApp.controller('CourseController', ['$scope', '$http', '$state', function ($scope, $http, $state) {
 	$scope.viewType = "Courses";
@@ -194,7 +192,7 @@ gradebookApp.controller('AssignmentCtrl', ['$scope', '$http', '$state', function
 	};
 }]);
 
-gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', 'courseFactory', function ($scope, $http, $state, courseFactory) {
 	$scope.viewName = "Create Assignment";
 	$scope.assignmentInfo = {};
 	$scope.assignmentInfo.name = "";
@@ -226,6 +224,7 @@ gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', fu
 			console.log($scope.assignmentInfo);
 			$http.post('/api/assignments', $scope.assignmentInfo).success(function (data) {
 				console.log("Assignment successfully posted");
+				courseFactory.pushAssignment(data.course._id, data);
 				$state.go('assignmentState');
 			})
 			.error(function (data) {
@@ -286,4 +285,15 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: "../../app/views/courses/detail.html",
 			controller: "CourseDetailCtrl"
 		});
+});
+
+//Factories and services
+gradebookApp.factory('courseFactory', function ($http) {
+	var courseFactory = {};
+
+	courseFactory.pushAssignment = function (course_id, assignment) {
+		return $http.put('/api/courses/' + course_id + '/assignments', assignment);
+	};
+
+	return courseFactory;
 });

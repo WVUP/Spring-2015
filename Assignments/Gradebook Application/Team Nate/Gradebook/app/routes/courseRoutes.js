@@ -108,6 +108,29 @@ module.exports = function(apiRouter) {
 				};
 		});
 
+	apiRouter.route('/courses/:course_id/assignments')
+
+		//Post assignments to course
+		.put(function (req, res) {
+			if (req.body == '{}')
+				console.log("No assignments in request body");
+			else{
+				console.log("Entering assignment assignment")
+				Course.findById({_id: req.params.course_id}).update(
+					{$push: {"assignments": req.body.assignment}},
+					{upsert: true},
+					function (err, course) {
+						if (err)
+							res.send(err);
+						else{
+							console.log("Assigned");
+							res.json({ course: course });
+						}
+					}
+				);
+			}
+		});
+
 	
 				
 
