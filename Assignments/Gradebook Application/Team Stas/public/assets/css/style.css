@@ -78,7 +78,6 @@ input.ng-invalid.ng-dirty{
   padding: 6px;
   display: block;
   color: #808080;
-  width: 135px;
   margin: 0px auto;
   border: thin solid #89C4F4;
 }
@@ -140,4 +139,7 @@ input.ng-invalid.ng-dirty{
     padding: 10px;
     margin: 10px;
     width: 100px;
+}
+.select{
+  cursor: pointer;
 }

@@ -15,8 +15,10 @@ module.exports = function (apiRouter) {
 					if (err)
 						res.send(err);
 					else{
+						console.log(gClass.name)
 						res.json({
-							assignments: gClass.assignments
+							assignments: gClass.assignments,
+							classNm: gClass.name
 						});
 					};
 				});
@@ -73,19 +75,30 @@ module.exports = function (apiRouter) {
 			submission.user = req.body.data; //userId
 			submission.assignment = req.params.assignment_id;
 
-			for (var file in req.files) {
-				var submissionFile = new File();
-				submissionFile.submission = submission._id;
-				submissionFile.path = '/uploads/' + req.files[file].name;
-				submissionFile.name = req.files[file].originalname;
+			if (req.files.file.length != undefined){
+				for (var i = 0; i < req.files.file.length; i++) {
+					var submissionFile = new File();
+					submissionFile.submission = submission._id;
+					submissionFile.path = '/uploads/' + req.files.file[i].name;
+					submissionFile.name = req.files.file[i].originalname;
 
-				submission.files.push(submissionFile); // adding a file reference to a submission
-				submission.status = "Submitted";
-				submissionFile.save(function (err) {
-					if (err)
-						res.send(err)
-				});
+					submission.files.push(submissionFile); // adding a file reference to a submission
+					submission.status = "Submitted";
+					submissionFile.save();
+				};
+			}else{
+				for(var file in req.files){
+					var submissionFile = new File();
+					submissionFile.submission = submission._id;
+					submissionFile.path = '/uploads/' + req.files[file].name;
+					submissionFile.name = req.files[file].originalname;
+
+					submission.files.push(submissionFile); // adding a file reference to a submission
+					submission.status = "Submitted";
+					submissionFile.save();
+				};
 			};
+
 			Assignment.update({
 				_id: req.params.assignment_id},
 				{$push: {submissions: submission}}, function (err) {
@@ -105,12 +118,13 @@ module.exports = function (apiRouter) {
 			//find an assignment, populate with submissions and files and return
 			Assignment.findOne({
 				_id: req.params.assignment_id
-			}).deepPopulate('submissions.files').exec(function (err, assignm) {
+			}).deepPopulate('submissions.files submissions.user').exec(function (err, assignm) {
 				if (err)
 					res.send(err);
 				else{
 					res.json({
 						submissions: assignm.submissions,
+						assignmentName: assignm.name,
 						success: true
 					});
 				};
