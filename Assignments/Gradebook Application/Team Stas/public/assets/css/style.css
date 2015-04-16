@@ -43,7 +43,7 @@ input[type="password"]:focus {
 }
 
 form[novalidate] input{
-  border: thin solid #89C4F4;
+  border: thin solid #003b6f;
 }
 
 input.ng-invalid.ng-dirty{
@@ -52,14 +52,15 @@ input.ng-invalid.ng-dirty{
 
 .login-form {
   background: none repeat scroll 0% 0% #fff;
-  border: thin solid #89c4f4;
+  border:solid #003b6f;
+  border-width: 3px;
   margin: 9% auto;
   position: relative;
-  width: 400px;
+  width: 425px;
   text-align: center;
   -webkit-box-shadow: 3px 3px 7px -3px rgba(0,0,0,0.75);
   -moz-box-shadow: 3px 3px 7px -3px rgba(0,0,0,0.75);
-  box-shadow: 3px 3px 7px -3px rgba(0,0,0,0.75);
+  box-shadow: 3px 15px 15px -3px rgba(0,0,0,0.75);
 }
 .login-form form {
   padding: 5% 10% 20% 2.5em;
@@ -78,7 +79,7 @@ input.ng-invalid.ng-dirty{
   padding: 6px;
   display: block;
   color: #808080;
-  width: 135px;
+  width: 170px;
   margin: 0px auto;
   border: thin solid #89C4F4;
 }
@@ -130,4 +131,16 @@ input.ng-invalid.ng-dirty{
   -webkit-animation:fadeIn .8s both linear;
   -moz-animation:fadeIn .8s both linear;
   animation:fadeIn .8s both linear;
+}
+
+.btn1 {
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 6px;
+  display: block;
+  color: #808080;
+  width: 170px;
+  margin: 0px auto;
+  border: thin solid #003b6f;
 }
