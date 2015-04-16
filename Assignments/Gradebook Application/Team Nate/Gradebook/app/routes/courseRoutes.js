@@ -52,7 +52,7 @@ module.exports = function(apiRouter) {
 				if (err)
 					res.send(err);
 				else{
-					res.json({ course: course.name });
+					res.json({ course: course });
 				}
 			})
 		})

@@ -21,14 +21,6 @@ Premium: http://www.gridgum.com
 #createCourse {
     display: none;
 }
-
-#studentChart {
-    max-height: 199px;
-}
-
-#assignmentChart {
-    max-height: 199px;
-}
 /* BASIC THEME CONFIGURATION */
 body {
     color: #797979;

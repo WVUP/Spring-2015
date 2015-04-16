@@ -112,6 +112,17 @@ gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', functi
 	};
 }]);
 
+gradebookApp.controller('CourseDetailCtrl', ['$scope', '$http', '$state', '$stateParams', function ($scope, $http, $state, $stateParams) {
+	$scope.viewType = "Course Details";
+	$http.get('/api/courses/' + $stateParams.course_id).success (function (data) {
+		$scope.course = data;
+		console.log(data);
+	})
+	.error (function () {
+		console.log("Course not retrieved");
+	});
+}]);
+
 //Student controllers
 gradebookApp.controller('StudentCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
 	$scope.viewType = "Students";
@@ -270,18 +281,9 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 			controller: "AssignmentCreateCtrl"
 		})
 
-		.state('courses.detail', {
-			url: "courses/:course_id",
+		.state('coursesDetail', {
+			url: "/courses/:course_id",
 			templateUrl: "../../app/views/courses/detail.html",
-			controller: function($stateParams) {
-				var courseId = $stateParams.course_id;
-				$http.get("/api/courses/" + courseId).success(function (data) {
-					$scope.course = data;
-
-				})
-				.error(function (data) {
-					$scope.failed = "Couldn't get course details";
-				});
-			}
+			controller: "CourseDetailCtrl"
 		});
 });
