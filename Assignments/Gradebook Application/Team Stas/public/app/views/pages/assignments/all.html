@@ -8,7 +8,6 @@
 <table class="table table-bordered table-striped">
 	<thead>
 		<tr>
-			<th>_id</th>
 			<th>Name</th>
 			<th>Description</th>
 			<th class="col-sm-2"></th>
@@ -16,13 +15,12 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="assignm in assignment.assignments">
-			<td>{{ assignm._id }}</td>
 			<td>{{ assignm.name }}</td>
 			<td>{{ assignm.description }}</td>
 			<td class="col-sm-2">
 				<a ng-href="/classes/{{ gClass._id }}" class="btn btn-default">Edit Assignment</a>
 				<a href="#" ng-click="assignment.doDeleteAssignment(assignm._id)" class="btn btn-default">Delete Assignment</a>
-				<a ng-href="/assignments/{{ gClass._id }}" class="btn btn-default">View Submissions</a>
+				<a ng-href="/assignments/viewSubmissions/{{ assignm._id }}" class="btn btn-default">View Submissions</a>
 			</td>
 		</tr>
 	</tbody>

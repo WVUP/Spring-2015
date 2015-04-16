@@ -3,7 +3,13 @@ module.exports = function(app, express) {
 	var apiRouter = express.Router();
 
 	//Course routes
-	require ('./courseRoutes', apiRouter);
+	require('./courseRoutes')(apiRouter);
+
+	//Assignment routes
+	require('./assignmentRoutes')(apiRouter);
+
+	//Student routes
+	require('./studentRoutes')(apiRouter);
 
 	//Kick it out
 	return apiRouter;

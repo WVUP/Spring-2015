@@ -70,6 +70,11 @@ angular.module('app.routes', ['ngRoute'])
 			controller: 'submissionController',
 			controllerAs: 'submission'
 		})
+		.when('/assignments/viewSubmissions/:assignment_id',{
+			templateUrl: 'app/views/pages/submissions/all.html',
+			controller: 'viewSubmissionController',
+			controllerAs: 'assignment'
+		})
 		.otherwise({
             redirectTo: '/'
         });

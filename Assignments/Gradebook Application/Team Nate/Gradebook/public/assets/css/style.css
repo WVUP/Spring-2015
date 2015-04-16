@@ -6,6 +6,17 @@ Website: http://blacktie.co
 Premium: http://www.gridgum.com
 */
 
+
+
+/*smoothing-trans*/
+html, body{
+    transition:all .4s linear; 
+    -o-transition:all .4s linear; 
+    -moz-transition:all .4s linear; 
+    -webkit-transition:all .4s linear;
+}
+
+
 /* Import fonts */
 @import url(//fonts.googleapis.com/css?family=Ruda:400,700,900);
 
@@ -21,7 +32,6 @@ Premium: http://www.gridgum.com
 #createCourse {
     display: none;
 }
-
 /* BASIC THEME CONFIGURATION */
 body {
     color: #797979;

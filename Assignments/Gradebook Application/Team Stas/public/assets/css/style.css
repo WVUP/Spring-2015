@@ -79,7 +79,10 @@ input.ng-invalid.ng-dirty{
   padding: 6px;
   display: block;
   color: #808080;
+<<<<<<< HEAD
   width: 170px;
+=======
+>>>>>>> cb55498661961af4a3130ee688bee7df75f190a3
   margin: 0px auto;
   border: thin solid #89C4F4;
 }
@@ -133,6 +136,7 @@ input.ng-invalid.ng-dirty{
   animation:fadeIn .8s both linear;
 }
 
+<<<<<<< HEAD
 .btn1 {
   text-align: center;
   cursor: pointer;
@@ -144,3 +148,17 @@ input.ng-invalid.ng-dirty{
   margin: 0px auto;
   border: thin solid #003b6f;
 }
+=======
+.button-upload {
+    -moz-appearance: button;
+    /* Firefox */
+    -webkit-appearance: button;
+    /* Safari and Chrome */
+    padding: 10px;
+    margin: 10px;
+    width: 100px;
+}
+.select{
+  cursor: pointer;
+}
+>>>>>>> cb55498661961af4a3130ee688bee7df75f190a3
