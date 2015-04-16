@@ -112,10 +112,10 @@ gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', functi
 	};
 }]);
 
-gradebookApp.controller('CourseDetailCtrl', ['$scope', '$http', '$state', '$stateParams', function ($scope, $http, $state, $stateParams) {
+gradebookApp.controller('CourseDetailCtrl', ['$scope', '$http', '$state', '$stateParams', function ($scope, $http, $state) {
 	$scope.viewType = "Course Details";
-	$http.get('/api/courses/' + $stateParams.course_id).success (function (data) {
-		$scope.course = data;
+	$http.get("/api/courses/" + $state.params.course_id).success (function (data) {
+		$scope.course = data.course;
 		console.log(data);
 	})
 	.error (function () {

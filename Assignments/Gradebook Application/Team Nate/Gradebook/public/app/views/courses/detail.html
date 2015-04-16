@@ -1,9 +1,10 @@
 <div class="col-lg-offset-1 col-lg-10">
 
 	<!--Header for view type-->
+	<h1>{{viewType}}</h1>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">{{name}}</h3>
+			<h3 class="panel-title">{{course.name}}</h3>
 		</div>
 		<div class="panel-body">
 			<table class="table">
@@ -21,7 +22,7 @@
 				</tbody>
 			</table>
 			<table class="table">
-				<caption>Students</caption>
+				<caption><h4>Students</h4></caption>
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -35,8 +36,9 @@
 					</tr>
 				</tbody>
 			</table>
-			<table>
-				<caption>Assignments</caption>
+			<input type="button" class="btn btn-default" value="Edit Students">
+			<table class="table">
+				<caption><h4>Assignments</h4></caption>
 				<thead>
 					<tr>
 						<td>Name</td>
@@ -48,8 +50,7 @@
 					</tr>
 				</thead>
 			</table>
+			<input type="button" class="btn btn-default" value="Edit Assignments">
 		</div>
 	</div>
-	
-
 </div>
