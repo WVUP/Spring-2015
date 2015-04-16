@@ -224,6 +224,7 @@ gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', 'c
 			console.log($scope.assignmentInfo);
 			$http.post('/api/assignments', $scope.assignmentInfo).success(function (data) {
 				console.log("Assignment successfully posted");
+				debugger;
 				courseFactory.pushAssignment(data.course, data._id).success (function (data) {
 					console.log("Pushed: " + data);
 				});
@@ -294,6 +295,7 @@ gradebookApp.factory('courseFactory', function ($http) {
 	var courseFactory = {};
 
 	courseFactory.pushAssignment = function (course_id, assignment) {
+		debugger;
 		return $http.put('/api/courses/' + course_id + '/assignments', assignment);
 	};
 

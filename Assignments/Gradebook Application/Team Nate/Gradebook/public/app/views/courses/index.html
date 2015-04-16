@@ -12,7 +12,7 @@
 	<div class="panel panel-default" ng-repeat="course in courseData">
 		<div class="panel-heading">
 			<h3 class="panel-title">
-				{{course.name}}<apan class="pull-right">{{course.courseNum}}</span>
+				<a ui-sref="coursesDetail({course_id: (course._id)})">{{course.name}}</a><span class="pull-right">{{course.courseNum}}</span>
 			</h3>
 		</div>		
 		<div class="panel-body">

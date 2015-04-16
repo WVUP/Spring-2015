@@ -112,12 +112,13 @@ module.exports = function(apiRouter) {
 
 		//Post assignments to course
 		.put(function (req, res) {
+			debugger;
 			if (req.body == '{}')
 				console.log("No assignments in request body");
 			else{
-				console.log("Entering assignment assignment")
+				debugger;
 				Course.findById({_id: req.params.course_id}).update(
-					{$push: {"assignments": req.body.assignment}},
+					{$push: {"assignments": req.body}},
 					{upsert: true},
 					function (err, course) {
 						if (err)
