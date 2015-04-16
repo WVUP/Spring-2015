@@ -1,5 +1,9 @@
 var gradebookApp = angular.module('gradebook', ['ui.router']);
 
+gradebookApp.controller('Login', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+	$scope.viewType = "Login";
+}]);
+
 gradebookApp.controller('HomeController', ['$scope', '$http', '$state', function ($scope, $http, $state) { 
 	$scope.viewType = "Semester";
 	var graphData = [];
@@ -224,7 +228,6 @@ gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', 'c
 			console.log($scope.assignmentInfo);
 			$http.post('/api/assignments', $scope.assignmentInfo).success(function (data) {
 				console.log("Assignment successfully posted");
-				debugger;
 				courseFactory.pushAssignment(data.course, data._id).success (function (data) {
 					console.log("Pushed: " + data);
 				});
@@ -241,8 +244,14 @@ gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', 'c
 gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider
-		.state('homeState', {
+		.state('login', {
 			url: "",
+			templateUrl: "../../app/views/login.html",
+			controller: "LoginController"
+		})
+
+		.state('homeState', {
+			url: "/home",
 			templateUrl: "../../app/views/home.html",
 			controller: 'HomeController'
 		})
@@ -294,9 +303,8 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 gradebookApp.factory('courseFactory', function ($http) {
 	var courseFactory = {};
 
-	courseFactory.pushAssignment = function (course_id, assignment) {
-		debugger;
-		return $http.put('/api/courses/' + course_id + '/assignments', assignment);
+	courseFactory.pushAssignment = function (course_id, assignment_id) {
+		return $http.put('/api/courses/' + course_id + '/assignments/' + assignment_id);
 	};
 
 	return courseFactory;

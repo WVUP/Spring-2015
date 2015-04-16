@@ -108,28 +108,29 @@ module.exports = function(apiRouter) {
 				};
 		});
 
-	apiRouter.route('/courses/:course_id/assignments')
+	apiRouter.route('/courses/:course_id/assignments/:assignmentID')
 
 		//Post assignments to course
 		.put(function (req, res) {
-			debugger;
-			if (req.body == '{}')
-				console.log("No assignments in request body");
-			else{
-				debugger;
-				Course.findById({_id: req.params.course_id}).update(
-					{$push: {"assignments": req.body}},
+			var ObjectId = require('mongoose').Types.ObjectId; 
+			console.log(req.params.course_id);
+			console.log(req.params.assignmentID);
+			// if (req.body == '{}')
+			// 	console.log("No assignments in request body");
+			// else{
+				Course.update(
+					{_id: new ObjectId(req.params.course_id)},
+					{$addToSet: {"assignments": req.params.assignmentID}},
 					{upsert: true},
 					function (err, course) {
 						if (err)
 							res.send(err);
 						else{
-							console.log("Assigned");
 							res.json({ course: course });
 						}
 					}
 				);
-			}
+			// }
 		});
 
 	
