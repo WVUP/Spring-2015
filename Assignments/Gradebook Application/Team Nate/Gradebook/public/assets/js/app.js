@@ -224,7 +224,9 @@ gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', 'c
 			console.log($scope.assignmentInfo);
 			$http.post('/api/assignments', $scope.assignmentInfo).success(function (data) {
 				console.log("Assignment successfully posted");
-				courseFactory.pushAssignment(data.course._id, data);
+				courseFactory.pushAssignment(data.course, data._id).success (function (data) {
+					console.log("Pushed: " + data);
+				});
 				$state.go('assignmentState');
 			})
 			.error(function (data) {

@@ -35,7 +35,7 @@ module.exports = function(apiRouter) {
 				if (err)
 					res.send(err);
 				else{
-					res.json({ message: "Assignment successfully created" });
+					res.json({ assignment: newAssignment });
 				}
 			});
 		});
