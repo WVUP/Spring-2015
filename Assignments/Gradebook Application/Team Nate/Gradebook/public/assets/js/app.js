@@ -1,6 +1,6 @@
 var gradebookApp = angular.module('gradebook', ['ui.router']);
 
-gradebookApp.controller('Login', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+gradebookApp.controller('login', ['$scope', '$http', '$state', function ($scope, $http, $state) {
 	$scope.viewType = "Login";
 }]);
 
