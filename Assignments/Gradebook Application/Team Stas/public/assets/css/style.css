@@ -43,7 +43,7 @@ input[type="password"]:focus {
 }
 
 form[novalidate] input{
-  border: thin solid #003b6f;
+  border: thin solid #89C4F4;
 }
 
 input.ng-invalid.ng-dirty{
@@ -52,15 +52,14 @@ input.ng-invalid.ng-dirty{
 
 .login-form {
   background: none repeat scroll 0% 0% #fff;
-  border:solid #003b6f;
-  border-width: 3px;
+  border: thin solid #89c4f4;
   margin: 9% auto;
   position: relative;
-  width: 425px;
+  width: 400px;
   text-align: center;
   -webkit-box-shadow: 3px 3px 7px -3px rgba(0,0,0,0.75);
   -moz-box-shadow: 3px 3px 7px -3px rgba(0,0,0,0.75);
-  box-shadow: 3px 15px 15px -3px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 7px -3px rgba(0,0,0,0.75);
 }
 .login-form form {
   padding: 5% 10% 20% 2.5em;
@@ -79,10 +78,6 @@ input.ng-invalid.ng-dirty{
   padding: 6px;
   display: block;
   color: #808080;
-<<<<<<< HEAD
-  width: 170px;
-=======
->>>>>>> cb55498661961af4a3130ee688bee7df75f190a3
   margin: 0px auto;
   border: thin solid #89C4F4;
 }
@@ -136,19 +131,6 @@ input.ng-invalid.ng-dirty{
   animation:fadeIn .8s both linear;
 }
 
-<<<<<<< HEAD
-.btn1 {
-  text-align: center;
-  cursor: pointer;
-  border-radius: 4px;
-  padding: 6px;
-  display: block;
-  color: #808080;
-  width: 170px;
-  margin: 0px auto;
-  border: thin solid #003b6f;
-}
-=======
 .button-upload {
     -moz-appearance: button;
     /* Firefox */
@@ -161,4 +143,3 @@ input.ng-invalid.ng-dirty{
 .select{
   cursor: pointer;
 }
->>>>>>> cb55498661961af4a3130ee688bee7df75f190a3
