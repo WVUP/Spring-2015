@@ -1,5 +1,5 @@
-angular.module('classCtrl', [])
+angular.module('dashboardCtrl', ['ui.bootstrap'])
 
 .controller('dashboardController', function () {
-	vm = this;
+	var vm = this;
 })

@@ -7,7 +7,7 @@ angular.module('app.routes', ['ngRoute'])
 		})
 		.when('/dashboard',{
 			templateUrl: 'app/views/pages/dashboard.html',
-			constroller: 'dashboardController',
+			controller: 'dashboardController',
 			controllerAs: 'dashboard'
 		})
 		.when('/users',{
@@ -28,6 +28,11 @@ angular.module('app.routes', ['ngRoute'])
 		.when('/classes/create',{
 			templateUrl: 'app/views/pages/classes/create.html',
 			controller: 'classController',
+			controllerAs: 'class'
+		})
+		.when('/classes/my',{
+			templateUrl: 'app/views/pages/classes/my.html',
+			controller: 'myClassController',
 			controllerAs: 'class'
 		})
 		.when('/classes/addStudents/:class_id', {
