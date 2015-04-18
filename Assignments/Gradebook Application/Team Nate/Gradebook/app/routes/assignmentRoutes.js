@@ -27,6 +27,7 @@ module.exports = function(apiRouter) {
 			newAssignment.dateModified = Date.now();
 			newAssignment.description = req.body.description;
 			newAssignment.maxPoints = req.body.maxPoints;
+			newAssignment.dueDate = Date(req.body.dueDate);
 			newAssignment.comments.push(req.body.comments || []);
 			newAssignment.course = req.body.course;
 

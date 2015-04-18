@@ -28,6 +28,10 @@ var assignmentSchema = new Schema({
 	description: {
 		type: String
 	},
+	dueDate: {
+		type: Date,
+		default: Date.now
+	},
 	course: {
 		type: ObjectId,
 		ref: 'Course'

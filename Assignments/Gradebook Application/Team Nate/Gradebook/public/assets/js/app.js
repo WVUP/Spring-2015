@@ -14,10 +14,41 @@ gradebookApp.controller('HomeController', ['$scope', '$http', '$state', function
 		console.log("Courses retrieved");
 		$scope.courseCount = data.length;
 
-		for (var i=0; i<data.length; i++) {
-			graphData.push({"label": data[i].name, "value": data[i].students.length || .01});
+		var barLabels = [];
+		var barStudentData = [];
+		var barAssData = [];
+
+		//Push names into labels
+		for (var i=0; i<$scope.courseData.length; i++) {
+			barLabels.push($scope.courseData[i].name);
+			barStudentData.push($scope.courseData[i].students.length);
+			barAssData.push($scope.courseData[i].assignments.length);
 		}
-		donut.setData(graphData);
+
+		var barData = {
+			labels: barLabels,
+			//Push data to datasets
+			datasets: [
+			{
+				label: "Students",
+				fillColor: "rgba(104,223,240,0.5)",
+				strokeColor: "rgba(104,223,240,0.8)",
+				highlightFill: "rgba(104,223,240,0.75)",
+				highlightStroke: "rgba(104,223,240,1)",
+				data: barStudentData
+			},
+			{
+				label: "Assignments",
+				fillColor: "rgba(255,134,92,0.5)",
+				strokeColor: "rgba(255,134,92,0.8)",
+				highlightFill: "rgba(255,134,92,0.75)",
+				highlightStroke: "rgba(255,134,92,1)",
+				data: barAssData
+			}]
+		};
+
+		var ctx = document.getElementById("courseBar").getContext("2d");
+		var courseBarChart = new Chart(ctx).Bar(barData);
 	})
 	.error (function(){
 		console.log("Courses not retrieved");
@@ -29,37 +60,41 @@ gradebookApp.controller('HomeController', ['$scope', '$http', '$state', function
 		console.log("Assignments retrieved");
 		$scope.assignCount = data.length;
 
-		for (var i=0; i<data.length; i++) {
-			assignGraphData.push({"label": data[i].name, "value": data[i].maxPoints});
-		}
-		assignDonut.setData(assignGraphData);
-	})
+		// for (var i=0; i<data.length; i++) {
+		// 	assignGraphData.push({"label": data[i].name, "value": data[i].maxPoints});
+		// }
+		// assignDonut.setData(assignGraphData);
+	});
 
-	var assignDonut = Morris.Donut({
-		element: 'assignmentChart',
-		data: [{"label": "", "value": ""}],
-		colors: [
-		'#ff865c',
-		'#ffd777',
-		'#43b1a9',
-		'#68dff0',
-		'#797979'
-		],
-		resize: true
-	});
-	
-	var donut = Morris.Donut({
-		element: 'studentChart',
-		data: [{"label": "", "value": ""}],
-		colors: [
-		'#ff865c',
-		'#ffd777',
-		'#43b1a9',
-		'#68dff0',
-		'#797979'
-		],
-		resize: true
-	});
+	// var barData = {
+		
+	// }
+
+	// var assignDonut = Morris.Donut({
+	// 	element: 'assignmentChart',
+	// 	data: [{"label": "", "value": ""}],
+	// 	colors: [
+	// 	'#ff865c',
+	// 	'#ffd777',
+	// 	'#43b1a9',
+	// 	'#68dff0',
+	// 	'#797979'
+	// 	],
+	// 	resize: true
+	// });
+
+	// var donut = Morris.Donut({
+	// 	element: 'studentChart',
+	// 	data: [{"label": "", "value": ""}],
+	// 	colors: [
+	// 	'#ff865c',
+	// 	'#ffd777',
+	// 	'#43b1a9',
+	// 	'#68dff0',
+	// 	'#797979'
+	// 	],
+	// 	resize: true
+	// });
 }]);
 
 //Course controllers
@@ -226,6 +261,11 @@ gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', 'c
 	$scope.assignmentInfo.maxPoints = "";
 	$scope.assignmentInfo.comments = "";
 	$scope.assignmentInfo.course = "";
+	$scope.assignmentInfo.dueDate = "";
+
+	$('#dueDatePicker input').datepicker({
+
+	});
 
 	//Get course names for dropdown
 	$http.get('/api/courses').success (function (data) {
