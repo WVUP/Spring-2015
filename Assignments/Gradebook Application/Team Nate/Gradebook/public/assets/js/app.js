@@ -87,12 +87,11 @@ gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', 'cours
 	$scope.courseInfo.comments = "";
 
 	//Arrays for student addition
-	$scope.studentsIn = [];
-	$scope.studentsOut = [];
+	$scope.courseInfo.studentsIn = [];
+	$scope.courseInfo.studentsOut = [];
 	courseFactory.getAllStudents().success (function (data) {
-		$scope.studentsAll = data;
-		for (var i=0; i<$scope.studentsAll.length; i++) { 
-			$scope.studentsOut.push($scope.studentsAll[i]);
+		for (var i=0; i<data.length; i++) { 
+			$scope.courseInfo.studentsOut.push(data[i]);
 		}
 	});
 
@@ -100,12 +99,11 @@ gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', 'cours
 	$scope.cancel = function () { $state.go('courseState'); };
 
 	$scope.toggleIn = function (student, i) {
-		$scope.studentsIn.push($scope.studentsOut.splice(i, 1)[0]);
+		$scope.courseInfo.studentsIn.push($scope.courseInfo.studentsOut.splice(i, 1)[0]);
 	}
 
 	$scope.toggleOut = function (student, i) {
-		debugger;
-		$scope.studentsOut.push($scope.studentsIn.splice(i, 1));
+		$scope.courseInfo.studentsOut.push($scope.courseInfo.studentsIn.splice(i, 1));
 	}
 
 	$scope.postData = function () {

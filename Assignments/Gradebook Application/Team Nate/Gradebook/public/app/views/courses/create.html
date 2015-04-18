@@ -49,7 +49,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr ng-repeat="student in studentsIn">
+										<tr ng-repeat="student in courseInfo.studentsIn">
 											<td ng-click="toggleOut(student, $index)">{{student.firstName + " " + student.lastName}}<span class="pull-right"><i class="fa fa-minus"></i></td>
 										</tr>
 									</tbody>
@@ -63,7 +63,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr ng-repeat="student in studentsOut">
+										<tr ng-repeat="student in courseInfo.studentsOut">
 											<td ng-click="toggleIn(student, $index)">{{student.firstName + " " + student.lastName}}<span class="pull-right"><i class="fa fa-plus"></i></td>
 										</tr>
 									</tbody>

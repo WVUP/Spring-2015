@@ -28,9 +28,14 @@ module.exports = function(apiRouter) {
 			newCourse.dateCreated = Date.now();
 			newCourse.dateModified = Date.now();
 			newCourse.semesters = [];
-			newCourse.students = [];
 			newCourse.assignments = [];
+			newCourse.students = [];
 			newCourse.comments.push(req.body.comments || []);
+
+			//Populate students
+			if (req.body.studentsIn != []) {
+				newCourse.students = req.body.studentsIn;
+			}  
 
 			//Save to DB
 			newCourse.save(function(err) {
