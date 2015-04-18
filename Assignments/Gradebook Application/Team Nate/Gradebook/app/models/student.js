@@ -48,7 +48,7 @@ var studentSchema = new Schema({
 });
 
 //Methods
-studentSchema.methods.getFullName = function() {
+studentSchema.statics.getFullName = function() {
 	return this.firstName + " " + this.lastName;
 };
 

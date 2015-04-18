@@ -39,11 +39,11 @@ gradebookApp.controller('HomeController', ['$scope', '$http', '$state', function
 		element: 'assignmentChart',
 		data: [{"label": "", "value": ""}],
 		colors: [
-			'#ff865c',
-			'#ffd777',
-			'#43b1a9',
-			'#68dff0',
-			'#797979'
+		'#ff865c',
+		'#ffd777',
+		'#43b1a9',
+		'#68dff0',
+		'#797979'
 		],
 		resize: true
 	});
@@ -52,11 +52,11 @@ gradebookApp.controller('HomeController', ['$scope', '$http', '$state', function
 		element: 'studentChart',
 		data: [{"label": "", "value": ""}],
 		colors: [
-			'#ff865c',
-			'#ffd777',
-			'#43b1a9',
-			'#68dff0',
-			'#797979'
+		'#ff865c',
+		'#ffd777',
+		'#43b1a9',
+		'#68dff0',
+		'#797979'
 		],
 		resize: true
 	});
@@ -79,15 +79,34 @@ gradebookApp.controller('CourseController', ['$scope', '$http', '$state', functi
 	};
 }]);
 
-gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', 'courseFactory', function ($scope, $http, $state, courseFactory) {
 	$scope.viewName = "Create Course";
 	$scope.courseInfo = {};
 	$scope.courseInfo.name = "";
 	$scope.courseInfo.courseNum = "";
 	$scope.courseInfo.comments = "";
 
+	//Arrays for student addition
+	$scope.studentsIn = [];
+	$scope.studentsOut = [];
+	courseFactory.getAllStudents().success (function (data) {
+		$scope.studentsAll = data;
+		for (var i=0; i<$scope.studentsAll.length; i++) { 
+			$scope.studentsOut.push($scope.studentsAll[i]);
+		}
+	});
+
 	//Scope methods
 	$scope.cancel = function () { $state.go('courseState'); };
+
+	$scope.toggleIn = function (student, i) {
+		$scope.studentsIn.push($scope.studentsOut.splice(i, 1)[0]);
+	}
+
+	$scope.toggleOut = function (student, i) {
+		debugger;
+		$scope.studentsOut.push($scope.studentsIn.splice(i, 1));
+	}
 
 	$scope.postData = function () {
 		$scope.nameRequired = "";
@@ -244,59 +263,59 @@ gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', 'c
 gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider
-		.state('login', {
-			url: "",
-			templateUrl: "../../app/views/login.html",
-			controller: "LoginController"
-		})
+	.state('login', {
+		url: "",
+		templateUrl: "../../app/views/login.html",
+		controller: "LoginController"
+	})
 
-		.state('homeState', {
-			url: "/home",
-			templateUrl: "../../app/views/home.html",
-			controller: 'HomeController'
-		})
+	.state('homeState', {
+		url: "/home",
+		templateUrl: "../../app/views/home.html",
+		controller: 'HomeController'
+	})
 
-		.state('courseState', {
-			url: "/courses",
-			templateUrl: "../../app/views/courses/index.html",
-			controller: 'CourseController'
-		})
+	.state('courseState', {
+		url: "/courses",
+		templateUrl: "../../app/views/courses/index.html",
+		controller: 'CourseController'
+	})
 
-		.state('courseCreate', {
-			url: "/courses/create",
-			templateUrl: "../../app/views/courses/create.html",
-			controller: 'CourseCreateCtrl'
-		})
+	.state('courseCreate', {
+		url: "/courses/create",
+		templateUrl: "../../app/views/courses/create.html",
+		controller: 'CourseCreateCtrl'
+	})
 
-		.state('studentState', {
-			url: "/students",
-			templateUrl: "../../app/views/students/index.html",
-			controller: "StudentCtrl"
-		})
+	.state('studentState', {
+		url: "/students",
+		templateUrl: "../../app/views/students/index.html",
+		controller: "StudentCtrl"
+	})
 
-		.state('studentCreate', {
-			url: "/students/create",
-			templateUrl: "../../app/views/students/create.html",
-			controller: "StudentCreateCtrl"
-		})
+	.state('studentCreate', {
+		url: "/students/create",
+		templateUrl: "../../app/views/students/create.html",
+		controller: "StudentCreateCtrl"
+	})
 
-		.state('assignmentState', {
-			url: "/assignments",
-			templateUrl: "../../app/views/assignments/index.html",
-			controller: "AssignmentCtrl"
-		})
+	.state('assignmentState', {
+		url: "/assignments",
+		templateUrl: "../../app/views/assignments/index.html",
+		controller: "AssignmentCtrl"
+	})
 
-		.state('assignmentCreate', {
-			url: "/assignments/create",
-			templateUrl: "../../app/views/assignments/create.html",
-			controller: "AssignmentCreateCtrl"
-		})
+	.state('assignmentCreate', {
+		url: "/assignments/create",
+		templateUrl: "../../app/views/assignments/create.html",
+		controller: "AssignmentCreateCtrl"
+	})
 
-		.state('coursesDetail', {
-			url: "/courses/:course_id",
-			templateUrl: "../../app/views/courses/detail.html",
-			controller: "CourseDetailCtrl"
-		});
+	.state('coursesDetail', {
+		url: "/courses/:course_id",
+		templateUrl: "../../app/views/courses/detail.html",
+		controller: "CourseDetailCtrl"
+	});
 });
 
 //Factories and services
@@ -305,6 +324,10 @@ gradebookApp.factory('courseFactory', function ($http) {
 
 	courseFactory.pushAssignment = function (course_id, assignment_id) {
 		return $http.put('/api/courses/' + course_id + '/assignments/' + assignment_id);
+	};
+
+	courseFactory.getAllStudents = function () {
+		return $http.get('/api/students');
 	};
 
 	return courseFactory;
