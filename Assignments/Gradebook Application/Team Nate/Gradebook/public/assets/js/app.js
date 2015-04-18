@@ -133,8 +133,13 @@ gradebookApp.controller('CourseCreateCtrl', ['$scope', '$http', '$state', 'cours
 
 gradebookApp.controller('CourseDetailCtrl', ['$scope', '$http', '$state', '$stateParams', function ($scope, $http, $state) {
 	$scope.viewType = "Course Details";
+	$scope.pointTotal = 0;
+
 	$http.get("/api/courses/" + $state.params.course_id).success (function (data) {
 		$scope.course = data.course;
+		for (var i=0; i<$scope.course.assignments.length; i++) {
+			$scope.pointTotal += $scope.course.assignments[i].maxPoints;
+		}
 		console.log(data);
 	})
 	.error (function () {
