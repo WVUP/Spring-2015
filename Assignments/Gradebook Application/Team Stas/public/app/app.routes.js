@@ -5,10 +5,10 @@ angular.module('app.routes', ['ngRoute'])
 		.when('/', {
 			templateUrl: 'app/views/pages/home.html'
 		})
-		.when('/register',{
-			templateUrl: 'app/views/pages/register.html',
-			controller: 'mainController',
-			controllerAs: 'register'
+		.when('/dashboard',{
+			templateUrl: 'app/views/pages/dashboard.html',
+			constroller: 'dashboardController',
+			controllerAs: 'dashboard'
 		})
 		.when('/users',{
 			templateUrl: 'app/views/pages/users/all.html',
