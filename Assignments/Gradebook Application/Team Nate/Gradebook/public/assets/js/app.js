@@ -1,6 +1,6 @@
 var gradebookApp = angular.module('gradebook', ['ui.router']);
 
-gradebookApp.controller('login', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+gradebookApp.controller('LoginController', ['$scope', '$http', '$state', function ($scope, $http, $state) {
 	$scope.viewType = "Login";
 }]);
 
@@ -302,18 +302,31 @@ gradebookApp.controller('AssignmentCreateCtrl', ['$scope', '$http', '$state', 'c
 	};
 }]);
 
+gradebookApp.controller('AssignmentDetailCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+	$scope.viewType = "Assignment Details";
+
+	$http.get("/api/assignments/" + $state.params.assignment_id).success (function (data) {
+		debugger;
+		$scope.assignment = data;
+		console.log(data);
+	})
+	.error (function () {
+		console.log("Assignment not retrieved");
+	});
+}]);
+
 //UI Routes
 gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider
 	.state('login', {
-		url: "",
+		url: "/login",
 		templateUrl: "../../app/views/login.html",
 		controller: "LoginController"
 	})
 
 	.state('homeState', {
-		url: "/home",
+		url: "",
 		templateUrl: "../../app/views/home.html",
 		controller: 'HomeController'
 	})
@@ -358,6 +371,12 @@ gradebookApp.config(function($stateProvider, $urlRouterProvider) {
 		url: "/courses/:course_id",
 		templateUrl: "../../app/views/courses/detail.html",
 		controller: "CourseDetailCtrl"
+	})
+
+	.state('assignmentDetail', {
+		url: "/assignments/:assignment_id",
+		templateUrl: "../../app/views/assignments/detail.html",
+		controller: "AssignmentDetailCtrl"
 	});
 });
 

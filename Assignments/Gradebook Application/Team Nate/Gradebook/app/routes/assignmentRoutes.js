@@ -44,6 +44,19 @@ module.exports = function(apiRouter) {
 	//Operations on existing assignments
 	apiRouter.route('/assignments/:assignment_id')
 
+		//Get an assignment by Id
+		.get(function (req, res) {
+			Assignment.findById({_id: req.params.assignment_id})
+			.populate('course')
+			.exec(function (err, assignment) {
+				if (err)
+					res.send(err);
+				else{
+					res.json(assignment);
+				}
+			})
+		})
+
 		//Delete an existing assignment
 		.delete(function (req, res) {
 			Assignment.findByIdAndRemove(req.params.assignment_id, function (err, delAssignment) {
