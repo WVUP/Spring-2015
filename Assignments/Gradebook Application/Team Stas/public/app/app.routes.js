@@ -8,7 +8,12 @@ angular.module('app.routes', ['ngRoute'])
 		.when('/dashboard',{
 			templateUrl: 'app/views/pages/dashboard.html',
 			controller: 'dashboardController',
-			controllerAs: 'dashboard'
+			controllerAs: 'dash'
+		})
+		.when('/cpanel',{
+			templateUrl: 'app/views/pages/cpanel.html',
+			controller: 'cpanelController',
+			controllerAs: 'cpanel'
 		})
 		.when('/users',{
 			templateUrl: 'app/views/pages/users/all.html',
@@ -30,20 +35,10 @@ angular.module('app.routes', ['ngRoute'])
 			controller: 'classController',
 			controllerAs: 'class'
 		})
-		.when('/classes/my',{
-			templateUrl: 'app/views/pages/classes/my.html',
-			controller: 'myClassController',
-			controllerAs: 'class'
-		})
 		.when('/classes/addStudents/:class_id', {
 			templateUrl: 'app/views/pages/classes/addStudents.html',
 			controller: 'addStudentsController',
 			controllerAs: 'addStudents'
-		})
-		.when('/classes/enrolledStudents/:class_id',{
-			templateUrl: 'app/views/pages/classes/enrolledStudents.html',
-			controller: 'enrolledStudentsController',
-			controllerAs: 'enrolledStudents'
 		})
 		.when('/assignments',{
 			templateUrl: 'app/views/pages/assignments/all.html',
@@ -74,11 +69,6 @@ angular.module('app.routes', ['ngRoute'])
 			templateUrl: 'app/views/pages/assignments/submit.html',
 			controller: 'submissionController',
 			controllerAs: 'submission'
-		})
-		.when('/assignments/viewSubmissions/:assignment_id',{
-			templateUrl: 'app/views/pages/submissions/all.html',
-			controller: 'viewSubmissionController',
-			controllerAs: 'assignment'
 		})
 		.otherwise({
             redirectTo: '/'

@@ -3,25 +3,22 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 .controller('mainController', function ($rootScope, $location, Auth, $modal) {
 	var vm = this;
 	isInstructor = false;
-	isAdmin = false;
 
 	//login modal handler
-	vm.openLogin = function (size) {
+	vm.openLogin = function () {
 		var modalInstance = $modal.open({
 			templateUrl: "loginModal.html",
 			controller: "loginModalController",
-			controllerAs: "login",
-			size: size
+			controllerAs: "login"
 		});
 	};
 
 	//register modal handler
-	vm.openRegister = function (size) {
+	vm.openRegister = function () {
 		var modalInstance = $modal.open({
 			templateUrl: "registerModal.html",
 			controller: "registerModalController",
-			controllerAs: "register",
-			size: size
+			controllerAs: "register"
 		});
 	};
 
@@ -36,7 +33,7 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 			.then(function(data) {
 				vm.user = data.data;
 				isInstructor = vm.isInstructor = data.data.roles.indexOf('Instructor') != -1;
-				currentUserId = data.data.id;
+				currentUserId = data.data.id || '';
 			});
 	});
 
@@ -88,7 +85,6 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 
 	vm.doRegister = function (isValid) {
 		vm.error = '';
-		console.log("in here")
 		if(isValid){
 			Auth.register(vm.registerData).success(function (data) {
 				if (data.success){		
