@@ -60,7 +60,7 @@
 									</thead>
 									<tbody>
 										<tr ng-repeat="assignment in assignData">
-											<td><a ui-sref="/assignments/{{assignment._id}}">{{assignment.name}}</a></td>
+											<td><a ui-sref="assignmentDetail({assignment_id: (assignment._id)})">{{assignment.name}}</a></td>
 											<td>{{assignment.maxPoints}}</td>
 										</tr>
 									</a>
