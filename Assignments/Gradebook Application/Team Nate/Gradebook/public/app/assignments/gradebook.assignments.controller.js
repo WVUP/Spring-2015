@@ -71,7 +71,6 @@ angular.module('Gradebook.Assignments.Ctrl', [
 	$scope.viewType = "Assignment Details";
 
 	$http.get("/api/assignments/" + $state.params.assignment_id).success (function (data) {
-		debugger;
 		$scope.assignment = data;
 		console.log(data);
 	})

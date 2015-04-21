@@ -57,7 +57,7 @@ module.exports = function(apiRouter) {
 				if (err)
 					res.send(err);
 				else{
-					res.json({ course: course });
+					res.json(course);
 				}
 			})
 		})
@@ -86,9 +86,7 @@ module.exports = function(apiRouter) {
 				if (err)
 					res.send(err);
 				else{
-					res.json({
-						students: sCourse.students
-					});
+					res.json(sCourse.students);
 				};
 			});
 		})
@@ -131,7 +129,7 @@ module.exports = function(apiRouter) {
 						if (err)
 							res.send(err);
 						else{
-							res.json({ course: course });
+							res.json(course);
 						}
 					}
 				);

@@ -75,7 +75,7 @@ angular.module('Gradebook.Courses.Ctrl', [
 	$scope.pointTotal = 0;
 
 	$http.get("/api/courses/" + $state.params.course_id).success (function (data) {
-		$scope.course = data.course;
+		$scope.course = data;
 		for (var i=0; i<$scope.course.assignments.length; i++) {
 			$scope.pointTotal += $scope.course.assignments[i].maxPoints;
 		}

@@ -30,11 +30,11 @@ module.exports = function(apiRouter) {
 			newSemester.comments = [];
 
 			//Save to DB
-			newSemester.save(function(err) {
+			newSemester.save(function (err, semester) {
 				if (err)
 					res.send(err);
 				else
-					res.json({ message: "Semester successfully created" });
+					res.json(newSemester);
 			});
 		});
 
