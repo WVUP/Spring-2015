@@ -21,9 +21,11 @@ angular.module('classCtrl', ['classService'])
 	vm.doNewClass = function (isValid) {
 		vm.error = '';
 		if (isValid){
+			vm.classData.instructor = currentUserId;
+			console.log(vm.classData.instructor)
 			Class.create(vm.classData).success(function (data) {
 				if(data.success)
-					$location.path('/classes');
+					$location.path('/cpanel');
 				else{
 					vm.processing = false;
 					vm.error = data.message;
@@ -43,7 +45,7 @@ angular.module('classCtrl', ['classService'])
 	vm.processing = true;
 	vm.selectedUsers = [];
 
-	//geting all users
+	//geting all users who are not instructors
 	User.all().success(function (data) {
 		vm.processing = false;
 		vm.users = data;
@@ -66,38 +68,30 @@ angular.module('classCtrl', ['classService'])
 	};
 })
 
-.controller('myClassController', function (User) {
-	var vm = this;
-
-	vm.isCollapsed = true;
-
-	User.get(currentUserId).success(function (data) {
-		vm.userData = data;
-	})
-})
-
-.controller('enrolledStudentsController', function ($location, $routeParams, Class) {
+.controller('enrolledStudentsController', function ($location, $routeParams, Class, $modalInstance, classId) {
 	var vm = this;
 	vm.isInstructor = isInstructor;
+	vm.processing = false;
 
-	vm.processing = true;
-
-	Class.getStudents($routeParams.class_id).success(function (data) {
+	Class.getStudents(classId).success(function (data) {
 		vm.users = data.students;
 		vm.className = data.className;
 		vm.processing = false;
 	});
 
+	vm.close = function () {
+		$modalInstance.dismiss('cancel');
+	};
+
 	vm.unenroll = function (userId) {
+		vm.processing = true;
 		var usrId = {
 			userId : userId
 		};
-		Class.unenroll($routeParams.class_id, usrId).success(function () {
-			Class.getStudents($routeParams.class_id).success(function (data) {
-				vm.users = data.students;
-				vm.processing = false;
-			});
-		})
+		Class.unenroll(classId, usrId).success(function (data) {
+			vm.users = data
+			vm.processing = false;
+		});
 	};
 
 })
