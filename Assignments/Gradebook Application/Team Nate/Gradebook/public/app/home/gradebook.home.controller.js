@@ -53,9 +53,18 @@ angular.module('Gradebook.Home.Ctrl', [
 	});
 
 	//Get the assignments
+	var donutLabels = [];
+	var donutData = [];
+	var colors = ['#ff865c', '#ffd777', '#43b1a9', '#68dff0', '#797979']
+
 	$http.get('/api/assignments').success (function (data) {
 		$scope.assignData = data;
 		console.log("Assignments retrieved");
 		$scope.assignCount = data.length;
+
+		//Create the data and donut chart
+		for (var i=0; i<data.length; i++) {
+
+		}
 	});
 }]);

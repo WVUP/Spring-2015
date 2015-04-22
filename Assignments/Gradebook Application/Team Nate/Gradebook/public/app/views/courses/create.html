@@ -42,7 +42,7 @@
 					<div id="courseStudentCollapse" class="accordion-body collapse">
 						<div class="accordion-inner">
 							<div class="col-sm-6">
-								<table class="table table-hover col-sm-6">
+								<table class="table col-sm-6">
 									<thead>
 										<tr>
 											<th>Students in course</th>
@@ -50,13 +50,13 @@
 									</thead>
 									<tbody>
 										<tr ng-repeat="student in courseInfo.studentsIn">
-											<td ng-click="toggleOut(student, $index)">{{student.firstName + " " + student.lastName}}<span class="pull-right"><i class="fa fa-minus"></i></td>
+											<td><button class="btn btn-theme04" ng-click="toggleOut(student, $index)">{{student.firstName + " " + student.lastName}}<span class="pull-right"> <i class="fa fa-minus"></i></button></td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
 							<div class="col-sm-6">
-								<table class="table table-hover col-sm-6">
+								<table class="table col-sm-6">
 									<thead>
 										<tr>
 											<th>Students</th>
@@ -64,7 +64,7 @@
 									</thead>
 									<tbody>
 										<tr ng-repeat="student in courseInfo.studentsOut">
-											<td ng-click="toggleIn(student, $index)">{{student.firstName + " " + student.lastName}}<span class="pull-right"><i class="fa fa-plus"></i></td>
+											<td><button class="btn btn-theme05" ng-click="toggleIn(student, $index)">{{student.firstName + " " + student.lastName}}<span class="pull-right"><i class="fa fa-plus"></i></button></td>
 										</tr>
 									</tbody>
 								</table>
@@ -76,7 +76,6 @@
 		</div>
 
 		<!--	-->
-
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn btn-theme" ng-click="postData()">Submit</button>
