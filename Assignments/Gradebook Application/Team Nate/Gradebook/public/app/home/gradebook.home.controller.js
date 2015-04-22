@@ -63,8 +63,23 @@ angular.module('Gradebook.Home.Ctrl', [
 		$scope.assignCount = data.length;
 
 		//Create the data and donut chart
+		var assignGraphData = [];
 		for (var i=0; i<data.length; i++) {
-
+			assignGraphData.push({"label": data[i].name, "value": data[i].maxPoints});
 		}
+		assignDonut.setData(assignGraphData);
+	});
+
+	var assignDonut = Morris.Donut({
+		element: 'assignmentChart',
+		data: [{"label": "", "value": ""}],
+		colors: [
+		'#ff865c',
+		'#ffd777',
+		'#43b1a9',
+		'#68dff0',
+		'#797979'
+		],
+		resize: true
 	});
 }]);
