@@ -5,8 +5,8 @@
         <input class="form-control" ng-model="searchText" placeholder="Filter"/>
       </div>
       <div class="form-group">
-        <select class="form-control" ng-model="assignment.sortOrder"
-                ng-options="item.value as item.text for item in sortOptions"></select>
+        <select class="form-control" ng-model="sortOrder"
+                ng-options="item.value as item.text for item in assignment.sortOptions"></select>
       </div>
     </form>
   </div>
