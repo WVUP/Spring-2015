@@ -584,3 +584,7 @@ textarea{
 .bottom-padding{
   padding-bottom: 20px;
 }
+
+.right-padding{
+  padding-left: -50px;
+}
