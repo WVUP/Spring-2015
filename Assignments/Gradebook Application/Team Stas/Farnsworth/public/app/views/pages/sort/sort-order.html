@@ -1,15 +1,13 @@
-<div class="container">
-  <div class="pull-right">
-    <form class="form-inline bottom-padding">
-      <!--filter-->
-      <div class="form-group">
-        <input class="form-control" ng-model="searchText" placeholder="Filter"/>
-      </div>
-      <!--sort filter-->
-      <div class="form-group">
-        <select class="form-control" ng-model="sortOptions.sortOrder"
-                ng-options="item.value as item.text for item in sortOptions.sortOptions"></select>
-      </div>
-    </form>
-  </div>
+<div class="row align-right padding-big margin-medium">
+  <form class="form-inline">
+    <!--filter-->
+    <div class="form-group">
+      <input class="form-control" ng-model="searchText" placeholder="Filter"/>
+    </div>
+    <!--sort filter-->
+    <div class="form-group">
+      <select class="form-control" ng-model="sortOptions.sortOrder"
+              ng-options="item.value as item.text for item in sortOptions.sortOptions"></select>
+    </div>
+  </form>
 </div>

@@ -32,7 +32,12 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 		Auth.getUser()
 			.then(function(data) {
 				vm.user = data.data;
-				isInstructor = vm.isInstructor = data.data.roles.indexOf('Instructor') != -1;
+        console.log(data.data)
+        console.log(data.data.roles.indexOf('Instructor') != -1 );
+
+				isInstructor = (data.data.roles.indexOf('Instructor') != -1) ;
+        console.log(isInstructor + 'from main ctrl')
+        vm.isAdmin = data.data.roles.indexOf('Admin') != -1;
 				currentUserId = data.data.id || '';
 			});
 	});
