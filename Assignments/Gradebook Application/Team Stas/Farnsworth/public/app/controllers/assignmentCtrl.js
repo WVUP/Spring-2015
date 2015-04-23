@@ -107,16 +107,6 @@ angular.module('assignmentCtrl', ['assignmentService', 'ui.bootstrap'])
 
 .controller('assignmentClassController', function ($routeParams, Assignment) {
 	var vm = this;
-  //***********************************************************************************
-
-    vm.sortOptions = [
-      {value: "name", text: "Sort by Name"},
-      {value: "dateDue", text: "Sort by Due Date"}
-    ];
-
-    vm.sortOrder = vm.sortOptions[0].value;
-
-  //***********************************************************************************
 	vm.processing = true;
 
 	vm.doDeleteAssignment = function (id) {

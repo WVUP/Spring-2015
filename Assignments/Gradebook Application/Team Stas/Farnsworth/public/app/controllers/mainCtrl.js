@@ -103,22 +103,3 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 		}	
 	};
 })
-//******************************************************************************
-.directive('sortOrder', function() {
-  return {
-    restrict: 'E',
-    templateUrl: 'app/views/pages/sort/sort-order.html',
-    controller: function() {
-      var vm = this;
-
-      vm.sortOptions = [
-        {value: "name", text: "Sort by Name"},
-        {value: "dateDue", text: "Sort by Due Date"}
-      ];
-
-      vm.sortOrder = vm.sortOptions[0].value;
-    },
-    controllerAs: 'sortOptions'
-  };
-});
-//******************************************************************************
