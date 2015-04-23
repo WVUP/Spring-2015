@@ -1,0 +1,56 @@
+<div class="jumbotron text-center" ng-show="assignment.processing">
+  <span class="glyphicon glyphicon-repeat spinner"></span>
+
+  <p>Loading Assignments...</p>
+</div>
+<div class="page-header">
+  <h1>Assignments for {{assignment.classNm}}</h1>
+</div>
+<!--***************************************************************-->
+
+<sort-order ng-route="'sort-order.html'">
+</sort-order>
+
+<div class="container">
+  <div class="pull-right">
+    <form class="form-inline bottom-padding">
+      <div class="form-group">
+        <input class="form-control" ng-model="searchText" placeholder="Filter"/>
+      </div>
+      <div class="form-group">
+        <select class="form-control" ng-model="sortOrder"
+                ng-options="item.value as item.text for item in assignment.sortOptions"></select>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--***************************************************************-->
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Due Date</th>
+    <th class="col-sm-2"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="assignm in assignment.assignments | filter:searchText | orderBy:sortOrder">
+    <!--                                           ^                                      ^-->
+    <td>{{ assignm.name }}</td>
+    <td>{{ assignm.description }}</td>
+    <td>{{ assignm.dateDue | date : 'medium' }}</td>
+    <td class="col-sm-2">
+      <a ng-href="/classes/{{ gClass._id }}" class="btn btn-default">Edit Assignment</a>
+      <a ng-href="/assignments/submit/{{ assignm._id }}" class="btn btn-default">Submit Assignment</a>
+      <a href="#" ng-click="assignment.deleteAssignmentFromClass(assignm._id)" class="btn btn-default">Delete Assignment
+        From a Class</a>
+      <a ng-href="/assignments/viewSubmissions/{{ assignm._id }}" class="btn btn-default">View Submissions</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<h3>This is a class page - students can view and submit assignments here, see graphs for a their class and view
+  deadlines for the class</h3>
