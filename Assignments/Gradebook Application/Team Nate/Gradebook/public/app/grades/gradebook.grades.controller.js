@@ -6,6 +6,7 @@ angular.module('Gradebook.Grades.Ctrl', [
 	$scope.viewType = "Grades";
 
 	$scope.students = [];
+	$scope.grade = "";
 
 	$http.get('/api/assignments/' + $state.params.assignment_id).success(function (data) {
 		$scope.assignment = data;
