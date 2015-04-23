@@ -10,7 +10,7 @@ angular.module('Gradebook.Routes', ['ui.router'])
 	})
 
 	.state('homeState', {
-		url: "",
+		url: "/",
 		templateUrl: "app/views/home.html",
 		controller: 'Home.Ctrl'
 	})
@@ -37,6 +37,12 @@ angular.module('Gradebook.Routes', ['ui.router'])
 		url: "/students/create",
 		templateUrl: "app/views/students/create.html",
 		controller: "Student.Create.Ctrl"
+	})
+
+	.state('studentDetail', {
+		url: "/students/:student_id",
+		templateUrl: "app/views/students/detail.html",
+		controller: "Student.Detail.Ctrl"
 	})
 
 	.state('assignmentState', {

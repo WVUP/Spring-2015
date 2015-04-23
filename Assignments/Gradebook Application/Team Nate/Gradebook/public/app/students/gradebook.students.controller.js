@@ -53,4 +53,16 @@ angular.module('Gradebook.Students.Ctrl', [
 			});
 		}
 	};
+}])
+
+
+.controller('Student.Detail.Ctrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+	$scope.viewType = "Student Details";
+	$http.get('/api/students/' + $state.params.student_id).success(function (data) {
+		debugger;
+		$scope.student = data;
+	})
+	.error(function (err) {
+		console.log(err);
+	});
 }]);

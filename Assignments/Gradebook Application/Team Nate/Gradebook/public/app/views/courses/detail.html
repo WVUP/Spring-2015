@@ -31,13 +31,13 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="student in course.students">
-						<td>{{student.firstName + " " + student.lastName}}</td>
+						<td><a ui-sref="studentDetail({student_id: student._id})">{{student.firstName + " " + student.lastName}}</a></td>
 						<td>{{student.email}}</td>
 					</tr>
 				</tbody>
 			</table>
 			<span class="pull-right"><b>Total Students: {{course.students.length}}</b></span>
-			<input type="button" class="btn btn-theme" value="Add Students">
+			<input type="button" class="btn btn-theme" value="Edit Students">
 			<table class="table">
 				<caption><h4>Assignments</h4></caption>
 				<thead>
@@ -49,14 +49,14 @@
 				</thead>
 				<tbody>					
 					<tr ng-repeat="assignment in course.assignments">
-						<td class="col-sm-3">{{assignment.name}}</td>
+						<td class="col-sm-3"><a ui-sref="assignmentDetail({assignment_id: assignment._id})">{{assignment.name}}</a></td>
 						<td class="col-sm-8">{{assignment.description}}</td>
 						<td class="col-sm-1">{{assignment.maxPoints}}</td>
 					</tr>
 				</tbody>
 			</table>
 			<span class="pull-right"><b>Total Points: {{pointTotal}}</b></span>
-			<input type="button" class="btn btn-theme" value="Add Assignments">
+			<input type="button" class="btn btn-theme" value="Edit Assignments">
 			<br/>
 			<hr/>
 			<div>

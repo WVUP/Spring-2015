@@ -41,8 +41,9 @@ angular.module('Gradebook.Courses.Ctrl', [
 		$scope.courseInfo.studentsIn.push($scope.courseInfo.studentsOut.splice(i, 1)[0]);
 	}
 
-	$scope.toggleOut = function (student, i) {
-		$scope.courseInfo.studentsOut.push($scope.courseInfo.studentsIn.splice(i, 1));
+	$scope.toggleOut = function (student) {
+		$scope.courseInfo.studentsIn.splice($scope.courseInfo.studentsIn.indexOf(student), 1);
+		$scope.courseInfo.studentsOut.push(student);
 	}
 
 	$scope.postData = function () {
@@ -63,10 +64,10 @@ angular.module('Gradebook.Courses.Ctrl', [
 				console.log("Course successfully posted");
 
 				//Push students to course
-				for (var i=0; i < $scope.courseInfo.studentsIn.length; i++) {
-					debugger;
-					Course.pushStudent(data._id, $scope.courseInfo.studentsIn[i]._id);
-				}
+				// for (var i=0; i < $scope.courseInfo.studentsIn.length; i++) {
+				// 	debugger;
+				// 	Course.pushStudent(data._id, $scope.courseInfo.studentsIn[i]._id);
+				// }
 
 				$state.go('coursesDetail', { course_id: data._id });
 			})

@@ -42,6 +42,18 @@ module.exports = function(apiRouter) {
 	//Operations for existing students
 	apiRouter.route('/students/:student_id')
 
+		.get(function (req, res) {
+			Student.findOne({_id: req.params.student_id})
+			.populate('courses assignments')
+			.exec(function (err, student) {
+				if (err)
+					res.send(err);
+				else{
+					res.json(student);
+				};
+			});
+		})
+
 		//Delete an existing student
 		.delete(function (req, res) {
 			Student.findByIdAndRemove(req.params.student_id, function (err, delStudent) {
