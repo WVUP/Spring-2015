@@ -38,11 +38,11 @@ module.exports = function(apiRouter) {
 			}  
 
 			//Save to DB
-			newCourse.save(function(err) {
+			newCourse.save(function (err, newCourse) {
 				if (err)
 					res.send(err);
 				else
-					res.json({ message: "Course successfully created" });
+					res.json(newCourse);
 			});
 		});
 
@@ -102,11 +102,12 @@ module.exports = function(apiRouter) {
 						{"_id": req.params.course_id},
 						{$push: {"students": req.body.studs[i]}},
 						{"upsert":"true"},
-						function (err, numAffected) {
+						function (err, course) {
 							if (err)
 								res.send(err);
 							else
-								console.log("message: " + numAffected);
+								console.log(course);
+								res.json(course);
 						});
 				};
 		});

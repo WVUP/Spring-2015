@@ -61,7 +61,14 @@ angular.module('Gradebook.Courses.Ctrl', [
 			console.log($scope.courseInfo);
 			$http.post('/api/courses', $scope.courseInfo).success(function (data) {
 				console.log("Course successfully posted");
-				$state.go('courseState');
+
+				//Push students to course
+				for (var i=0; i < $scope.courseInfo.studentsIn.length; i++) {
+					debugger;
+					Course.pushStudent(data._id, $scope.courseInfo.studentsIn[i]._id);
+				}
+
+				$state.go('coursesDetail', { course_id: data._id });
 			})
 			.error(function (data) {
 				$scope.failed = "Course creation failed";

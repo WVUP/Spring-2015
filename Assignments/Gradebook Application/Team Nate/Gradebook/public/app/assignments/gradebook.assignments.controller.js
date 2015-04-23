@@ -1,5 +1,5 @@
 angular.module('Gradebook.Assignments.Ctrl', [
-
+	'Gradebook.Courses.Service'
 ])
 
 .controller('Assignment.Ctrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
@@ -18,7 +18,7 @@ angular.module('Gradebook.Assignments.Ctrl', [
 	};
 }])
 
-.controller('Assignment.Create.Ctrl', ['$scope', '$http', '$state', 'courseFactory', function ($scope, $http, $state, courseFactory) {
+.controller('Assignment.Create.Ctrl', ['$scope', '$http', '$state', 'Course', function ($scope, $http, $state, Course) {
 	$scope.viewName = "Create Assignment";
 	$scope.assignmentInfo = {};
 	$scope.assignmentInfo.name = "";
@@ -55,7 +55,7 @@ angular.module('Gradebook.Assignments.Ctrl', [
 			console.log($scope.assignmentInfo);
 			$http.post('/api/assignments', $scope.assignmentInfo).success(function (data) {
 				console.log("Assignment successfully posted");
-				courseFactory.pushAssignment(data.course, data._id).success (function (data) {
+				Course.pushAssignment(data.course, data._id).success (function (data) {
 					console.log("Pushed: " + data);
 				});
 				$state.go('assignmentState');

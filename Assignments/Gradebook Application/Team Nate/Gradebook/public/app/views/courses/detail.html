@@ -1,4 +1,4 @@
-<div class="col-lg-offset-1 col-lg-10">
+<div class="col-lg-12">
 
 	<!--Header for view type-->
 	<h1>{{viewType}}</h1>
@@ -42,14 +42,16 @@
 				<caption><h4>Assignments</h4></caption>
 				<thead>
 					<tr>
-						<td>Name</td>
-						<td>Points</td>
+						<td class="col-sm-3">Name</td>
+						<td class="col-sm-8">Description</td>
+						<td class="col-sm-1">Points</td>
 					</tr>
 				</thead>
 				<tbody>					
 					<tr ng-repeat="assignment in course.assignments">
-						<td>{{assignment.name}}</td>
-						<td>{{assignment.maxPoints}}</td>
+						<td class="col-sm-3">{{assignment.name}}</td>
+						<td class="col-sm-8">{{assignment.description}}</td>
+						<td class="col-sm-1">{{assignment.maxPoints}}</td>
 					</tr>
 				</tbody>
 			</table>

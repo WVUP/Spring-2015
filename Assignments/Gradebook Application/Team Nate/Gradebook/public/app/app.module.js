@@ -5,5 +5,6 @@ angular.module('Gradebook', [
 	'Gradebook.Assignments',
 	'Gradebook.Students',
 	'Gradebook.Users',
+	'Gradebook.Grades',
 	'Gradebook.Home'
 ]);
