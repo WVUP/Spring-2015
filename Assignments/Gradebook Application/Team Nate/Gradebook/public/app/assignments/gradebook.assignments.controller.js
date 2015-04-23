@@ -6,7 +6,6 @@ angular.module('Gradebook.Assignments.Ctrl', [
 	$scope.viewType = "Assignments";
 	$http.get("/api/assignments").success (function (data) {
 		$scope.assignmentData = data;
-		debugger;
 		console.log("Assignments retrieved");
 	})
 	.error (function () {

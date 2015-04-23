@@ -69,4 +69,19 @@ module.exports = function(apiRouter) {
 				});
 			});
 		});
+
+	//Get the course by assignment id
+	apiRouter.route('/assignments/:assignment_id/course')
+		.get(function (req, res) {
+			debugger;
+			Assignment.findById({_id: req.params.assignment_id})
+			.select('course')
+			.exec(function (err, course) {
+				if (err)
+					res.send(err);
+				else{
+					res.json(course);
+				}
+			})
+		})
 }

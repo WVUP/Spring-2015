@@ -1,6 +1,6 @@
 angular.module('Gradebook.Routes', ['ui.router'])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
 	$stateProvider
 	.state('login', {
@@ -61,5 +61,13 @@ angular.module('Gradebook.Routes', ['ui.router'])
 		url: "/assignments/:assignment_id",
 		templateUrl: "app/views/assignments/detail.html",
 		controller: "Assignment.Detail.Ctrl"
+	})
+
+	.state('enterGrades', {
+		url: '/assignments/:assignment_id/grades',
+		templateUrl: "app/views/grades/enterGrades.html",
+		controller: "Grade.Ctrl"
 	});
+
+	$locationProvider.html5Mode(true).hashPrefix('!');
 });
