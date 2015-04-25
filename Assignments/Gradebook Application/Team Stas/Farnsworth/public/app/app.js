@@ -12,7 +12,8 @@ angular.module('gradebookApp',
 	'dashboardCtrl',
 	'submissionCtrl',
 	'angularFileUpload',
-  'sortDirective'
+  'sortDirective',
+  'searchDirective'
 	])
 
 .config(function($httpProvider) {

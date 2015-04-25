@@ -42,6 +42,7 @@
   <script src="app/controllers/submissionCtrl.js"></script>
 
   <script src="app/directives/sortDirective.js"></script>
+  <script src="app/directives/searchDirective.js"></script>
 </head>
 
 <body ng-app="gradebookApp" ng-controller="mainController as main">
@@ -59,7 +60,7 @@
           <a href="#">Logged in as {{main.user.fname}}</a>
         </li>
         <li>
-          <sort-order ng-route="'sort-order.html'"></sort-order>
+          <search-filter ng-route="'search-filter.html'"></search-filter>
         </li>
       </ul>
     </nav>
