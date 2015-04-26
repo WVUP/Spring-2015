@@ -49,6 +49,12 @@ app.use(express.static(__dirname + '/public'));
 var apiRoutes = require('./app/routes/api')(app, express);
 app.use('/api', apiRoutes);
 
+//app.get('/api/search', search.getSearch);
+
+// responds with 404 error for any api request to a file that doesn't exist
+app.all('/api/*', function(req, res) {
+  res.send(404);
+});
 
 //main catchall route
 app.get('*', function (req, res) {

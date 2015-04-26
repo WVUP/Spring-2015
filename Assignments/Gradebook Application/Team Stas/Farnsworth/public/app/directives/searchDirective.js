@@ -15,8 +15,7 @@ angular.module('searchDirective', [])
           {value: "dateDue", text: "Sort by Due Date"}
         ];
 
-        vm.sortOrder = vm.sortObject[1].value;  //name
-        console.log(vm.sortOrder);
+        vm.sortOrder = vm.sortObject[1].value;
       },
       controllerAs: 'sortOptions'
     };
