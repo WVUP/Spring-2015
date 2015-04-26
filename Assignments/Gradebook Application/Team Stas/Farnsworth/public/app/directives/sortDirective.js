@@ -3,7 +3,7 @@
  */
 angular.module('sortDirective', [])
 
-  .directive('sortOrder', function() {
+  .directive('sort', function() {
     return {
       restrict: 'E',
       templateUrl: 'app/views/pages/sort-order.html',
@@ -15,7 +15,7 @@ angular.module('sortDirective', [])
           {value: "dateDue", text: "Sort by Due Date"}
         ];
 
-        vm.sortOrder = vm.sortObject[1].value;  //name
+        vm.sortOrder = vm.sortObject[1].value;
         console.log(vm.sortOrder);
       },
       controllerAs: 'sortOptions'

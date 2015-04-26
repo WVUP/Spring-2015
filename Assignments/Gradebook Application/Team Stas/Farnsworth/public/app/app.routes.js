@@ -70,11 +70,13 @@ angular.module('app.routes', ['ngRoute'])
 			controller: 'submissionController',
 			controllerAs: 'submission'
 		})
+    //***************************************************************************
     .when('/search',{
       templateUrl: 'app/views/pages/search/search-page.html',
       controller: 'searchCtrl',
       controllerAs: 'search'
     })
+    //***************************************************************************
 		.otherwise({
             redirectTo: '/'
         });
