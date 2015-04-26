@@ -381,7 +381,7 @@ form[novalidate].ng-submitted input.ng-invalid{
   background-repeat: no-repeat;
 }
 .tree-display{
-  position: absolute;
+  position: fixed;
   bottom:0;
   width: 100%;
 }
@@ -462,7 +462,7 @@ form[novalidate].ng-submitted input.ng-invalid{
 
 .gradebook {
   display: block;
-  margin: 30px;
+  margin: 100px;
   overflow: hidden;
 }
 .nav>li>a:focus, .nav>li>a:hover{

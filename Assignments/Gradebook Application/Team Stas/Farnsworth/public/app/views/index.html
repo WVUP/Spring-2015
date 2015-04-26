@@ -43,6 +43,10 @@
 
   <script src="app/directives/sortDirective.js"></script>
   <script src="app/directives/searchDirective.js"></script>
+  <script src="app/views/pages/search/searchPageCtrl.js"></script>
+  <script src="app/views/pages/search/searchFactory.js"></script>
+
+
 </head>
 
 <body ng-app="gradebookApp" ng-controller="mainController as main">
@@ -61,6 +65,9 @@
         </li>
         <li>
           <search-filter ng-route="'search-filter.html'"></search-filter>
+        </li>
+        <li>
+          <a href="/search">Site Search</a>
         </li>
       </ul>
     </nav>
