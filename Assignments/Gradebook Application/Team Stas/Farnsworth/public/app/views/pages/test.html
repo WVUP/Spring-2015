@@ -1,6 +1,4 @@
 <!--Created by Dustin on 4/25/2015.-->
-<test ng-route="'test.html'"></test>
-<h1>Break</h1>
 <table class="table table-bordered table-striped">
   <thead>
   <tr>
@@ -27,9 +25,13 @@
     </td>
     <td>
       <table>
-        <tr>
-          <td></td>
-        </tr>
+        <tr ng-repeat="assignm in assignment.assignments | filter:searchText | orderBy:sortOptions.sortOrder">
+          <!--                                           ^                                      ^-->
+          <td>{{ assignm.name }}</td>
+          <td class="col-sm-2"></td>
+          <td>{{ assignm.description }}</td>
+          <td class="col-sm-2"></td>
+          <td>{{ assignm.dateDue | date : 'medium' }}</td>
       </table>
     </td>
   </tr>
