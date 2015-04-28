@@ -1,31 +1,33 @@
 <div class="header">
 	<div class="menu-top-home">
 	<div class="container">
-		<span class="logo"><img src="assets/images/logo.png"></span>
-		<div class="col-sm-12 align-right">
-			<ul class="links">
+		<div class="align-right">
+			<ul class="links" ng-if="!isLoggedIn">
 				<li>
-					<span class="btn green" ng-click="main.openRegister()">Register</span>
+					<span ng-click="main.openLogin()" class="ghost-btn ghost ghost-orange">Sign In</span>
+				</li>
+				<li>
+					<span class="ghost-btn ghost ghost-green" ng-click="main.openRegister()">Register</span>
 				</li>
 			</ul>
 		</div>
 	</div>
 	</div>
-	<div class="container align-center">
-		<h1>
-			Hello! Welcome to the Gradebook of Doom.
-		</h1>
-		<br>
-		<h3 class="silver">Please Sign in Below</h3>
-		<div class="login-box">
-			<div class="btn-group">
-				<span ng-click="main.openLogin()" class="btn btn-primary btn-lg">Sign In</span>
+	<div class="container">
+		<div class="content-box align-center">
+			<span class="logo-font">&nbsp;&nbsp;&nbsp;&nbsp;Simple</span><i id="intro" class="fa fa-circle-o big-icon"></i><span class="logo-font">Gradebook.</span>
+		</div>
+		<div class="bottom-bar">
+			<div class="container align-center">
+				<div scroll-on-click class="select">
+					<i class="fa fa-angle-double-down fa-5x cursor-animate"></i>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class='padding-big'></div>
-<div class="container">
+<div class="container" id="content">
 	<div class="row align-center">
 		<div id="sp-links">
 	        <a id="sp-github" href="https://github.com/WVUP"><span class="fa fa-github fa-4x"></span></a>
@@ -35,45 +37,7 @@
 	    </div>
 	</div>
 </div>
-<div class='padding-big'></div>
-<div class="container" style="border: 2px solid; height: 300px;">
-	<div class="row">
-		<div class="col-sm-5 info-big">
-			<h2><img class="smallpics" src ="assets/images/smallbook.png">Gradebook</h2>
-			<p>Carousel with application's snapshots here and their description</p>
-			<p>Why use other Gradebooks when everything you're looking for is right here?</p>
-		</div>
-		<div class="col-sm-7">
-			<img class="images" src="assets/images/descr.png">
-		</div>
-	</div>
-</div>
-<div class='padding-big'></div>
-<div class="container" style="border: 2px solid; height: 300px;">
-	<div class="row">
-		<div class="col-sm-5 info-big">
-			<h2><img class="smallpics" src="assets/images/paper.png">Assignment Management</h2>
-			<p>Carousel with application's snapshots here and their description</p>
-			<p>Easily add and manage all your assignments safely and securely</p>
-		</div>
-		<div class="col-sm-7">
-			<img class="images" src="assets/images/Assignments.png">
-		</div>
-	</div>
-</div>
-<div class='padding-big'></div>
-<div class="container" style="border: 2px solid; height: 300px;">
-	<div class="row">
-		<div class="col-sm-5 info-big">
-			<h2><img class="smallpics" src="assets/images/openbook.png">Class Management</h2>
-			<p>Carousel with application's snapshots here and their description</p>
-			<p>Create Classes and add users painlessly</p>
-		</div>
-		<div class="col-sm-7">
-			<img class="images" src="assets/images/classes.png">
-		</div>
-	</div>
-</div>
+
 
 <div class='padding-big'></div>
 <div class="footer align-center">
@@ -81,6 +45,13 @@
 		<h4>Copyright and extra info goes here</h4>
 	</div>
 </div>	
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		console.log('executing !@')
+		$("#intro").addClass("change-color"); 
+	});
+</script>
 
 
 <script type="text/ng-template" id="loginModal.html">
@@ -149,6 +120,5 @@
 	            '-ms-transform': 'rotate(' + offset + 'deg)',
 	            'transform': 'rotate(' + offset + 'deg)',
 	        });
-
 	    });
 	</script>

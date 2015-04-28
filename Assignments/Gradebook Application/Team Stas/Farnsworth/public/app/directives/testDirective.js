@@ -1,12 +1,12 @@
 /**
- * Created by Dustin on 4/21/2015.
+ * Created by Dustin on 4/26/2015.
  */
-angular.module('sortDirective', [])
+angular.module('testDirective', [])
 
-  .directive('sort', function() {
+  .directive('test', function() {
     return {
       restrict: 'E',
-      templateUrl: 'app/views/pages/sort-order.html',
+      templateUrl: 'app/views/pages/test.html',
       controller: function() {
         var vm = this;
 
@@ -16,8 +16,7 @@ angular.module('sortDirective', [])
         ];
 
         vm.sortOrder = vm.sortObject[1].value;
-        console.log(vm.sortOrder);
       },
-      controllerAs: 'sortOptions'
+      controllerAs: 'testCtrl'
     };
   });
