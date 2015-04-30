@@ -20,7 +20,7 @@ var gradeSchema = new Schema({
 	points: {
 		type: Number,
 		required: true,
-		default: 100
+		default: 0
 	},
 	assignment: {
 		type: ObjectId,

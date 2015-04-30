@@ -19,4 +19,25 @@ module.exports = function(apiRouter) {
 				}
 			});
 		});
+
+	apiRouter.route('/grades/:student_id/:assignment_id')
+
+		//Create a new assignment
+		.post(function(req, res) {
+			var newGrade = new Grade();
+
+			newGrade.student = req.params.student_id;
+			newGrade.assignment = req.params.assignment_id;
+			newGrade.points = req.body;
+			//newGrade.comments.push(req.body.comments || []);
+
+			//Save to DB
+			newGrade.save(function (err) {
+				if (err)
+					res.send(err);
+				else{
+					res.json(newGrade);
+				}
+			});
+		});
 }
