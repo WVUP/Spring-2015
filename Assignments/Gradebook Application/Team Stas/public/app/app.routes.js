@@ -89,6 +89,9 @@ angular.module('app.routes', ['ngRoute'])
 			controller: 'submissionController',
 			controllerAs: 'submission'
 		})
+		.when('/courtney',{
+			templateUrl: 'app/views/pages/courtney/index.html'
+		})
 		.otherwise({
             redirectTo: '/'
         });

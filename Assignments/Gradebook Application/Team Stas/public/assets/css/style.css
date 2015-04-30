@@ -621,6 +621,8 @@ textarea{
   position: fixed;
   top: 100px;
   left: 20px;
+<<<<<<< HEAD
+=======
 }
 .images {
   width: 628px;
@@ -758,3 +760,4 @@ textarea{
 .student2{
   background-position: 100% 66.6%;
 }
+>>>>>>> 7d2b9ad65340d49f13933d309ddb51446498c934
