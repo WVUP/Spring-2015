@@ -6,7 +6,7 @@ angular.module('Gradebook.Routes', ['ui.router'])
 	.state('login', {
 		url: "/login",
 		templateUrl: "app/views/login.html",
-		controller: "LoginController"
+		controller: "Login.Ctrl"
 	})
 
 	.state('homeState', {
