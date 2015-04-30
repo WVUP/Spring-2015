@@ -11,15 +11,17 @@ angular.module('app.routes', ['ngRoute'])
 			controller: 'dashboardController',
 			controllerAs: 'dash'
 		})
-		.when('/cpanel',{
-			templateUrl: 'app/views/pages/cpanel.html',
-			controller: 'cpanelController',
-			controllerAs: 'cpanel'
-		})
 		.when('/grades',{
 			templateUrl: 'app/views/pages/assignments/grades.html',
 			controller: 'gradesController',
 			controllerAs: 'grade'
+		})
+		.when('/cpanel',{
+			templateUrl: 'app/views/pages/cpanel.html',
+			controller: 'cpanelController',
+			controllerAs: 'cpanel',
+			adminAccess: true,
+			instructorAccess: true
 		})
 		// ------------user-routes---------------
 		.when('/users',{
@@ -119,8 +121,9 @@ angular.module('app.routes', ['ngRoute'])
 
 		Auth.getUser()
 			.then(function(data) {
+				console.log(data + 'this is a data')
 				console.log('defining current user')
-				currentUser = data.data || '';
+				currentUser = data.data;
 
 				//if the route is admin route and user is not an admin
 				if(isAdminRoute && currentUser.isAdmin)
@@ -134,7 +137,7 @@ angular.module('app.routes', ['ngRoute'])
 				
 				else
 					$rootScope.deferredRounting.resolve(true);
-			});
+			})
 
 		$rootScope.isLoggedIn = Auth.isLoggedIn();
 
