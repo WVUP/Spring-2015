@@ -1,5 +1,5 @@
 angular.module('Gradebook.Assignments.Ctrl', [
-	'Gradebook.Courses.Service'
+	'Gradebook.Courses.Service',
 ])
 
 .controller('Assignment.Ctrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
@@ -23,10 +23,10 @@ angular.module('Gradebook.Assignments.Ctrl', [
 	$scope.assignmentInfo = {};
 	$scope.assignmentInfo.name = "";
 	$scope.assignmentInfo.description = "";
-	$scope.assignmentInfo.maxPoints = "";
+	$scope.assignmentInfo.maxPoints = 100;
 	$scope.assignmentInfo.comments = "";
 	$scope.assignmentInfo.course = "";
-	$scope.assignmentInfo.dueDate = "";
+	$scope.assignmentInfo.dueDate = ""
 
 	$('#dueDatePicker input').datepicker({
 
@@ -55,8 +55,8 @@ angular.module('Gradebook.Assignments.Ctrl', [
 			console.log($scope.assignmentInfo);
 			$http.post('/api/assignments', $scope.assignmentInfo).success(function (data) {
 				console.log("Assignment successfully posted");
-				Course.pushAssignment(data.course, data._id).success (function (data) {
-					console.log("Pushed: " + data);
+				Course.pushAssignment(data.course, data._id).success (function (assignment) {
+					console.log("Pushed: " + assignment);
 				});
 				$state.go('assignmentState');
 			})

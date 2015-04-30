@@ -2,82 +2,9 @@
 	<div class="row">
 
 		<!--Welcome dashboard view-->
-		<div class="col-lg-12" id="dashboardView">
-			<h1 id="currentSemesterHeading">Welcome to Gradebook</h1>
-			<hr/>
-
-			<!--Welcome overview-->
-			<div class="row">                
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Current Courses</h3>
-						</div>
-						<div class="panel-body">
-							<div class="col-lg-6">
-								<table class="table table-hover">
-									<caption><h4>Courses: {{courseCount}}</h4></caption>
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Students</th>
-											<th>Assignments</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr ng-repeat="course in courseData">
-											<td><a ui-sref="coursesDetail({course_id: (course._id)})">{{course.name}}</a></td>
-											<td>{{course.students.length}}</td>
-											<td>{{course.assignments.length}}</td>
-										</tr>
-									</a>
-								</tbody>
-							</table>
-						</div>
-						<div class="col-lg-6">
-							<div id="studentChart"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">                
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Current Assignments</h3>
-						</div>
-						<div class="panel-body">
-							<div class="col-lg-6">
-								<table class="table table-hover">
-									<caption><h4>Assignments: {{assignCount}}</h4></caption>
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Points</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr ng-repeat="assignment in assignData">
-											<td><a ui-sref="/assignments/{{assignment._id}}">{{assignment.name}}</a></td>
-											<td>{{assignment.maxPoints}}</td>
-										</tr>
-									</a>
-								</tbody>
-							</table>
-						</div>
-						<div class="col-lg-6">
-							<div id="assignmentChart"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	<!-- End welcome dashboard view -->     
+		<h1>{{message}}</h2>
 
 
 
-</div><!--/row-->
+	</div><!--/row-->
 </div><!--/parent div-->

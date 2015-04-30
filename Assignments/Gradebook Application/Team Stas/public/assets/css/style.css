@@ -1,7 +1,14 @@
+html, body{
+  height: 100%;
+}
 body {
   font-family: Roboto,sans-serif;
   font-size: 15px;
   color: #5f5e5d;
+  height: 100%
+}
+.ui-view{
+  height: 100%
 }
 * {
   outline: 0px none;
@@ -105,7 +112,7 @@ form[novalidate].ng-submitted input.ng-invalid{
   background-size: cover;
   color: white;
   padding-top: 30px;
-  padding-bottom: 200px;
+  height: 100%;
 }
 .container {
   margin-right: auto;
@@ -128,19 +135,8 @@ form[novalidate].ng-submitted input.ng-invalid{
 .align-right {
   text-align: right;
 }
-.logo{
-  position: fixed;
-  float: left;
-}
 .silver {
   color: #b9bcc3;
-}
-.login-box{
-  margin-top: 80px;
-  padding: 25px 50px;
-}
-.login-box .btn{
-  font-size: 25px;
 }
 .green{
   color: #fff;
@@ -178,14 +174,56 @@ form[novalidate].ng-submitted input.ng-invalid{
   padding: 15px;
 }
 #sp-links a { 
-  display:inline-block; 
-  color: #1a1f2a;
+  display:inline-block;
+  opacity: .5
+}
+.fixed-left{
+  position: fixed;
+  left: 10px;
+  top: 10px;
 }
 
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
   background-color: transparent;
 }
 
+/*--------------------------------*/
+
+.ghost-btn{
+  display: inline-block;
+  border-radius: 2px;
+  border: none;
+  padding: 40px;
+  text-transform: uppercase;
+}
+
+.ghost{
+  background-color: transparent;
+  color: silver;
+  width: 150px;
+  transition: .2s ease;
+}
+.white{
+  color: #fff;
+}
+  
+.ghost:hover {
+  color: white;
+  cursor: pointer;
+  transition: .2s ease;
+}
+.ghost-green{
+  border: 1px solid #03A678;
+}
+/*.ghost-green:hover{
+  background-color: #03A678;
+}*/
+.ghost-orange{
+  border: 1px solid #F07444;
+}
+/*.ghost-orange:hover{
+  background-color: #F07444;
+}*/
 
 /*-----------------------------*/
 
@@ -381,9 +419,10 @@ form[novalidate].ng-submitted input.ng-invalid{
   background-repeat: no-repeat;
 }
 .tree-display{
-  position: absolute;
+  position: fixed;
   bottom:0;
   width: 100%;
+  z-index: 9999999;
 }
 .circles{
   margin: 0 auto;
@@ -463,6 +502,7 @@ form[novalidate].ng-submitted input.ng-invalid{
 .gradebook {
   display: block;
   margin: 30px;
+  margin-bottom: 120px;
   overflow: hidden;
 }
 .nav>li>a:focus, .nav>li>a:hover{
@@ -570,12 +610,154 @@ textarea{
 .vertical-top{
   vertical-align: top;
 }
+.margin-top-big{
+  margin-top: 20px;
+}
 .yellow{
   padding: 10px;
   background-color: #f7f9f9;
 }
-
 .fixed{
   position: fixed;
   top: 100px;
   left: 20px;
+<<<<<<< HEAD
+=======
+}
+.images {
+  width: 628px;
+  height: 295px;
+}
+.smallpics{
+  width: 50px;
+  height: 50px;
+}
+.gradebook-box{
+  border-bottom: thin solid #ff2462;
+}
+.instructor-box{
+  border-bottom: thin solid silver;
+}
+.big-icon{
+  font-size: 300px !important;
+}
+/*.flash{
+  -webkit-animation:flash 6s both linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation:flash 6s both linear;
+  -moz-animation-iteration-count: infinite;
+  animation:flash 6s both linear;
+  animation-iteration-count: infinite;
+}*/
+.change-color{
+  -webkit-animation: color_change 5s infinite alternate;
+  -moz-animation: color_change 5s infinite alternate;
+  -ms-animation: color_change 5s infinite alternate;
+  -o-animation: color_change 5s infinite alternate;
+  animation: color_change 5s infinite alternate;
+}
+@-webkit-keyframes color_change {
+  0% { color: #fff; }
+  50% { color: #F07444; }
+  100% { color: #03A678; }
+}
+@-moz-keyframes color_change {
+  0% { color: #fff; }
+  50% { color: #F07444; }
+  100% { color: #03A678; }
+}
+@-ms-keyframes color_change {
+  0% { color: #fff; }
+  50% { color: #F07444; }
+  100% { color: #03A678; }
+}
+@-o-keyframes color_change {
+  0% { color: #fff; }
+  50% { color: #F07444; }
+  100% { color: #03A678; }
+}
+@keyframes color_change {
+  0% { color: #fff; }
+  50% { color: #F07444; }
+  100% { color: #03A678; }
+}
+
+.logo-font{
+  font-family: 'Montez', cursive;
+  font-size: 400%
+}
+.title-font{
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase; 
+  font-size: 40px;
+  font-weight: 100;
+}
+.regular-small-font{
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase; 
+  font-size: 12px;
+  font-weight: 700
+}
+.regular-normal-font{
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase; 
+  font-size: 22px;
+  font-weight: 100;
+}
+.bottom-bar{
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  width: 100%
+}
+.fa-angle-double-down{
+  color: #fff;
+}
+.cursor-animate{
+  -webkit-animation:rubberBand 10s both linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation:rubberband 10s both linear;
+  -moz-animation-iteration-count: infinite;
+  animation:rubberBand 10s both linear;
+  animation-iteration-count: infinite;
+}
+
+.fadeInUp1s{
+  -webkit-animation:fadeInUp 1s both linear;
+  -moz-animation:fadeInUp 1s both linear;
+  animation:fadeInUp 1s both linear;
+
+}
+.fadeInUp2s{
+  -webkit-animation:fadeInUp 2s both linear;
+  -moz-animation:fadeInUp 2s both linear;
+  animation:fadeInUp 2s both linear;
+}
+.person{
+  height: 120px;
+  width: 100px;
+  background-image: url('../images/faces2.jpg');
+  display: inline-block;
+}
+.instructor1{
+  background-position: 0 33.6%;
+}
+.green-color{
+  color: #03A678;
+}
+.orange{
+  color: #F07444;
+}
+.rules *{
+  padding-bottom: 20px;
+}
+.instructor2{
+  background-position: 33% 0;
+}
+.student1{
+  background-position: 33% 66.5%;
+}
+.student2{
+  background-position: 100% 66.6%;
+}
+>>>>>>> 7d2b9ad65340d49f13933d309ddb51446498c934

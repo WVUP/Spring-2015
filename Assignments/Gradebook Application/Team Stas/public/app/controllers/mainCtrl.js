@@ -2,7 +2,7 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 
 .controller('mainController', function ($rootScope, $location, Auth, $modal) {
 	var vm = this;
-	isInstructor = false;
+
 
 	//login modal handler
 	vm.openLogin = function () {
@@ -22,20 +22,12 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 		});
 	};
 
-	//get info if a person is logged in
-	vm.loggedIn = Auth.isLoggedIn();
-
-	//check to see if a user is logged in on every request
-	$rootScope.$on('$locationChangeStart', function() {
-		vm.loggedIn = Auth.isLoggedIn();
-		// get user information on page load
-		Auth.getUser()
-			.then(function(data) {
-				vm.user = data.data;
-				isInstructor = vm.isInstructor = data.data.roles.indexOf('Instructor') != -1;
-				currentUserId = data.data.id || '';
-			});
-	});
+	$rootScope.deferredRounting.promise.then(function () {
+		vm.user = currentUser;
+		vm.isAdmin = currentUser.isAdmin;
+		vm.isInstructor = currentUser.isInstructor;
+		console.log(currentUser.id + ' from main, resolved user')
+	})
 
 	vm.doLogout = function () {
 		Auth.logout();

@@ -1,9 +1,10 @@
 var Course = require('../models/course');
 var Student = require('../models/student');
 var User = require('../models/user');
+var Grade = require('../models/grade');
 
 module.exports = function(apiRouter) {
-	apiRouter.route('/courses')
+	apiRouter.route('/assignments/:assignment_id/grades')
 
 		//Get a collection of courses
 		.get(function (req, res) {

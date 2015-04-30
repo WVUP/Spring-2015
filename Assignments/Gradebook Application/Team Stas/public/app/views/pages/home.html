@@ -1,26 +1,34 @@
+<div id="sp-links" class="fixed-left">
+    <a id="sp-github" href="https://github.com/WVUP"><span class="fa fa-github fa-4x"></span></a>
+</div>
+
 <div class="header">
 	<div class="menu-top-home">
 	<div class="container">
-		<span class="logo"><img src="assets/images/logo.png"></span>
-		<div class="col-sm-12 align-right">
-			<ul class="links">
+		<div class="align-right">
+			<ul class="links" ng-if="!isLoggedIn">
 				<li>
-					<span class="btn green" ng-click="main.openRegister()">Register</span>
+					<span ng-click="main.openLogin()" class="ghost-btn ghost ghost-orange">Sign In</span>
+				</li>
+				<li>
+					<span class="ghost-btn ghost ghost-green" ng-click="main.openRegister()">Register</span>
 				</li>
 			</ul>
 		</div>
 	</div>
 	</div>
-	<div class="container align-center">
-		<h1>
-			This is a welcome message .. here ..
-		</h1>
-		<h4 class="silver">This is some description of the application here</h4>
-		<div class="login-box">
-			<div class="btn-group">
-				<span ng-click="main.openLogin()" class="btn btn-primary btn-lg">Sign In</span>
+
+		
+		<div class="bottom-bar">
+			<div class="container align-center">
+				<span class="logo-font">&nbsp;&nbsp;&nbsp;&nbsp;Simple</span><i id="intro" class="fa fa-circle-o big-icon"></i><span class="logo-font">Gradebook</span>
+				<p class="regular-small-font">Online learning with us</p>
+				<div class="align-right">
+					<i scroll-on-click class="fa fa-angle-double-down fa-5x cursor-animate select"></i>
+				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
 	</div>
 </div>
 <div class='padding-big'></div>
@@ -31,26 +39,74 @@
 	    </div>
 	    </div>
 	</div>
+=======
+
+>>>>>>> 7d2b9ad65340d49f13933d309ddb51446498c934
 </div>
 <div class='padding-big'></div>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-5 info-big">
-			<h2>Functionality description</h2>
-			<p>Carousel with application's snapshots here and their description</p>
-			<p>sdfg sdf gsdfg dsfg sdfg sdfg sdfg sdfg sdfgs dfgsdfgs dfgsd fgsdf gdsfg dsfg dsfgdsf</p>
+
+<div class="align-center">
+    <div class="container">
+		<h2 class="title-font">How does it work?</h2>
+
+		<div class="padding-big"></div>
+
+		<p ng-click="main.openRegister()" class="regular-normal-font select">Register and</p>
+
+		<div class="col-md-4 rules instructors">
+			<p class="regular-small-font orange">Instructors</p>
+			<div class="person instructor1"></div>
+			<div class="person instructor2"></div>
+
+			<p class="regular-normal-font">Start creating classes and assignments for your students right away</p>
+			<p class="regular-normal-font">You can limit access to your classes with a password</p>
 		</div>
-		<div class="col-sm-7">
-			<img src="assets/images/descr.png">
+		<div class="col-md-4 col-md-offset-4 rules students">
+			<p class="regular-small-font green-color">Students</p>
+			<div class="person student1"></div>
+			<div class="person student2"></div>
+
+			<p class="regular-normal-font">Ask your instructor for a passphrase if your class is not public</p>
+			<p class="regular-normal-font">Find your instructor's class and enroll</p>
 		</div>
-	</div>
+    </div>
+    <div class="gray">
+    	<div class="container" style="height:500px"> <!-- temporary -->
+    		<h2 class="title-font white">features</h2>
+    	</div>
+
+    </div>
 </div>
-<div class='padding-big'></div>
 <div class="footer align-center">
 	<div class="container">
-		<h4>Copyright and extra info goes here</h4>
+		<h4>Something interesting here</h4>
 	</div>
 </div>	
+
+
+<script type="text/javascript" src="scripts/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="scripts/inview.min.js"></script>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#intro").addClass("change-color");
+
+		var in_view = new Waypoint.Inview({
+        element: $('.students'),
+        enter: function() {
+            $('.students').addClass('fadeInUp2s');
+            $('.instructors').addClass('fadeInUp1s')
+        }
+        // ,
+        // exit: function() {  // optionally
+        //     $('.students').removeClass('swing');
+        // }
+    });
+		 
+	});
+</script>
 
 
 <script type="text/ng-template" id="loginModal.html">
@@ -59,7 +115,7 @@
 	</div>
 	<span class="float-right padding-big cursor" ng-click="login.close()">Close</span>
 	<div class="login-form">
-		<span><img src="assets/images/u6.png" /></span>
+		<span class="logo-font">Welcome back</span>
 		<form ng-submit="login.doLogin(form.$valid)" name="form" novalidate>
 			<div>
 				<input required type="text" placeholder="E-MAIL*" ng-model="login.loginData.email">
@@ -82,7 +138,7 @@
 	</div>
 	<span class="float-right padding-big cursor" ng-click="register.close()">Close</span>
 	<div class="login-form">
-		<span><img src="assets/images/u6.png" /></span>
+		<span class="logo-font">registration</span>
 		<form ng-submit="register.doRegister(form.$valid)" name="form" novalidate>
 			<div>
 				<input required type="text" placeholder="FIRST NAME*" ng-model="register.registerData.fname">
@@ -119,6 +175,5 @@
 	            '-ms-transform': 'rotate(' + offset + 'deg)',
 	            'transform': 'rotate(' + offset + 'deg)',
 	        });
-
 	    });
 	</script>

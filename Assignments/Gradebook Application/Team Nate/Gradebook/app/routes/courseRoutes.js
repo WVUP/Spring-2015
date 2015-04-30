@@ -91,40 +91,39 @@ module.exports = function(apiRouter) {
 			});
 		})
 		//Post student to course
-		.post(function (req, res) {
+		.put(function (req, res) {
+			debugger;
 			if (req.body == '{}')
 				console.log("No student ids were found in request body");
-			else
-
-				for (var i in req.body.studs) {
-					console.log(req.body.studs[i]);
-					Course.update(
-						{"_id": req.params.course_id},
-						{$push: {"students": req.body.studs[i]}},
-						{"upsert":"true"},
-						function (err, course) {
-							if (err)
-								res.send(err);
-							else
-								console.log(course);
-								res.json(course);
-						});
+			else{			
+				console.log(req.body.student_id);
+				Course.update(
+					{"_id": req.params.course_id},
+					{$push: {"students": req.body.student_id}},
+					{"upsert":"true"},
+					function (err, course) {
+						if (err)
+							res.send(err);
+						else
+							console.log(course);
+							res.json(course);
+					});
 				};
 		});
 
-	apiRouter.route('/courses/:course_id/assignments/:assignmentID')
+	apiRouter.route('/courses/:course_id/assignments/:assignment_id')
 
 		//Post assignments to course
 		.put(function (req, res) {
 			var ObjectId = require('mongoose').Types.ObjectId; 
 			console.log(req.params.course_id);
-			console.log(req.params.assignmentID);
+			console.log(req.params.assignment_id);
 			// if (req.body == '{}')
 			// 	console.log("No assignments in request body");
 			// else{
 				Course.update(
 					{_id: new ObjectId(req.params.course_id)},
-					{$addToSet: {"assignments": req.params.assignmentID}},
+					{$addToSet: {"assignments": req.params.assignment_id}},
 					{upsert: true},
 					function (err, course) {
 						if (err)

@@ -8,8 +8,8 @@ angular.module('Gradebook.Courses.Service', [])
 	};
 
 	Course.pushStudent = function (course_id, student_id) {
-		return $http.put('/api/courses/' + course_id + '/students/' + student_id);
-	}
+		return $http.put('/api/courses/' + course_id + '/students', {student_id: student_id});
+	};
 
 	Course.getAllStudents = function () {
 		return $http.get('/api/students');

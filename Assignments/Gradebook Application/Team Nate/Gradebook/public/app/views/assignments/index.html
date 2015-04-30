@@ -30,7 +30,7 @@
 					<tr ng-repeat="assignment in assignmentData">
 						<td><a ui-sref="assignmentDetail({assignment_id: assignment._id})">{{assignment.name}}</td>
 						<td>{{assignment.maxPoints}}</td>
-						<td>{{assignment.course.name}}</td>
+						<td><a ui-sref="coursesDetail({course_id: assignment.course._id})">{{assignment.course.name}}</a></td>
 						<td>
 							<ul>
 								<li ng-repeat="comment in assignment.comments">{{comment}}</li>
