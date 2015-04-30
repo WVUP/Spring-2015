@@ -17,19 +17,18 @@
 		</div>
 	</div>
 	</div>
-	<div class="container">
-		<div class="content-box align-center">
-			<span class="logo-font">&nbsp;&nbsp;&nbsp;&nbsp;Simple</span><i id="intro" class="fa fa-circle-o big-icon"></i><span class="logo-font">Gradebook</span>
-			<p class="regular-small-font">Online learning with us</p>
-		</div>
+
+		
 		<div class="bottom-bar">
 			<div class="container align-center">
+				<span class="logo-font">&nbsp;&nbsp;&nbsp;&nbsp;Simple</span><i id="intro" class="fa fa-circle-o big-icon"></i><span class="logo-font">Gradebook</span>
+				<p class="regular-small-font">Online learning with us</p>
 				<div class="align-right">
 					<i scroll-on-click class="fa fa-angle-double-down fa-5x cursor-animate select"></i>
 				</div>
 			</div>
 		</div>
-	</div>
+
 </div>
 <div class='padding-big'></div>
 
@@ -41,7 +40,7 @@
 
 		<p ng-click="main.openRegister()" class="regular-normal-font select">Register and</p>
 
-		<div class="col-md-4 rules">
+		<div class="col-md-4 rules instructors">
 			<p class="regular-small-font orange">Instructors</p>
 			<div class="person instructor1"></div>
 			<div class="person instructor2"></div>
@@ -49,7 +48,7 @@
 			<p class="regular-normal-font">Start creating classes and assignments for your students right away</p>
 			<p class="regular-normal-font">You can limit access to your classes with a password</p>
 		</div>
-		<div class="col-md-4 col-md-offset-4 rules">
+		<div class="col-md-4 col-md-offset-4 rules students">
 			<p class="regular-small-font green-color">Students</p>
 			<div class="person student1"></div>
 			<div class="person student2"></div>
@@ -71,10 +70,28 @@
 	</div>
 </div>	
 
+
+<script type="text/javascript" src="scripts/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="scripts/inview.min.js"></script>
+
+
+
 <script type="text/javascript">
 	$(document).ready(function() {
-		console.log('executing !@')
-		$("#intro").addClass("change-color"); 
+		$("#intro").addClass("change-color");
+
+		var in_view = new Waypoint.Inview({
+        element: $('.students'),
+        enter: function() {
+            $('.students').addClass('fadeInUp2s');
+            $('.instructors').addClass('fadeInUp1s')
+        }
+        // ,
+        // exit: function() {  // optionally
+        //     $('.students').removeClass('swing');
+        // }
+    });
+		 
 	});
 </script>
 
@@ -85,7 +102,7 @@
 	</div>
 	<span class="float-right padding-big cursor" ng-click="login.close()">Close</span>
 	<div class="login-form">
-		<span><img src="assets/images/u6.png" /></span>
+		<span class="logo-font">Welcome back</span>
 		<form ng-submit="login.doLogin(form.$valid)" name="form" novalidate>
 			<div>
 				<input required type="text" placeholder="E-MAIL*" ng-model="login.loginData.email">
@@ -108,7 +125,7 @@
 	</div>
 	<span class="float-right padding-big cursor" ng-click="register.close()">Close</span>
 	<div class="login-form">
-		<span><img src="assets/images/u6.png" /></span>
+		<span class="logo-font">registration</span>
 		<form ng-submit="register.doRegister(form.$valid)" name="form" novalidate>
 			<div>
 				<input required type="text" placeholder="FIRST NAME*" ng-model="register.registerData.fname">

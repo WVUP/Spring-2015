@@ -138,11 +138,6 @@ form[novalidate].ng-submitted input.ng-invalid{
 .silver {
   color: #b9bcc3;
 }
-.content-box{
-  position: absolute;
-  top: 30%;
-  left: 30%;
-}
 .green{
   color: #fff;
   background-color: #03A678
@@ -723,6 +718,18 @@ textarea{
   -moz-animation-iteration-count: infinite;
   animation:rubberBand 10s both linear;
   animation-iteration-count: infinite;
+}
+
+.fadeInUp1s{
+  -webkit-animation:fadeInUp 1s both linear;
+  -moz-animation:fadeInUp 1s both linear;
+  animation:fadeInUp 1s both linear;
+
+}
+.fadeInUp2s{
+  -webkit-animation:fadeInUp 2s both linear;
+  -moz-animation:fadeInUp 2s both linear;
+  animation:fadeInUp 2s both linear;
 }
 .person{
   height: 120px;
