@@ -7,5 +7,9 @@ angular.module('Gradebook.Assignments.Service', [])
 		return $http.get("/api/" + assignment_id + "/grades");
 	};
 
+	Assignment.getStudents = function (course_id) {
+		return $http.get('/api/courses/' + course_id + '/students');
+	};
+
 	return Assignment;
 });

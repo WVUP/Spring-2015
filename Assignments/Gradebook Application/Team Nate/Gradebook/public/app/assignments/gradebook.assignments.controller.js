@@ -70,15 +70,31 @@ angular.module('Gradebook.Assignments.Ctrl', [
 
 .controller('Assignment.Detail.Ctrl', ['$scope', '$http', '$state', 'Assignment', function ($scope, $http, $state, Assignment) {
 	$scope.viewType = "Assignment Details";
+	$scope.grades = [];
 
 	$http.get("/api/assignments/" + $state.params.assignment_id).success (function (data) {
 		$scope.assignment = data;
+
+		Assignment.getStudents($scope.assignment.course._id).success(function (students) {
+			$scope.students = students;
+		});
 	})
 	.error (function () {
 		console.log("Assignment not retrieved");
 	});
 
-	$scope.grades = Assignment.getGrades($state.params.assignment_id);
-	debugger;
-
+	$scope.enterGrades = function () {
+			for(var i=0; i<$scope.students.length; i++) {
+				debugger;
+				$http.post('/api/' + $scope.students[i]._id + '/' + $state.params.assignment_id + "/grade", {score: $scope.grades[i], comment: $scope.comments[i]}).success(function (data) {
+					console.log("Grade entered");
+					$state.go('assignmentDetail', {assignment_id: $state.params.assignment_id});	
+				})
+				.error(function (err) {
+					console.log(err);
+				});
+			};
+			debugger;
+			$state.go('assignmentDetail', {assignment_id: $state.params.assignment_id});
+		}
 }]);

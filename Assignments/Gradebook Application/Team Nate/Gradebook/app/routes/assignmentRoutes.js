@@ -1,6 +1,7 @@
 var Assignment = require('../models/assignment');
 var Course = require('../models/course');
 var User = require('../models/user');
+var Grade = require('../models/grade');
 
 module.exports = function(apiRouter) {
 	apiRouter.route('/assignments')
@@ -82,6 +83,6 @@ module.exports = function(apiRouter) {
 				else{
 					res.json(course);
 				}
-			})
-		})
+			});
+		});
 }

@@ -21,7 +21,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<br/>
+
 			<hr/>
 
 			<table class="table">
@@ -34,18 +34,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="grade in grades">
-						<td>{{grade.student.firstName + " " + grade.student.lastName}}</td>
+					<tr ng-repeat="student in students">
+						<td>{{student.firstName + " " + student.lastName}}</td>
 						<td>{{assignment.maxPoints}}</td>
-						<td>{{grade.points / assignment.maxPoints * 100 | number:2}}</td>
-						<td>{{grade.points}}</td>
+						<td>{{grade[$index] / assignment.maxPoints * 100 | number:2}}</td>
+						<td>
+							<input class="form-control" type="text" ng-model="grade[$index]" placeholder="0">
+						</td>
 					</tr>
 				</tbody>
 			</table>
 
 			<div>
 				<span class="pull-right">
-					<button type="button" class="btn btn-theme">Save</button>
+					<button type="button" class="btn btn-theme" ng-click="enterGrades()">Save</button>
 					<a ui-sref="assignmentState"><button type="button" class="btn btn-theme04" >Cancel</button></a>
 				</span>
 			</div>
