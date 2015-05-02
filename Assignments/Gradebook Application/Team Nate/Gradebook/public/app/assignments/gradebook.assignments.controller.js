@@ -1,5 +1,6 @@
 angular.module('Gradebook.Assignments.Ctrl', [
 	'Gradebook.Courses.Service',
+	'Gradebook.Assignments.Service'
 ])
 
 .controller('Assignment.Ctrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
@@ -67,14 +68,17 @@ angular.module('Gradebook.Assignments.Ctrl', [
 	};
 }])
 
-.controller('Assignment.Detail.Ctrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+.controller('Assignment.Detail.Ctrl', ['$scope', '$http', '$state', 'Assignment', function ($scope, $http, $state, Assignment) {
 	$scope.viewType = "Assignment Details";
 
 	$http.get("/api/assignments/" + $state.params.assignment_id).success (function (data) {
 		$scope.assignment = data;
-		console.log(data);
 	})
 	.error (function () {
 		console.log("Assignment not retrieved");
 	});
+
+	$scope.grades = Assignment.getGrades($state.params.assignment_id);
+	debugger;
+
 }]);

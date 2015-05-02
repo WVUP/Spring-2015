@@ -23,6 +23,26 @@
 			</table>
 			<br/>
 			<hr/>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<td>Student</td>
+						<td>Possible</td>
+						<td>Percentage</td>
+						<td>Points</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="grade in grades">
+						<td>{{grade.student.firstName + " " + grade.student.lastName}}</td>
+						<td>{{assignment.maxPoints}}</td>
+						<td>{{grade.points / assignment.maxPoints * 100 | number:2}}</td>
+						<td>{{grade.points}}</td>
+					</tr>
+				</tbody>
+			</table>
+
 			<div>
 				<span class="pull-right">
 					<button type="button" class="btn btn-theme">Save</button>

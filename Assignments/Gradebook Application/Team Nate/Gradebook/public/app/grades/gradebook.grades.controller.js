@@ -7,6 +7,7 @@ angular.module('Gradebook.Grades.Ctrl', [
 
 	$scope.students = [];
 	$scope.grades = [];
+	$scope.comments = [];
 
 	$http.get('/api/assignments/' + $state.params.assignment_id).success(function (data) {
 		$scope.assignment = data;
@@ -24,14 +25,14 @@ angular.module('Gradebook.Grades.Ctrl', [
 		console.log(err);
 	});
 
-	$scope.enterGrades = function ($http, $state, Grade) {
+	$scope.enterGrades = function () {
 		for(var i=0; i<$scope.students.length; i++) {
-			debugger;
-			$http.post('/api/grades/' + $scope.students[i]._id + '/' + $state.params.assignment_id, $scope.grades[i]).success(function (data) {
-				debugger;
+			$http.post('/api/' + $scope.students[i]._id + '/' + $state.params.assignment_id + "/grade", {score: $scope.grades[i], comment: $scope.comments[i]}).success(function (data) {
+				console.log("Grade entered");
+				$state.go('assignmentDetail', {assignment_id: $state.params.assignment_id});	
 			})
 			.error(function (err) {
-				debugger;
+				console.log(err);
 			});
 		};
 	}

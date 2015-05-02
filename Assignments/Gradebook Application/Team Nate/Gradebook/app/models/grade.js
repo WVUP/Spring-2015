@@ -14,8 +14,7 @@ var gradeSchema = new Schema({
 		default: Date.now()
 	},
 	dateModified: {
-		type: Date,
-		required: true
+		type: Date
 	},
 	points: {
 		type: Number,
