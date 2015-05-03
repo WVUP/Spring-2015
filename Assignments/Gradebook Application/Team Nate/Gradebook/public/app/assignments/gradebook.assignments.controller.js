@@ -86,7 +86,7 @@ angular.module('Gradebook.Assignments.Ctrl', [
 	$scope.enterGrades = function () {
 			for(var i=0; i<$scope.students.length; i++) {
 				debugger;
-				$http.post('/api/' + $scope.students[i]._id + '/' + $state.params.assignment_id + "/grade", {score: $scope.grades[i], comment: $scope.comments[i]}).success(function (data) {
+				$http.post('/api/' + $scope.students[i]._id + '/' + $state.params.assignment_id + "/grade", {score: $scope.grades[i]}).success(function (data) {
 					console.log("Grade entered");
 					$state.go('assignmentDetail', {assignment_id: $state.params.assignment_id});	
 				})
