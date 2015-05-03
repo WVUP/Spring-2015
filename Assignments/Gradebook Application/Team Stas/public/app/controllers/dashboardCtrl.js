@@ -1,31 +1,26 @@
-angular.module('dashboardCtrl', ['ui.bootstrap'])
+angular.module('dashboardCtrl', [])
 
-.controller('dashboardController', function (User, $routeParams) {
+.controller('dashboardController', function (User, $routeParams, $rootScope) {
 	var vm = this;
 
 	vm.oneAtATime = false;
 	vm.isCollapsed = true;
 	vm.showTree = false;
 
-console.log(currentUser + 'is a user')
-	if (currentUser === null){
-		console.log('here')
-		currentUser = ''
-	}
-
-	console.log('current user shoul be defined, will get info now')
-	//assuming there will be only one submission allowed for an assignment
-	User.getFullInfo(currentUser.id).success(function (data) {
-		vm.userData = data;
+	$rootScope.deferredRounting.promise.then(function () {
+		vm.isInstructor = $rootScope.currentUser.isInstructor;
+		console.log('resolved')
 	});
 })
 
-.controller('cpanelController', function (Assignment, Class, $location, $route, $modal) {
+.controller('cpanelController', function (Assignment, Class, $location, $route, $modal, $rootScope) {
 	var vm = this;
 	vm.processing = false;
 
-	Class.getFullInfoForInstructor(currentUser.id).success(function (data) {
-		vm.instructorData = data;
+	$rootScope.deferredRounting.promise.then(function () {
+		Class.getFullInfoForInstructor($rootScope.currentUser.id).success(function (data) {
+			vm.instructorData = data;
+		});
 	});
 
 	vm.openEnrolledStudents = function (size, id) {

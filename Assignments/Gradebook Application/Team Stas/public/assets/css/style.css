@@ -5,10 +5,6 @@ body {
   font-family: Roboto,sans-serif;
   font-size: 15px;
   color: #5f5e5d;
-  height: 100%
-}
-.ui-view{
-  height: 100%
 }
 * {
   outline: 0px none;
@@ -41,7 +37,9 @@ input[type="password"]:focus {
 form[novalidate] input{
   border: thin solid #89C4F4;
 }
-
+.fa-connectdevelop{
+  color: #ff2462;
+}
 input.ng-invalid.ng-dirty{
   border-color: red;
 }
@@ -52,6 +50,17 @@ form[novalidate].ng-submitted input.ng-invalid{
   animation:spin 1s infinite;
   -webkit-animation:spin 1s infinite;
   -moz-animation:spin 1s infinite;
+}
+
+.table>thead>tr>th{
+  border: none;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th
+table{
+  border: none;
+}
+.nav>li>a:focus, {
+  outline: none;
 }
 
 @keyframes spin {
@@ -73,6 +82,9 @@ form[novalidate].ng-submitted input.ng-invalid{
   -webkit-animation:fadeIn .8s both linear;
   -moz-animation:fadeIn .8s both linear;
   animation:fadeIn .8s both linear;
+}
+.dashboard{
+  margin-top: 5%;
 }
 
 .circle a:hover{
@@ -99,12 +111,12 @@ form[novalidate].ng-submitted input.ng-invalid{
   padding: 5% 10% 20% 2.5em;
 }
 .login-form form div {
-  
   margin-bottom: 25px;
   width: 100%;
   background: none repeat scroll 0% 0% transparent;
   border-radius: 0.3em;
 }
+
 .header{
   background-color: #1a1f2a;
   background-image: url('../images/png.png');
@@ -112,17 +124,7 @@ form[novalidate].ng-submitted input.ng-invalid{
   background-size: cover;
   color: white;
   padding-top: 30px;
-  height: 100%;
-}
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 100%
-}
-.sky-blue{
-  background-color: #E4F1FE;
+  height: 100vh;
 }
 .header h1 {
   padding-top: 90px;
@@ -469,16 +471,23 @@ form[novalidate].ng-submitted input.ng-invalid{
   border-color: #ff2462;
   opacity: 1
 }
-.navbar-brand:focus{
+.fa-connectdevelop:focus{
   color: #ff2462;
 }
 .select{
   cursor: pointer;
 }
-.navbar-brand:hover{
+.fa-connectdevelop:hover{
   -webkit-animation:wobble.8s both linear;
   -moz-animation:wobble .8s both linear;
   animation:wobble .8s both linear;
+}
+.table *{
+  text-align: center;
+  vertical-align: middle!important;
+}
+.navbar-nav>li>a{
+  line-height: 30px;
 }
 .gray{
   background-color: #DCDCDC;
@@ -493,9 +502,11 @@ form[novalidate].ng-submitted input.ng-invalid{
 }
 .calButton{
   text-transform:uppercase;
-  float: right;
   color: black;
   font-size: 20px;
+}
+.calButton:hover{
+  color:#AEA8D3;
 }
 /*-------------------------------*/
 
@@ -621,8 +632,6 @@ textarea{
   position: fixed;
   top: 100px;
   left: 20px;
-<<<<<<< HEAD
-=======
 }
 .images {
   width: 628px;
@@ -636,7 +645,7 @@ textarea{
   border-bottom: thin solid #ff2462;
 }
 .instructor-box{
-  border-bottom: thin solid silver;
+  border-bottom: thin dotted silver;
 }
 .big-icon{
   font-size: 300px !important;
@@ -760,4 +769,3 @@ textarea{
 .student2{
   background-position: 100% 66.6%;
 }
->>>>>>> 7d2b9ad65340d49f13933d309ddb51446498c934

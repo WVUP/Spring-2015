@@ -5,10 +5,26 @@ angular.module('assignmentCtrl', ['assignmentService', 'ui.bootstrap'])
 
 	vm.processing = true;
 
+	vm.itemsPerPage = 10;
+	vm.currentPage = 1;
+	vm.maxSize = 5;
+
 	Assignment.all().success(function (data) {
-		vm.assignments = data;
+		vm.notFilteredAsssignments = data;
+		vm.totalItems = data.length;
+
+		var begin = ((vm.currentPage - 1) * vm.itemsPerPage),
+		end = begin + vm.itemsPerPage;
+		vm.assignments = vm.notFilteredAsssignments.slice(begin, end);
+
 		vm.processing = false;
 	});
+
+	vm.pageChanged = function () {
+		var begin = ((vm.currentPage - 1) * vm.itemsPerPage),
+		end = begin + vm.itemsPerPage;
+		vm.assignments = vm.notFilteredAsssignments.slice(begin, end);
+	};
 
 	vm.selectedAssignments = [];
 
@@ -92,20 +108,21 @@ angular.module('assignmentCtrl', ['assignmentService', 'ui.bootstrap'])
 	};
 })
 
-.controller('gradesController', function ($routeParams, User) {
+.controller('gradesController', function ($routeParams, User, $rootScope) {
 	var vm = this;
 	vm.oneAtATime = false;
 
 	vm.statusText = 'Not Submitted';
 
+	$rootScope.deferredRounting.promise.then(function () {
+		User.getFullInfo($rootScope.currentUser.id).success(function (data) {
+			vm.userData = data;
+		});
+	})
+
 	vm.showStatus = function () {
 		vm.statusText = 'Submit'
 	};
-
-	//assuming there will be only one submission allowed for an assignment
-	User.getFullInfo(currentUser.id).success(function (data) {
-		vm.userData = data;
-	});
 })
 
 
@@ -113,6 +130,13 @@ angular.module('assignmentCtrl', ['assignmentService', 'ui.bootstrap'])
 	var vm = this;
 
 	vm.processing = true;
+
+	Assignment.allForClass($routeParams.class_id).success(function (data) {
+		vm.assignments = data.assignments;
+		vm.classNm = data.classNm;
+		console.log(vm.classNm);
+		vm.processing = false;
+	});
 
 	vm.doDeleteAssignment = function (id) {
 		Assignment.delete(id).success(function (data) {
@@ -133,11 +157,4 @@ angular.module('assignmentCtrl', ['assignmentService', 'ui.bootstrap'])
 			});
 		});
 	};
-
-	Assignment.allForClass($routeParams.class_id).success(function (data) {
-		vm.assignments = data.assignments;
-		vm.classNm = data.classNm;
-		console.log(vm.classNm);
-		vm.processing = false;
-	});
 })

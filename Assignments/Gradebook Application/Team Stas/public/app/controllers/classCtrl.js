@@ -4,13 +4,35 @@ angular.module('classCtrl', [])
 	var vm = this;
 	vm.processing = true;
 
+	vm.itemsPerPage = 3;
+	vm.currentPage = 1;
+	vm.maxSize = 5;
+
 	Class.all().success(function (data) {
-		vm.classes = data;
+		
+		vm.notFilteredClasses = data;
+		vm.totalItems = data.length;
+
+		var begin = ((vm.currentPage - 1) * vm.itemsPerPage),
+		end = begin + vm.itemsPerPage;
+		vm.classes = vm.notFilteredClasses.slice(begin, end);
+
 		vm.processing = false;
 	})
 	.error(function (err) {
 		vm.processing = true;
 	})
+
+
+	vm.pageChanged = function () {
+		var begin = ((vm.currentPage - 1) * vm.itemsPerPage),
+		end = begin + vm.itemsPerPage;
+		vm.classes = vm.notFilteredClasses.slice(begin, end);
+	}
+
+	vm.pageCount = function () {
+		return Math.ceil(vm.totalItems / vm.itemsPerPage)
+	}
 
 	vm.doDeleteClass = function (id) {
 		vm.processing = true;

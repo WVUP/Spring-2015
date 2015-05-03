@@ -16,12 +16,12 @@
 	<div class="container">
 		<div class="row holder align-center">
 			<div class="col-md-6 padding-big col-centered">
-				<a class="box grayscale" href="/grades" id="class">
+				<a class="box grayscale" href="/grades" id="class" ng-if="!dash.isInstructor">
 					<div class="centerH">
 						<h3>My Gradebook</h4>
 					</div>
 				</a>
-				<a class="box grayscale" href="/cpanel" id="class">
+				<a class="box grayscale" href="/cpanel" id="class" ng-if="dash.isInstructor">
 					<div class="centerH">
 						<h3>Instructor Panel</h4>
 					</div>

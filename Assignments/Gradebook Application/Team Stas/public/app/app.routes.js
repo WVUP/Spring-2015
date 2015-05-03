@@ -89,9 +89,6 @@ angular.module('app.routes', ['ngRoute'])
 			controller: 'submissionController',
 			controllerAs: 'submission'
 		})
-		.when('/courtney',{
-			templateUrl: 'app/views/pages/courtney/index.html'
-		})
 		.otherwise({
             redirectTo: '/'
         });
@@ -124,9 +121,7 @@ angular.module('app.routes', ['ngRoute'])
 
 		Auth.getUser()
 			.then(function(data) {
-				console.log(data + 'this is a data')
-				console.log('defining current user')
-				currentUser = data.data;
+				$rootScope.currentUser = currentUser = data.data;
 
 				//if the route is admin route and user is not an admin
 				if(isAdminRoute && currentUser.isAdmin)
