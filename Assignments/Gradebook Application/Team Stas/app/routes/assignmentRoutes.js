@@ -23,25 +23,7 @@ module.exports = function (apiRouter) {
 						});
 					};
 				});
-			})
-		//it is not an array that is why I cannot pull
-		.put(function (req, res) {
-			Assignment.update({
-				_id: req.body.assignmentId},
-				{$pull: {gclass: req.params.class_id}}, function (err) {
-					if (err)
-						res.send(err);
 			});
-			Class.update({
-				_id: req.params.class_id},
-				{$pull: {assignments: req.body.assignmentId}}, function (err) {
-					if (err)
-						res.send(err);
-			});
-			res.json({
-				success: true
-			});
-		});
 
 	apiRouter.post('/assignments/addExisting/:class_id', function (req, res) {
 		Class.findById(req.params.class_id, function (err, gxClass) {
@@ -161,16 +143,26 @@ module.exports = function (apiRouter) {
 			_id: submissionId}, data, function (err) {
 				if (err)
 					res.send(err)
-		});
+				else
+					res.json({
+						success: true
+					})
+		})
+
 	});
 		
 	apiRouter.post('/assignments/create/:class_id', function (req, res) {
+
 		var assignm = new Assignment();
+
+		console.log(req.body)
 
 		assignm.name = req.body.name;
 		assignm.description = req.body.description;
 		assignm.dateDue = req.body.dateDue;
 		assignm.gclass = req.params.class_id;
+		if(assignm.dateAssigned != null || assignm.dateAssigned != '')
+			assignm.dateAssigned = req.body.dateAssigned;
 
 		Class.update({
 			_id: req.params.class_id},
@@ -183,7 +175,10 @@ module.exports = function (apiRouter) {
 			if (err)
 				res.send(err);
 			else
-				res.json({success: true});
+				res.json({
+					success: true,
+					message: 'Successfully created'
+				});
 		});
 	});
 

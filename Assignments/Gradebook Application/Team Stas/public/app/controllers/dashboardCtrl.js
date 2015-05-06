@@ -3,19 +3,50 @@ angular.module('dashboardCtrl', [])
 .controller('dashboardController', function (User, $routeParams, $rootScope) {
 	var vm = this;
 
-	vm.oneAtATime = false;
-	vm.isCollapsed = true;
+	vm.isCollapsed = false;
 	vm.showTree = false;
+
+	// ---------------calendar---------------
+	vm.eventSources = [];
+
+	$rootScope.deferredRounting.promise.then(function () {
+			User.getCalendarInfo($rootScope.currentUser.id).success(function (data) {
+				vm.eventSources.push(data);
+			})
+		});
+
+	vm.uiConfig = {
+		calendar:{
+			height: 500,
+			editable: false,
+			eventBorderColor: '#fff',
+			eventAfterRender: function (event, element, view) {
+		        var today = new Date();
+		        if (event.start < today && event.end > today) {
+		        	//in progress
+		            element.css('background-color', '#1BBC9B');
+		        } else if (event.start < today && event.end < today) {
+		            //past event
+		            element.css('background-color', 'red');
+		        } else if (event.start > today && event.end > today) {
+		            //future event, hasn't started yet
+		            element.css('background-color', '#AEC6CF');
+		        }
+		    }
+		}
+	}
+
+	// ------------------------------------------
 
 	$rootScope.deferredRounting.promise.then(function () {
 		vm.isInstructor = $rootScope.currentUser.isInstructor;
-		console.log('resolved')
 	});
 })
 
 .controller('cpanelController', function (Assignment, Class, $location, $route, $modal, $rootScope) {
 	var vm = this;
 	vm.processing = false;
+	vm.isOpen = false;
 
 	$rootScope.deferredRounting.promise.then(function () {
 		Class.getFullInfoForInstructor($rootScope.currentUser.id).success(function (data) {
@@ -23,17 +54,27 @@ angular.module('dashboardCtrl', [])
 		});
 	});
 
-	vm.openEnrolledStudents = function (size, id) {
+	vm.areYouSure = function (id) {
 		var modalInstance = $modal.open({
-			templateUrl: "enrolledStudentsModal.html",
-			controller: "enrolledStudentsController",
-			controllerAs: "enrolledStudents",
-			size: size,
-			resolve:{
-				classId: function () {
-					return id;
-				}
-			}
+			animation: vm.animationsEnabled,
+			templateUrl: 'areYouSure.html',
+			controller: "areYouSureController",
+			controllerAs: "assignment",
+		});
+		modalInstance.result.then(function () {
+			vm.deleteAssignment(id)
+		});
+	};
+
+	vm.areYouSureDeleteClass = function (id) {
+		var modalInstance = $modal.open({
+			animation: vm.animationsEnabled,
+			templateUrl: 'areYouSureDeleteClass.html',
+			controller: "areYouSureController",
+			controllerAs: "class",
+		});
+		modalInstance.result.then(function () {
+			vm.deleteClass(id)
 		});
 	};
 

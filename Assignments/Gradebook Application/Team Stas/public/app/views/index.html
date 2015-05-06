@@ -41,6 +41,7 @@
 	<script src="app/controllers/submissionCtrl.js"></script>
 
 	<script src="app/directives/customDirectives.js"></script>
+	<script type="text/javascript" src="scripts/calendar.min.js"></script>
 </head>
 
 <body ng-app="gradebookApp" ng-controller="mainController as main">
@@ -48,13 +49,13 @@
 	<header ng-if="isLoggedIn">
 		<div class="container">
 			<nav class="navbar">
-		      	<ul class="nav navbar-nav navbar-right">
+		      	<ul class="nav navbar-nav">
+		      		<li>
+						<a href="/dashboard"><span class="fa fa-connectdevelop fa-2x select"></span></a>
+					</li>
 		        	<li>
 		        		<a class="regular-small-font" href="#">Logged in as {{main.user.fname}}</a>
 		        	</li>
-		        	<li>
-						<a href="/dashboard"><span class="fa fa-connectdevelop fa-2x select"></span></a>
-					</li>
 		      	</ul>
 			</nav>
 
