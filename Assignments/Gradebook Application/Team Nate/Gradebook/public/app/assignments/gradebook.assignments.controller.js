@@ -88,13 +88,13 @@ angular.module('Gradebook.Assignments.Ctrl', [
 				debugger;
 				$http.post('/api/' + $scope.students[i]._id + '/' + $state.params.assignment_id + "/grade", {score: $scope.grades[i]}).success(function (data) {
 					console.log("Grade entered");
-					$state.go('assignmentDetail', {assignment_id: $state.params.assignment_id});	
+					$state.go('assignmentState', {assignment_id: $state.params.assignment_id});	
 				})
 				.error(function (err) {
 					console.log(err);
 				});
 			};
 			debugger;
-			$state.go('assignmentDetail', {assignment_id: $state.params.assignment_id});
+			$state.go('assignmentState');
 		}
 }]);
