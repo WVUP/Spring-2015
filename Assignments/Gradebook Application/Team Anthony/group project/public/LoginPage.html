@@ -26,6 +26,8 @@
 	</div>
 
 
+	<div class="container" ng-app="Login">
+		<div ui-view> </div>
 	<div class="container cool" style="margin-top: 20px">
 
 		<div class="rightannoyance">
@@ -83,7 +85,8 @@
 
 			<div class="col-md-6">
 		
-				<input type="submit" class="btn btn-default" style="border: 2px solid transparent; border-radius: 40px;" value="Login" id="submit" onclick="validate()"></button>
+				<input type="submit" class="btn btn-default" style="border: 2px solid transparent; border-radius: 40px;" value="Login" id="submit" onclick="validate()" ui-sref="teacher.profile"></input>
+				
 				
 
 			</div>
@@ -100,6 +103,7 @@
 				<a href="masterTemp.html" class="center" style="float: right; background-color: lightgrey;"> Forgot Your Password? </a>
 			</div>	
 		</div>
+	</div>
 	</div>
 
 
