@@ -29,10 +29,9 @@
 	</div>
 </div>
 
-<div class='padding-big'></div>
-
 <div class="container align-center">
-	<div class="padding-big"></div>
+	<h2 class="title-font">using gradebook is easy:</h2>
+	<div class="padding-huge"></div>
 
 	<div class="col-md-4 rules instructors">
 		<p class="regular-small-font orange">Instructors</p>
@@ -48,22 +47,64 @@
 		<div class="person student2"></div>
 		<p class="regular-normal-font">Contact your instructor about class enrollment.</p>
 	</div>
-
+	<div class="padding-huge"></div>
 </div>
 <div class="container align-center ">
-	<h2 class="title-font">features</h2>
+	<h2 class="title-font">Application features include: </h2>
+	<div id="cloud"></div>
 </div>
 <div class="padding-big"></div>
 
 <div class="footer align-center">
 	<div class="container">
-		<h4>Something interesting here</h4>
+		<span class="regular-small-font white">Simple Gradebook 2015&nbsp;&nbsp;<span class="glyphicon glyphicon-copyright-mark"></span></span>
 	</div>
 </div>	
 
 
+<script type="text/javascript" src="scripts/d3.js"></script>
+<script type="text/javascript" src="scripts/d3.layout.cloud.js"></script>
 <script type="text/javascript" src="scripts/jquery.waypoints.min.js"></script>
 <script type="text/javascript" src="scripts/inview.min.js"></script>
+
+<script>
+  var fill = d3.scale.category10();
+  var selection = d3.select("#cloud");
+  var width = selection[0][0].clientWidth;
+  var height = 600;
+  var color = "#ececec"
+
+  d3.layout.cloud().size([width, height])
+      .words([
+        "Powered by Nodejs", "easy to use", "file upload", "role-based interface",
+        "due dates calendar", "control due dates", "instructor panel", "administrator panel", "lightweight", "edit classes", "edit assignments", "provide comments", "control assignments", "control submissions"].map(function(d) {
+        return {text: d, size: 10 + Math.random() * 90};
+      }))
+      .padding(5)
+      .rotate(function() { return ~~(Math.random() * 2) * 90; })
+      .font("Impact")
+      .fontSize(function(d) { return d.size; })
+      .on("end", draw)
+      .start();
+  function draw(words) {
+    selection.append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+      .selectAll("text")
+        .data(words)
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .style("font-family", "Impact")
+        .style("fill", function(d) { return color })
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; });
+  }
+</script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
