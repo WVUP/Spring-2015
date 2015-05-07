@@ -126,6 +126,13 @@ angular.module('Gradebook.Courses.Ctrl', [
 
 	$scope.updateCourse = function(course_id) {
 		debugger;
+		$http.put('/api/courses/' + course_id, $scope.course).success(function (data) {
+			debugger;
+		})
+		.error(function (data) {
+			debugger;
+		});
+		$state.go('courseState');
 	}
 
 	//Use services

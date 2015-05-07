@@ -58,6 +58,26 @@ module.exports = function(apiRouter) {
 			})
 		})
 
+		//Update assignment
+		.put(function (req, res) {
+			Assignment.update(
+				{"_id": req.params.assignment_id},
+				{
+					"name": req.body.name,
+					"maxPoints": req.body.maxPoints,
+					"description": req.body.description,
+					"comments": req.body.comments
+				},
+				{"upsert": "true"},
+				function (err, assignment) {
+					if (err)
+						res.send(err);
+					else{
+						res.json(assignment);
+					}
+				});
+		})
+
 		//Delete an existing assignment
 		.delete(function (req, res) {
 			Assignment.findByIdAndRemove(req.params.assignment_id, function (err, delAssignment) {

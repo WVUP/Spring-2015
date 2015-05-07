@@ -1,3 +1,4 @@
+
 angular.module('Gradebook.Assignments.Ctrl', [
 	'Gradebook.Courses.Service',
 	'Gradebook.Assignments.Service'
@@ -71,30 +72,71 @@ angular.module('Gradebook.Assignments.Ctrl', [
 .controller('Assignment.Detail.Ctrl', ['$scope', '$http', '$state', 'Assignment', function ($scope, $http, $state, Assignment) {
 	$scope.viewType = "Assignment Details";
 	$scope.grades = [];
+	$scope.nameEdit = false;
+	$scope.pointsEdit = false;
+	$scope.descEdit = false;
+	$scope.commEdit = false;
+	$scope.comment = "";
+
+	$scope.editDesc = function() {
+		if (!$scope.descEdit) {
+			$scope.descEdit = true;
+		}
+		else{
+			$scope.descEdit = false;
+		}
+	}
+
+	$scope.editComm = function() {
+		if (!$scope.commEdit) {
+			$scope.commEdit = true;
+		}
+		else{
+			$scope.commEdit = false;
+		}
+	}
+
+	$scope.editName = function() {
+		if (!$scope.nameEdit) {
+			$scope.nameEdit = true;
+		}
+		else{
+			$scope.nameEdit = false;
+		}
+	}
+
+	$scope.editPoints = function() {
+		if (!$scope.pointsEdit) {
+			$scope.pointsEdit = true;
+		}
+		else{
+			$scope.pointsEdit = false;
+		}
+	}
+
+	$scope.updateAssignment = function(assignment_id) {
+		debugger;
+		if ($scope.comment != "") {
+			$scope.assignment.comments.push($scope.comment);
+		}
+		$http.put('/api/assignments/' + assignment_id, $scope.assignment).success(function (data) {
+			debugger;
+		})
+		.error(function (data) {
+			debugger;
+		});
+		$state.go('assignmentState');
+	}
 
 	$http.get("/api/assignments/" + $state.params.assignment_id).success (function (data) {
 		$scope.assignment = data;
-
-		Assignment.getStudents($scope.assignment.course._id).success(function (students) {
-			$scope.students = students;
-		});
 	})
 	.error (function () {
 		console.log("Assignment not retrieved");
 	});
 
-	$scope.enterGrades = function () {
-			for(var i=0; i<$scope.students.length; i++) {
-				debugger;
-				$http.post('/api/' + $scope.students[i]._id + '/' + $state.params.assignment_id + "/grade", {score: $scope.grades[i]}).success(function (data) {
-					console.log("Grade entered");
-					$state.go('assignmentState', {assignment_id: $state.params.assignment_id});	
-				})
-				.error(function (err) {
-					console.log(err);
-				});
-			};
-			debugger;
-			$state.go('assignmentState');
-		}
+	Assignment.getGrades($state.params.assignment_id).success (function (data) {
+		$scope.grades = data;
+	});
+
 }]);
