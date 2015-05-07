@@ -10,14 +10,20 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>CRN</th>
+						<th>Name<button type="button" class="btn btn-default pull-right" ng-click="editName()"><i class="fa fa-edit"></i></button></th>
+						<th>CRN<button type="button" class="btn btn-default pull-right" ng-click="editCourseNum()"><i class="fa fa-edit"></i></button></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>{{course.name}}</td>
-						<td>{{course.courseNum}}</td>
+						<td ng-hide="toggleNameEdit">{{course.name}}</td>
+						<td ng-show="toggleNameEdit">
+							<input type="text" class="form-control" id="name" placeholder="{{course.name}}" ng-model="course.name">
+						</td>
+						<td ng-hide="toggleCRNEdit">{{course.courseNum}}</td>
+						<td ng-show="toggleCRNEdit">
+							<input type="text" class="form-control" id="num" placeholder="{{course.courseNum}}" ng-model="course.courseNum">
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -37,7 +43,41 @@
 				</tbody>
 			</table>
 			<span class="pull-right"><b>Total Students: {{course.students.length}}</b></span>
-			<input type="button" class="btn btn-theme" value="Edit Students">
+			<input type="button" class="btn btn-theme" value="Edit Students" ng-click="toggleState()">
+
+			<!--Add or remove students from course-->
+			<div ng-show="addStudentButton">
+				<div class="col-sm-6">
+					<table class="table col-sm-6">
+						<thead>
+							<tr>
+								<th>Students in course</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="student in course.students">
+								<td><button class="btn btn-theme04" ng-click="toggleOut(student, $index)">{{student.firstName + " " + student.lastName}}<span class="pull-right"> <i class="fa fa-minus"></i></button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-sm-6">
+					<table class="table col-sm-6">
+						<thead>
+							<tr>
+								<th>Students</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="student in studentsOut">
+								<td><button class="btn btn-theme05" ng-click="toggleIn(student, $index)">{{student.firstName + " " + student.lastName}}<span class="pull-right"><i class="fa fa-plus"></i></button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<hr/>
+			</div>
+
 			<table class="table">
 				<caption><h4>Assignments</h4></caption>
 				<thead>
@@ -45,6 +85,7 @@
 						<td class="col-sm-3">Name</td>
 						<td class="col-sm-8">Description</td>
 						<td class="col-sm-1">Points</td>
+						<td></td>
 					</tr>
 				</thead>
 				<tbody>					
@@ -52,6 +93,9 @@
 						<td class="col-sm-3"><a ui-sref="assignmentDetail({assignment_id: assignment._id})">{{assignment.name}}</a></td>
 						<td class="col-sm-8">{{assignment.description}}</td>
 						<td class="col-sm-1">{{assignment.maxPoints}}</td>
+						<td>
+							<a ui-sref="gradeAssignment({assignment_id: (assignment._id)})"><button type="button" class="btn btn-theme05">Grade</button></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

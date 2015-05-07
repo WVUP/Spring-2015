@@ -7,21 +7,21 @@ var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
 module.exports = function(apiRouter) {
-	apiRouter.route('/assignments/:assignment_id/grades')
+	// apiRouter.route('/assignments/:assignment_id/grades')
 
-		//Get a collection of courses
-		.get(function (req, res) {
-			var courseQuery = 
-			Course.find().
-			populate('assignments students').
-			exec(function (err, courses) {
-				if (err)
-					res.send(err);
-				else{
-					res.json(courses);
-				}
-			});
-		});
+	// 	//Get a collection of courses
+	// 	.get(function (req, res) {
+	// 		var courseQuery = 
+	// 		Course.find().
+	// 		populate('assignments students').
+	// 		exec(function (err, courses) {
+	// 			if (err)
+	// 				res.send(err);
+	// 			else{
+	// 				res.json(courses);
+	// 			}
+	// 		});
+	// 	});
 
 	//apiRouter.route('/student/:student_id/assignment/:assignment_id/grade')
 	apiRouter.route('/:student_id/:assignment_id/grade')
@@ -45,7 +45,7 @@ module.exports = function(apiRouter) {
 		});
 
 	//Get a list of grades for an assignment
-	apiRouter.route('/:assignment_id/grades')
+	apiRouter.route('/assignments/:assignment_id/grades')
 		.get(function (req, res) {
 			Grade.find({assignment: req.params.assignment_id})
 			.populate('student assignment')

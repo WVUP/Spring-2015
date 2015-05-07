@@ -69,10 +69,16 @@ angular.module('Gradebook.Routes', ['ui.router'])
 		controller: "Assignment.Detail.Ctrl"
 	})
 
-	.state('enterGrades', {
-		url: '/assignments/:assignment_id/grades',
+	.state('gradeAssignment', {
+		url: '/assignments/:assignment_id/enterGrades',
 		templateUrl: "app/views/grades/enterGrades.html",
 		controller: "Grade.Ctrl"
+	})
+
+	.state('gradeDetail', {
+		url: '/assignments/:assignment_id/grades',
+		templateUrl: 'app/views/grades/detail.html',
+		controller: 'Grade.Detail.Ctrl'
 	});
 
 	$locationProvider.html5Mode(true).hashPrefix('!');

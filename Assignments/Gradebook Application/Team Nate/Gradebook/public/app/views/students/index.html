@@ -24,6 +24,7 @@
 						<th>Email</th>
 						<th>Comments</th>
 						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -36,6 +37,9 @@
 							<ul ng-repeat="comment in student.comments">
 								<li>{{comment}}</li>
 							</ul>
+						</td>
+						<td>
+							<a ui-sref="studentDetail({student_id: student._id})"><button class="btn btn-theme05" type="button">Edit</button></a>
 						</td>
 						<td>
 							<button type="button" class="btn btn-theme04" ng-click="remove(student._id)">Delete</button>

@@ -1,4 +1,5 @@
 var Student = require('../models/student');
+var Course = require('../models/course');
 var User = require('../models/user');
 
 module.exports = function(apiRouter) {
@@ -6,7 +7,9 @@ module.exports = function(apiRouter) {
 
 		//Get a collection of students
 		.get(function(req, res) {
-			Student.find(function (err, students) {
+			Student.find()
+			.populate('courses')
+			.exec(function (err, students) {
 				if (err)
 					res.send(err);
 				else{
@@ -69,5 +72,21 @@ module.exports = function(apiRouter) {
 		});
 
 	//Calls for populating fields
+	apiRouter.route('/students/:student_id/courses/:course_id')
 
+		.put(function (req, res) {
+			Student.findById(req.params.student_id, function (err, student) {
+				if (err)
+					res.send(err);
+				else{
+					Student.update({_id: req.params.student_id}, {$addToSet: {courses: req.params.course_id}}, function (err) {
+						if (err)
+							res.send(err)
+						else{
+							res.json(student);
+						}
+					});
+				}
+			});			
+		});
 }

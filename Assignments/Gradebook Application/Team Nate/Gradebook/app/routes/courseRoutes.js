@@ -136,52 +136,14 @@ module.exports = function(apiRouter) {
 			// }
 		});
 
-	
-				
-
-
-			// Course.findById({_id: req.params.course_id}), function (err, sCourse) {
-			// 	if (err)
-			// 		res.send(err);
-			// 	for (var i = 0; i < req.body.studentIds.length; i++) {
-			// 		Student.update({
-			// 			_id: req.body.studentIds[i]},
-			// 			{$addToSet: {courses: sCourse}}, function (err) {
-			// 				if (err)
-			// 					res.send(err);
-			// 				else
-			// 					console.log(sCourse);							
-			// 			});
-
-			// 		Student.save(function (err) {
-			// 			if (err)
-			// 				res.send(err);
-			// 			else
-			// 				console.log("Student saved");
-			// 			});
-
-			// 		Course.update({
-			// 			_id: sCourse._id},
-			// 			{$addToSet: {students: req.body.studentIds[i]}}, function (err) {
-			// 				if (err)
-			// 					res.send(err);
-			// 				else
-			// 					console.log(sCourse);
-			// 			});
-
-			// 		Course.save(function (err) {
-			// 			if (err)
-			// 				res.send(err);
-			// 			else
-			// 				console.log("Course saved");
-			// 		});
-			// 		console.log(sCourse);
-			// 	};
-			// 	res.json({ message: "Students added to course" });
-			// };
-		//});
-
+	apiRouter.route('/courses/:course_id/antiStudents')
+		.get(function (req, res) {
+			Student.find({courses: {$ne: req.params.course_id}}, function (err, students) {
+				if (err)
+					res.send(err);
+				else{
+					res.json(students);
+				}
+			});
+		});
 }
-
-//course: 5528607a2a4527a00628adca
-//"552873a491feb61c21e1c44a", "552873ad91feb61c21e1c44b", "552873b391feb61c21e1c44c"
