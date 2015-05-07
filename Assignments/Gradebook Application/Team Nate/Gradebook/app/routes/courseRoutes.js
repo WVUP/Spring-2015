@@ -62,6 +62,25 @@ module.exports = function(apiRouter) {
 			})
 		})
 
+		//Update course
+		.put(function (req, res) {
+			Course.update(
+				{"_id": req.params.course_id},
+				{
+					"name": req.body.name,
+					"courseNum": req.body.courseNum,
+					"students": req.body.students
+				},
+				{"upsert": "true"},
+				function (err, course) {
+					if (err)
+						res.send(err);
+					else{
+						res.json(course);
+					}
+				});
+		})
+
 		//Delete an existing course
 		.delete(function (req, res) {
 			Course.findByIdAndRemove(req.params.course_id, function (err, delCourse) {

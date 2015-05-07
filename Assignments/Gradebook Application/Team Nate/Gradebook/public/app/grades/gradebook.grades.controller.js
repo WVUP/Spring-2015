@@ -54,7 +54,6 @@ angular.module('Gradebook.Grades.Ctrl', [
 	});
 
 	Grade.getAssignmentGrades($stateParams.assignment_id).success (function (data) {
-		debugger;
 		$scope.grades = data;
 	});
 	
