@@ -30,14 +30,14 @@
 					<tr ng-repeat="assignment in assignmentData">
 						<td><a ui-sref="assignmentDetail({assignment_id: assignment._id})">{{assignment.name}}</td>
 						<td>{{assignment.maxPoints}}</td>
-						<td>{{assignment.course.name}}</td>
+						<td><a ui-sref="coursesDetail({course_id: assignment.course._id})">{{assignment.course.name}}</a></td>
 						<td>
 							<ul>
 								<li ng-repeat="comment in assignment.comments">{{comment}}</li>
 							</ul>
 						</td>
 						<td>
-							<a ui-sref="enterGrades({assignment_id: assignment._id})"><button class="btn btn-theme05" type="button">Grade</button></a>
+							<a ui-sref="assignmentDetail({assignment_id: assignment._id})"><button class="btn btn-theme" type="button">Details</button></a>
 							<button type="button" class="btn btn-theme04" ng-click="remove(assignment._id)">Delete</button>
 						</td>
 					</tr>

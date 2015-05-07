@@ -17,7 +17,8 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th class="col-lg-6">Name</th>
+						<th class="col-lg-3">Name</th>
+						<th class="col-lg-3">Comment</th>
 						<th class="col-lg-2">Points</th>
 						<th class="col-lg-2">Percentage</th>
 						<th class="col-lg-2"></th>
@@ -25,17 +26,20 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="student in students">
-						<td class="col-lg-6">{{student.firstName + " " + student.lastName}}</td>
+						<td class="col-lg-3">{{student.firstName + " " + student.lastName}}</td>
+						<td class="col-lg-3">
+							<input type="text" class="form-control" ng-model="comments[$index]" placeholder="Enter Comment">
+						</td>
 						<td class="col-lg-2">{{assignment.maxPoints}}</td>
-						<td class="col-lg-2">{{grade / assignment.maxPoints * 100 | number:2}}</td>
+						<td class="col-lg-2">{{grades[$index] / assignment.maxPoints * 100 | number:2}}</td>
 						<td class="col-lg-2">
-							<input class="form-control col-lg-4" type="text" ng-model="grade" placeholder="0">
+							<input class="form-control col-lg-4" type="text" ng-model="grades[$index]" placeholder="0">
 						</td>
 					</tr>
 				</tbody>
 			</table>
 			<div>
-				<button type="button" class="btn btn-theme">Done</button>
+				<button type="button" class="btn btn-theme" ng-click="enterGrades()">Done</button>
 			</div>
 		</div>
 	</div>

@@ -1,3 +1,6 @@
+html, body{
+  height: 100%;
+}
 body {
   font-family: Roboto,sans-serif;
   font-size: 15px;
@@ -19,7 +22,6 @@ input[type="text"],
 input[type="password"] {
   font-family: "Open Sans", sans-serif;
   width: 100%;
-  padding: 0.7em 2em 0.7em 1.7em;
   font-size: 18px;
   background: none repeat scroll 0% 0% transparent;
   border: thin solid #b4b2b2;
@@ -34,7 +36,9 @@ input[type="password"]:focus {
 form[novalidate] input{
   border: thin solid #89C4F4;
 }
-
+.fa-connectdevelop{
+  color: #ff2462;
+}
 input.ng-invalid.ng-dirty{
   border-color: red;
 }
@@ -45,6 +49,16 @@ form[novalidate].ng-submitted input.ng-invalid{
   animation:spin 1s infinite;
   -webkit-animation:spin 1s infinite;
   -moz-animation:spin 1s infinite;
+}
+.table>thead>tr>th{
+  border: none;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th
+table{
+  border: none;
+}
+.nav>li>a:focus, {
+  outline: none;
 }
 
 @keyframes spin {
@@ -67,6 +81,16 @@ form[novalidate].ng-submitted input.ng-invalid{
   -moz-animation:fadeIn .8s both linear;
   animation:fadeIn .8s both linear;
 }
+.flex{
+  display: flex;
+}
+.table>tbody>tr>td{
+  max-width: 200px;
+}
+.dashboard{
+  margin-top: 5%;
+  margin-bottom: 5%
+}
 
 .circle a:hover{
   -webkit-animation:flash .8s both linear;
@@ -88,16 +112,13 @@ form[novalidate].ng-submitted input.ng-invalid{
     margin: 10px;
     width: 100px;
 }
-.login-form form {
-  padding: 5% 10% 20% 2.5em;
-}
 .login-form form div {
-  
   margin-bottom: 25px;
   width: 100%;
   background: none repeat scroll 0% 0% transparent;
   border-radius: 0.3em;
 }
+
 .header{
   background-color: #1a1f2a;
   background-image: url('../images/png.png');
@@ -105,17 +126,7 @@ form[novalidate].ng-submitted input.ng-invalid{
   background-size: cover;
   color: white;
   padding-top: 30px;
-  padding-bottom: 200px;
-}
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 100%
-}
-.sky-blue{
-  background-color: #E4F1FE;
+  height: 100vh;
 }
 .header h1 {
   padding-top: 90px;
@@ -128,23 +139,15 @@ form[novalidate].ng-submitted input.ng-invalid{
 .align-right {
   text-align: right;
 }
-.logo{
-  position: fixed;
-  float: left;
-}
 .silver {
   color: #b9bcc3;
-}
-.login-box{
-  margin-top: 80px;
-  padding: 25px 50px;
-}
-.login-box .btn{
-  font-size: 25px;
 }
 .green{
   color: #fff;
   background-color: #03A678
+}
+.green-color{
+  color: #03A678;
 }
 .green:hover, .green:focus{
   color: #fff;
@@ -162,7 +165,9 @@ form[novalidate].ng-submitted input.ng-invalid{
 }
 .footer{
   background-color: black;
-  height: 80px;
+}
+.hei{
+  height: 100vh;
 }
 .cursor{
   cursor: pointer;
@@ -178,14 +183,56 @@ form[novalidate].ng-submitted input.ng-invalid{
   padding: 15px;
 }
 #sp-links a { 
-  display:inline-block; 
-  color: #1a1f2a;
+  display:inline-block;
+  opacity: .5
+}
+.fixed-left{
+  position: fixed;
+  left: 10px;
+  top: 10px;
 }
 
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
   background-color: transparent;
 }
 
+/*--------------------------------*/
+
+.ghost-btn{
+  display: inline-block;
+  border-radius: 2px;
+  border: none;
+  padding: 40px;
+  text-transform: uppercase;
+}
+
+.ghost{
+  background-color: transparent;
+  color: silver;
+  width: 150px;
+  transition: .2s ease;
+}
+.white{
+  color: #fff;
+}
+  
+.ghost:hover {
+  color: white;
+  cursor: pointer;
+  transition: .2s ease;
+}
+.ghost-green{
+  border: 1px solid #03A678;
+}
+/*.ghost-green:hover{
+  background-color: #03A678;
+}*/
+.ghost-orange{
+  border: 1px solid #F07444;
+}
+/*.ghost-orange:hover{
+  background-color: #F07444;
+}*/
 
 /*-----------------------------*/
 
@@ -319,6 +366,33 @@ form[novalidate].ng-submitted input.ng-invalid{
   z-index: 11;
   height: 350px;
 }
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+  outline: none;
+}
+.form-control{
+  border: thin dashed #000 !important;
+  background-color: transparent;
+}
+.form-control:focus{
+  box-shadow: none;
+  border: thin solid #000 !important;
+}
+.btn-no-color{
+  background-color: transparent;
+  border-color: #000;
+}
+.fc-time {
+    display:none;
+}
+.glyphicon-calendar{
+  color: #ff2462
+}
+.fc-title{
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase; 
+  font-size: 12px;
+  font-weight: 100;
+}
 .box:hover{
   -webkit-filter: grayscale(0%);
   -moz-filter: grayscale(0%);
@@ -381,9 +455,10 @@ form[novalidate].ng-submitted input.ng-invalid{
   background-repeat: no-repeat;
 }
 .tree-display{
-  position: absolute;
+  position: fixed;
   bottom:0;
   width: 100%;
+  z-index: 1;
 }
 .circles{
   margin: 0 auto;
@@ -412,13 +487,16 @@ form[novalidate].ng-submitted input.ng-invalid{
 .circle span{
   text-align: center;
   position: relative;
-  top: 40%;
+  line-height: 100px;
   -ms-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 .pink{
   background-color: #ff2462;
+}
+.pink-color{
+  color: #ff2462;
 }
 .btn-info{
   background-color: #ff2462;
@@ -430,16 +508,26 @@ form[novalidate].ng-submitted input.ng-invalid{
   border-color: #ff2462;
   opacity: 1
 }
-.navbar-brand:focus{
+.progress-bar {
+  background-color: #ff2462;
+}
+.fa-connectdevelop:focus{
   color: #ff2462;
 }
 .select{
   cursor: pointer;
 }
-.navbar-brand:hover{
+.fa-connectdevelop:hover{
   -webkit-animation:wobble.8s both linear;
   -moz-animation:wobble .8s both linear;
   animation:wobble .8s both linear;
+}
+.table *{
+  text-align: center;
+  vertical-align: middle!important;
+}
+.navbar-nav>li>a{
+  line-height: 30px;
 }
 .gray{
   background-color: #DCDCDC;
@@ -454,15 +542,18 @@ form[novalidate].ng-submitted input.ng-invalid{
 }
 .calButton{
   text-transform:uppercase;
-  float: right;
   color: black;
   font-size: 20px;
+}
+.calButton:hover{
+  color:#AEA8D3;
 }
 /*-------------------------------*/
 
 .gradebook {
   display: block;
   margin: 30px;
+  margin-bottom: 120px;
   overflow: hidden;
 }
 .nav>li>a:focus, .nav>li>a:hover{
@@ -514,6 +605,7 @@ label{
 }
 textarea{
   resize: none;
+  background-color: none;
 }
 .dropdown-menu{
   box-shadow: none;
@@ -570,24 +662,250 @@ textarea{
 .vertical-top{
   vertical-align: top;
 }
+.margin-top-big{
+  margin-top: 20px;
+}
 .yellow{
   padding: 10px;
   background-color: #f7f9f9;
 }
-
 .fixed{
   position: fixed;
   top: 100px;
   left: 20px;
 }
-
 .images {
   width: 628px;
   height: 295px;
 }
-
-.smallpics
-{
+.smallpics{
   width: 50px;
   height: 50px;
 }
+.gradebook-box{
+  border-bottom: thin solid #ff2462;
+}
+.instructor-box{
+  border-bottom: thin dotted silver;
+}
+.big-icon{
+  font-size: 300px !important;
+}
+/*.flash{
+  -webkit-animation:flash 6s both linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation:flash 6s both linear;
+  -moz-animation-iteration-count: infinite;
+  animation:flash 6s both linear;
+  animation-iteration-count: infinite;
+}*/
+.change-color{
+  -webkit-animation: color_change 5s infinite alternate;
+  -moz-animation: color_change 5s infinite alternate;
+  -ms-animation: color_change 5s infinite alternate;
+  -o-animation: color_change 5s infinite alternate;
+  animation: color_change 5s infinite alternate;
+}
+@-webkit-keyframes color_change {
+  0% { color: #fff; }
+  50% { color: #F07444; }
+  100% { color: #03A678; }
+}
+@-moz-keyframes color_change {
+  0% { color: #fff; }
+  50% { color: #F07444; }
+  100% { color: #03A678; }
+}
+@-ms-keyframes color_change {
+  0% { color: #fff; }
+  50% { color: #F07444; }
+  100% { color: #03A678; }
+}
+@-o-keyframes color_change {
+  0% { color: #fff; }
+  50% { color: #F07444; }
+  100% { color: #03A678; }
+}
+@keyframes color_change {
+  0% { color: #fff; }
+  50% { color: #F07444; }
+  100% { color: #03A678; }
+}
+
+.logo-font{
+  font-family: 'Montez', cursive;
+  font-size: 400%
+}
+.logo-font-small{
+  font-family: 'Montez', cursive;
+  font-size: 100%
+}
+.title-font{
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase; 
+  font-size: 40px;
+  font-weight: 100;
+}
+.regular-small-font{
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase; 
+  font-size: 12px;
+  font-weight: 700
+}
+.regular-normal-font{
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase; 
+  font-size: 22px;
+  font-weight: 100;
+}
+.bottom-bar{
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  width: 100%
+}
+.fa-angle-double-down{
+  color: #fff;
+}
+.cursor-animate{
+  -webkit-animation:rubberBand 10s both linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation:rubberband 10s both linear;
+  -moz-animation-iteration-count: infinite;
+  animation:rubberBand 10s both linear;
+  animation-iteration-count: infinite;
+}
+
+.fadeInUp1s{
+  -webkit-animation:fadeInUp 1s both linear;
+  -moz-animation:fadeInUp 1s both linear;
+  animation:fadeInUp 1s both linear;
+
+}
+.fadeInUp2s{
+  -webkit-animation:fadeInUp 2s both linear;
+  -moz-animation:fadeInUp 2s both linear;
+  animation:fadeInUp 2s both linear;
+}
+.person{
+  height: 120px;
+  width: 100px;
+  background-image: url('../images/faces2.jpg');
+  display: inline-block;
+}
+.instructor1{
+  background-position: 0 33.6%;
+}
+.green-color{
+  color: #03A678;
+}
+.orange{
+  color: #F07444;
+}
+.rules *{
+  padding-bottom: 20px;
+}
+#instr{
+  background-image: url(../images/instr.jpg);
+}
+.instructor2{
+  background-position: 33% 0;
+}
+.student1{
+  background-position: 33% 66.5%;
+}
+.student2{
+  background-position: 100% 66.6%;
+}
+
+.Tghost-btn {
+  font-family: "Arial";
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid #000;
+  height: 25px;
+  min-width: 75px;
+  line-height: 25px;
+  color: #ff2462;
+  -webkit-border-radius: 5px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 5px;
+  -moz-background-clip: padding;
+  border-radius: 5px;
+  background-clip: padding-box;
+  font-size: 1em;
+  padding: .5em 1.5em;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  background: #ffffff;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+  zoom: 1;
+  -webkit-backface-visibility: hidden;
+  position: relative;
+}
+.Tghost-btn:hover {
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  transition: 0.2s ease;
+  background-color: #1a1f2a;
+  border-color: transparent;
+  color: #ffffff;
+}
+.Tghost-btn:focus {
+  outline: none;
+}
+.Tghost-auth{
+  background-color: transparent;
+}
+.Tghost-upload{
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  line-height: 200px
+}
+.Tgost-auth:hover{
+  background-color: none;
+}
+
+.center-form{
+  margin: 0 auto;
+  width: 30%
+}
+
+.lines{
+  background: url(../images/lines.png);
+  background-repeat: no-repeat;
+}
+.lines2{
+  background: url(../images/lines23.png);
+  background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

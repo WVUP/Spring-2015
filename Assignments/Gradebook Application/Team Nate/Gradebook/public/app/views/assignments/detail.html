@@ -10,22 +10,73 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Points</th>
+						<th>Name<button type="button" class="btn btn-default pull-right" ng-click="editName()"><i class="fa fa-edit"></i></button></th>
+						<th>Points<button type="button" class="btn btn-default pull-right" ng-click="editPoints()"><i class="fa fa-edit"></i></button></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>{{assignment.name}}</td>
-						<td>{{assignment.maxPoints}}</td>
+						<td ng-hide="nameEdit">{{assignment.name}}</td>
+						<td ng-show="nameEdit">
+							<input type="text" class="form-control" id="name" placeholder="{{assignment.name}}" ng-model="assignment.name">
+						</td>
+						<td ng-hide="pointsEdit">{{assignment.maxPoints}}</td>
+						<td ng-show="pointsEdit">
+							<input type="text" class="form-control" id="num" placeholder="{{assignment.maxPoints}}" ng-model="assingment.maxPoints">
+						</td>
 					</tr>
 				</tbody>
 			</table>
-			<br/>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Description<button type="button" class="btn btn-default pull-right" ng-click="editDesc()"><i class="fa fa-edit"></i></button></th>
+						<th>Comment<button type="button" class="btn btn-default pull-right" ng-click="editComm()"><i class="fa fa-edit"></i></button></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td ng-hide="descEdit">{{assignment.description}}</td>
+						<td ng-show="descEdit">
+							<input type="text" class="form-control" id="name" placeholder="{{assignment.description}}" ng-model="assignment.description">
+						</td>
+						<td ng-hide="commEdit">
+							<ul>
+								<li ng-repeat="comment in assignment.comments">{{comment}}</li>
+							</ul>
+						</td>
+						<td ng-show="commEdit">
+							<input type="text" class="form-control" id="num" placeholder="Enter Comment" ng-model="comment">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
 			<hr/>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<td>Student</td>
+						<td>Possible</td>
+						<td>Percentage</td>
+						<td>Points</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="grade in grades">
+						<td>{{grade.student.firstName + " " + grade.student.lastName}}</td>
+						<td>{{grade.assignment.maxPoints}}</td>
+						<td>{{grade.points / grade.assignment.maxPoints * 100 | number:2}}</td>
+						<td>{{grade.points}}</td>
+					</tr>
+				</tbody>
+			</table>
+
 			<div>
 				<span class="pull-right">
-					<button type="button" class="btn btn-theme">Save</button>
+					<button type="button" class="btn btn-theme" ng-click="updateAssignment(assignment._id)">Save</button>
 					<a ui-sref="assignmentState"><button type="button" class="btn btn-theme04" >Cancel</button></a>
 				</span>
 			</div>

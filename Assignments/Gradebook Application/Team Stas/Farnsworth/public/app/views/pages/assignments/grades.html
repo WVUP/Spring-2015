@@ -28,7 +28,7 @@
             <sort-order ng-route="'sort-order.html'"></sort-order>
 			    	<h5 class="align-center" ng-show="class.assignments.length == 0">This class has no active assignments. Please contact your instructor to resolve the issue.</h5>
 
-			    	<div class="inline" ng-repeat="assignment in class.assignments | filter:searchText | orderBy:sortOptions.sortOrder"">
+			    	<div class="inline" ng-repeat="assignment in class.assignments | filter:searchText | orderBy:sortOptions.sortOrder">
 
 						<div class="form-group">
 							<label for="name">Assignment Name</label>

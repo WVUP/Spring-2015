@@ -2,7 +2,7 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 
 .controller('mainController', function ($rootScope, $location, Auth, $modal) {
 	var vm = this;
-	isInstructor = false;
+
 
 	//login modal handler
 	vm.openLogin = function () {
@@ -22,20 +22,11 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 		});
 	};
 
-	//get info if a person is logged in
-	vm.loggedIn = Auth.isLoggedIn();
-
-	//check to see if a user is logged in on every request
-	$rootScope.$on('$locationChangeStart', function() {
-		vm.loggedIn = Auth.isLoggedIn();
-		// get user information on page load
-		Auth.getUser()
-			.then(function(data) {
-				vm.user = data.data;
-				isInstructor = vm.isInstructor = data.data.roles.indexOf('Instructor') != -1;
-				currentUserId = data.data.id || '';
-			});
-	});
+	$rootScope.deferredRounting.promise.then(function () {
+		vm.user = $rootScope.currentUser;
+		vm.isAdmin = vm.user.isAdmin;
+		vm.isInstructor = vm.user.isInstructor;
+	})
 
 	vm.doLogout = function () {
 		Auth.logout();
@@ -53,12 +44,12 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 	};
 
 	vm.doLogin = function (isValid) {
+		console.log(vm.loginData)
 		vm.processing = true;
 
 		vm.error = '';
 
 		if(isValid){
-
 			Auth.login(vm.loginData).success(function (data) {
 				vm.processing = false;
 				// if a user successfully logs in, redirect to users page
@@ -71,7 +62,7 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 			});
 		}else{
 			vm.processing = false;
-			vm.error = 'Fields marked with a * are mandatory.';
+			vm.error = 'Invalid form';
 		}
 	};
 })
@@ -99,7 +90,7 @@ angular.module('mainCtrl', ['ui.bootstrap'])
 			})
 		}else{
 			vm.processing = false;
-			vm.error = 'Fields marked with a * are mandatory.';
+			vm.error = 'Invalid form';
 		}	
 	};
 })

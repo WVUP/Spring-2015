@@ -41,8 +41,9 @@ angular.module('Gradebook.Courses.Ctrl', [
 		$scope.courseInfo.studentsIn.push($scope.courseInfo.studentsOut.splice(i, 1)[0]);
 	}
 
-	$scope.toggleOut = function (student, i) {
-		$scope.courseInfo.studentsOut.push($scope.courseInfo.studentsIn.splice(i, 1));
+	$scope.toggleOut = function (student) {
+		$scope.courseInfo.studentsIn.splice($scope.courseInfo.studentsIn.indexOf(student), 1);
+		$scope.courseInfo.studentsOut.push(student);
 	}
 
 	$scope.postData = function () {
@@ -62,10 +63,9 @@ angular.module('Gradebook.Courses.Ctrl', [
 			$http.post('/api/courses', $scope.courseInfo).success(function (data) {
 				console.log("Course successfully posted");
 
-				//Push students to course
-				for (var i=0; i < $scope.courseInfo.studentsIn.length; i++) {
+				for (var i=0; i<$scope.courseInfo.studentsIn.length; i++) {
 					debugger;
-					Course.pushStudent(data._id, $scope.courseInfo.studentsIn[i]._id);
+					Course.updateStudent($scope.courseInfo.studentsIn[i]._id, data._id);
 				}
 
 				$state.go('coursesDetail', { course_id: data._id });
@@ -77,9 +77,76 @@ angular.module('Gradebook.Courses.Ctrl', [
 	};
 }])
 
-.controller('Course.Detail.Ctrl', ['$scope', '$http', '$state', '$stateParams', function ($scope, $http, $state) {
+.controller('Course.Detail.Ctrl', ['$scope', '$http', '$state', '$stateParams', 'Course', function ($scope, $http, $state, $stateParams, Course) {
+	//Scope properties
 	$scope.viewType = "Course Details";
 	$scope.pointTotal = 0;
+	$scope.addStudentButton = false;
+	$scope.toggleNameEdit = false;
+	$scope.toggleCRNEdit = false;
+	$scope.allStudents = [];
+	$scope.studentsOut = [];
+
+	//Scope methods
+	$scope.editName = function() {
+		if (!$scope.toggleNameEdit) {
+			$scope.toggleNameEdit = true;
+		}
+		else{
+			$scope.toggleNameEdit = false;
+		}
+	}
+
+	$scope.editCourseNum = function() {
+		if (!$scope.toggleCRNEdit) {
+			$scope.toggleCRNEdit = true;
+		}
+		else{
+			$scope.toggleCRNEdit = false;
+		}
+	}
+
+	$scope.toggleIn = function (student, i) {
+		$scope.course.students.push($scope.studentsOut.splice(i, 1)[0]);
+	}
+
+	$scope.toggleOut = function (student) {
+		$scope.course.students.splice($scope.course.students.indexOf(student), 1);
+		$scope.studentsOut.push(student);
+	}
+
+	$scope.toggleState = function() {
+		if ($scope.addStudentButton) {
+			$scope.addStudentButton = false;
+		}
+		else {
+			$scope.addStudentButton = true;
+		}
+	}
+
+	$scope.updateCourse = function(course_id) {
+		debugger;
+		$http.put('/api/courses/' + course_id, $scope.course).success(function (data) {
+			debugger;
+		})
+		.error(function (data) {
+			debugger;
+		});
+		$state.go('courseState');
+	}
+
+	//Use services
+	Course.getStudentsOut($stateParams.course_id).success (function (data) {
+		for (var i=0; i<data.length; i++) {
+			$scope.studentsOut.push(data[i]);
+		}
+	});
+
+	// Course.getStudentsIn($stateParams.course_id).success (function (data) {
+	// 	for (var i=0; i<data.length; i++) {
+	// 		$scope.course.students.push(data[i]);
+	// 	}
+	// });
 
 	$http.get("/api/courses/" + $state.params.course_id).success (function (data) {
 		$scope.course = data;
@@ -91,4 +158,6 @@ angular.module('Gradebook.Courses.Ctrl', [
 	.error (function () {
 		console.log("Course not retrieved");
 	});
+
+
 }]);

@@ -3,19 +3,17 @@ angular.module('Gradebook.Grades.Service', [])
 .factory('Grade', function ($http) {
 	var Grade = {};
 
-	Grade.getStudents = function (assignment_id) {
-		debugger;
-		$http.get('/api/assignments/' + assignment_id + '/course')
-		
-		.success(function (course) {
-		 	debugger;
-		 	return $http.get('/api/course/' + course.course + '/students');
-		})
-		.error(function (err) {
-			debugger;
-			return err;
-		});
-	};
+	Grade.getAssignment = function(assignment_id) {
+		return $http.get('/api/assignments/' + assignment_id);
+	}
+
+	Grade.getStudents = function(course_id) {
+		return $http.get('/api/courses/' + course_id + '/students');
+	}
+
+	Grade.getAssignmentGrades = function(assignment_id) {
+		return $http.get('/api/assignments/' + assignment_id + '/grades');
+	}
 
 	return Grade;
 });

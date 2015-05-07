@@ -14,13 +14,12 @@ var gradeSchema = new Schema({
 		default: Date.now()
 	},
 	dateModified: {
-		type: Date,
-		required: true
+		type: Date
 	},
 	points: {
 		type: Number,
 		required: true,
-		default: 100
+		default: 0
 	},
 	assignment: {
 		type: ObjectId,

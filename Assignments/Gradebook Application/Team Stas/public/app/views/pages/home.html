@@ -1,154 +1,208 @@
+<div id="sp-links" class="fixed-left">
+    <a id="sp-github" href="https://github.com/WVUP"><span class="fa fa-github fa-4x"></span></a>
+</div>
+
 <div class="header">
 	<div class="menu-top-home">
-	<div class="container">
-		<span class="logo"><img src="assets/images/logo.png"></span>
-		<div class="col-sm-12 align-right">
-			<ul class="links">
-				<li>
-					<span class="btn green" ng-click="main.openRegister()">Register</span>
-				</li>
-			</ul>
+		<div class="container">
+			<div class="align-right">
+				<ul class="links" ng-if="!isLoggedIn">
+					<li>
+						<span ng-click="main.openLogin()" class="ghost-btn ghost ghost-orange">Sign In</span>
+					</li>
+					<li>
+						<span class="ghost-btn ghost ghost-green" ng-click="main.openRegister()">Register</span>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
-	</div>
-	<div class="container align-center">
-		<h1>
-			Hello! Welcome to the Gradebook of Doom.
-		</h1>
-		<br>
-		<h3 class="silver">Please Sign in Below</h3>
-		<div class="login-box">
-			<div class="btn-group">
-				<span ng-click="main.openLogin()" class="btn btn-primary btn-lg">Sign In</span>
+
+	<div class="bottom-bar">
+		<div class="container align-center">
+			<span class="logo-font">&nbsp;&nbsp;&nbsp;&nbsp;Simple</span><i id="intro" class="fa fa-circle-o big-icon"></i><span class="logo-font">Gradebook</span>
+			<p class="regular-small-font">Online learning</p>
+			<div class="align-right">
+				<i scroll-on-click class="fa fa-angle-double-down fa-5x cursor-animate select"></i>
 			</div>
 		</div>
 	</div>
 </div>
-<div class='padding-big'></div>
-<div class="container">
-	<div class="row align-center">
-		<div id="sp-links">
-	        <a id="sp-github" href="https://github.com/WVUP"><span class="fa fa-github fa-4x"></span></a>
-	    </div>
-	    <div>
-	    	<h4>Some graph or some interesting stuff can add here</h4>
-	    </div>
-	</div>
-</div>
-<div class='padding-big'></div>
-<div class="container" style="border: 2px solid; height: 300px;">
-	<div class="row">
-		<div class="col-sm-5 info-big">
-			<h2><img class="smallpics" src ="assets/images/smallbook.png">Gradebook</h2>
-			<p>Carousel with application's snapshots here and their description</p>
-			<p>Why use other Gradebooks when everything you're looking for is right here?</p>
-		</div>
-		<div class="col-sm-7">
-			<img class="images" src="assets/images/descr.png">
-		</div>
-	</div>
-</div>
-<div class='padding-big'></div>
-<div class="container" style="border: 2px solid; height: 300px;">
-	<div class="row">
-		<div class="col-sm-5 info-big">
-			<h2><img class="smallpics" src="assets/images/paper.png">Assignment Management</h2>
-			<p>Carousel with application's snapshots here and their description</p>
-			<p>Easily add and manage all your assignments safely and securely</p>
-		</div>
-		<div class="col-sm-7">
-			<img class="images" src="assets/images/Assignments.png">
-		</div>
-	</div>
-</div>
-<div class='padding-big'></div>
-<div class="container" style="border: 2px solid; height: 300px;">
-	<div class="row">
-		<div class="col-sm-5 info-big">
-			<h2><img class="smallpics" src="assets/images/openbook.png">Class Management</h2>
-			<p>Carousel with application's snapshots here and their description</p>
-			<p>Create Classes and add users painlessly</p>
-		</div>
-		<div class="col-sm-7">
-			<img class="images" src="assets/images/classes.png">
-		</div>
-	</div>
-</div>
 
-<div class='padding-big'></div>
+<div class="container align-center">
+	<h2 class="title-font">using gradebook is easy:</h2>
+	<div class="padding-huge"></div>
+
+	<div class="col-md-4 rules instructors">
+		<p class="regular-small-font orange">Instructors</p>
+		<div class="person instructor1"></div>
+		<div class="person instructor2"></div>
+
+		<p class="regular-normal-font">Start creating classes and assignments for your students right away</p>
+		
+	</div>
+	<div class="col-md-4 col-md-offset-4 rules students">
+		<p class="regular-small-font green-color">Students</p>
+		<div class="person student1"></div>
+		<div class="person student2"></div>
+		<p class="regular-normal-font">Contact your instructor about class enrollment.</p>
+	</div>
+	<div class="padding-huge"></div>
+</div>
+<div class="container align-center ">
+	<h2 class="title-font">Application features include: </h2>
+	<div id="cloud"></div>
+</div>
+<div class="padding-big"></div>
+
 <div class="footer align-center">
 	<div class="container">
-		<h4>Copyright and extra info goes here</h4>
+		<span class="regular-small-font white">Simple Gradebook 2015&nbsp;&nbsp;<span class="glyphicon glyphicon-copyright-mark"></span></span>
 	</div>
 </div>	
 
 
+<script type="text/javascript" src="scripts/d3.js"></script>
+<script type="text/javascript" src="scripts/d3.layout.cloud.js"></script>
+<script type="text/javascript" src="scripts/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="scripts/inview.min.js"></script>
+
+<script>
+  var fill = d3.scale.category10();
+  var selection = d3.select("#cloud");
+  var width = selection[0][0].clientWidth;
+  var height = 600;
+  var color = "#ececec"
+
+  d3.layout.cloud().size([width, height])
+      .words([
+        "Powered by Nodejs", "easy to use", "file upload", "role-based interface",
+        "due dates calendar", "control due dates", "instructor panel", "administrator panel", "lightweight", "edit classes", "edit assignments", "provide comments", "control assignments", "control submissions"].map(function(d) {
+        return {text: d, size: 10 + Math.random() * 90};
+      }))
+      .padding(5)
+      .rotate(function() { return ~~(Math.random() * 2) * 90; })
+      .font("Impact")
+      .fontSize(function(d) { return d.size; })
+      .on("end", draw)
+      .start();
+  function draw(words) {
+    selection.append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+      .selectAll("text")
+        .data(words)
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .style("font-family", "Impact")
+        .style("fill", function(d) { return color })
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; });
+  }
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#intro").addClass("change-color");
+
+		var in_view = new Waypoint.Inview({
+        element: $('.students'),
+        enter: function() {
+            $('.students').addClass('fadeInUp2s');
+            $('.instructors').addClass('fadeInUp1s')
+        }
+    });
+		 
+	});
+</script>
+
+<script type="text/javascript">
+    $(window).scroll(function() {
+        // get how far we've scrolled from the top of our screen
+        var offset = $(window).scrollTop();
+        offset = offset * 2.2;
+        // apply the offset as a css transform to our buttons
+        $('#sp-links a').css({
+            '-moz-transform': 'rotate(' + offset + 'deg)',
+            '-webkit-transform': 'rotate(' + offset + 'deg)',
+            '-o-transform': 'rotate(' + offset + 'deg)',
+            '-ms-transform': 'rotate(' + offset + 'deg)',
+            'transform': 'rotate(' + offset + 'deg)',
+        });
+    });
+</script>
+
 <script type="text/ng-template" id="loginModal.html">
-	<div class="alert alert-danger align-center" ng-show="login.error">
-		{{login.error}}
-	</div>
 	<span class="float-right padding-big cursor" ng-click="login.close()">Close</span>
 	<div class="login-form">
-		<span><img src="assets/images/u6.png" /></span>
 		<form ng-submit="login.doLogin(form.$valid)" name="form" novalidate>
-			<div>
-				<input required type="text" placeholder="E-MAIL*" ng-model="login.loginData.email">
+			<div class="align-right">
+				<span class="logo-font-small">Welcome back...</span>
 			</div>
 			<div>
-				<input required name="password" type="password" placeholder="PASSWORD*" ng-model="login.loginData.password">
+				<label class="upper align-left">E-mail<span class="pink-color">*</span></label>
+				<input required type="text" class="form-control" ng-model="login.loginData.email">
 			</div>
-			
-			<button type="submit" class="btn btn-primary btn-block">
-				<span ng-if="login.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
-				<span ng-if="!login.processing">Sign In</span>
-			</button>
+			<div>
+				<label class="upper align-left">Password<span class="pink-color">*</span></label>
+				<input required name="password" class="form-control" type="password" ng-model="login.loginData.password">
+			</div>
+
+			<div>
+				<button type="submit" class="Tghost-btn Tghost-auth">
+					<span ng-if="login.processing" class="spinner">
+						<span class="glyphicon glyphicon-repeat"></span>
+					</span>
+					<span ng-if="!login.processing" class="glyphicon glyphicon-education"></span>
+				</button>
+			</div>
 		</form>
+	</div>
+	<div class="alert alert-danger upper align-center" ng-show="login.error">
+		{{login.error}}
 	</div>
 </script>
 
 <script type="text/ng-template" id="registerModal.html">
-	<div class="alert alert-danger align-center" ng-show="register.error">
-		{{register.error}}
-	</div>
 	<span class="float-right padding-big cursor" ng-click="register.close()">Close</span>
 	<div class="login-form">
-		<span><img src="assets/images/u6.png" /></span>
+		<span class="logo-font">registration</span>
 		<form ng-submit="register.doRegister(form.$valid)" name="form" novalidate>
 			<div>
-				<input required type="text" placeholder="FIRST NAME*" ng-model="register.registerData.fname">
+				<label class="upper align-left">First Name<span class="pink-color">*</span></label>
+				<input required ng-minlength="3" name="fname" type="text" class="form-control" ng-model="register.registerData.fname">
+				<p class="help-block bg-danger" ng-show="form.fname.$error.minlength">Min 3 characters required</p>
 			</div>
 			<div>
-				<input required type="text" placeholder="LAST NAME*" ng-model="register.registerData.lname">
+				<label class="upper align-left">Last Name<span class="pink-color">*</span></label>
+				<input required ng-minlength="3" type="text" class="form-control" name="lname" ng-model="register.registerData.lname">
+				<p class="help-block bg-danger" ng-show="form.lname.$error.minlength">Min 3 characters required</p>
 			</div>
 			<div>
-				<input required type="text" placeholder="E-MAIL*" ng-model="register.registerData.email">
+				<label class="upper align-left">E-mail<span class="pink-color">*</span></label>
+				<input type='email' validate-email name='email' class="form-control" name="email" id='email' ng-model='register.registerData.email' required>  
+				<p class="help-block bg-danger" ng-show="form.email.$error.email">Invalid e-mail</p>
 			</div>
 			<div>
-				<input required name="password" ng-minlength="6" type="password" placeholder="PASSWORD*" ng-model="register.registerData.password">
+				<label class="upper align-left">Password<span class="pink-color">*</span></label>
+				<input required name="password" ng-minlength="6" type="password" class="form-control" ng-model="register.registerData.password">
 				<p class="help-block bg-danger" ng-show="form.password.$error.minlength">Min 6 characters required</p>
 			</div>
-			
-			<button type="submit" class="btn green btn-block">
-				<span ng-if="register.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
-				<span ng-if="!register.processing">Register</span>
+
+			<button type="submit" class="Tghost-btn Tghost-auth">
+				<span ng-if="login.processing" class="spinner">
+					<span class="glyphicon glyphicon-repeat"></span>
+				</span>
+				<span ng-if="!login.processing" class="glyphicon glyphicon-education"></span>
 			</button>
 		</form>
 	</div>
+	<div class="alert alert-danger upper align-center" ng-show="register.error">
+		{{register.error}}
+	</div>
 </script>
-
-<script type="text/javascript">
-	    $(window).scroll(function() {
-	        // get how far we've scrolled from the top of our screen
-	        var offset = $(window).scrollTop();
-	        offset = offset * 2.2;
-	        // apply the offset as a css transform to our buttons
-	        $('#sp-links a').css({
-	            '-moz-transform': 'rotate(' + offset + 'deg)',
-	            '-webkit-transform': 'rotate(' + offset + 'deg)',
-	            '-o-transform': 'rotate(' + offset + 'deg)',
-	            '-ms-transform': 'rotate(' + offset + 'deg)',
-	            'transform': 'rotate(' + offset + 'deg)',
-	        });
-
-	    });
-	</script>

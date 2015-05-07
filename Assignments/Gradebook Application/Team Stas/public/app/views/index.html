@@ -10,6 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link href='//fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Raleway:700,100' rel='stylesheet' type='text/css'>
 
 	<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script src="scripts/angular-file-upload-shim.min.js"></script> 
@@ -37,21 +39,22 @@
 	<script src="app/controllers/dashboardCtrl.js"></script>
 	<script src="app/controllers/assignmentCtrl.js"></script>
 	<script src="app/controllers/submissionCtrl.js"></script>
+
+	<script src="app/directives/customDirectives.js"></script>
+	<script type="text/javascript" src="scripts/calendar.min.js"></script>
 </head>
 
 <body ng-app="gradebookApp" ng-controller="mainController as main">
 
-	<header ng-if="main.loggedIn">
+	<header ng-if="isLoggedIn">
 		<div class="container">
 			<nav class="navbar">
-				<ul class="nav navbar-nav">
-					<li class="navbar-brand">
-						<a href="/dashboard"><span class="fa fa-connectdevelop fa-2x"></span></a>
+		      	<ul class="nav navbar-nav">
+		      		<li>
+						<a href="/dashboard"><span class="fa fa-connectdevelop fa-2x select"></span></a>
 					</li>
-				</ul>
-		      	<ul class="nav navbar-nav navbar-right">
 		        	<li>
-		        		<a href="#">Logged in as {{main.user.fname}}</a>
+		        		<a class="regular-small-font" href="#">Logged in as {{main.user.fname}}</a>
 		        	</li>
 		      	</ul>
 			</nav>
@@ -60,31 +63,45 @@
 				<div class="open">
 					<span class="cls"></span>
 					<span>
-					  <ul class="sub-menu ">
-					  	<li><a href="/dashboard">Dashboard</a></li>
-					  	<li><a href="/grades">Gradebook</a></li>
-					  	<li><a href="/cpanel">Instructor Panel</a></li>
-						<li><a href="/users">Manage Users</a></li> <!-- admins's role -->
-						<li><a href="/classes">Manage Classes</a></li> <!-- admins's role -->
-						<li><a href="/assignments">Manage Assignments</a></li> <!-- admins's role -->
-						<li class="select" ng-click="main.doLogout()"><a href="#">Logout</a></li>
+					  <ul class="sub-menu">
+					  	<li>
+					  		<a href="/dashboard">Dashboard</a>
+					  	</li>
+					  	<li>
+					  		<a href="/grades">Gradebook</a>
+					  	</li>
+					  	<li ng-if="main.isInstructor || main.isAdmin">
+					  		<a href="/cpanel">Instructor Panel</a>
+					  	</li>
+						<li ng-if='main.isAdmin'>
+							<a href="/users">Manage Users</a>
+						</li>
+						<li ng-if='main.isAdmin'>
+							<a href="/classes">Manage Classes</a>
+						</li>
+						<li ng-if='main.isAdmin'>
+							<a href="/assignments">Manage Assignments</a>
+						</li>
+						<li class="select" ng-click="main.doLogout()">
+							<a href="#">Logout</a>
+						</li>
 					  </ul>
 					 </span> 
 					 <span class="cls"></span> 
 				</div>
 			</div>
 		</div>
-		
 	</header>
+	<div ng-if="isLoggedIn" class="padding-header"></div>
 
-	<main>
-		<div id="wrapper">
-			<div ng-view></div>
-		</div>
-	</main>
+
+	<div ng-class="main.myClass" id="ui" ng-view>
+
+	</div>
 
 	<script>
 		$(document).ready(function() {
+			$(".fa-connectdevelop").addClass("change-color");
 			$(document).delegate('.open', 'click', function(event){
 				$(this).addClass('oppenned');
 				event.stopPropagation();

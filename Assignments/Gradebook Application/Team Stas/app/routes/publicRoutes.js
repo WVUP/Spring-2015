@@ -7,7 +7,8 @@ function sendToken (msg, user, res) {
 	var token = jwt.sign({
 					id: user._id,
 					fname: user.fname,
-					roles: user.roles
+					isAdmin: user.roles.indexOf('Admin') != -1,
+					isInstructor: user.roles.indexOf('Instructor') != -1
 				}, supersecret, {
 					expiresInMinutes: 1440
 				});
@@ -30,7 +31,7 @@ module.exports = function (apiRouter) {
 			if(!user){
 				res.json({
 					success: false,
-					message: 'Authentication failed.'
+					message: 'Authentication failed'
 				})
 			}
 			else if(user){
@@ -39,7 +40,7 @@ module.exports = function (apiRouter) {
 				if(!validPassword){
 					res.json({
 						success: false,
-						message: 'Authentication failed.'
+						message: 'Authentication failed'
 					})
 				}else{
 					sendToken('Successfully passed a token', user, res);
@@ -51,8 +52,6 @@ module.exports = function (apiRouter) {
 	apiRouter.route('/register')
 		.post(function (req, res) {
 			var user = new User();
-
-			console.log(req.body)
 
 			user.fname = req.body.fname;
 			user.lname = req.body.lname;

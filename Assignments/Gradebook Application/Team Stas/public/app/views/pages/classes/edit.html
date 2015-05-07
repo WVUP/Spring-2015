@@ -1,0 +1,34 @@
+<div class="container" ng-if="!class.receivedData">
+	<div class="col-md-offset-4 col-md-4">
+		<h5 class="logo-font align-center">Edit class</h5>
+		<form class="form-horizontal" ng-submit="class.saveClass(form.$valid)" name="form" novalidate>
+			<div class="form-group">
+				<label>CRN</label>
+				<input type="number" class="form-control" ng-model="class.classData.crn">
+			</div>
+
+			<div class="form-group">
+				<label>Name</label>
+				<input type="text" class="form-control" ng-model="class.classData.name">
+			</div>
+
+			<div class="form-group">
+				<label>Term</label>
+				<input type="text" class="form-control" ng-model="class.classData.term">
+			</div>
+
+			<div class="form-group align-center">
+				<button type="submit" class="Tghost-btn">Edit</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="alert alert-info align-center upper" ng-if="class.receivedData">
+	{{ class.message}}
+</div>
+
+
+<div class="alert alert-danger upper align-center" ng-show="class.error">
+	{{class.error}}
+</div>

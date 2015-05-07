@@ -40,8 +40,14 @@
   <script src="app/controllers/dashboardCtrl.js"></script>
   <script src="app/controllers/assignmentCtrl.js"></script>
   <script src="app/controllers/submissionCtrl.js"></script>
-
+<!--***************************************************************************************************-->
   <script src="app/directives/sortDirective.js"></script>
+  <script src="app/directives/searchDirective.js"></script>
+  <script src="app/views/pages/search/searchPageCtrl.js"></script>
+  <script src="app/views/pages/search/searchFactory.js"></script>
+  <script src="app/directives/testDirective.js"></script>
+<!--***************************************************************************************************-->
+
 </head>
 
 <body ng-app="gradebookApp" ng-controller="mainController as main">
@@ -58,9 +64,16 @@
         <li>
           <a href="#">Logged in as {{main.user.fname}}</a>
         </li>
+        <li>
+          <search-filter ng-route="'search-filter.html'"></search-filter>
+        </li>
+        <!--***************************************************************************-->
+        <li>
+          <a href="/search" class="btn-primary btn-sm">Search</a>
+        </li>
+        <!--***************************************************************************-->
       </ul>
     </nav>
-
     <div class="col-sm-12 align-right">
       <div class="open">
         <span class="cls"></span>

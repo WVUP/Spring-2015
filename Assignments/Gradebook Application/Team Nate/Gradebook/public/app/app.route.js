@@ -6,11 +6,11 @@ angular.module('Gradebook.Routes', ['ui.router'])
 	.state('login', {
 		url: "/login",
 		templateUrl: "app/views/login.html",
-		controller: "LoginController"
+		controller: "Login.Ctrl"
 	})
 
 	.state('homeState', {
-		url: "",
+		url: "/",
 		templateUrl: "app/views/home.html",
 		controller: 'Home.Ctrl'
 	})
@@ -39,6 +39,12 @@ angular.module('Gradebook.Routes', ['ui.router'])
 		controller: "Student.Create.Ctrl"
 	})
 
+	.state('studentDetail', {
+		url: "/students/:student_id",
+		templateUrl: "app/views/students/detail.html",
+		controller: "Student.Detail.Ctrl"
+	})
+
 	.state('assignmentState', {
 		url: "/assignments",
 		templateUrl: "app/views/assignments/index.html",
@@ -63,10 +69,16 @@ angular.module('Gradebook.Routes', ['ui.router'])
 		controller: "Assignment.Detail.Ctrl"
 	})
 
-	.state('enterGrades', {
-		url: '/assignments/:assignment_id/grades',
+	.state('gradeAssignment', {
+		url: '/assignments/:assignment_id/enterGrades',
 		templateUrl: "app/views/grades/enterGrades.html",
 		controller: "Grade.Ctrl"
+	})
+
+	.state('gradeDetail', {
+		url: '/assignments/:assignment_id/grades',
+		templateUrl: 'app/views/grades/detail.html',
+		controller: 'Grade.Detail.Ctrl'
 	});
 
 	$locationProvider.html5Mode(true).hashPrefix('!');

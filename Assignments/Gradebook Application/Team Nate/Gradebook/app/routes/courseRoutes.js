@@ -20,7 +20,7 @@ module.exports = function(apiRouter) {
 		})
 
 		//Create a new course
-		.post(function(req, res) {
+		.post(function (req, res) {
 			var newCourse = new Course();
 
 			newCourse.name = req.body.name;
@@ -62,6 +62,25 @@ module.exports = function(apiRouter) {
 			})
 		})
 
+		//Update course
+		.put(function (req, res) {
+			Course.update(
+				{"_id": req.params.course_id},
+				{
+					"name": req.body.name,
+					"courseNum": req.body.courseNum,
+					"students": req.body.students
+				},
+				{"upsert": "true"},
+				function (err, course) {
+					if (err)
+						res.send(err);
+					else{
+						res.json(course);
+					}
+				});
+		})
+
 		//Delete an existing course
 		.delete(function (req, res) {
 			Course.findByIdAndRemove(req.params.course_id, function (err, delCourse) {
@@ -91,40 +110,39 @@ module.exports = function(apiRouter) {
 			});
 		})
 		//Post student to course
-		.post(function (req, res) {
+		.put(function (req, res) {
+			debugger;
 			if (req.body == '{}')
 				console.log("No student ids were found in request body");
-			else
-
-				for (var i in req.body.studs) {
-					console.log(req.body.studs[i]);
-					Course.update(
-						{"_id": req.params.course_id},
-						{$push: {"students": req.body.studs[i]}},
-						{"upsert":"true"},
-						function (err, course) {
-							if (err)
-								res.send(err);
-							else
-								console.log(course);
-								res.json(course);
-						});
+			else{			
+				console.log(req.body.student_id);
+				Course.update(
+					{"_id": req.params.course_id},
+					{$push: {"students": req.body.student_id}},
+					{"upsert":"true"},
+					function (err, course) {
+						if (err)
+							res.send(err);
+						else
+							console.log(course);
+							res.json(course);
+					});
 				};
 		});
 
-	apiRouter.route('/courses/:course_id/assignments/:assignmentID')
+	apiRouter.route('/courses/:course_id/assignments/:assignment_id')
 
 		//Post assignments to course
 		.put(function (req, res) {
 			var ObjectId = require('mongoose').Types.ObjectId; 
 			console.log(req.params.course_id);
-			console.log(req.params.assignmentID);
+			console.log(req.params.assignment_id);
 			// if (req.body == '{}')
 			// 	console.log("No assignments in request body");
 			// else{
 				Course.update(
 					{_id: new ObjectId(req.params.course_id)},
-					{$addToSet: {"assignments": req.params.assignmentID}},
+					{$addToSet: {"assignments": req.params.assignment_id}},
 					{upsert: true},
 					function (err, course) {
 						if (err)
@@ -137,52 +155,14 @@ module.exports = function(apiRouter) {
 			// }
 		});
 
-	
-				
-
-
-			// Course.findById({_id: req.params.course_id}), function (err, sCourse) {
-			// 	if (err)
-			// 		res.send(err);
-			// 	for (var i = 0; i < req.body.studentIds.length; i++) {
-			// 		Student.update({
-			// 			_id: req.body.studentIds[i]},
-			// 			{$addToSet: {courses: sCourse}}, function (err) {
-			// 				if (err)
-			// 					res.send(err);
-			// 				else
-			// 					console.log(sCourse);							
-			// 			});
-
-			// 		Student.save(function (err) {
-			// 			if (err)
-			// 				res.send(err);
-			// 			else
-			// 				console.log("Student saved");
-			// 			});
-
-			// 		Course.update({
-			// 			_id: sCourse._id},
-			// 			{$addToSet: {students: req.body.studentIds[i]}}, function (err) {
-			// 				if (err)
-			// 					res.send(err);
-			// 				else
-			// 					console.log(sCourse);
-			// 			});
-
-			// 		Course.save(function (err) {
-			// 			if (err)
-			// 				res.send(err);
-			// 			else
-			// 				console.log("Course saved");
-			// 		});
-			// 		console.log(sCourse);
-			// 	};
-			// 	res.json({ message: "Students added to course" });
-			// };
-		//});
-
+	apiRouter.route('/courses/:course_id/antiStudents')
+		.get(function (req, res) {
+			Student.find({courses: {$ne: req.params.course_id}}, function (err, students) {
+				if (err)
+					res.send(err);
+				else{
+					res.json(students);
+				}
+			});
+		});
 }
-
-//course: 5528607a2a4527a00628adca
-//"552873a491feb61c21e1c44a", "552873ad91feb61c21e1c44b", "552873b391feb61c21e1c44c"

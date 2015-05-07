@@ -1,12 +1,12 @@
-<div>
-	<h1>Users</h1>
-
-	<div class="jumbotron text-center" ng-show="user.processing">
-		<span class="glyphicon glyphicon-repeat spinner"></span>
-		<p>Loading Users...</p>
-	</div>
-
-	<table class="table table-bordered table-striped" ng-show="user.users">
+<div class="row absolute text-center" ng-show="user.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading...</p>
+</div>
+	
+<div class="container">
+	<h1 class="logo-font align-center">Users</h1>
+	<pagination class="float-right" rotate="true" max-size="user.maxSize" total-items="user.totalItems" items-per-page="user.itemsPerPage" ng-model="user.currentPage" ng-change="user.pageChanged()"></pagination>
+	<table class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
 				<th>First Name</th>
@@ -29,10 +29,27 @@
 					</span>
 				</td>
 				<td class="col-sm-2">
-					<a ng-href="/users/{{ person._id }}" class="btn btn-default">Edit</a>
-					<a href="#" ng-click="user.deleteUser(person._id)" class="btn btn-default">Delete</a>
+					<a ng-href="/users/{{ person._id }}" class="btn btn-link">Edit</a>
+					<a href="#" ng-click="user.areYouSure(person._id)" class="btn btn-link">Delete</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
+
+<div class="row" ng-show="!user.users">
+	<h5>Currently, there are no users in the database.</h5>
+</div>
+
+<script type="text/ng-template" id="areYouSure.html">
+    <div class="modal-header">
+        <h3 class="modal-title">You are about to delete stuff...</h3>
+    </div>
+    <div class="modal-body">
+        <h5>Are you sure you want to do this?!</h5>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="user.ok()">Yes, Go Ahead..</button>
+        <button class="btn btn-warning" ng-click="user.cancel()">No, wait...</button>
+    </div>
+</script>

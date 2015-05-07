@@ -4,7 +4,8 @@ angular.module('classCtrl', ['classService'])
 	var vm = this;
 	vm.processing = true;
 
-	vm.isInstructor = isInstructor;
+  vm.isInstructor = isInstructor;
+    console.log(isInstructor + "from class ctrl");
 
 	Class.all().success(function (data) {
 		vm.classes = data;
