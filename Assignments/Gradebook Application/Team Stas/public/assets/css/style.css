@@ -888,8 +888,14 @@ textarea{
   background-repeat: no-repeat;
 }
 
+.orange-back {
+  background-color: orange !important;
+}
 
-
+.full-on {
+  height: 100% !important;
+  width: 100% !important;
+}
 
 
 

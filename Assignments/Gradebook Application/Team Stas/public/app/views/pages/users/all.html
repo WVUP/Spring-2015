@@ -5,6 +5,7 @@
 	
 <div class="container">
 	<h1 class="logo-font align-center">Users</h1>
+  <sort ng-route="'sort-order.html'"></sort>
 	<pagination class="float-right" rotate="true" max-size="user.maxSize" total-items="user.totalItems" items-per-page="user.itemsPerPage" ng-model="user.currentPage" ng-change="user.pageChanged()"></pagination>
 	<table class="table table-striped table-bordered table-condensed">
 		<thead>
@@ -18,13 +19,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="person in user.users">
+			<tr ng-repeat="person in user.users | filter:searchText | orderBy:sortOptions.sortOrder">
 				<td>{{ person.fname }}</td>
 				<td>{{ person.lname }}</td>
 				<td>{{ person.email }}</td>
 				<td>{{ person.date | date : 'medium' }}</td>
 				<td>
-					<span ng-repeat="role in person.roles">
+					<span ng-repeat="role in person.roles | filter:searchText | orderBy:sortOptions.sortOrder">
 						{{ role }}
 					</span>
 				</td>

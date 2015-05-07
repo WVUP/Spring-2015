@@ -60,3 +60,34 @@ angular.module('userCtrl', ['userService'])
 		});
 	}
 })
+
+.directive('test2', function() {
+  return{
+    restict: 'E',
+    templateUrl: 'app/views/pages/test2.html',
+    controller: function($scope) {
+
+    }
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

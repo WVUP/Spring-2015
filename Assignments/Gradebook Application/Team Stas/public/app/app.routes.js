@@ -23,6 +23,15 @@ angular.module('app.routes', ['ngRoute'])
 			adminAccess: true,
 			instructorAccess: true
 		})
+
+    //***************************************************************************
+    .when('/search',{
+      templateUrl: 'app/views/pages/test.html',
+      controller: 'searchCtrl',
+      controllerAs: 'search'
+    })
+    //***************************************************************************
+
 		// ------------user-routes---------------
 		.when('/users',{
 			templateUrl: 'app/views/pages/users/all.html',

@@ -1,7 +1,6 @@
 /**
  * Created by Dustin on 4/24/2015.
  */
-angular.module('searchDirective', [])
 
   .directive('searchFilter', function() {
     return {
