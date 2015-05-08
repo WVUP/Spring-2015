@@ -12,10 +12,6 @@ angular.module('customDirectives', [])
   }
 })
 
-
-
-
-
 .directive('validateEmail', function() {
   var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
 
@@ -34,3 +30,4 @@ angular.module('customDirectives', [])
     }
   };
 });
+
